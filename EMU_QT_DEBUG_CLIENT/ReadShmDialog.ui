@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ReadShmDialog</class>
+ <widget class="QWidget" name="ReadShmDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>752</width>
+    <height>728</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>13</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>ReadFromSharedMem</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_main">
+     <item>
+      <widget class="QTabWidget" name="tabWidget_7">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab_4">
+        <attribute name="title">
+         <string>Outputs</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QTabWidget" name="tabWidget_ccu_out">
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="currentIndex">
+              <number>9</number>
+             </property>
+             <widget class="QWidget" name="tab_1">
+              <attribute name="title">
+               <string>ska_ccu_vh_riom_mvb1_d_outputs</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <item>
+                <widget class="QTabWidget" name="tabWidget">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tab_8">
+                  <attribute name="title">
+                   <string>SKA1</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_9">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ska1_ccu_vh_riom_mvb1_d_outputs"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_9">
+                  <attribute name="title">
+                   <string>SKA2</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_10">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ska2_ccu_vh_riom_mvb1_d_outputs"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_2">
+              <attribute name="title">
+               <string>ska_ccu_vh_riom_mvb2_dcu_hvac_dcu</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="0" column="0">
+                <widget class="QTabWidget" name="tabWidget_2">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tab_10">
+                  <attribute name="title">
+                   <string>SKA1</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_11">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ska1_ccu_vh_riom_mvb2_dcu"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_11">
+                  <attribute name="title">
+                   <string>SKA2</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_12">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ska2_ccu_vh_riom_mvb2_dcu"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_3">
+              <attribute name="title">
+               <string>ska_ccu_dd_riom_mvb1_d_outputs</string>
+              </attribute>
+              <widget class="QTabWidget" name="tabWidget_3">
+               <property name="geometry">
+                <rect>
+                 <x>70</x>
+                 <y>40</y>
+                 <width>281</width>
+                 <height>311</height>
+                </rect>
+               </property>
+               <property name="currentIndex">
+                <number>1</number>
+               </property>
+               <widget class="QWidget" name="tab_12">
+                <attribute name="title">
+                 <string>SKA1</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_13">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_ska1_ccu_dd_riom_mvb1_d_outputs"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_13">
+                <attribute name="title">
+                 <string>SKA2</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_14">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_ska2_ccu_dd_riom_mvb1_d_outputs"/>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="OA1">
+              <attribute name="title">
+               <string>oa_ccu_vh_riom_mvb1_d_outputs</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_4">
+               <item row="0" column="0">
+                <widget class="QTabWidget" name="tabWidget_4">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tab_14">
+                  <attribute name="title">
+                   <string>OA1</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_15">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_oa1_ccu_vh_riom_mvb1_d_outputs"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_15">
+                  <attribute name="title">
+                   <string>OA2</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_16">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_oa2_ccu_vh_riom_mvb1_d_outputs"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_5">
+              <attribute name="title">
+               <string>oa_ccu_vh_riom_mvb2_dcu_hvac_dcu</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <widget class="QTabWidget" name="tabWidget_5">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tab_16">
+                  <attribute name="title">
+                   <string>OA1</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_17">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_oa1_ccu_vh_riom_mvb2_dcu"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_17">
+                  <attribute name="title">
+                   <string>OA2</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_18">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_oa2_ccu_vh_riom_mvb2_dcu"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab">
+              <attribute name="title">
+               <string>ccu_to_oa_etcs</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_6">
+               <item row="0" column="0">
+                <widget class="QTabWidget" name="tabWidget_6">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tab_18">
+                  <attribute name="title">
+                   <string>Tab 1</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_19">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ccu_to_oa1_etcs"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_19">
+                  <attribute name="title">
+                   <string>Tab 2</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_20">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ccu_to_oa2_etcs"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_6">
+              <attribute name="title">
+               <string>ska_ccu_global_out_mvb2</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_7">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ska_ccu_global_out_mvb2"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_7">
+              <attribute name="title">
+               <string>ska_ccu_to_all_rioms_mvb2</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_8">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ska_ccu_global_all_rioms_mvb2_fds"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_23">
+              <attribute name="title">
+               <string>ska_ccu_global_out_mvb1</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_21">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ska_ccu_global_out_mvb1"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_24">
+              <attribute name="title">
+               <string>ska_ccu_to_all_rioms_mvb1</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_22">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ska_ccu_global_all_rioms_mvb1_dcu"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_25">
+              <attribute name="title">
+               <string>ccu_to_all_bcus</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_23">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_bcus"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_26">
+              <attribute name="title">
+               <string>ccu_to_all_etcs</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_24">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_etcs"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_27">
+              <attribute name="title">
+               <string>ccu_to_all_jrus_1</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_25">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_jrus_1"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_28">
+              <attribute name="title">
+               <string>ccu_to_all_jrus_2</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_26">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_jrus_2"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_29">
+              <attribute name="title">
+               <string>ccu_to_all_jrus_3</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_27">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_jrus_3"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_30">
+              <attribute name="title">
+               <string>ccu_to_all_jrus_4</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_28">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_jrus_4"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_31">
+              <attribute name="title">
+               <string>ccu_to_all_jrus_5</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_29">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_jrus_5"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_32">
+              <attribute name="title">
+               <string>ska_ccu_do_card</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_30">
+               <item row="0" column="0">
+                <widget class="QTabWidget" name="tabWidget_9">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tab_33">
+                  <attribute name="title">
+                   <string>SKA_1</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_31">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ska1_ccu_do_card"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_34">
+                  <attribute name="title">
+                   <string>SKA_2</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_32">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_ska2_ccu_do_card"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_20">
+        <attribute name="title">
+         <string>Inputs</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QTabWidget" name="tabWidget_8">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="tab_21">
+              <attribute name="title">
+               <string>Tab 1</string>
+              </attribute>
+             </widget>
+             <widget class="QWidget" name="tab_22">
+              <attribute name="title">
+               <string>Tab 2</string>
+              </attribute>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

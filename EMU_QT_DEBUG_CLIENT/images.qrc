@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/speedometer_3563395.png</file>
+        <file>icons/thermometer_2100130.png</file>
+        <file>icons/file_5251741.png</file>
+        <file>icons/tram_185048.png</file>
+        <file>icons/link_88422.png</file>
+        <file>icons/link_1017466.png</file>
+        <file>icons/trash_9679191.png</file>
+        <file>icons/icons8-send-message-100.png</file>
+        <file>icons/icons8-open-box-94.png</file>
+        <file>icons/icons8-ethernet-port-53.png</file>
+        <file>icons/icons8-read-66.png</file>
+        <file>icons/icons8-write-60.png</file>
+        <file>icons/previous_189254.png</file>
+        <file>icons/configuration.png</file>
+        <file>icons/gaziray.png</file>
+        <file>icons/icons8-input-96.png</file>
+        <file>icons/icons8-check-all-200.png</file>
+    </qresource>
+</RCC>
