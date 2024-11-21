@@ -42,7 +42,7 @@ void MessageConfig::initConfiguration()
                               "reserved3",
                               "reserved4",
                               "reserved5",
-                              "ska_input",
+                              "ska_di_card",
                               "reserved7",
                               "ska1_ddinputs_m",
                               "ska1_vhinputs_m",
@@ -111,7 +111,7 @@ void MessageConfig::updateEmulatorConfigStruct()
     qDebug() << "updateEmulatorConfigStruct() VARAN 2" ;
     m_emulator_config.bits.reserved4            = checkBoxMap["reserved4"]->isChecked() ? 1 : 0;
     m_emulator_config.bits.reserved5            = checkBoxMap["reserved5"]->isChecked() ? 1 : 0;
-    m_emulator_config.bits.ska_input            = checkBoxMap["ska_input"]->isChecked() ? 1 : 0;
+    m_emulator_config.bits.ska_di_card          = checkBoxMap["ska_di_card"]->isChecked() ? 1 : 0;
     m_emulator_config.bits.reserved7            = checkBoxMap["reserved7"]->isChecked() ? 1 : 0;
     qDebug() << "updateEmulatorConfigStruct() VARAN 3" ;
     m_emulator_config.bits.ska1_ddinputs_m      = checkBoxMap["ska1_ddinputs_m"]->isChecked()? 1 : 0;

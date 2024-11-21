@@ -7,6 +7,8 @@
 #include <QTableWidget>
 #include <QObject>
 #include "utils.h"
+#include <tsl/ordered_map.h>
+
 class Ccu_To_Oax_Etcs : public QObject
 {
     Q_OBJECT
@@ -33,13 +35,13 @@ private:
         return static_cast<int>(num);
     }
 
-    std::map<QString, int> get_map(OA_VEHICLE_NUM  oa_x_num)
+    tsl::ordered_map<QString, int> get_map(OA_VEHICLE_NUM  oa_x_num)
     {
         return m_outputs_map[static_cast<int>(oa_x_num)];
     }
 
 private:
-    std::map<QString, int> m_outputs_map[2];
+    tsl::ordered_map<QString, int> m_outputs_map[2];
     std::vector<QTableWidget *>m_tableWidget;
     std::array<ccu_to_oax_etcs, 2> m_ccu_to_oax_etcs;
 

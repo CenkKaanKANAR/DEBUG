@@ -101,7 +101,7 @@
          <item>
           <widget class="QTabWidget" name="tabWidget_ccu_data">
            <property name="tabPosition">
-            <enum>QTabWidget::TabPosition::West</enum>
+            <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
             <number>0</number>
@@ -117,10 +117,10 @@
                 <number>-1</number>
                </property>
                <property name="tabPosition">
-                <enum>QTabWidget::TabPosition::West</enum>
+                <enum>QTabWidget::West</enum>
                </property>
                <property name="currentIndex">
-                <number>8</number>
+                <number>10</number>
                </property>
                <widget class="QWidget" name="tab_73">
                 <attribute name="title">
@@ -736,7 +736,7 @@
                  <item row="0" column="0">
                   <widget class="QTabWidget" name="tabWidget_10">
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="tab_63">
                     <attribute name="title">
@@ -746,7 +746,7 @@
                      <item row="0" column="0">
                       <widget class="QTabWidget" name="tabWidget_11">
                        <property name="currentIndex">
-                        <number>2</number>
+                        <number>0</number>
                        </property>
                        <widget class="QWidget" name="tab_65">
                         <attribute name="title">
@@ -768,16 +768,6 @@
                          </item>
                         </layout>
                        </widget>
-                       <widget class="QWidget" name="tab_69">
-                        <attribute name="title">
-                         <string>ska_bcu_ccu_mvb3</string>
-                        </attribute>
-                        <layout class="QGridLayout" name="gridLayout_65">
-                         <item row="0" column="0">
-                          <layout class="QVBoxLayout" name="verticalLayout_ska_1_bcu_3"/>
-                         </item>
-                        </layout>
-                       </widget>
                       </widget>
                      </item>
                     </layout>
@@ -790,7 +780,7 @@
                      <item row="0" column="0">
                       <widget class="QTabWidget" name="tabWidget_12">
                        <property name="currentIndex">
-                        <number>2</number>
+                        <number>1</number>
                        </property>
                        <widget class="QWidget" name="tab_67">
                         <attribute name="title">
@@ -809,16 +799,6 @@
                         <layout class="QGridLayout" name="gridLayout_67">
                          <item row="0" column="0">
                           <layout class="QVBoxLayout" name="verticalLayout_ska_2_bcu_2"/>
-                         </item>
-                        </layout>
-                       </widget>
-                       <widget class="QWidget" name="tab_70">
-                        <attribute name="title">
-                         <string>ska_bcu_ccu_mvb3</string>
-                        </attribute>
-                        <layout class="QGridLayout" name="gridLayout_68">
-                         <item row="0" column="0">
-                          <layout class="QVBoxLayout" name="verticalLayout_ska_2_bcu_3"/>
                          </item>
                         </layout>
                        </widget>
@@ -1042,10 +1022,10 @@
                  <item row="0" column="0">
                   <widget class="QTabWidget" name="tabWidget_4">
                    <property name="tabPosition">
-                    <enum>QTabWidget::TabPosition::West</enum>
+                    <enum>QTabWidget::West</enum>
                    </property>
                    <property name="currentIndex">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="tab_47">
                     <attribute name="title">
@@ -1055,7 +1035,7 @@
                      <item row="0" column="0">
                       <widget class="QTabWidget" name="tabWidget_5">
                        <property name="currentIndex">
-                        <number>2</number>
+                        <number>1</number>
                        </property>
                        <widget class="QWidget" name="tab_49">
                         <attribute name="title">
@@ -1077,16 +1057,6 @@
                          </item>
                         </layout>
                        </widget>
-                       <widget class="QWidget" name="tab_51">
-                        <attribute name="title">
-                         <string>bcu_ccu_mvb3</string>
-                        </attribute>
-                        <layout class="QGridLayout" name="gridLayout_49">
-                         <item row="0" column="0">
-                          <layout class="QVBoxLayout" name="verticalLayout_oa_1_bcu_3"/>
-                         </item>
-                        </layout>
-                       </widget>
                       </widget>
                      </item>
                     </layout>
@@ -1099,10 +1069,10 @@
                      <item row="0" column="0">
                       <widget class="QTabWidget" name="tabWidget_6">
                        <property name="tabPosition">
-                        <enum>QTabWidget::TabPosition::West</enum>
+                        <enum>QTabWidget::West</enum>
                        </property>
                        <property name="currentIndex">
-                        <number>2</number>
+                        <number>1</number>
                        </property>
                        <widget class="QWidget" name="tab_52">
                         <attribute name="title">
@@ -1124,16 +1094,6 @@
                          </item>
                         </layout>
                        </widget>
-                       <widget class="QWidget" name="tab_53">
-                        <attribute name="title">
-                         <string>bcu_ccu_mvb3</string>
-                        </attribute>
-                        <layout class="QGridLayout" name="gridLayout_55">
-                         <item row="0" column="0">
-                          <layout class="QVBoxLayout" name="verticalLayout_oa_2_bcu_3"/>
-                         </item>
-                        </layout>
-                       </widget>
                       </widget>
                      </item>
                     </layout>
@@ -1150,7 +1110,7 @@
                  <item row="0" column="0">
                   <widget class="QTabWidget" name="tabWidget_31">
                    <property name="tabPosition">
-                    <enum>QTabWidget::TabPosition::West</enum>
+                    <enum>QTabWidget::West</enum>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
@@ -1163,7 +1123,7 @@
                      <item row="0" column="0">
                       <widget class="QTabWidget" name="tabWidget_32">
                        <property name="tabPosition">
-                        <enum>QTabWidget::TabPosition::West</enum>
+                        <enum>QTabWidget::West</enum>
                        </property>
                        <property name="currentIndex">
                         <number>0</number>
@@ -1576,7 +1536,91 @@
             </attribute>
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_2"/>
+              <widget class="QTabWidget" name="tabWidget_ccu_out">
+               <property name="currentIndex">
+                <number>7</number>
+               </property>
+               <widget class="QWidget" name="tab_128">
+                <attribute name="title">
+                 <string>force_ska1_ccu_vh_riom_mvb1_d</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_131">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ska1_ccu_vh_riom_mvb1_d"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_129">
+                <attribute name="title">
+                 <string>ska2_ccu_vh_riom_mvb1_d</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_132">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ska2_ccu_vh_riom_mvb1_d"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_130">
+                <attribute name="title">
+                 <string>ska1_ccu_dd_riom_mvb1_d_outputs</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_133">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ska1_ccu_dd_riom_mvb1_d"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_131">
+                <attribute name="title">
+                 <string>ska2_ccu_dd_riom_mvb1_d_outputs</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_134">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ska2_ccu_dd_riom_mvb1_d"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_132">
+                <attribute name="title">
+                 <string>oa1_ccu_vh_riom_mvb1_d_outputs</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_135">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_oa1_ccu_vh_riom_mvb1_d_outputs"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_133">
+                <attribute name="title">
+                 <string>oa2_ccu_vh_riom_mvb1_d_outputs</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_136">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_oa2_ccu_vh_riom_mvb1_d_outputs"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_134">
+                <attribute name="title">
+                 <string>ska_ccu_global_out_mvb1</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_137">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ska_ccu_global_out_mvb1"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_135">
+                <attribute name="title">
+                 <string>ccu_to_all_bcus</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_138">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_all_bcus"/>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
              </item>
             </layout>
            </widget>

@@ -23,11 +23,11 @@ struct emulator_config
             uint8_t reserved3 :1;/*config completed*/
             uint8_t reserved4 :1;/*config completed*/
             uint8_t reserved5 :1;/*config completed*/
-            uint8_t ska_input :1;/*config completed*/ /*0X250 2bytes*/
+            uint8_t ska_di_card :1;/*config completed*/ /*0X250 2bytes*/
             uint8_t reserved7 : 1;
-            uint8_t ska1_ddinputs_m:1;  /*0x211 16*/  				//byte1
+            uint8_t ska1_ddinputs_m:1;  /*0x201 16*/  				//byte1
             uint8_t ska1_vhinputs_m:1;  /*0x411 32*/
-            uint8_t ska2_ddinputs_m:1;  /*0x2D1 16*/
+            uint8_t ska2_ddinputs_m:1;  /*0x2C1 16*/
             uint8_t ska2_vhinputs_m:1;  /*0x4D1 32*/
             uint8_t oa1_vhinputs_m:1;   /*0x451 32*/
             uint8_t oa2_vhinputs_m:1;   /*0x491 32*/

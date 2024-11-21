@@ -43,3 +43,4 @@ private:
 };
 
 #endif // READSHMDIALOG_H
+

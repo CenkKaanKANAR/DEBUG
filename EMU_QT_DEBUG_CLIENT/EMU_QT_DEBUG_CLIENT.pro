@@ -4,8 +4,10 @@ QT       += core gui  network  serialbus
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+INCLUDEPATH += $$PWD/third_party/ordered-map-master/include
 
 CONFIG += c++17
+
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -64,6 +66,7 @@ SOURCES += \
     ccu_outputs/ska_ccu_vh_riom_mvb2_dcu.cpp \
     ccu_table.cpp \
     ccutablehandler.cpp \
+    forcecontrol.cpp \
     main.cpp \
     mainwindow.cpp \
     messageconfig.cpp \
@@ -125,6 +128,7 @@ HEADERS += \
     ccu_table.h \
     ccutablehandler.h \
     emulator_common.h \
+    forcecontrol.h \
     mainwindow.h \
     messageconfig.h \
     mvb_ports.h \

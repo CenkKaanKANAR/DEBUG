@@ -6,6 +6,7 @@
 #include <QTableWidget>
 #include <QDebug>
 #include "utils.h"
+#include <tsl/ordered_map.h>
 
 
 class Ska_Hvac : public QObject
@@ -94,7 +95,7 @@ private:
     };
 
     struct ska_hvac m_ska_x_hvac[2];
-    std::map<QString, int> m_inputs_map[2][3];
+    tsl::ordered_map<QString, int> m_inputs_map[2][3];
     QTableWidget *m_tableWidget[2][3];
     std::vector<uint16_t> m_port_id {0x41D, 0x4DD}; // Direct initialization
 

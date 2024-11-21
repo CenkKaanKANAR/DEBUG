@@ -6,7 +6,7 @@
 #include <QTableWidget>
 #include <QDebug>
 #include "utils.h"
-
+#include <tsl/ordered_map.h>
 
 class OA_DCU : public QObject
 {
@@ -98,7 +98,7 @@ private:
     };
 
     struct oa_dcu m_oa_x_dcu[2];
-    std::map<QString, int> m_inputs_map[2][4];
+    tsl::ordered_map<QString, int> m_inputs_map[2][4];
     QTableWidget *m_tableWidget[2][4];
     std::vector<uint16_t> m_port_id {0x452, 0x492}; // Direct initialization
     // * OA1_VH	0x452

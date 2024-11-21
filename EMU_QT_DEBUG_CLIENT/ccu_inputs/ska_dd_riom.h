@@ -5,7 +5,7 @@
 #include <QObject>
 #include "utils.h"
 #include "shm_data_gaziray.h"
-
+#include <tsl/ordered_map.h>
 #include <vector>
 #include <cstring> // for memcpy
 
@@ -77,7 +77,8 @@ private:
 
     std::vector<uint16_t> m_port_id{0x201, 0x2C1};
     struct ska_dd_riom m_ska_x_dd_riom[2];
-    std::map<QString, int> m_inputs_map[2][2];
+    //std::map<QString, int> m_inputs_map[2][2];
+    tsl::ordered_map<QString, int> m_inputs_map[2][2];
     QTableWidget *m_tableWidget[2][2];
 
 };

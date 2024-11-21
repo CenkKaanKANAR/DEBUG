@@ -6,6 +6,7 @@
 #include <QTableWidget>
 #include <QDebug>
 #include "utils.h"
+#include <tsl/ordered_map.h>
 
 
 
@@ -93,7 +94,7 @@ private:
     };
 
     struct oa_etcs m_oa_x_etcs[2];
-    std::map<QString, int> m_inputs_map[2][3];
+    tsl::ordered_map<QString, int> m_inputs_map[2][3];
     QTableWidget *m_tableWidget[2][3];
     std::vector<uint16_t> m_port_id {0x941, 0x981}; // Direct initialization
 

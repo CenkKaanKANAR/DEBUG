@@ -9,7 +9,7 @@
 #include <memory>
 #include <cstring>
 #include <vector>
-
+#include <tsl/ordered_map.h>
 
 
 class Ska_Ats : public QObject
@@ -66,7 +66,7 @@ private:
     };
 
     struct ska_ats m_ska_x_ats[2];
-    std::map<QString, int> m_inputs_map[2];
+    tsl::ordered_map<QString, int> m_inputs_map[2];
     std::vector<QTableWidget *>m_tableWidget;
     //std::vector<std::unique_ptr<QTableWidget>>m_tableWidget;
     std::vector<uint16_t> m_port_id {0x419, 0x4D9}; // Direct initialization

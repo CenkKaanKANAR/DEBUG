@@ -55,10 +55,10 @@ void Ska_Ccu_To_All_Rioms_Mvb2::init_table()
         {"reserved_25",0},
         {"TCMS_TLCentrClose",0},
         {"TCMS_TLStandstill",0},
-        {"TCMS_TLCentrOpen",0},
+        {"bit210",0},//
         {"TCMS_TLSuppEmergOp",0},
         {"TCMS_TIL",0},
-        {"TCMS_LoopLSDoorNotEmergOp",0},
+        {"bit213",0},//
         {"bit214",0},
         {"bit215",0},
         {"reserved_27",0},
@@ -141,10 +141,10 @@ void Ska_Ccu_To_All_Rioms_Mvb2::update_map()
     m_outputs_map.at("reserved_25")                  = m_ska_ccu_to_all_rioms_mvb2.bits.reserved_25;
     m_outputs_map.at("TCMS_TLCentrClose")            = m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLCentrClose;
     m_outputs_map.at("TCMS_TLStandstill")            = m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLStandstill;
-    m_outputs_map.at("TCMS_TLCentrOpen")             = m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLCentrOpen;
+    m_outputs_map.at("bit210")                       = m_ska_ccu_to_all_rioms_mvb2.bits.bit210;
     m_outputs_map.at("TCMS_TLSuppEmergOp")           = m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLSuppEmergOp;
     m_outputs_map.at("TCMS_TIL")                     = m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TIL;
-    m_outputs_map.at("TCMS_LoopLSDoorNotEmergOp")    = m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_LoopLSDoorNotEmergOp;
+    m_outputs_map.at("bit213")                       = m_ska_ccu_to_all_rioms_mvb2.bits.bit213;
     m_outputs_map.at("bit214")                       = m_ska_ccu_to_all_rioms_mvb2.bits.bit214;
     m_outputs_map.at("bit215")                       = m_ska_ccu_to_all_rioms_mvb2.bits.bit215;
     m_outputs_map.at("reserved_27")                  = m_ska_ccu_to_all_rioms_mvb2.bits.reserved_27;

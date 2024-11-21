@@ -198,6 +198,41 @@ namespace utils {
         animation->setEasingCurve(QEasingCurve::InOutSine);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     }
+    // Convert SKA_VEHICLE_NUM to VEHICLE_NUM
+    VEHICLE_NUM convertToVehicleNum(SKA_VEHICLE_NUM ska) {
+        switch (ska) {
+        case SKA_VEHICLE_NUM::SKA1: return VEHICLE_NUM::SKA1;
+        case SKA_VEHICLE_NUM::SKA2: return VEHICLE_NUM::SKA2;
+        default: throw std::invalid_argument("Invalid SKA_VEHICLE_NUM");
+        }
+    }
+
+    // Convert OA_VEHICLE_NUM to VEHICLE_NUM
+    VEHICLE_NUM convertToVehicleNum(OA_VEHICLE_NUM oa) {
+        switch (oa) {
+        case OA_VEHICLE_NUM::OA1: return VEHICLE_NUM::OA1;
+        case OA_VEHICLE_NUM::OA2: return VEHICLE_NUM::OA2;
+        default: throw std::invalid_argument("Invalid OA_VEHICLE_NUM");
+        }
+    }
+
+    // Convert VEHICLE_NUM to SKA_VEHICLE_NUM (if needed)
+    SKA_VEHICLE_NUM convertToSKAVehicleNum(VEHICLE_NUM vehicle) {
+        switch (vehicle) {
+        case VEHICLE_NUM::SKA1: return SKA_VEHICLE_NUM::SKA1;
+        case VEHICLE_NUM::SKA2: return SKA_VEHICLE_NUM::SKA2;
+        default: throw std::invalid_argument("Invalid VEHICLE_NUM");
+        }
+    }
+
+    // Convert VEHICLE_NUM to OA_VEHICLE_NUM (if needed)
+    OA_VEHICLE_NUM convertToOAVehicleNum(VEHICLE_NUM vehicle) {
+        switch (vehicle) {
+        case VEHICLE_NUM::OA1: return OA_VEHICLE_NUM::OA1;
+        case VEHICLE_NUM::OA2: return OA_VEHICLE_NUM::OA2;
+        default: throw std::invalid_argument("Invalid VEHICLE_NUM");
+        }
+    }
 
 
     /*void addBorderBlinkEffect(QWidget* widget, int durationMs) {

@@ -128,6 +128,31 @@ public:
         return m_ska_ccu_do_card_ptr;
     }
 
+    //FORCE
+    Ska_ccu_vh_riom_mvb1_d* get_Ska_ccu_vh_riom_mvb1_d_force() {
+        return m_ska_ccu_vh_riom_mvb1_d_force_ptr;
+    }
+
+    Ska_Ccu_DD_Riom_Mvb1_d_Outputs* get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()
+    {
+        return m_ska_ccu_dd_riom_mvb1_d_outputs_force_ptr;
+    }
+
+    Oa_Ccu_Vh_Riom_Mvb1_d_Outputs* get_Oa_Ccu_Vh_Riom_Mvb1_d_Outputs_Force(){
+
+        return m_oa_ccu_vh_riom_mvb1_d_outputs_force_ptr;
+    }
+
+    Ska_Ccu_Global_Out_Mvb1* get_Ska_Ccu_Global_Out_Mvb1_Force() {
+
+        return m_ska_ccu_global_out_mvb1_force_ptr;
+    }
+
+    Ccu_To_All_Bcus* get_Ccu_To_All_Bcus_Force() {
+
+        return m_ccu_to_all_bcus_force_ptr;
+    }
+
 private:
 
     Ska_Ccu_Global_Out_Mvb1* m_ska_ccu_global_out_mvb1_ptr;
@@ -136,7 +161,10 @@ private:
     Ska_Ccu_To_All_Rioms_Mvb1* m_ska_ccu_to_all_rioms_mvb1_ptr;
     Ska_Ccu_To_All_Rioms_Mvb2* m_ska_ccu_to_all_rioms_mvb2_ptr;
 
-    Ska_ccu_vh_riom_mvb1_d* m_ska_ccu_vh_riom_mvb1_d_ptr;
+    Ska_ccu_vh_riom_mvb1_d* m_ska_ccu_vh_riom_mvb1_d_ptr;//
+
+
+
     Ska_Ccu_DD_Riom_Mvb1_d_Outputs *m_ska_ccu_dd_riom_mvb1_d_outputs_ptr;
     Ska_Ccu_Vh_Riom_Mvb2_Dcu* m_ska_ccu_vh_riom_mvb2_dcu_ptr;
     Oa_Ccu_Vh_Riom_Mvb1_d_Outputs* m_oa_ccu_vh_riom_mvb1_d_outputs_ptr;
@@ -153,6 +181,12 @@ private:
 
     Ska_Ccu_Do_Card* m_ska_ccu_do_card_ptr;
 
+    //Force
+    Ska_ccu_vh_riom_mvb1_d* m_ska_ccu_vh_riom_mvb1_d_force_ptr;
+    Ska_Ccu_DD_Riom_Mvb1_d_Outputs* m_ska_ccu_dd_riom_mvb1_d_outputs_force_ptr;
+    Oa_Ccu_Vh_Riom_Mvb1_d_Outputs* m_oa_ccu_vh_riom_mvb1_d_outputs_force_ptr;
+    Ska_Ccu_Global_Out_Mvb1* m_ska_ccu_global_out_mvb1_force_ptr;
+    Ccu_To_All_Bcus* m_ccu_to_all_bcus_force_ptr;
 };
 }
 #endif // CCU_Outputs_H

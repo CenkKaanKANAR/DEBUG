@@ -215,7 +215,7 @@ void Ska_Bcu::update_mvb1_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("bit246")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit246;
     m_inputs_map[ska_num][MVB1].at("bit247")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit247;
     m_inputs_map[ska_num][MVB1].at("bit248")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit248;
-    //m_inputs_map[ska_num][MVB1].at("reserved31")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31;
+    m_inputs_map[ska_num][MVB1].at("reserved31")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31;
 
 
 }
@@ -605,7 +605,7 @@ void Ska_Bcu::set_struct_mvb1(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit246 = m_inputs_map[ska_num][MVB1].at("bit246")                    ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit247 = m_inputs_map[ska_num][MVB1].at("bit247")                    ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit248 = m_inputs_map[ska_num][MVB1].at("bit248")                    ;
-    //m_inputs_map[ska_num][MVB1].at("reserved31")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31;
+    m_inputs_map[ska_num][MVB1].at("reserved31")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31;
 
 }
 
@@ -968,7 +968,7 @@ void Ska_Bcu::init_ska_x_mvb1_table(SKA_VEHICLE_NUM vehicle_type)
         {"bit246", 0},
         {"bit247", 0},
         {"bit248", 0},
-        //{"reserved31", 0}
+        {"reserved31", 0}
     };
 
     /*m_tableWidget[ska_num][MVB1] = new QTableWidget();
@@ -1005,6 +1005,9 @@ void Ska_Bcu::init_ska_x_mvb1_table(SKA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[ska_num][MVB1]->setItem(row, column, item_name);
         m_tableWidget[ska_num][MVB1]->setItem(row, column + 1, item_val); // Değer
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
@@ -1177,6 +1180,8 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[ska_num][MVB2]->setItem(row, column, item_name);
         m_tableWidget[ska_num][MVB2]->setItem(row, column + 1, item_val); // Değer
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

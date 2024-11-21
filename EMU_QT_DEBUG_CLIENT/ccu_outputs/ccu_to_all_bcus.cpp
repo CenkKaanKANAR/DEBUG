@@ -4,6 +4,7 @@
 Ccu_To_All_Bcus::Ccu_To_All_Bcus(QObject *parent)
     : QObject{parent}
 {
+    memset(m_ccu_to_all_bcus.bytes, 0, sizeof(m_ccu_to_all_bcus));
     init_table();
 }
 
@@ -92,71 +93,133 @@ void Ccu_To_All_Bcus::init_table()
     }
 }
 
+
+void Ccu_To_All_Bcus::update_struct_with_map()
+{
+    qDebug() << "Merhaba Update Struct with map GRİŞİ" ;
+
+    auto setInputMap = [&](const QString& signal_name) {
+        m_outputs_map[signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget, signal_name).toInt();
+    };
+    // update map with given tableWidget values
+    for(const auto& map : m_outputs_map)
+    {
+        setInputMap(map.first);
+    }
+    // set struct parameters with given updated map parameters
+    set_struct();
+}
+
+
 void Ccu_To_All_Bcus::update_table()
 {
 
 
-    // Tabloyu temizleyin
-    m_tableWidget->setRowCount(0);
-    //tableWidget->clear();
-
-    // Haritadaki verilerle tabloyu doldurun
-    int row = 0;
-    for (auto it = m_outputs_map.begin(); it != m_outputs_map.end(); ++it)
-    {
-        m_tableWidget->insertRow(row);
-        //qDebug() <<"first:" << it->first << "second:" << it->second;
-        QTableWidgetItem *keyItem   = new QTableWidgetItem(it->first); // Anahtar
-        QTableWidgetItem *valueItem = new QTableWidgetItem(QString::number(it->second)); // Değer
-
-        m_tableWidget->setItem(row, 0, keyItem);
-        m_tableWidget->setItem(row, 1, valueItem);
-
-        row++;
+    for(const auto & map:m_outputs_map){
+        //qDebug() <<  map.first << map.second;
+        utils::setTableWidgetValueByName(m_tableWidget, map.first, 1, map.second );
     }
 }
 
 void Ccu_To_All_Bcus::update_map()
 {
-    m_outputs_map.at("XLifeSign")                     = m_ccu_to_all_bcus.bits.XLifeSign;
-    m_outputs_map.at("ReleaseHoldingBrakeRequest")                     = m_ccu_to_all_bcus.bits.ReleaseHoldingBrakeRequest;
-    m_outputs_map.at("bit17")                     = m_ccu_to_all_bcus.bits.bit17;
-    m_outputs_map.at("bit18")                     = m_ccu_to_all_bcus.bits.bit18;
+    m_outputs_map.at("XLifeSign")                               = m_ccu_to_all_bcus.bits.XLifeSign;
+    m_outputs_map.at("ReleaseHoldingBrakeRequest")              = m_ccu_to_all_bcus.bits.ReleaseHoldingBrakeRequest;
+    m_outputs_map.at("bit17")                                   = m_ccu_to_all_bcus.bits.bit17;
+    m_outputs_map.at("bit18")                                   = m_ccu_to_all_bcus.bits.bit18;
     m_outputs_map.at("C_WSP_start_testrun")                     = m_ccu_to_all_bcus.bits.C_WSP_start_testrun;
-    m_outputs_map.at("bit20")                     = m_ccu_to_all_bcus.bits.bit20;
-    m_outputs_map.at("C_ASC_active")                     = m_ccu_to_all_bcus.bits.C_ASC_active;
-    m_outputs_map.at("C_CalcMass")                     = m_ccu_to_all_bcus.bits.C_CalcMass;
-    m_outputs_map.at("bit23")                     = m_ccu_to_all_bcus.bits.bit23;
+    m_outputs_map.at("bit20")                                   = m_ccu_to_all_bcus.bits.bit20;
+    m_outputs_map.at("C_ASC_active")                            = m_ccu_to_all_bcus.bits.C_ASC_active;
+    m_outputs_map.at("C_CalcMass")                              = m_ccu_to_all_bcus.bits.C_CalcMass;
+    m_outputs_map.at("bit23")                                   = m_ccu_to_all_bcus.bits.bit23;
     m_outputs_map.at("C_Sanding_activated")                     = m_ccu_to_all_bcus.bits.C_Sanding_activated;
-    m_outputs_map.at("C_Sanding_Request_Short")                     = m_ccu_to_all_bcus.bits.C_Sanding_Request_Short;
-    m_outputs_map.at("C_Sanding_Request_Long")                     = m_ccu_to_all_bcus.bits.C_Sanding_Request_Long;
-    m_outputs_map.at("C_Sanding_Test")                     = m_ccu_to_all_bcus.bits.C_Sanding_Test;
+    m_outputs_map.at("C_Sanding_Request_Short")                 = m_ccu_to_all_bcus.bits.C_Sanding_Request_Short;
+    m_outputs_map.at("C_Sanding_Request_Long")                  = m_ccu_to_all_bcus.bits.C_Sanding_Request_Long;
+    m_outputs_map.at("C_Sanding_Test")                          = m_ccu_to_all_bcus.bits.C_Sanding_Test;
     m_outputs_map.at("C_Sanding_drying_on")                     = m_ccu_to_all_bcus.bits.C_Sanding_drying_on;
-    m_outputs_map.at("bit29")                     = m_ccu_to_all_bcus.bits.bit29;
-    m_outputs_map.at("bit30")                     = m_ccu_to_all_bcus.bits.bit30;
-    m_outputs_map.at("bit31")                     = m_ccu_to_all_bcus.bits.bit31;
-    m_outputs_map.at("TL_EBLoop_R_Closed")                     = m_ccu_to_all_bcus.bits.TL_EBLoop_R_Closed;
-    m_outputs_map.at("bit33")                     = m_ccu_to_all_bcus.bits.bit33;
-    m_outputs_map.at("TL_Braking_Bit1")                     = m_ccu_to_all_bcus.bits.TL_Braking_Bit1;
-    m_outputs_map.at("TL_Braking_Bit2")                     = m_ccu_to_all_bcus.bits.TL_Braking_Bit2;
-    m_outputs_map.at("TL_Braking_Bit3")                     = m_ccu_to_all_bcus.bits.TL_Braking_Bit3;
-    m_outputs_map.at("TL_Traction")                     = m_ccu_to_all_bcus.bits.TL_Traction;
-    m_outputs_map.at("bit38")                     = m_ccu_to_all_bcus.bits.bit38;
-    m_outputs_map.at("bit39")                     = m_ccu_to_all_bcus.bits.bit39;
-    m_outputs_map.at("reserved_5")                     = m_ccu_to_all_bcus.bits.reserved_5;
-    m_outputs_map.at("S_PB_EmerRel_Conf_SKA1")                     = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA1;
-    m_outputs_map.at("S_PB_EmerRel_Conf_SKA2")                     = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA2;
-    m_outputs_map.at("S_PB_EmerRel_Conf_OA1")                     = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA1;
-    m_outputs_map.at("S_PB_EmerRel_Conf_OA2")                     = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA2;
-    m_outputs_map.at("bit52")                     = m_ccu_to_all_bcus.bits.bit52;
-    m_outputs_map.at("bit53")                     = m_ccu_to_all_bcus.bits.bit53;
-    m_outputs_map.at("bit54")                     = m_ccu_to_all_bcus.bits.bit54;
-    m_outputs_map.at("bit55")                     = m_ccu_to_all_bcus.bits.bit55;
-    m_outputs_map.at("C_ASC_Brake_demand_SKA1")                     = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA1;
-    m_outputs_map.at("C_ASC_Brake_demand_OA1")                     = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA1;
-    m_outputs_map.at("C_ASC_Brake_demand_OA2")                     = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA2;
-    m_outputs_map.at("C_ASC_Brake_demand_SKA2")                     = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA2;
-    m_outputs_map.at("reserved_15")                     = m_ccu_to_all_bcus.bits.reserved_15;
+    m_outputs_map.at("bit29")                                   = m_ccu_to_all_bcus.bits.bit29;
+    m_outputs_map.at("bit30")                                   = m_ccu_to_all_bcus.bits.bit30;
+    m_outputs_map.at("bit31")                                   = m_ccu_to_all_bcus.bits.bit31;
+    m_outputs_map.at("TL_EBLoop_R_Closed")                      = m_ccu_to_all_bcus.bits.TL_EBLoop_R_Closed;
+    m_outputs_map.at("bit33")                                   = m_ccu_to_all_bcus.bits.bit33;
+    m_outputs_map.at("TL_Braking_Bit1")                         = m_ccu_to_all_bcus.bits.TL_Braking_Bit1;
+    m_outputs_map.at("TL_Braking_Bit2")                         = m_ccu_to_all_bcus.bits.TL_Braking_Bit2;
+    m_outputs_map.at("TL_Braking_Bit3")                         = m_ccu_to_all_bcus.bits.TL_Braking_Bit3;
+    m_outputs_map.at("TL_Traction")                             = m_ccu_to_all_bcus.bits.TL_Traction;
+    m_outputs_map.at("bit38")                                   = m_ccu_to_all_bcus.bits.bit38;
+    m_outputs_map.at("bit39")                                   = m_ccu_to_all_bcus.bits.bit39;
+    m_outputs_map.at("reserved_5")                              = m_ccu_to_all_bcus.bits.reserved_5;
+    m_outputs_map.at("S_PB_EmerRel_Conf_SKA1")                  = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA1;
+    m_outputs_map.at("S_PB_EmerRel_Conf_SKA2")                  = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA2;
+    m_outputs_map.at("S_PB_EmerRel_Conf_OA1")                   = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA1;
+    m_outputs_map.at("S_PB_EmerRel_Conf_OA2")                   = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA2;
+    m_outputs_map.at("bit52")                                   = m_ccu_to_all_bcus.bits.bit52;
+    m_outputs_map.at("bit53")                                   = m_ccu_to_all_bcus.bits.bit53;
+    m_outputs_map.at("bit54")                                   = m_ccu_to_all_bcus.bits.bit54;
+    m_outputs_map.at("bit55")                                   = m_ccu_to_all_bcus.bits.bit55;
+    m_outputs_map.at("C_ASC_Brake_demand_SKA1")                 = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA1;
+    m_outputs_map.at("C_ASC_Brake_demand_OA1")                  = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA1;
+    m_outputs_map.at("C_ASC_Brake_demand_OA2")                  = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA2;
+    m_outputs_map.at("C_ASC_Brake_demand_SKA2")                 = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA2;
+    m_outputs_map.at("reserved_15")                             = m_ccu_to_all_bcus.bits.reserved_15;
+
+
+}
+
+void Ccu_To_All_Bcus::set_struct() {
+
+
+        m_ccu_to_all_bcus.bits.XLifeSign                          = m_outputs_map.at("XLifeSign") ;
+        m_ccu_to_all_bcus.bits.ReleaseHoldingBrakeRequest                         = m_outputs_map.at("ReleaseHoldingBrakeRequest") ;
+        m_ccu_to_all_bcus.bits.bit17                          = m_outputs_map.at("bit17") ;
+        m_ccu_to_all_bcus.bits.bit18                          = m_outputs_map.at("bit18") ;
+        m_ccu_to_all_bcus.bits.C_WSP_start_testrun                        = m_outputs_map.at("C_WSP_start_testrun") ;
+        m_ccu_to_all_bcus.bits.bit20                          = m_outputs_map.at("bit20") ;
+        m_ccu_to_all_bcus.bits.C_ASC_active                           = m_outputs_map.at("C_ASC_active") ;
+        m_ccu_to_all_bcus.bits.C_CalcMass                         = m_outputs_map.at("C_CalcMass") ;
+        m_ccu_to_all_bcus.bits.bit23                          = m_outputs_map.at("bit23") ;
+        m_ccu_to_all_bcus.bits.C_Sanding_activated                        = m_outputs_map.at("C_Sanding_activated") ;
+        m_ccu_to_all_bcus.bits.C_Sanding_Request_Short                        = m_outputs_map.at("C_Sanding_Request_Short") ;
+        m_ccu_to_all_bcus.bits.C_Sanding_Request_Long                         = m_outputs_map.at("C_Sanding_Request_Long") ;
+        m_ccu_to_all_bcus.bits.C_Sanding_Test                         = m_outputs_map.at("C_Sanding_Test") ;
+        m_ccu_to_all_bcus.bits.C_Sanding_drying_on                        = m_outputs_map.at("C_Sanding_drying_on") ;
+        m_ccu_to_all_bcus.bits.bit29                          = m_outputs_map.at("bit29") ;
+        m_ccu_to_all_bcus.bits.bit30                          = m_outputs_map.at("bit30") ;
+        m_ccu_to_all_bcus.bits.bit31                          = m_outputs_map.at("bit31") ;
+        m_ccu_to_all_bcus.bits.TL_EBLoop_R_Closed                         = m_outputs_map.at("TL_EBLoop_R_Closed") ;
+        m_ccu_to_all_bcus.bits.bit33                          = m_outputs_map.at("bit33") ;
+        m_ccu_to_all_bcus.bits.TL_Braking_Bit1                        = m_outputs_map.at("TL_Braking_Bit1") ;
+        m_ccu_to_all_bcus.bits.TL_Braking_Bit2                        = m_outputs_map.at("TL_Braking_Bit2") ;
+        m_ccu_to_all_bcus.bits.TL_Braking_Bit3                        = m_outputs_map.at("TL_Braking_Bit3") ;
+        m_ccu_to_all_bcus.bits.TL_Traction                        = m_outputs_map.at("TL_Traction") ;
+        m_ccu_to_all_bcus.bits.bit38                          = m_outputs_map.at("bit38") ;
+        m_ccu_to_all_bcus.bits.bit39                          = m_outputs_map.at("bit39") ;
+        m_ccu_to_all_bcus.bits.reserved_5                         = m_outputs_map.at("reserved_5") ;
+        m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA1                         = m_outputs_map.at("S_PB_EmerRel_Conf_SKA1") ;
+        m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA2                         = m_outputs_map.at("S_PB_EmerRel_Conf_SKA2") ;
+        m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA1                          = m_outputs_map.at("S_PB_EmerRel_Conf_OA1") ;
+        m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA2                          = m_outputs_map.at("S_PB_EmerRel_Conf_OA2") ;
+        m_ccu_to_all_bcus.bits.bit52                          = m_outputs_map.at("bit52") ;
+        m_ccu_to_all_bcus.bits.bit53                          = m_outputs_map.at("bit53") ;
+        m_ccu_to_all_bcus.bits.bit54                          = m_outputs_map.at("bit54") ;
+        m_ccu_to_all_bcus.bits.bit55                          = m_outputs_map.at("bit55") ;
+        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA1                        = m_outputs_map.at("C_ASC_Brake_demand_SKA1") ;
+        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA1                         = m_outputs_map.at("C_ASC_Brake_demand_OA1") ;
+        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA2                         = m_outputs_map.at("C_ASC_Brake_demand_OA2") ;
+        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA2                        = m_outputs_map.at("C_ASC_Brake_demand_SKA2") ;
+        m_ccu_to_all_bcus.bits.reserved_15                        = m_outputs_map.at("reserved_15") ;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

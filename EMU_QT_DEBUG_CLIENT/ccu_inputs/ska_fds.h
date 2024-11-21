@@ -9,6 +9,7 @@
 #include "utils.h"
 #include <vector>
 #include <cstring>
+#include <tsl/ordered_map.h>
 
 
 
@@ -94,7 +95,7 @@ private:
         }
     };
     struct ska_fds m_ska_x_fds[2];
-    std::map<QString, int> m_inputs_map[2][3];
+    tsl::ordered_map<QString, int> m_inputs_map[2][3];
     QTableWidget *m_tableWidget[2][3];
     std::vector<uint16_t> m_port_id {0x416, 0x4D6}; // Direct initialization
 

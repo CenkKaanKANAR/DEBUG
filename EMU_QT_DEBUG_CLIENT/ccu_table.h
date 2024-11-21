@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "ccu_inputs.h"
 #include "ccu_outputs.h"
+#include "forcecontrol.h"
 #include "messageconfig.h"
 #include <QStackedWidget>
 #include <QMessageBox>
@@ -32,6 +33,14 @@ public:
 
     void receiveUdpMessage(QByteArray data);
     void receiveUdpInMessage(QByteArray recv_data);
+
+
+    void lockOtherCells(QTableWidget *table);//FORCE
+    void unlockAllCells(QTableWidget *table);//FORCE
+    void resetTableValues(QTableWidget *table);//FORCE
+    void initializeCheckboxTableMap();//FORCE
+
+
 private:
     void appendPortIDToQByteArray(QByteArray& array, uint16_t value){
         // Append the lower and upper bytes of the value to the array
@@ -47,13 +56,15 @@ private:
     }
     void init_switch();
     void processSka1();
+
     void processSka2();
     void processOa1();
     void processOa2();
     void processAndSendData2(const uint16_t& portId, const std::vector<uint8_t>& data, const QString &debugMessage);
     void processIDScreenData();
     void setIDButtonLayout();
-
+    void processAndSendDataForce(const uint16_t& portId, const std::vector<uint8_t>& subModuleData, const QString &debugMessage);//Force
+    void setupSendDataConnections();//FORCE
 
 public slots:
     void on_pushButton_send_shm_data_clicked();
@@ -62,11 +73,20 @@ public slots:
     //void parseAndSendCombinedValue(const QByteArray &combinedValue);
     void receiveCombinedValue(const QByteArray &combinedValue);
 
+
+    void onSendButtonClicked();//FORCE
+
+
     void maintenanceIDButtonClickedAction();
     void developerIDButtonClickedAction();
     void adminIDButtonClickedAction();
     void wrongIDButtonClickedAction();
     void resetIDButtonClickedAction();
+
+    //void on_tableCellChanged(int row, int column);//FORCE
+    void on_tableItemChanged(QTableWidgetItem *item); //FORCE
+    //void sendDataFromCcuTableForce(); //FORCE
+
 signals:
     void sendCommSystemPackageData(QByteArray comm_module_data);
     void backtoMainMenuSignal();
@@ -82,8 +102,10 @@ private slots:
 
     void on_pushButton_ccu_inputs_clicked();
 
+    void onForceCheckboxToggled(int state); // Checkbox için slot bildirimi - FORCE
 
 private:
+
     Ui::CCU_Table *ui;
     IN::CCU_Inputs* ccu_in = nullptr;
     OUT::CCU_Outputs* m_ccu_out = nullptr;
@@ -99,8 +121,26 @@ private:
     QPushButton *wrongIDButton;
     QPushButton *resetIDButton;
 
-    //QVBoxLayout* oa1_Layout_1;
-    //QVBoxLayout* oa1_Layout_2;
+
+    //Force
+    QMap<QCheckBox*, QPair<QTableWidget*, VEHICLE_NUM>> checkboxTableMap;
+    //Force ska1_vh_riom_outputs
+    ForceControl *forceControl1;
+    //Force ska2_vh_riom_outputs
+    ForceControl *forceControl2;
+    //Force ska1_dd_riom_outputs
+    ForceControl *forceControl3;
+    //Force ska2_dd_riom_outputs
+    ForceControl *forceControl4;
+    //Force oa1_vh_riom_outputs
+    ForceControl *forceControl5;
+    //Force oa2_vh_riom_outputs
+    ForceControl *forceControl6;
+    //Force ska_ccu_global_out_mvb1
+    ForceControl *forceControl7;
+    //Force ccu_to_all_bcus
+    ForceControl *forceControl8;
+
 };
 
 #endif // CCU_TABLE_H

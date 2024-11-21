@@ -26,8 +26,12 @@ namespace OUT {
     m_Ccu_To_All_Jrus_3_ptr(new Ccu_To_All_Jrus_3(this)),
     m_Ccu_To_All_Jrus_4_ptr(new Ccu_To_All_Jrus_4(this)),
     m_Ccu_To_All_Jrus_5_ptr(new Ccu_To_All_Jrus_5(this)),
-    m_ska_ccu_do_card_ptr(new Ska_Ccu_Do_Card(this))
-
+    m_ska_ccu_do_card_ptr(new Ska_Ccu_Do_Card(this)),
+    m_ska_ccu_vh_riom_mvb1_d_force_ptr(new Ska_ccu_vh_riom_mvb1_d(this)),
+    m_ska_ccu_dd_riom_mvb1_d_outputs_force_ptr(new Ska_Ccu_DD_Riom_Mvb1_d_Outputs(this)),
+    m_oa_ccu_vh_riom_mvb1_d_outputs_force_ptr(new Oa_Ccu_Vh_Riom_Mvb1_d_Outputs(this)),
+    m_ska_ccu_global_out_mvb1_force_ptr(new Ska_Ccu_Global_Out_Mvb1(this)),
+    m_ccu_to_all_bcus_force_ptr(new Ccu_To_All_Bcus(this))
     {
 
 

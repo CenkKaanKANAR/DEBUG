@@ -5,6 +5,7 @@
 #include <QTableWidget>
 #include "shm_data_gaziray.h"
 #include "utils.h"
+#include <tsl/ordered_map.h>
 
 class Ska_Ccu_Do_Card : public QObject
 {
@@ -39,7 +40,7 @@ private:
                                        };
 
     struct ska_ccu_do_card m_ska_x_ccu_do_card[2];
-    std::map<QString, int> m_inputs_map[2];
+    tsl::ordered_map<QString, int> m_inputs_map[2];
     QTableWidget *m_tableWidget[2];
     std::vector<uint16_t> m_port_id {0x331, 0x443};
 

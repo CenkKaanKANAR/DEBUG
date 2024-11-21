@@ -7,6 +7,8 @@
 #include <QTableWidget>
 #include <QObject>
 #include "utils.h"
+#include <tsl/ordered_map.h>
+
 
 class Oa_Ccu_Vh_Riom_Mvb2_Dcu : public QObject
 {
@@ -35,13 +37,13 @@ private:
         return static_cast<int>(num);
     }
 
-    std::map<QString, int> get_map(OA_VEHICLE_NUM  oa_x_num)
+    tsl::ordered_map<QString, int> get_map(OA_VEHICLE_NUM  oa_x_num)
     {
         return m_outputs_map[static_cast<int>(oa_x_num)];
     }
 
 private:
-    std::map<QString, int> m_outputs_map[2];
+    tsl::ordered_map<QString, int> m_outputs_map[2];
     std::vector<QTableWidget *>m_tableWidget;
     std::array<oa_ccu_vh_riom_mvb2_dcu_hvac, 2> m_oa_ccu_vh_riom_mvb2_dcu;
 

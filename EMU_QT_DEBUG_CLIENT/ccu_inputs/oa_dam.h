@@ -9,7 +9,7 @@
 #include <QPushButton>
 #include <QByteArray>
 #include <QVBoxLayout>
-
+#include <tsl/ordered_map.h>
 
 
 
@@ -75,7 +75,7 @@ private:
     };
 
     struct oa_dam m_oa_x_dam[2];
-    std::map<QString, int> m_inputs_map[2];
+    tsl::ordered_map<QString, int> m_inputs_map[2];
     QTableWidget *m_tableWidget[2];
     std::vector<uint16_t> m_port_id {0xb62, 0xb82}; // Direct initialization
 

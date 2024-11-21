@@ -8,6 +8,15 @@
 #include <QGraphicsColorizeEffect>
 #include <QTimer>
 #include <QPropertyAnimation>
+enum class SKA_VEHICLE_NUM{SKA1, SKA2};
+enum class OA_VEHICLE_NUM{OA1, OA2};
+enum class VEHICLE_NUM {
+    SKA1,
+    SKA2,
+    OA1,
+    OA2,
+    ALL
+};
 
 namespace utils {
     long long get_table_item(QTableWidget * table, size_t row);
@@ -21,9 +30,9 @@ namespace utils {
     void setTableWidgetValueByNameWithoutColumn(QTableWidget* tableWidget, const QString& cellName, int value);
     void addGlowEffect(QTableWidget* table, int row, int column, QColor glowColor, int durationMs);
     void addBorderBlinkEffect(QWidget* widget, int durationMs);
+    SKA_VEHICLE_NUM convertToSKAVehicleNum(VEHICLE_NUM vehicle);
+    OA_VEHICLE_NUM convertToOAVehicleNum(VEHICLE_NUM vehicle);
 }
-enum class SKA_VEHICLE_NUM{SKA1, SKA2};
-enum class OA_VEHICLE_NUM{OA1, OA2};
 
 namespace OA_TYPE{
     enum

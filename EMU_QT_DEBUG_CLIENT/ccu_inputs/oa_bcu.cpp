@@ -94,7 +94,7 @@ void OA_BCU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
         update_table(oa_x_num,OA_BCU::MVB1);
 
         // İkinci alanı kopyala, input.constData() + sizeof(etcs_ccu_mvb1) kadar ilerleyerek
-        memcpy(&m_oa_x_bcu[oa_num].oa_bcu_ccu_mvb2.bytes, input.constData() + sizeof(m_oa_x_bcu[oa_num].oa_bcu_ccu_mvb1.bytes) + 8, sizeof(m_oa_x_bcu[oa_num].oa_bcu_ccu_mvb2.bytes));
+        memcpy(&m_oa_x_bcu[oa_num].oa_bcu_ccu_mvb2.bytes, input.constData() + sizeof(m_oa_x_bcu[oa_num].oa_bcu_ccu_mvb1.bytes), sizeof(m_oa_x_bcu[oa_num].oa_bcu_ccu_mvb2.bytes));
         update_mvb2_map(oa_x_num);
         //set_struct_mvb2(oa_x_num);
         update_table(oa_x_num,OA_BCU::MVB2);
@@ -135,17 +135,6 @@ void OA_BCU::update_table(OA_VEHICLE_NUM oa_x_num, OA_MVB_NUM mvb_num)
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -258,6 +247,8 @@ void OA_BCU::init_oa_x_mvb1_table(OA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[oa_num][MVB1]->setItem(row, column, item_name);
         m_tableWidget[oa_num][MVB1]->setItem(row, column + 1, item_val); // Değer
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
@@ -428,6 +419,8 @@ void OA_BCU::init_oa_x_mvb2_table(OA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[oa_num][MVB2]->setItem(row, column, item_name);
         m_tableWidget[oa_num][MVB2]->setItem(row, column + 1, item_val); // Değer
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

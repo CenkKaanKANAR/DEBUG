@@ -8,7 +8,7 @@
 #include "utils.h"
 #include <cstring>
 #include <vector>
-
+#include <tsl/ordered_map.h>
 
 
 class SKA_VH_RIOM : public QObject
@@ -72,7 +72,7 @@ private:
 private:
 
     struct ska_vh_riom m_ska_x_vh_riom[2];
-    std::map<QString, unsigned int> m_inputs_map[2][2];
+    tsl::ordered_map<QString, unsigned int> m_inputs_map[2][2];
     QTableWidget *m_tableWidget[2][2];
     std::vector<uint16_t> m_port_id {0x401, 0x4C1}; // Direct initialization
 

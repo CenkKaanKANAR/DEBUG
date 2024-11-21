@@ -8,6 +8,7 @@
 #include "utils.h"
 #include <vector>
 #include <cstring>
+#include <tsl/ordered_map.h>
 
 
 
@@ -95,7 +96,7 @@ private:
     };
 
     struct ska_bcu m_ska_x_bcu[2];
-    std::map<QString, int> m_inputs_map[2][2];
+    tsl::ordered_map<QString, int> m_inputs_map[2][2];
     QTableWidget *m_tableWidget[2][2];
     std::vector<uint16_t> m_port_id {0x601, 0x6C1}; // Direct initialization
 

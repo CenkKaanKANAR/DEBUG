@@ -59,8 +59,8 @@ public:
         return m_emulator_config.bits.reserved5;
     }
 
-    bool isSkaInputSet() const {
-        return m_emulator_config.bits.ska_input;
+    bool isSkaDICardSet() const {
+        return m_emulator_config.bits.ska_di_card;
     }
 
 

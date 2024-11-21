@@ -8,7 +8,7 @@
 #include "utils.h"
 #include <vector>
 #include <cstring>
-
+#include <tsl/ordered_map.h>
 
 
 class SKA_PAPIS : public QObject
@@ -95,7 +95,7 @@ private:
     };
 
     struct ska_papis m_ska_x_papis[2];
-    std::map<QString, int> m_inputs_map[2][3];
+    tsl::ordered_map<QString, int> m_inputs_map[2][3];
     QTableWidget *m_tableWidget[2][3];
     std::vector<uint16_t> m_port_id {0x41A, 0x4DA}; // Direct initialization
 

@@ -31,8 +31,8 @@ void CcuTableHandler::processCcuInputTables(Ui::CCU_Table *ui, IN::CCU_Inputs *c
 
     // SKA CCU DI Card
 
-    ui->verticalLayout_ska_1_ccu_di_card->addWidget(ccu_in->getSkaCcuDiCard().getTableWidget(SKA_VEHICLE_NUM::SKA1));
-    ui->verticalLayout_ska_2_ccu_di_card->addWidget(ccu_in->getSkaCcuDiCard().getTableWidget(SKA_VEHICLE_NUM::SKA2));
+    ui->verticalLayout_ska_1_ccu_di_card->addWidget(ccu_in->getSkaCcuDiCard().getTableWidget());
+
 
     // SKA DD RIOM
     ui->verticalLayout_ska_dd_riom_1->addWidget(ccu_in->getSkaDDRiom().getTableWidget(SKA_VEHICLE_NUM::SKA1,SKA_DD_RIOM::MVB1));
@@ -185,7 +185,7 @@ void CcuTableHandler::processCcuInputTables(Ui::CCU_Table *ui, IN::CCU_Inputs *c
  */
 void CcuTableHandler::processCcuOutputTables(Ui::CCU_Table* ui, OUT::CCU_Outputs* ccu_out)
 {
-    ui->verticalLayout_2->addWidget(ccu_out->get_Ska_ccu_vh_riom_mvb1_d()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
+    //ui->verticalLayout_2->addWidget(ccu_out->get_Ska_ccu_vh_riom_mvb1_d()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
 }
 
 
@@ -257,7 +257,7 @@ void CcuTableHandler::handleIncomingCcuOutSystemUdpPacketes(OUT::CCU_Outputs *cc
         ccu_out->get_Ska_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source, SKA_VEHICLE_NUM::SKA2);
     }
 
-    if (port_id == OA1_VH_RIOM_1_OUTPUTS)
+    /*if (port_id == OA1_VH_RIOM_1_OUTPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
         QByteArray source = recv_data.mid(2, OA1_VH_RIOM_1_OUTPUTS_SIZE);
@@ -269,7 +269,7 @@ void CcuTableHandler::handleIncomingCcuOutSystemUdpPacketes(OUT::CCU_Outputs *cc
         qDebug("Valid Port Id: %x", port_id);
         QByteArray source = recv_data.mid(2, OA2_VH_RIOM_1_OUTPUTS_SIZE);
         ccu_out->get_Oa_Ccu_Vh_Riom_Mvb1_d_Outputs()->set_data_struct(source,OA_VEHICLE_NUM::OA2);
-    }
+    }*/
 
     if (port_id == OA1_VH_RIOM_1_DOOR_COMMANDS)
     {
@@ -488,22 +488,11 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         QByteArray source = recv_data.mid(8, SKA1_CCU_DI_CARD_INPUTS_SIZE);
         //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
         //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
-        ccu_in->getSkaCcuDiCard().set_data_struct(source,SKA_VEHICLE_NUM::SKA1);
+        ccu_in->getSkaCcuDiCard().set_data_struct(source);
         qDebug() << "source data is : " << source;
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
-    /////////
-    if(port_id == SKA2_CCU_DI_CARD_INPUTS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(8, SKA2_CCU_DI_CARD_INPUTS_SIZE);
-        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
-        ccu_in->getSkaCcuDiCard().set_data_struct(source,SKA_VEHICLE_NUM::SKA2); //DCU SIKINTILI
-        qDebug() << "source data is : " << source;
-        qDebug() << "Size OF Source data is : " << source.size();
-    }
 
     if(port_id == SKA1_DCU_INPUTS)
     {

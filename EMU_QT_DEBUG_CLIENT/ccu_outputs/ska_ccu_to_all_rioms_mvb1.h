@@ -7,6 +7,7 @@
 #include <QTableWidget>
 #include <QObject>
 #include "utils.h"
+#include <tsl/ordered_map.h>
 
 class Ska_Ccu_To_All_Rioms_Mvb1 : public QObject
 {
@@ -29,13 +30,13 @@ private:
     void update_table();
     void update_map();
 
-    std::map<QString, int> get_map()
+    tsl::ordered_map<QString, int> get_map()
     {
         return m_outputs_map;
     }
 
 private:
-    std::map<QString, int> m_outputs_map;
+    tsl::ordered_map<QString, int> m_outputs_map;
     QTableWidget *m_tableWidget;
     ska_ccu_to_all_rioms_mvb1 m_ska_ccu_to_all_rioms_mvb1;
 

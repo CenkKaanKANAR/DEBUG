@@ -4,7 +4,9 @@
 Ska_Ccu_Global_Out_Mvb1::Ska_Ccu_Global_Out_Mvb1(QObject *parent)
     : QObject{parent}
 {
+    memset(m_ska_ccu_global_out_mvb1.bytes, 0, sizeof(m_ska_ccu_global_out_mvb1));
     init_table();
+
 }
 
 Ska_Ccu_Global_Out_Mvb1::~Ska_Ccu_Global_Out_Mvb1()
@@ -71,50 +73,71 @@ void Ska_Ccu_Global_Out_Mvb1::init_table()
     }
 }
 
+
+void Ska_Ccu_Global_Out_Mvb1::update_struct_with_map()
+{
+    qDebug() << "Merhaba Update Struct with map GRİŞİ" ;
+
+    auto setInputMap = [&](const QString& signal_name) {
+        m_outputs_map[signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget, signal_name).toInt();
+    };
+    // update map with given tableWidget values
+    for(const auto& map : m_outputs_map)
+    {
+        setInputMap(map.first);
+    }
+    // set struct parameters with given updated map parameters
+    set_struct();
+}
+
+
+
 void Ska_Ccu_Global_Out_Mvb1::update_table()
 {
-    // Tabloyu temizleyin
-    m_tableWidget->setRowCount(0);
-    //tableWidget->clear();
 
-    // Haritadaki verilerle tabloyu doldurun
-    int row = 0;
-    for (auto it = m_outputs_map.begin(); it != m_outputs_map.end(); ++it)
-    {
-        m_tableWidget->insertRow(row);
-        //qDebug() <<"first:" << it->first << "second:" << it->second;
-        QTableWidgetItem *keyItem   = new QTableWidgetItem(it->first); // Anahtar
-        QTableWidgetItem *valueItem = new QTableWidgetItem(QString::number(it->second)); // Değer
-
-        m_tableWidget->setItem(row, 0, keyItem);
-        m_tableWidget->setItem(row, 1, valueItem);
-
-        row++;
+    for(const auto & map:m_outputs_map){
+        //qDebug() <<  map.first << map.second;
+        utils::setTableWidgetValueByName(m_tableWidget, map.first, 1, map.second );
     }
 }
 
 void Ska_Ccu_Global_Out_Mvb1::update_map()
 {
 
-    m_outputs_map.at("Lifesign")                   = m_ska_ccu_global_out_mvb1.bits.Lifesign;
-    m_outputs_map.at("reserved_1")                 = m_ska_ccu_global_out_mvb1.bits.reserved_1;
-    m_outputs_map.at("reserved_2")                 = m_ska_ccu_global_out_mvb1.bits.reserved_2;
-    //m_outputs_map.at("actual_time_seconds")        = m_ska_ccu_global_out_mvb1.bits.actual_time_seconds;
-    //m_outputs_map.at("actual_time_ticks")          = m_ska_ccu_global_out_mvb1.bits.actual_time_ticks;
-    m_outputs_map.at("S_Coupling")               = m_ska_ccu_global_out_mvb1.bits.S_Coupling;
-    m_outputs_map.at("S_Lead_Follow_consist")    = m_ska_ccu_global_out_mvb1.bits.S_Lead_Follow_consist;
-    m_outputs_map.at("S_CAB_Active")             = m_ska_ccu_global_out_mvb1.bits.S_CAB_Active;
+    m_outputs_map.at("Lifesign")                    = m_ska_ccu_global_out_mvb1.bits.Lifesign;
+    m_outputs_map.at("reserved_1")                  = m_ska_ccu_global_out_mvb1.bits.reserved_1;
+    m_outputs_map.at("reserved_2")                  = m_ska_ccu_global_out_mvb1.bits.reserved_2;
+    m_outputs_map.at("S_Coupling")                  = m_ska_ccu_global_out_mvb1.bits.S_Coupling;
+    m_outputs_map.at("S_Lead_Follow_consist")       = m_ska_ccu_global_out_mvb1.bits.S_Lead_Follow_consist;
+    m_outputs_map.at("S_CAB_Active")                = m_ska_ccu_global_out_mvb1.bits.S_CAB_Active;
+    m_outputs_map.at("S_Direction")                 = m_ska_ccu_global_out_mvb1.bits.S_Direction;
+    m_outputs_map.at("CouplingStatus")              = m_ska_ccu_global_out_mvb1.bits.CouplingStatus;
+    m_outputs_map.at("_1stTrainSetConfiguration")   = m_ska_ccu_global_out_mvb1.bits._1stTrainSetConfiguration;
+    m_outputs_map.at("_2ndTrainSetConfiguration")   = m_ska_ccu_global_out_mvb1.bits._2ndTrainSetConfiguration;
+    m_outputs_map.at("reserved_12")                 = m_ska_ccu_global_out_mvb1.bits.reserved_12;
+    m_outputs_map.at("reserved_13")                 = m_ska_ccu_global_out_mvb1.bits.reserved_13;
+    m_outputs_map.at("reserved_14")                 = m_ska_ccu_global_out_mvb1.bits.reserved_14;
+    m_outputs_map.at("reserved_15")                 = m_ska_ccu_global_out_mvb1.bits.reserved_15;
+}
 
-    m_outputs_map.at("S_Direction")              = m_ska_ccu_global_out_mvb1.bits.S_Direction;
-
-    m_outputs_map.at("CouplingStatus")           = m_ska_ccu_global_out_mvb1.bits.CouplingStatus;
-
-    m_outputs_map.at("_1stTrainSetConfiguration")= m_ska_ccu_global_out_mvb1.bits._1stTrainSetConfiguration;
 
 
-    m_outputs_map.at("_2ndTrainSetConfiguration")= m_ska_ccu_global_out_mvb1.bits._2ndTrainSetConfiguration;
-    m_outputs_map.at("reserved_12")                = m_ska_ccu_global_out_mvb1.bits.reserved_12;
-    m_outputs_map.at("reserved_13")                = m_ska_ccu_global_out_mvb1.bits.reserved_13;
-    m_outputs_map.at("reserved_14")                = m_ska_ccu_global_out_mvb1.bits.reserved_14;
-    m_outputs_map.at("reserved_15")                = m_ska_ccu_global_out_mvb1.bits.reserved_15;
+void Ska_Ccu_Global_Out_Mvb1::set_struct()
+{
+    m_ska_ccu_global_out_mvb1.bits.Lifesign = m_outputs_map.at("Lifesign")                  ;
+    m_ska_ccu_global_out_mvb1.bits.reserved_1 = m_outputs_map.at("reserved_1")                ;
+    m_ska_ccu_global_out_mvb1.bits.reserved_2 = m_outputs_map.at("reserved_2")                ;
+    m_ska_ccu_global_out_mvb1.bits.S_Coupling = m_outputs_map.at("S_Coupling")                ;
+    m_ska_ccu_global_out_mvb1.bits.S_Lead_Follow_consist = m_outputs_map.at("S_Lead_Follow_consist")     ;
+    m_ska_ccu_global_out_mvb1.bits.S_CAB_Active = m_outputs_map.at("S_CAB_Active")              ;
+    m_ska_ccu_global_out_mvb1.bits.S_Direction = m_outputs_map.at("S_Direction")               ;
+    m_ska_ccu_global_out_mvb1.bits.CouplingStatus = m_outputs_map.at("CouplingStatus")            ;
+    m_ska_ccu_global_out_mvb1.bits._1stTrainSetConfiguration = m_outputs_map.at("_1stTrainSetConfiguration") ;
+    m_ska_ccu_global_out_mvb1.bits._2ndTrainSetConfiguration = m_outputs_map.at("_2ndTrainSetConfiguration") ;
+    m_ska_ccu_global_out_mvb1.bits.reserved_12 = m_outputs_map.at("reserved_12")               ;
+    m_ska_ccu_global_out_mvb1.bits.reserved_13 = m_outputs_map.at("reserved_13")               ;
+    m_ska_ccu_global_out_mvb1.bits.reserved_14 = m_outputs_map.at("reserved_14")               ;
+    m_ska_ccu_global_out_mvb1.bits.reserved_15 = m_outputs_map.at("reserved_15")               ;
+
+
 }

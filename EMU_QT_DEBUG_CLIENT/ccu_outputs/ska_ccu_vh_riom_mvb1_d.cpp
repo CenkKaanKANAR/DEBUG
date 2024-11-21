@@ -6,7 +6,10 @@ Ska_ccu_vh_riom_mvb1_d::Ska_ccu_vh_riom_mvb1_d(QObject *parent)
     : QObject{parent}
 
 {
-    //memset(m_ska_ccu_vh_riom_mvb1_d_outputs, 0, sizeof(*m_ska_ccu_vh_riom_mvb1_d_outputs));
+    //std::fill(m_ska_ccu_vh_riom_mvb1_d_outputs.begin(), m_ska_ccu_vh_riom_mvb1_d_outputs.end(), 0);
+    memset(m_ska_ccu_vh_riom_mvb1_d_outputs.data(), 0, sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs));
+
+
     init_ska1_table();
     init_ska2_table();
 }
@@ -22,7 +25,9 @@ Ska_ccu_vh_riom_mvb1_d::~Ska_ccu_vh_riom_mvb1_d()
 
 void Ska_ccu_vh_riom_mvb1_d::set_data_struct(const QByteArray& output, const SKA_VEHICLE_NUM& ska_x_num)
 {
+    qDebug() << "SET STRUCT İÇİNDE";
     int ska_num = static_cast<int>(ska_x_num);
+    qDebug() << "size of output : " << output.size() << " sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs" << sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs[ska_num].bytes) ;
     if (output.size() == sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs[ska_num].bytes)) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
        memcpy(m_ska_ccu_vh_riom_mvb1_d_outputs[ska_num].bytes, output.constData(), sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs[ska_num].bytes));
@@ -170,27 +175,36 @@ void Ska_ccu_vh_riom_mvb1_d::update_table(SKA_VEHICLE_NUM ska_x_num)
     //qDebug() << "table updated";
     int ska_num = static_cast<int>(ska_x_num);
 
-    // Tabloyu temizleyin
+    //qDebug() << "OA_DAM" <<oa_num<< " table updated";
+    //qDebug() << "OA_DAM_SIZE" <<oa_num<< sizeof(oa_dam);
 
-    m_tableWidget[ska_num]->setRowCount(0);
-        //tableWidget->clear();
-
-        // Haritadaki verilerle tabloyu doldurun
-        int row = 0;
-        for (auto it = m_outputs_map[ska_num].begin(); it != m_outputs_map[ska_num].end(); ++it)
-        {
-            m_tableWidget[ska_num]->insertRow(row);
-            //qDebug() <<"first:" << it->first << "second:" << it->second;
-            QTableWidgetItem *keyItem   = new QTableWidgetItem(it->first); // Anahtar
-            QTableWidgetItem *valueItem = new QTableWidgetItem(QString::number(it->second)); // Değer
-
-            m_tableWidget[ska_num]->setItem(row, 0, keyItem);
-            m_tableWidget[ska_num]->setItem(row, 1, valueItem);
-
-            row++;
-        }
+    for(const auto & map:m_outputs_map[ska_num]){
+        //qDebug() <<  map.first << map.second;
+        utils::setTableWidgetValueByName(m_tableWidget[ska_num], map.first, 1, map.second );
+    }
 
 }
+
+
+void Ska_ccu_vh_riom_mvb1_d::update_struct_with_map(SKA_VEHICLE_NUM ska_x_num)
+{
+    qDebug() << "VH RIOM UPDATE_STRUCT_WITH_MAP";
+    //(void)mvb_num; // unused_variable
+    int ska_num = static_cast<int>(ska_x_num);
+    // Define a lambda function to reduce redundancy
+    auto setInputMap = [&](const QString& signal_name) {
+        m_outputs_map[ska_num][signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget[ska_num], signal_name).toInt();
+    };
+    // update map with given tableWidget values
+    for(const auto& map : m_outputs_map[ska_num])
+    {
+        setInputMap(map.first);
+    }
+    // set struct parameters with given updated map parameters
+    set_struct(ska_x_num);
+}
+
+
 
 void Ska_ccu_vh_riom_mvb1_d::update_map(SKA_VEHICLE_NUM ska_x_num)
 {
@@ -255,6 +269,72 @@ void Ska_ccu_vh_riom_mvb1_d::update_map(SKA_VEHICLE_NUM ska_x_num)
     m_outputs_map[ska_num].at("bit54")                              = m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit54;
     m_outputs_map[ska_num].at("bit55")                              = m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit55;
     m_outputs_map[ska_num].at("reserved_7")                         = m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.reserved_7;
+
+
+}
+
+
+void Ska_ccu_vh_riom_mvb1_d::set_struct(SKA_VEHICLE_NUM ska_x_num)
+{
+    //qDebug() << "map updated";
+    int ska_num = static_cast<int>(ska_x_num);
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.CONTACTOR_MAINTENANCE_COMMAND = m_outputs_map[ska_num].at("CONTACTOR_MAINTENANCE_COMMAND")   ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.ENABLE_TC_1 = m_outputs_map[ska_num].at("ENABLE_TC_1")                     ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.ENABLE_TC_2 = m_outputs_map[ska_num].at("ENABLE_TC_2")                     ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.IDRELAY_1 = m_outputs_map[ska_num].at("IDRELAY_1")                       ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.IDRELAY_2 = m_outputs_map[ska_num].at("IDRELAY_2")                       ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit5 = m_outputs_map[ska_num].at("bit5")                            ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit6 = m_outputs_map[ska_num].at("bit6")                            ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.CABINET_TEST_HW_HEALT_RIOM_1 = m_outputs_map[ska_num].at("CABINET_TEST_HW_HEALT_RIOM_1")    ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.NORMAL_RESCUE_MODE = m_outputs_map[ska_num].at("NORMAL_RESCUE_MODE")              ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.SPEED_LIMIT = m_outputs_map[ska_num].at("SPEED_LIMIT")                     ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.TRACTION_NULL = m_outputs_map[ska_num].at("TRACTION_NULL")                   ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit11 = m_outputs_map[ska_num].at("bit11")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit12 = m_outputs_map[ska_num].at("bit12")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit13 = m_outputs_map[ska_num].at("bit13")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit14 = m_outputs_map[ska_num].at("bit14")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit15 = m_outputs_map[ska_num].at("bit15")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.CAB_MODE = m_outputs_map[ska_num].at("CAB_MODE")                        ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HVAC_1_ON_OFF = m_outputs_map[ska_num].at("HVAC_1_ON_OFF")                   ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HVAC_1_FAILURE = m_outputs_map[ska_num].at("HVAC_1_FAILURE")                  ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit19 = m_outputs_map[ska_num].at("bit19")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit20 = m_outputs_map[ska_num].at("bit20")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit21 = m_outputs_map[ska_num].at("bit21")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit22 = m_outputs_map[ska_num].at("bit22")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit23 = m_outputs_map[ska_num].at("bit23")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HVAC_2_ON_OFF = m_outputs_map[ska_num].at("HVAC_2_ON_OFF")                   ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HVAC_2_FAILURE = m_outputs_map[ska_num].at("HVAC_2_FAILURE")                  ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.TL_HB_C_RELEASE = m_outputs_map[ska_num].at("TL_HB_C_RELEASE")                 ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit27 = m_outputs_map[ska_num].at("bit27")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit28 = m_outputs_map[ska_num].at("bit28")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit29 = m_outputs_map[ska_num].at("bit29")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit30 = m_outputs_map[ska_num].at("bit30")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit31 = m_outputs_map[ska_num].at("bit31")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.MRP_ISOLATION_COMMAND = m_outputs_map[ska_num].at("MRP_ISOLATION_COMMAND")           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.PASSENGERS_ALARM_OUT_OF_SERVICE = m_outputs_map[ska_num].at("PASSENGERS_ALARM_OUT_OF_SERVICE") ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HEATING_CARTRIGE_HEATER = m_outputs_map[ska_num].at("HEATING_CARTRIGE_HEATER")         ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit35 = m_outputs_map[ska_num].at("bit35")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit36 = m_outputs_map[ska_num].at("bit36")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit37 = m_outputs_map[ska_num].at("bit37")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit38 = m_outputs_map[ska_num].at("bit38")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit39 = m_outputs_map[ska_num].at("bit39")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HEATING_SAND_TUBE = m_outputs_map[ska_num].at("HEATING_SAND_TUBE")               ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.TEST_SAND_LEVELS_SENSORS_BOGIE_1 = m_outputs_map[ska_num].at("TEST_SAND_LEVELS_SENSORS_BOGIE_1");
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.TEST_SAND_LEVELS_SENSORS_BOGIE_2 = m_outputs_map[ska_num].at("TEST_SAND_LEVELS_SENSORS_BOGIE_2");
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit43 = m_outputs_map[ska_num].at("bit43")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit44 = m_outputs_map[ska_num].at("bit44")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit45 = m_outputs_map[ska_num].at("bit45")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit46 = m_outputs_map[ska_num].at("bit46")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit47 = m_outputs_map[ska_num].at("bit47")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.LIGHT_OFF_COMMAND = m_outputs_map[ska_num].at("LIGHT_OFF_COMMAND")               ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.LIGHT_COMMAND_FULL_LIGHT = m_outputs_map[ska_num].at("LIGHT_COMMAND_FULL_LIGHT")        ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.HALF_LIGHT_COMMAND = m_outputs_map[ska_num].at("HALF_LIGHT_COMMAND")              ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.EMERGENCY_LIGHT_COMMAND = m_outputs_map[ska_num].at("EMERGENCY_LIGHT_COMMAND")         ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit52 = m_outputs_map[ska_num].at("bit52")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit53 = m_outputs_map[ska_num].at("bit53")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit54 = m_outputs_map[ska_num].at("bit54")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.bit55 = m_outputs_map[ska_num].at("bit55")                           ;
+        m_ska_ccu_vh_riom_mvb1_d_outputs.at(ska_num).bits.reserved_7 = m_outputs_map[ska_num].at("reserved_7")                      ;
 
 
 }
