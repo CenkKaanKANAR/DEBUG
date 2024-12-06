@@ -54,6 +54,7 @@ void MainWindow::makeSignalSlotConnection()
     connect(m_UdpHandler, &UdpHandler::receivedUdpMessage, m_ccuTableHandler, &CCU_Table::receiveUdpMessage);
     connect(m_UdpHandler, &UdpHandler::receivedUdpMessage, m_ccuTableHandler, &CCU_Table::receiveUdpInMessage);
     connect(m_ccuTableHandler, &CCU_Table::sendCommSystemPackageData, this, &MainWindow::sendSystemModulesToCommOverUdp);
+    //connect(m_ccuTableHandler, &CCU_Table::sendCommSystemPackageData, this, &MainWindow::sendSystemModulesToCommOverUdpForce);//Force
     connect(this, &MainWindow::udptransmissionErrorOccured, m_ccuTableHandler, &CCU_Table::stopCcuTableTimer);
 }
 

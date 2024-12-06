@@ -123,6 +123,7 @@ void Ska_Ccu_DD_Riom_Mvb1_d_Outputs::init_ska1_table()
     m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA1)] ->setColumnCount(2);
     m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA1)] ->setRowCount(m_outputs_map[get_index(SKA_VEHICLE_NUM::SKA1)].size());
     m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA1)]->setHorizontalHeaderLabels(table_name);
+    m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA1)]->setObjectName("ska_1_ccu_dd_riom_mvb1_d_outputs");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map[get_index(SKA_VEHICLE_NUM::SKA1)]) {
@@ -154,6 +155,7 @@ void Ska_Ccu_DD_Riom_Mvb1_d_Outputs::init_ska2_table()
     m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA2)] ->setColumnCount(2);
     m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA2)] ->setRowCount(m_outputs_map[get_index(SKA_VEHICLE_NUM::SKA2)].size());
     m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA2)]->setHorizontalHeaderLabels(table_name);
+    m_tableWidget[get_index(SKA_VEHICLE_NUM::SKA2)]->setObjectName("ska_2_ccu_dd_riom_mvb1_d_outputs");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map[get_index(SKA_VEHICLE_NUM::SKA2)]) {

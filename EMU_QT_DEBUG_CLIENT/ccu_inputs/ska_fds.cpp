@@ -834,6 +834,9 @@ void SKA_FDS::init_ska_x_fds1_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][FDS1]->setItem(row, column, item_name);
         m_tableWidget[ska_num][FDS1]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1131,6 +1134,9 @@ void SKA_FDS::init_ska_x_fds2_table(SKA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[ska_num][FDS2]->setItem(row, column, item_name);
         m_tableWidget[ska_num][FDS2]->setItem(row, column + 1, item_val); // Değer
+
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
@@ -2627,6 +2633,9 @@ void SKA_FDS::init_ska_x_fds3_table(SKA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[ska_num][FDS3]->setItem(row, column, item_name);
         m_tableWidget[ska_num][FDS3]->setItem(row, column + 1, item_val); // Değer
+
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

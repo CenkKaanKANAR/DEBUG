@@ -416,6 +416,9 @@ void Oa_Jru::init_oa_x_mvb1_table(OA_VEHICLE_NUM vehicle_type)
         m_tableWidget[oa_num]->setItem(row, column, item_name);
         m_tableWidget[oa_num]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 

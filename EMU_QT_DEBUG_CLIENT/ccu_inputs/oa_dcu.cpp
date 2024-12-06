@@ -1869,6 +1869,9 @@ void OA_DCU::init_oa_x_dcu1_table(OA_VEHICLE_NUM vehicle_type)
         m_tableWidget[oa_num][DCU1]->setItem(row, column, item_name);
         m_tableWidget[oa_num][DCU1]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -2169,6 +2172,9 @@ void OA_DCU::init_oa_x_dcu2_table(OA_VEHICLE_NUM vehicle_type)
         m_tableWidget[oa_num][DCU2]->setItem(row, column, item_name);
         m_tableWidget[oa_num][DCU2]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -2398,6 +2404,9 @@ void OA_DCU::init_oa_x_dcu3_table(OA_VEHICLE_NUM vehicle_type)
         m_tableWidget[oa_num][DCU3]->setItem(row, column, item_name);
         m_tableWidget[oa_num][DCU3]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -2469,6 +2478,9 @@ void OA_DCU::init_oa_x_dcu4_table(OA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[oa_num][DCU4]->setItem(row, column, item_name);
         m_tableWidget[oa_num][DCU4]->setItem(row, column + 1, item_val); // Değer
+
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

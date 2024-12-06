@@ -6,18 +6,21 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
+
 class ForceControl : public QWidget {
     Q_OBJECT
 
 public:
-    explicit ForceControl(const QString& checkboxLabel, const QString& buttonLabel, QWidget *parent = nullptr);
+    explicit ForceControl(const QString& checkboxLabel, const QString& buttonLabel, const QString& resetButtonLabel, QWidget *parent = nullptr);
 
     QCheckBox* getCheckBox() const;
     QPushButton* getSendButton() const;
+    QPushButton* getResetButton() const;
 
 private:
     QCheckBox *forceCheckBox;
     QPushButton *sendButton;
+    QPushButton *resetButton;
 
     void customizeWidgets(); //Colors and image views
 };

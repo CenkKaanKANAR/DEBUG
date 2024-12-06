@@ -63,6 +63,8 @@ void Ska_Ccu_Di_Card::init_ska_x_table()
         QTableWidgetItem *item_val = new QTableWidgetItem(QString("%1").arg(pair.second)); // value of param
         m_tableWidget->setItem(row, 0, item_name);
         m_tableWidget->setItem(row, 1, item_val);
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
         ++row;
     }
     // Resize the table widget contents

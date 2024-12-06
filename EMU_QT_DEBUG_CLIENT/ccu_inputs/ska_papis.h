@@ -61,6 +61,8 @@ public:
     void update_mvb12_map(SKA_VEHICLE_NUM ska_x_num);
     void update_table(SKA_VEHICLE_NUM ska_x_num, SKA_MVB_NUM mvb);
 
+    void set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &ska_x_num);
+
 private:
     void make_signal_slot_connection();
     int get_index(SKA_VEHICLE_NUM num) const {
@@ -78,6 +80,8 @@ private:
     void init_ska_x_mvb10_table(SKA_VEHICLE_NUM vehicle_type);
     void init_ska_x_mvb11_table(SKA_VEHICLE_NUM vehicle_type);
     void init_ska_x_mvb12_table(SKA_VEHICLE_NUM vehicle_type);
+
+
 private:
     const QStringList table_name[2][3] = {
         {

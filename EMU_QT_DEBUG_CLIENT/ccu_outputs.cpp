@@ -31,7 +31,10 @@ namespace OUT {
     m_ska_ccu_dd_riom_mvb1_d_outputs_force_ptr(new Ska_Ccu_DD_Riom_Mvb1_d_Outputs(this)),
     m_oa_ccu_vh_riom_mvb1_d_outputs_force_ptr(new Oa_Ccu_Vh_Riom_Mvb1_d_Outputs(this)),
     m_ska_ccu_global_out_mvb1_force_ptr(new Ska_Ccu_Global_Out_Mvb1(this)),
-    m_ccu_to_all_bcus_force_ptr(new Ccu_To_All_Bcus(this))
+    m_ccu_to_all_bcus_force_ptr(new Ccu_To_All_Bcus(this)),
+    m_ska_ccu_vh_riom_mvb2_dcu_hvac_fdu_force_ptr(new Ska_Ccu_Vh_Riom_Mvb2_Dcu),
+    m_ska_vh_riom_outputs_force_ptr(new Ska_Vh_Riom_Outputs),
+    m_oa_vh_riom_outputs_force_ptr(new Oa_Vh_Riom_Outputs)
     {
 
 

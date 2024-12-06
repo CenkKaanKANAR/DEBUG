@@ -35,6 +35,8 @@
 #include "ccu_outputs/ccu_to_all_bcus.h"
 #include "ccu_outputs/ccu_to_all_etcs.h"
 #include "ccu_outputs/ska_ccu_do_card.h"
+#include "ccu_outputs/ska_vh_riom_outputs.h"
+#include "ccu_outputs/oa_vh_riom_outputs.h"
 
 namespace OUT {
 
@@ -153,6 +155,24 @@ public:
         return m_ccu_to_all_bcus_force_ptr;
     }
 
+    Ska_Ccu_Vh_Riom_Mvb2_Dcu* get_Ska_Ccu_Vh_Riom_Mvb2_Dcu_Hvac_Fdu_Force()//dcu_hvac_fdu
+    {
+        return m_ska_ccu_vh_riom_mvb2_dcu_hvac_fdu_force_ptr;
+    }
+
+    Ska_Vh_Riom_Outputs* get_Ska_Vh_Riom_Outputs_Force()//ska_vh_riom_outputs
+    {
+        return m_ska_vh_riom_outputs_force_ptr;
+    }
+
+    Oa_Vh_Riom_Outputs* get_Oa_Vh_Riom_Outputs_Force()//ska_vh_riom_outputs
+    {
+        return m_oa_vh_riom_outputs_force_ptr;
+    }
+
+
+    //DEVAMMMMM
+
 private:
 
     Ska_Ccu_Global_Out_Mvb1* m_ska_ccu_global_out_mvb1_ptr;
@@ -187,6 +207,10 @@ private:
     Oa_Ccu_Vh_Riom_Mvb1_d_Outputs* m_oa_ccu_vh_riom_mvb1_d_outputs_force_ptr;
     Ska_Ccu_Global_Out_Mvb1* m_ska_ccu_global_out_mvb1_force_ptr;
     Ccu_To_All_Bcus* m_ccu_to_all_bcus_force_ptr;
+    Ska_Ccu_Vh_Riom_Mvb2_Dcu* m_ska_ccu_vh_riom_mvb2_dcu_hvac_fdu_force_ptr;
+    Ska_Vh_Riom_Outputs* m_ska_vh_riom_outputs_force_ptr;
+    Oa_Vh_Riom_Outputs* m_oa_vh_riom_outputs_force_ptr;
+
 };
 }
 #endif // CCU_Outputs_H

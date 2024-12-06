@@ -31,7 +31,7 @@ public:
     {
         std::vector<uint8_t> tempData(CCU_TO_ALL_BCUS_SIZE);
         std::memcpy(tempData.data(), &m_ccu_to_all_bcus, CCU_TO_ALL_BCUS_SIZE);
-        qDebug() << " SKA GLOBAL OUT MVB1 TEMP DATA : " << tempData;
+        qDebug() << "CCU TO ALL BCUS TEMP DATA : " << tempData;
         return tempData;
     }
 

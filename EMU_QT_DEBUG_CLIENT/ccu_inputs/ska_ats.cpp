@@ -176,6 +176,8 @@ void Ska_Ats::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &sk
         //set_struct_mvb1(oa_x_num);
         update_table(ska_x_num);
 
+
+
         //update maps
 
         //
@@ -294,6 +296,9 @@ void Ska_Ats::init_ska_x_table(SKA_VEHICLE_NUM ska_x_num)
 
         m_tableWidget[ska_num]->setItem(row, column, item_name);
         m_tableWidget[ska_num]->setItem(row, column + 1, item_val); // Değer
+
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

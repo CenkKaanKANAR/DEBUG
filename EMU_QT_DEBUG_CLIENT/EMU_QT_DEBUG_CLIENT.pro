@@ -29,6 +29,7 @@ SOURCES += \
     DriverDeskPanels/switch/switch.cpp \
     ReadShmDialog.cpp \
     ccu_inputs.cpp \
+    ccu_inputs/oa_apu.cpp \
     ccu_inputs/oa_bcu.cpp \
     ccu_inputs/oa_dam.cpp \
     ccu_inputs/oa_dcu.cpp \
@@ -44,6 +45,7 @@ SOURCES += \
     ccu_inputs/ska_fds.cpp \
     ccu_inputs/ska_hvac.cpp \
     ccu_inputs/ska_papis.cpp \
+    ccu_inputs/ska_tcu.cpp \
     ccu_inputs/ska_vh_riom.cpp \
     ccu_outputs.cpp \
     ccu_outputs/ccu_to_all_bcus.cpp \
@@ -56,6 +58,7 @@ SOURCES += \
     ccu_outputs/ccu_to_oax_etcs.cpp \
     ccu_outputs/oa_ccu_vh_riom_mvb1_d_outputs.cpp \
     ccu_outputs/oa_ccu_vh_riom_mvb2_dcu.cpp \
+    ccu_outputs/oa_vh_riom_outputs.cpp \
     ccu_outputs/ska_ccu_dd_riom_mvb1_d_outputs.cpp \
     ccu_outputs/ska_ccu_do_card.cpp \
     ccu_outputs/ska_ccu_global_out_mvb1.cpp \
@@ -64,9 +67,11 @@ SOURCES += \
     ccu_outputs/ska_ccu_to_all_rioms_mvb2.cpp \
     ccu_outputs/ska_ccu_vh_riom_mvb1_d.cpp \
     ccu_outputs/ska_ccu_vh_riom_mvb2_dcu.cpp \
+    ccu_outputs/ska_vh_riom_outputs.cpp \
     ccu_table.cpp \
     ccutablehandler.cpp \
     forcecontrol.cpp \
+    frcconfig.cpp \
     main.cpp \
     mainwindow.cpp \
     messageconfig.cpp \
@@ -90,6 +95,7 @@ HEADERS += \
     DriverDeskPanels/switch/switch.h \
     ReadShmDialog.h \
     ccu_inputs.h \
+    ccu_inputs/oa_apu.h \
     ccu_inputs/oa_bcu.h \
     ccu_inputs/oa_dam.h \
     ccu_inputs/oa_dcu.h \
@@ -105,6 +111,7 @@ HEADERS += \
     ccu_inputs/ska_fds.h \
     ccu_inputs/ska_hvac.h \
     ccu_inputs/ska_papis.h \
+    ccu_inputs/ska_tcu.h \
     ccu_inputs/ska_vh_riom.h \
     ccu_outputs.h \
     ccu_outputs/ccu_to_all_bcus.h \
@@ -117,6 +124,7 @@ HEADERS += \
     ccu_outputs/ccu_to_oax_etcs.h \
     ccu_outputs/oa_ccu_vh_riom_mvb1_d_outputs.h \
     ccu_outputs/oa_ccu_vh_riom_mvb2_dcu.h \
+    ccu_outputs/oa_vh_riom_outputs.h \
     ccu_outputs/ska_ccu_dd_riom_mvb1_d_outputs.h \
     ccu_outputs/ska_ccu_do_card.h \
     ccu_outputs/ska_ccu_global_out_mvb1.h \
@@ -125,10 +133,12 @@ HEADERS += \
     ccu_outputs/ska_ccu_to_all_rioms_mvb2.h \
     ccu_outputs/ska_ccu_vh_riom_mvb1_d.h \
     ccu_outputs/ska_ccu_vh_riom_mvb2_dcu.h \
+    ccu_outputs/ska_vh_riom_outputs.h \
     ccu_table.h \
     ccutablehandler.h \
     emulator_common.h \
     forcecontrol.h \
+    frcconfig.h \
     mainwindow.h \
     messageconfig.h \
     mvb_ports.h \

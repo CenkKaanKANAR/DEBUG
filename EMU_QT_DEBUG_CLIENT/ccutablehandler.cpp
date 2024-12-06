@@ -100,6 +100,22 @@ void CcuTableHandler::processCcuInputTables(Ui::CCU_Table *ui, IN::CCU_Inputs *c
     ui->verticalLayout_ska_2_bcu_2->addWidget(ccu_in->getSkaBcu().getTableWidget(SKA_VEHICLE_NUM::SKA2,Ska_Bcu::MVB2));
     //ui->verticalLayout_ska_2_bcu_3->addWidget(ccu_in->getSkaBcu().getTableWidget(SKA_VEHICLE_NUM::SKA2,Ska_Bcu::MVB3));
 
+    //SKA 1 TCU 1
+    ui->verticalLayout_ska1_tcu1_mvb1->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA1, SKA_TCU::TCU1, SKA_TCU::MVB1));
+    ui->verticalLayout_ska1_tcu1_mvb2->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA1, SKA_TCU::TCU1, SKA_TCU::MVB2));
+
+    //SKA 1 TCU 2
+    ui->verticalLayout_ska1_tcu2_mvb1->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA1, SKA_TCU::TCU2, SKA_TCU::MVB1));
+    ui->verticalLayout_ska1_tcu2_mvb2->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA1, SKA_TCU::TCU2, SKA_TCU::MVB2));
+
+    //SKA 2 TCU 1
+    ui->verticalLayout_ska2_tcu1_mvb1->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA2, SKA_TCU::TCU1, SKA_TCU::MVB1));
+    ui->verticalLayout_ska2_tcu1_mvb2->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA2, SKA_TCU::TCU1, SKA_TCU::MVB2));
+
+    //SKA 2 TCU 2
+    ui->verticalLayout_ska2_tcu2_mvb1->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA2, SKA_TCU::TCU2, SKA_TCU::MVB1));
+    ui->verticalLayout_ska2_tcu2_mvb2->addWidget(ccu_in->getSkaTcu().getTableWidget(SKA_VEHICLE_NUM::SKA2, SKA_TCU::TCU2, SKA_TCU::MVB2));
+
     // OA VH RIOM
     ui->verticalLayout_oa_1_vh_riom_1->addWidget(ccu_in->getOaVhRiom().getTableWidget(OA_VEHICLE_NUM::OA1,Oa_Vh_Riom::MVB1));
     ui->verticalLayout_oa_2_vh_riom_1->addWidget(ccu_in->getOaVhRiom().getTableWidget(OA_VEHICLE_NUM::OA2,Oa_Vh_Riom::MVB1));
@@ -168,6 +184,17 @@ void CcuTableHandler::processCcuInputTables(Ui::CCU_Table *ui, IN::CCU_Inputs *c
     //OA2 HVAC
     ui->verticalLayout_oa2_vh_riom_ccu_mvb6_hvac1->addWidget(ccu_in->getOaHvac().getTableWidget(OA_VEHICLE_NUM::OA2,Oa_Hvac::HVAC1));
     ui->verticalLayout_oa2_vh_riom_ccu_mvb7_hvac2->addWidget(ccu_in->getOaHvac().getTableWidget(OA_VEHICLE_NUM::OA2,Oa_Hvac::HVAC2));
+
+    //OA 1 APU
+    ui->verticalLayout_oa1_apu_mvb1->addWidget(ccu_in->getOaApu().getTableWidget(OA_VEHICLE_NUM::OA1,OA_APU::MVB1));
+    ui->verticalLayout_oa1_apu_mvb2->addWidget(ccu_in->getOaApu().getTableWidget(OA_VEHICLE_NUM::OA1,OA_APU::MVB2));
+    ui->verticalLayout_oa1_apu_mvb3->addWidget(ccu_in->getOaApu().getTableWidget(OA_VEHICLE_NUM::OA1,OA_APU::MVB3));
+
+    //OA 2 APU
+    ui->verticalLayout_oa2_apu_mvb1->addWidget(ccu_in->getOaApu().getTableWidget(OA_VEHICLE_NUM::OA2,OA_APU::MVB1));
+    ui->verticalLayout_oa2_apu_mvb2->addWidget(ccu_in->getOaApu().getTableWidget(OA_VEHICLE_NUM::OA2,OA_APU::MVB2));
+    ui->verticalLayout_oa2_apu_mvb3->addWidget(ccu_in->getOaApu().getTableWidget(OA_VEHICLE_NUM::OA2,OA_APU::MVB3));
+
 }
 
 /**
@@ -314,7 +341,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
     int port_id = (static_cast<uint8_t>(recv_data[start]) << 8) | static_cast<uint8_t>(recv_data[start + 1]);
 
     qDebug() << "Port Id: " << QString::number(port_id, 16);  // Port Id'yi hexadecimal olarak görmek için
-
+    //OA_ETCS
     if(port_id == OA1_ETCS_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -333,6 +360,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         ccu_in->getOaEtcs().set_data_struct(source,OA_VEHICLE_NUM::OA2);
         qDebug() << "source data is : " << source;
     }
+    //OA_BCU
     if(port_id == OA1_BCU_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -352,7 +380,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         ccu_in->getOaBcu().set_data_struct(source,OA_VEHICLE_NUM::OA2);
         qDebug() << "source data is : " << source;
     }
-
+    //OA_DCU
     if(port_id == OA1_DCU_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -373,7 +401,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "source data is : " << source;
     }
     ////////////////////////
-
+    //OA_HVAC
     if(port_id == OA1_HVAC_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -394,10 +422,11 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         ccu_in->getOaHvac().set_data_struct(source,OA_VEHICLE_NUM::OA2);
         qDebug() << "source data is : " << source;
     }
-
+    //OA_JRU
     if(port_id == OA1_JRU_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
+        qDebug("FULL DATA PACKET : ", recv_data);
         QByteArray source = recv_data.mid(8, OA1_JRU_INPUTS_SIZE);
         //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
         //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
@@ -415,7 +444,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         ccu_in->getOaJru().set_data_struct(source,OA_VEHICLE_NUM::OA2);
         qDebug() << "source data is : " << source;
     }
-
+    //OA_VH
     if(port_id == OA1_VH_RIOM_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -437,7 +466,30 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "source data is : " << source;
         qDebug() << "Size OF Source data is : " << source.size();
     }
+    //OA_APU
+    if(port_id == OA1_APU_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8, OA1_APU_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getOaApu().set_data_struct(source,OA_VEHICLE_NUM::OA1);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
 
+    if(port_id == OA2_APU_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8, OA2_APU_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getOaApu().set_data_struct(source,OA_VEHICLE_NUM::OA2);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    //SKA_ATS
     if(port_id == SKA1_ATS_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -460,6 +512,30 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
+    //SKA_PAPIS
+    if(port_id == SKA1_PAPIS_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8, SKA1_PAPIS_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaPapis().set_data_struct(source,SKA_VEHICLE_NUM::SKA1);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    if(port_id == SKA2_PAPIS_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8, SKA2_PAPIS_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaPapis().set_data_struct(source,SKA_VEHICLE_NUM::SKA2);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    //SKA_BCU
     if(port_id == SKA1_BCU_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -481,7 +557,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "source data is : " << source;
         qDebug() << "Size OF Source data is : " << source.size();
     }
-
+    //SKA_DI
     if(port_id == SKA1_CCU_DI_CARD_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -493,20 +569,31 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
-
+    //EKSİK GİBİ
     if(port_id == SKA1_DCU_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
         QByteArray source = recv_data.mid(8, SKA1_DCU_INPUTS_SIZE);
         //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
         //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
-        //ccu_in->getSkaDcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA1);
+        ccu_in->getSkaDcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA1);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    if(port_id == SKA2_DCU_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8, SKA2_DCU_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaDcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA2);
         qDebug() << "source data is : " << source;
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
     /////////
-
+    //SKA_DD
     if(port_id ==  SKA1_DD_RIOM_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -529,7 +616,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
-
+    //EKSİK GİBİ
     if(port_id ==  SKA1_FDS_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -541,6 +628,18 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
+    if(port_id ==  SKA2_FDS_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8,  SKA2_FDS_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaFds().set_data_struct(source,SKA_VEHICLE_NUM::SKA2);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    //EKSİK GİBİ
     if(port_id ==  SKA1_HVAC_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -552,7 +651,18 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
+    if(port_id ==  SKA2_HVAC_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8,  SKA2_HVAC_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaHvac().set_data_struct(source,SKA_VEHICLE_NUM::SKA2);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
 
+    //
     if(port_id ==  SKA1_VH_RIOM_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -564,6 +674,7 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "Size OF Source data is : " << source.size();
     }
 
+
     if(port_id ==  SKA2_VH_RIOM_INPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -574,6 +685,55 @@ void CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(IN::CCU_Inputs *ccu_i
         qDebug() << "source data is : " << source;
         qDebug() << "Size OF Source data is : " << source.size();
     }
+    //SKA TCU
+    if(port_id ==  SKA1_TCU1_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        qDebug() << "FULL DATA PACKET : " << recv_data;
+        QByteArray source = recv_data.mid(8,  SKA1_TCU1_INPUTS_SIZE);
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaTcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA1,SKA_TCU::TCU1);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    if(port_id ==  SKA2_TCU1_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8,  SKA2_TCU1_INPUTS_SIZE);
+        qDebug() << "FULL DATA PACKET : " << recv_data;
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaTcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA2,SKA_TCU::TCU1);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    if(port_id ==  SKA1_TCU2_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8,  SKA1_TCU2_INPUTS_SIZE);
+        qDebug() << "FULL DATA PACKET : " << recv_data;
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaTcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA1,SKA_TCU::TCU2);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
+    if(port_id ==  SKA2_TCU2_INPUTS)
+    {
+        qDebug("Valid Port Id: %x", port_id);
+        QByteArray source = recv_data.mid(8,  SKA2_TCU2_INPUTS_SIZE);
+        qDebug() << "FULL DATA PACKET : " << recv_data;
+        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
+        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
+        ccu_in->getSkaTcu().set_data_struct(source,SKA_VEHICLE_NUM::SKA2,SKA_TCU::TCU2);
+        qDebug() << "source data is : " << source;
+        qDebug() << "Size OF Source data is : " << source.size();
+    }
+
 }
 
 

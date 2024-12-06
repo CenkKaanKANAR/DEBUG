@@ -430,11 +430,26 @@ void Ska_Hvac::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &s
         // İlk alanı kopyala
         memcpy(&m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb13_hvac1.bytes, input.constData(), sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb13_hvac1.bytes));
 
-        QByteArray data =  input.mid(0, 32);
-        qDebug() << "32 Bytelık data :  " << data;
+
         update_hvac1_map(ska_x_num);
         //set_struct_mvb1(oa_x_num);
         update_table(ska_x_num,Ska_Hvac::HVAC1);
+
+        // İkinci alanı kopyala
+        memcpy(&m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bytes, input.constData() + sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb13_hvac1.bytes), sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bytes));
+
+
+        update_hvac1_map(ska_x_num);
+        //set_struct_mvb1(oa_x_num);
+        update_table(ska_x_num,Ska_Hvac::HVAC2);
+
+        // Üçüncü alanı kopyala
+        memcpy(&m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bytes, input.constData() + sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb13_hvac1.bytes) + sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bytes), sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bytes));
+
+        update_hvac1_map(ska_x_num);
+        //set_struct_mvb1(oa_x_num);
+        update_table(ska_x_num,Ska_Hvac::HVAC3);
+
 
         //update maps
 
@@ -948,6 +963,9 @@ void Ska_Hvac::init_ska_x_hvac1_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][HVAC1]->setItem(row, column, item_name);
         m_tableWidget[ska_num][HVAC1]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1114,6 +1132,9 @@ void Ska_Hvac::init_ska_x_hvac2_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][HVAC2]->setItem(row, column, item_name);
         m_tableWidget[ska_num][HVAC2]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1279,6 +1300,9 @@ void Ska_Hvac::init_ska_x_hvac3_table(SKA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[ska_num][HVAC3]->setItem(row, column, item_name);
         m_tableWidget[ska_num][HVAC3]->setItem(row, column + 1, item_val); // Değer
+
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

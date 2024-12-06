@@ -275,6 +275,10 @@ enum CCU_IN_PORTS{
     SKA2_FDS_INPUTS                 = 0x4D6,
     SKA1_PAPIS_INPUTS               = 0x41A,
     SKA2_PAPIS_INPUTS               = 0x4DA,
+    SKA1_TCU1_INPUTS                = 0x701,
+    SKA2_TCU1_INPUTS                = 0x7C1,
+    SKA1_TCU2_INPUTS                = 0x708,
+    SKA2_TCU2_INPUTS                = 0x7C8,
     SKA1_VH_RIOM_INPUTS             = 0x401,
     SKA2_VH_RIOM_INPUTS             = 0x4C1,
     SKA1_HVAC_INPUTS                = 0x41D,
@@ -290,7 +294,9 @@ enum CCU_IN_PORTS{
     OA1_HVAC_INPUTS                 = 0x456,
     OA2_HVAC_INPUTS                 = 0x496,
     OA1_VH_RIOM_INPUTS              = 0x441,
-    OA2_VH_RIOM_INPUTS              = 0x481
+    OA2_VH_RIOM_INPUTS              = 0x481,
+    OA1_APU_INPUTS                  = 0x841,
+    OA2_APU_INPUTS                  = 0x881
 
 };
 
@@ -305,29 +311,38 @@ enum CCU_IN_PORTS_SIZE{
     SKA2_CCU_DI_CARD_INPUTS_SIZE          = 2,
     SKA1_CCU_DO_CARD_INPUTS_SIZE          = 0,
     SKA2_CCU_DO_CARD_INPUTS_SIZE          = 0,
-    SKA1_DCU_INPUTS_SIZE                  = 120,
-    SKA2_DCU_INPUTS_SIZE                  = 120,
+    SKA1_DCU_INPUTS_SIZE                  = 112,
+    SKA2_DCU_INPUTS_SIZE                  = 112,
     SKA1_DD_RIOM_INPUTS_SIZE              = 32,
     SKA2_DD_RIOM_INPUTS_SIZE              = 32,
     SKA1_FDS_INPUTS_SIZE                  = 96,
     SKA2_FDS_INPUTS_SIZE                  = 96,
-    SKA1_PAPIS_INPUTS_SIZE                = 128,
-    SKA2_PAPIS_INPUTS_SIZE                = 128,
+    SKA1_PAPIS_INPUTS_SIZE                = 96,
+    SKA2_PAPIS_INPUTS_SIZE                = 96,
     SKA1_VH_RIOM_INPUTS_SIZE              = 48,
     SKA2_VH_RIOM_INPUTS_SIZE              = 48,
-    OA1_BCU_INPUTS_SIZE                   = 80,
-    OA2_BCU_INPUTS_SIZE                   = 80,
-    OA1_DCU_INPUTS_SIZE                   = 120,
-    OA2_DCU_INPUTS_SIZE                   = 120,
-    OA1_ETCS_INPUTS_SIZE                  = 120,
-    OA2_ETCS_INPUTS_SIZE                  = 120,
-    OA1_JRU_INPUTS_SIZE                   = 40,
-    OA2_JRU_INPUTS_SIZE                   = 40,
+    OA1_BCU_INPUTS_SIZE                   = 48,
+    OA2_BCU_INPUTS_SIZE                   = 48,
+    OA1_DCU_INPUTS_SIZE                   = 112,
+    OA2_DCU_INPUTS_SIZE                   = 112,
+    OA1_ETCS_INPUTS_SIZE                  = 96,
+    OA2_ETCS_INPUTS_SIZE                  = 96,
+    OA1_JRU_INPUTS_SIZE                   = 32,
+    OA2_JRU_INPUTS_SIZE                   = 32,
     OA1_VH_RIOM_INPUTS_SIZE               = 48,
     OA2_VH_RIOM_INPUTS_SIZE               = 48,
-    OA1_HVAC_INPUTS_SIZE                  = 72,
-    OA2_HVAC_INPUTS_SIZE                  = 72,
+    OA1_HVAC_INPUTS_SIZE                  = 64,
+    OA2_HVAC_INPUTS_SIZE                  = 64,
     SKA1_HVAC_INPUTS_SIZE                 = 96,
-    SKA2_HVAC_INPUTS_SIZE                 = 96
+    SKA2_HVAC_INPUTS_SIZE                 = 96,
+    SKA1_TCU1_INPUTS_SIZE                 = 64,
+    SKA2_TCU1_INPUTS_SIZE                 = 64,
+    SKA1_TCU2_INPUTS_SIZE                 = 64,
+    SKA2_TCU2_INPUTS_SIZE                 = 64,
+    OA1_APU_INPUTS_SIZE                   = 80,
+    OA2_APU_INPUTS_SIZE                   = 80
+
+
+
 };
 

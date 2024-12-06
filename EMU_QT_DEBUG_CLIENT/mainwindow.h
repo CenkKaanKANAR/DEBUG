@@ -40,6 +40,7 @@ public slots:
     void readUdpSocketMessages(QByteArray data);
     void sendSystemModulesToCommOverUdp(QByteArray sendData);
 
+
 private slots:
 
     void on_pushButton_read_dialog_clicked();

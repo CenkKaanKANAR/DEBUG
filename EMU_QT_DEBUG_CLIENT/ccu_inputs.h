@@ -21,6 +21,8 @@
 #include "ccu_inputs/oa_dam.h"
 #include "ccu_inputs/ska_hvac.h"
 #include "ccu_inputs/oa_hvac.h"
+#include "ccu_inputs/oa_apu.h"
+#include "ccu_inputs/ska_tcu.h"
 
 
 namespace IN{
@@ -98,6 +100,15 @@ public:
     Oa_Hvac& getOaHvac() {
         return  m_oa_hvac;
     }
+
+    OA_APU& getOaApu(){
+        return m_oa_apu;
+    }
+
+    SKA_TCU& getSkaTcu() {
+        return  m_ska_tcu;
+    }
+
 private:
 
     //struct ska_ccu_input ska_ccu_input_w;
@@ -117,6 +128,8 @@ private:
     Oa_Dam m_oa_dam;
     Ska_Hvac m_ska_hvac;
     Oa_Hvac m_oa_hvac;
+    OA_APU m_oa_apu;
+    SKA_TCU m_ska_tcu;
 signals:
 
 };

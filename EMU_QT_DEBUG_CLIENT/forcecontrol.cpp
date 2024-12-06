@@ -1,13 +1,15 @@
 #include "forcecontrol.h"
 
-ForceControl::ForceControl(const QString& checkboxLabel, const QString& buttonLabel, QWidget *parent)
+ForceControl::ForceControl(const QString& checkboxLabel, const QString& buttonLabel, const QString& resetButtonLabel, QWidget *parent)
     : QWidget(parent),
     forceCheckBox(new QCheckBox(checkboxLabel, this)),
-    sendButton(new QPushButton(buttonLabel, this))
+    sendButton(new QPushButton(buttonLabel, this)),
+    resetButton(new QPushButton(resetButtonLabel,this))
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(forceCheckBox);
     layout->addWidget(sendButton);
+    layout->addWidget(resetButton);
     setLayout(layout);
 
     customizeWidgets(); // Özelleştirme işlemi burada çağrılır
@@ -51,6 +53,23 @@ void ForceControl::customizeWidgets() {
         "    background-color: #1976D2;"
         "}"
         );
+
+    // Reset Button stilini özelleştir
+    resetButton->setStyleSheet(
+        "QPushButton {"
+        "    background-color: #f44336;" // Kırmızı renk
+        "    color: white;"
+        "    border-radius: 10px;" // Yuvarlak köşeler
+        "    padding: 10px 20px;"
+        "    font-size: 14px;"
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #e53935;" // Hover durumunda biraz daha koyu kırmızı
+        "}"
+        "QPushButton:pressed {"
+        "    background-color: #d32f2f;" // Tıklama durumunda daha koyu kırmızı
+        "}"
+        );
 }
 
 QCheckBox* ForceControl::getCheckBox() const {
@@ -59,4 +78,9 @@ QCheckBox* ForceControl::getCheckBox() const {
 
 QPushButton* ForceControl::getSendButton() const {
     return sendButton;
+}
+
+QPushButton *ForceControl::getResetButton() const
+{
+    return resetButton;
 }

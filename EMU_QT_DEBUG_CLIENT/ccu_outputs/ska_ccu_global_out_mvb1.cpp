@@ -60,6 +60,7 @@ void Ska_Ccu_Global_Out_Mvb1::init_table()
     m_tableWidget->setColumnCount(2);
     m_tableWidget->setRowCount(m_outputs_map.size());
     m_tableWidget->setHorizontalHeaderLabels(table_name);
+    m_tableWidget->setObjectName("ska_ccu_global_out_mvb1");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map) {

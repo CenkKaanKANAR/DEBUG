@@ -80,6 +80,7 @@ void Ccu_To_All_Bcus::init_table()
     m_tableWidget->setColumnCount(2);
     m_tableWidget->setRowCount(m_outputs_map.size());
     m_tableWidget->setHorizontalHeaderLabels(table_name);
+    m_tableWidget->setObjectName("ccu_to_all_bcus");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map) {

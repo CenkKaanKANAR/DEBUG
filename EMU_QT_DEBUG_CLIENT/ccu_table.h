@@ -5,11 +5,15 @@
 #include "ccu_inputs.h"
 #include "ccu_outputs.h"
 #include "forcecontrol.h"
+#include "frcconfig.h"
 #include "messageconfig.h"
 #include <QStackedWidget>
 #include <QMessageBox>
 #include <QTimer>
 #include "DriverDeskPanels/switch/switch.h"
+#include <QTcpServer>
+#include <QUdpSocket>
+#include <QMessageBox>
 
 namespace Ui {
 class CCU_Table;
@@ -39,6 +43,7 @@ public:
     void unlockAllCells(QTableWidget *table);//FORCE
     void resetTableValues(QTableWidget *table);//FORCE
     void initializeCheckboxTableMap();//FORCE
+
 
 
 private:
@@ -103,6 +108,8 @@ private slots:
     void on_pushButton_ccu_inputs_clicked();
 
     void onForceCheckboxToggled(int state); // Checkbox için slot bildirimi - FORCE
+    void onOnOffForceControlToggled(); //FORCEEE
+    void onResetButtonClicked();//FORCE RESET BUTONU
 
 private:
 
@@ -123,24 +130,51 @@ private:
 
 
     //Force
-    QMap<QCheckBox*, QPair<QTableWidget*, VEHICLE_NUM>> checkboxTableMap;
+    //FORCE CONFIG
+
+    QPushButton *onOffForceControlButton;  // On/Off switch button
+
+    QUdpSocket *forceSocket; // Force datası için özel UDP soket
+    QHostAddress forceTargetAddress = QHostAddress("127.0.0.1"); // Force verisi için hedef adres
+    quint16 forceTargetPort = 12345; // Force verisi için hedef port
+
+
+
     //Force ska1_vh_riom_outputs
-    ForceControl *forceControl1;
+    //ForceControl *forceControl1;    //Silinecek
     //Force ska2_vh_riom_outputs
-    ForceControl *forceControl2;
+    //ForceControl *forceControl2;    //Silinecek
+
     //Force ska1_dd_riom_outputs
     ForceControl *forceControl3;
     //Force ska2_dd_riom_outputs
     ForceControl *forceControl4;
+
     //Force oa1_vh_riom_outputs
-    ForceControl *forceControl5;
+    //ForceControl *forceControl5;    //Silinecek
     //Force oa2_vh_riom_outputs
-    ForceControl *forceControl6;
+    //ForceControl *forceControl6;    //Silinecek
+
     //Force ska_ccu_global_out_mvb1
     ForceControl *forceControl7;
     //Force ccu_to_all_bcus
     ForceControl *forceControl8;
+    //Force ska_ccu_vh_riom_mvb2_dcu_hvac_fdu
+    //ForceControl *forceControl9;    //Silinecek
+    //Force ska1_vh_riom_outputs
+    ForceControl *forceControl10;
+    //Force ska2_vh_riom_outputs
+    ForceControl *forceControl12;
+    //Force oa1_vh_riom_outputs
+    ForceControl *forceControl11;
+    //Force oa2_vh_riom_outputs
+    ForceControl *forceControl13;
 
+    // Iterate over all ForceControl instances to uncheck other checkboxes
+    QMap<QCheckBox*, QPair<QList<QTableWidget*>, VEHICLE_NUM>> checkboxTableMap;
+    //QMap<QCheckBox*, QPair<QTableWidget*, VEHICLE_NUM>> checkboxTableMap;
+
+    FrcConfig *frcConfig;
 };
 
 #endif // CCU_TABLE_H

@@ -949,6 +949,9 @@ void SKA_DCU::init_ska_x_mvb2_dcu1_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][DCU1]->setItem(row, column, item_name);
         m_tableWidget[ska_num][DCU1]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1756,6 +1759,8 @@ void SKA_DCU::init_ska_x_mvb3_dcu2_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][DCU2]->setItem(row, column, item_name);
         m_tableWidget[ska_num][DCU2]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -2343,6 +2348,9 @@ void SKA_DCU::init_ska_x_mvb4_dcu3_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][DCU3]->setItem(row, column, item_name);
         m_tableWidget[ska_num][DCU3]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -2479,6 +2487,9 @@ void SKA_DCU::init_ska_x_mvb5_dcu4_table(SKA_VEHICLE_NUM vehicle_type)
 
         m_tableWidget[ska_num][DCU4]->setItem(row, column, item_name);
         m_tableWidget[ska_num][DCU4]->setItem(row, column + 1, item_val); // Değer
+
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
 
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık

@@ -100,6 +100,7 @@ void Oa_Ccu_Vh_Riom_Mvb1_d_Outputs::init_oa1_table()
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)] ->setColumnCount(2);
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)] ->setRowCount(m_outputs_map[get_index(OA_VEHICLE_NUM::OA1)].size());
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)]->setHorizontalHeaderLabels(table_name);
+    m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)]->setObjectName("oa_1_ccu_vh_riom_mvb1_d_outputs");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map[get_index(OA_VEHICLE_NUM::OA1)]) {
@@ -124,6 +125,7 @@ void Oa_Ccu_Vh_Riom_Mvb1_d_Outputs::init_oa2_table()
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)] ->setColumnCount(2);
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)] ->setRowCount(m_outputs_map[get_index(OA_VEHICLE_NUM::OA2)].size());
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)]->setHorizontalHeaderLabels(table_name);
+    m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)]->setObjectName("oa_2_ccu_vh_riom_mvb1_d_outputs");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map[get_index(OA_VEHICLE_NUM::OA2)]) {

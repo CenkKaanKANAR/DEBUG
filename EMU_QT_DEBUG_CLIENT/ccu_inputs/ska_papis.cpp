@@ -72,7 +72,7 @@ void SKA_PAPIS::update_struct_with_map(SKA_VEHICLE_NUM ska_x_num, SKA_MVB_NUM mv
     int ska_num = static_cast<int>(ska_x_num);
     // Define a lambda function to reduce redundancy
     auto setInputMap = [&](const QString& signal_name) {
-        m_inputs_map[ska_num][mvb_num][signal_name] = utils::getTableWidgetValueByName(m_tableWidget[ska_num][mvb_num], signal_name, 1).toInt();
+        m_inputs_map[ska_num][mvb_num][signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget[ska_num][mvb_num], signal_name).toInt();
     };
     // update map with given tableWidget values
     for(const auto& map : m_inputs_map[ska_num][mvb_num])
@@ -655,6 +655,18 @@ void SKA_PAPIS::update_mvb12_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB3].at("reserved29")               = m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb12_papis3.bits.reserved29; // byte 29
     m_inputs_map[ska_num][MVB3].at("reserved30")               = m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb12_papis3.bits.reserved30; // byte 30
     m_inputs_map[ska_num][MVB3].at("reserved31")               = m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb12_papis3.bits.reserved31; // byte 31
+
+}
+
+void SKA_PAPIS::update_table(SKA_VEHICLE_NUM ska_x_num, SKA_MVB_NUM mvb_num)
+{
+
+    int ska_num = static_cast<int>(ska_x_num);
+
+    for(const auto & map:m_inputs_map[ska_num][mvb_num]){
+        //qDebug() <<  map.first << map.second;
+        utils::setTableWidgetValueByNameWithoutColumn(m_tableWidget[ska_num][mvb_num], map.first, map.second );
+    }
 
 }
 
@@ -1529,6 +1541,9 @@ void SKA_PAPIS::init_ska_x_mvb10_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][MVB1]->setItem(row, column, item_name);
         m_tableWidget[ska_num][MVB1]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1863,6 +1878,9 @@ void SKA_PAPIS::init_ska_x_mvb11_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][MVB2]->setItem(row, column, item_name);
         m_tableWidget[ska_num][MVB2]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1949,6 +1967,9 @@ void SKA_PAPIS::init_ska_x_mvb12_table(SKA_VEHICLE_NUM vehicle_type)
         m_tableWidget[ska_num][MVB3]->setItem(row, column, item_name);
         m_tableWidget[ska_num][MVB3]->setItem(row, column + 1, item_val); // Değer
 
+        item_name->setBackground(QColor("turquoise"));  // Turkuaz
+        item_val->setBackground(QColor("turquoise"));  // Turkuaz
+
         // Sütun sayısını güncelle
         column += 2; // İki hücre (isim ve değer) kullandık
 
@@ -1963,4 +1984,59 @@ void SKA_PAPIS::init_ska_x_mvb12_table(SKA_VEHICLE_NUM vehicle_type)
     m_tableWidget[ska_num][MVB3]->resizeColumnsToContents();
     qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB3]->columnCount() ;
 
+}
+
+void SKA_PAPIS::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &ska_x_num)
+{
+    //int oa_num = static_cast<int>(oa_x_num);
+    qDebug() << "azdan az çoktan çok " ;
+    qDebug() << "size of input " << input.size();
+    qDebug() << "Gelen input verileri :  " << input;
+    //qDebug() << "Gelen input veri tipi : " << typeof(input);
+
+
+    int ska_num = static_cast<int>(ska_x_num);
+    qDebug() << "bassana lan şunu sizeof(m_oa_x_jru[oa_num])  " << sizeof(m_ska_x_papis[ska_num]);
+
+    if (input.size() == sizeof(m_ska_x_papis[ska_num])) {
+        //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
+        //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
+
+        qDebug() << "SIZE of STATUS :  " << sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb10_papis1);
+        qDebug() << "SIZE of MVB1 :  " << sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb11_papis2);
+
+
+        // İlk alanı kopyala
+        memcpy(&m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb10_papis1.bytes, input.constData(), sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb10_papis1.bytes));
+        update_mvb10_map(ska_x_num);
+        update_table(ska_x_num,MVB1);
+
+        // İkinci alanı kopyala
+        memcpy(&m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb11_papis2.bytes, input.constData() + sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb10_papis1.bytes), sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb11_papis2.bytes));
+        update_mvb11_map(ska_x_num);
+
+        update_table(ska_x_num,MVB2);
+
+
+
+
+        // Üçüncü alanı kopyala
+        memcpy(&m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb12_papis3.bytes, input.constData() + sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb10_papis1.bytes) + sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb11_papis2), sizeof(m_ska_x_papis[ska_num].ska_vh_riom_ccu_mvb12_papis3.bytes));
+        update_mvb12_map(ska_x_num);
+
+        update_table(ska_x_num,MVB3);
+
+        //update maps
+
+        //
+        //
+        //update tables
+
+        //
+        //
+    }
+    else
+    {
+        qDebug() << "Error: Output size mismatch";
+    }
 }

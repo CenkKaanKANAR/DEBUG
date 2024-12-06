@@ -104,7 +104,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="tab_12">
             <attribute name="title">
@@ -120,7 +120,7 @@
                 <enum>QTabWidget::West</enum>
                </property>
                <property name="currentIndex">
-                <number>10</number>
+                <number>17</number>
                </property>
                <widget class="QWidget" name="tab_73">
                 <attribute name="title">
@@ -1510,6 +1510,258 @@
                  </item>
                 </layout>
                </widget>
+               <widget class="QWidget" name="tab_145">
+                <attribute name="title">
+                 <string>OA_APU</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_149">
+                 <item row="0" column="0">
+                  <widget class="QTabWidget" name="tabWidget_48">
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <widget class="QWidget" name="tab_146">
+                    <attribute name="title">
+                     <string>OA1_APU</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_148">
+                     <item row="0" column="0">
+                      <widget class="QTabWidget" name="tabWidget_49">
+                       <property name="currentIndex">
+                        <number>2</number>
+                       </property>
+                       <widget class="QWidget" name="tab_148">
+                        <attribute name="title">
+                         <string>oa1_apu_mvb1</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_152">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_oa1_apu_mvb1"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_149">
+                        <attribute name="title">
+                         <string>oa1_apu_mvb2</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_151">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_oa1_apu_mvb2"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_150">
+                        <attribute name="title">
+                         <string>oa1_apu_mvb3</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_153">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_oa1_apu_mvb3"/>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_147">
+                    <attribute name="title">
+                     <string>OA2_APU</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_150">
+                     <item row="0" column="0">
+                      <widget class="QTabWidget" name="tabWidget_50">
+                       <property name="currentIndex">
+                        <number>2</number>
+                       </property>
+                       <widget class="QWidget" name="tab_151">
+                        <attribute name="title">
+                         <string>oa2_apu_mvb1</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_154">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_oa2_apu_mvb1"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_152">
+                        <attribute name="title">
+                         <string>oa2_apu_mvb2</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_155">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_oa2_apu_mvb2"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_153">
+                        <attribute name="title">
+                         <string>oa2_apu_mvb3</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_156">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_oa2_apu_mvb3"/>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_154">
+                <attribute name="title">
+                 <string>SKA_TCU</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_159">
+                 <item row="0" column="0">
+                  <widget class="QTabWidget" name="tabWidget_51">
+                   <property name="currentIndex">
+                    <number>1</number>
+                   </property>
+                   <widget class="QWidget" name="tab_155">
+                    <attribute name="title">
+                     <string>SKA1_TCU1</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_157">
+                     <item row="0" column="0">
+                      <widget class="QTabWidget" name="tabWidget_52">
+                       <property name="currentIndex">
+                        <number>1</number>
+                       </property>
+                       <widget class="QWidget" name="tab_157">
+                        <attribute name="title">
+                         <string>SKA1_TCU1_MVB1</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_162">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska1_tcu1_mvb1"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_158">
+                        <attribute name="title">
+                         <string>SKA1_TCU1_MVB2</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_163">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska1_tcu1_mvb2"/>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_156">
+                    <attribute name="title">
+                     <string>SKA1_TCU2</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_158">
+                     <item row="0" column="0">
+                      <widget class="QTabWidget" name="tabWidget_53">
+                       <property name="currentIndex">
+                        <number>0</number>
+                       </property>
+                       <widget class="QWidget" name="tab_159">
+                        <attribute name="title">
+                         <string>SKA1_TCU2_MVB1</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_164">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska1_tcu2_mvb1"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_160">
+                        <attribute name="title">
+                         <string>SKA1_TCU2_MVB2</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_165">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska1_tcu2_mvb2"/>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_161">
+                    <attribute name="title">
+                     <string>SKA2_TCU1</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_160">
+                     <item row="0" column="0">
+                      <widget class="QTabWidget" name="tabWidget_54">
+                       <property name="currentIndex">
+                        <number>1</number>
+                       </property>
+                       <widget class="QWidget" name="tab_163">
+                        <attribute name="title">
+                         <string>SKA2_TCU1_MVB1</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_166">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska2_tcu1_mvb1"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_164">
+                        <attribute name="title">
+                         <string>SKA2_TCU1_MVB2</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_167">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska2_tcu1_mvb2"/>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_162">
+                    <attribute name="title">
+                     <string>SKA2_TCU2</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_161">
+                     <item row="0" column="0">
+                      <widget class="QTabWidget" name="tabWidget_55">
+                       <property name="currentIndex">
+                        <number>1</number>
+                       </property>
+                       <widget class="QWidget" name="tab_165">
+                        <attribute name="title">
+                         <string>SKA2_TCU2_MVB1</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_168">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska2_tcu2_mvb1"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_166">
+                        <attribute name="title">
+                         <string>SKA2_TCU2_MVB2</string>
+                        </attribute>
+                        <layout class="QGridLayout" name="gridLayout_169">
+                         <item row="0" column="0">
+                          <layout class="QVBoxLayout" name="verticalLayout_ska2_tcu2_mvb2"/>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </widget>
              </item>
             </layout>
@@ -1538,25 +1790,157 @@
              <item row="0" column="0">
               <widget class="QTabWidget" name="tabWidget_ccu_out">
                <property name="currentIndex">
-                <number>7</number>
+                <number>6</number>
                </property>
-               <widget class="QWidget" name="tab_128">
+               <widget class="QWidget" name="tab_53">
                 <attribute name="title">
-                 <string>force_ska1_ccu_vh_riom_mvb1_d</string>
+                 <string>SKA1_VH_RIOM_OUTPUTS</string>
                 </attribute>
-                <layout class="QGridLayout" name="gridLayout_131">
+                <layout class="QGridLayout" name="gridLayout_55">
                  <item row="0" column="0">
-                  <layout class="QVBoxLayout" name="verticalLayout_force_ska1_ccu_vh_riom_mvb1_d"/>
+                  <layout class="QVBoxLayout" name="verticalLayout_ska1_vh_riom_outside">
+                   <item>
+                    <widget class="QTabWidget" name="ska1_vh_riom_tabWidget">
+                     <property name="currentIndex">
+                      <number>1</number>
+                     </property>
+                     <widget class="QWidget" name="tab_69">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_65">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_ska1_vh_riom_outputs_mvb1"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_70">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_68">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_ska1_vh_riom_outputs_mvb2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="tab_129">
+               <widget class="QWidget" name="tab_139">
                 <attribute name="title">
-                 <string>ska2_ccu_vh_riom_mvb1_d</string>
+                 <string>SKA2_VH_RIOM_OUTPUTS</string>
                 </attribute>
-                <layout class="QGridLayout" name="gridLayout_132">
+                <layout class="QGridLayout" name="gridLayout_142">
                  <item row="0" column="0">
-                  <layout class="QVBoxLayout" name="verticalLayout_force_ska2_ccu_vh_riom_mvb1_d"/>
+                  <layout class="QVBoxLayout" name="verticalLayout_ska2_vh_riom_outside">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget_46">
+                     <property name="currentIndex">
+                      <number>1</number>
+                     </property>
+                     <widget class="QWidget" name="tab_140">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_143">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_ska2_vh_riom_outputs_mvb1"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_141">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_144">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_ska2_vh_riom_outputs_mvb2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_136">
+                <attribute name="title">
+                 <string>OA1_VH_RIOM_OUTPUTS</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_139">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_oa1_vh_riom_outside">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget_45">
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="tab_137">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_140">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_oa1_vh_riom_outputs_mvb1"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_138">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_141">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_oa1_vh_riom_outputs_mvb2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_142">
+                <attribute name="title">
+                 <string>OA2_VH_RIOM_OUTPUTS</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_147">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_oa2_vh_riom_outside">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget_47">
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="tab_143">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_145">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_oa2_vh_riom_outputs_mvb1"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_144">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_146">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_force_oa2_vh_riom_outputs_mvb2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -1577,26 +1961,6 @@
                 <layout class="QGridLayout" name="gridLayout_134">
                  <item row="0" column="0">
                   <layout class="QVBoxLayout" name="verticalLayout_force_ska2_ccu_dd_riom_mvb1_d"/>
-                 </item>
-                </layout>
-               </widget>
-               <widget class="QWidget" name="tab_132">
-                <attribute name="title">
-                 <string>oa1_ccu_vh_riom_mvb1_d_outputs</string>
-                </attribute>
-                <layout class="QGridLayout" name="gridLayout_135">
-                 <item row="0" column="0">
-                  <layout class="QVBoxLayout" name="verticalLayout_force_oa1_ccu_vh_riom_mvb1_d_outputs"/>
-                 </item>
-                </layout>
-               </widget>
-               <widget class="QWidget" name="tab_133">
-                <attribute name="title">
-                 <string>oa2_ccu_vh_riom_mvb1_d_outputs</string>
-                </attribute>
-                <layout class="QGridLayout" name="gridLayout_136">
-                 <item row="0" column="0">
-                  <layout class="QVBoxLayout" name="verticalLayout_force_oa2_ccu_vh_riom_mvb1_d_outputs"/>
                  </item>
                 </layout>
                </widget>

@@ -4748,7 +4748,7 @@ struct tcu_ccu_mvb1
             uint8_t bit109 : 1;
             uint8_t bit110 : 1;
             uint8_t bit111 : 1;
-            uint8_t bit112 : 1;
+            //uint8_t bit112 : 1;
             uint8_t reserved_14; //byte14
             uint8_t DIA_TL_Enable : 1; //byte15
             uint8_t DIA_TL_Normal_Rescue : 1;
@@ -5828,7 +5828,7 @@ struct ska_ccu_vh_riom_mvb1_d_outputs {
  * v1.09
 */
 
-struct ska_ccu_vh_riom_mvb2_dcu_hvac {
+struct ska_ccu_vh_riom_mvb2_dcu_hvac_fdu {
     union {
         uint8_t bytes[IO_RAW_NBYTES_16];
         uint16_t words[BYTES_TO_WORDS(IO_RAW_NBYTES_16)];
@@ -5852,7 +5852,7 @@ struct ska_ccu_vh_riom_mvb2_dcu_hvac {
             uint8_t L2_TCMS_TLRelease : 1;
             uint8_t L3_TCMS_TLRelease : 1;
             uint8_t L4_TCMS_TLRelease : 1;
-            uint8_t R1_TCMS_LoopLSDoorNotEmergOp : 1; //byte
+            uint8_t R1_TCMS_LoopLSDoorNotEmergOp : 1; //byte2
             uint8_t R2_TCMS_LoopLSDoorNotEmergOp : 1;
             uint8_t R3_TCMS_LoopLSDoorNotEmergOp : 1;
             uint8_t R4_TCMS_LoopLSDoorNotEmergOp : 1;
@@ -5915,7 +5915,6 @@ struct ska_ccu_vh_riom_mvb2_dcu_hvac {
             uint8_t reserved_13 ;
             uint8_t reserved_14 ;
             uint8_t reserved_15 ;
-
         } bits;
         time_t last_update;
     };
@@ -6017,65 +6016,71 @@ struct oa_ccu_vh_riom_mvb2_dcu_hvac {
         uint64_t qwords[BYTES_TO_QWORDS(IO_RAW_NBYTES_16)];
 
         struct {
-            uint8_t R1_TCMS_EEDreset : 1; //byte 0
-            uint8_t R1_TCMS_TLRelease : 1;
-            uint8_t R1_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t R1_TCMS_DoorFullyOpen : 1;
-            uint8_t R2_TCMS_EEDreset : 1;
-            uint8_t R2_TCMS_TLRelease : 1;
-            uint8_t R2_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t R2_TCMS_DoorFullyOpen : 1;
-            uint8_t R3_TCMS_EEDreset : 1; //byte1
-            uint8_t R3_TCMS_TLRelease : 1;
-            uint8_t R3_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t R3_TCMS_DoorFullyOpen : 1;
-            uint8_t R4_TCMS_EEDreset : 1;
-            uint8_t R4_TCMS_TLRelease : 1;
-            uint8_t R4_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t R4_TCMS_DoorFullyOpen : 1;
-            uint8_t L1_TCMS_EEDreset : 1; //byte 2
-            uint8_t L1_TCMS_TLRelease : 1;
-            uint8_t L1_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t L1_TCMS_DoorFullyOpen : 1;
-            uint8_t L2_TCMS_EEDreset : 1;
-            uint8_t L2_TCMS_TLRelease : 1;
-            uint8_t L2_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t L2_TCMS_DoorFullyOpen : 1;
-            uint8_t L3_TCMS_EEDreset : 1; //byte 3
-            uint8_t L3_TCMS_TLRelease : 1;
-            uint8_t L3_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t L3_TCMS_DoorFullyOpen : 1;
-            uint8_t L4_TCMS_EEDreset : 1;
-            uint8_t L4_TCMS_TLRelease : 1;
-            uint8_t L4_TCMS_LoopLSDoorNotEmergOp : 1;
-            uint8_t L4_TCMS_DoorFullyOpen : 1;
-            uint8_t reserved_4 ;
-            uint8_t reserved_5 ;
-            uint8_t reserved_6 ;
-            uint8_t HVAC1_HVAC_On : 1;
-            uint8_t HVAC1_Reduce_Mode : 1;
-            uint8_t HVAC1_Door_Open : 1;
-            uint8_t bit59 : 1;
-            uint8_t HVAC1_Automatic_Dumper_Switch : 1;
-            uint8_t HVAC1_Close_Dumper : 1;
-            uint8_t bit62 : 1;
-            uint8_t bit63 : 1;
-            uint8_t HVAC2_HVAC_On : 1; //byte 8
-            uint8_t HVAC2_Reduce_Mode : 1;
-            uint8_t HVAC2_Door_Open : 1;
-            uint8_t bit67 : 1;
-            uint8_t HVAC2_Automatic_Dumper_Switch : 1;
-            uint8_t HVAC2_Close_Dumper : 1;
-            uint8_t bit70 : 1;
-            uint8_t bit71 : 1;
-            uint8_t reserved_9 : 1;
-            uint8_t reserved_10 : 1;
-            uint8_t reserved_11 : 1;
-            uint8_t reserved_12 : 1;
-            uint8_t reserved_13 : 1;
-            uint8_t reserved_14 : 1;
-            uint8_t reserved_15 : 1;
-
+            uint8_t	R1_TCMS_EEDreset : 1; //byte0
+            uint8_t	R2_TCMS_EEDreset : 1;
+            uint8_t	R3_TCMS_EEDreset : 1;
+            uint8_t	R4_TCMS_EEDreset : 1;
+            uint8_t	L1_TCMS_EEDreset : 1;
+            uint8_t	L2_TCMS_EEDreset : 1;
+            uint8_t	L3_TCMS_EEDreset : 1;
+            uint8_t	L4_TCMS_EEDreset : 1;
+            uint8_t	R1_TCMS_TLRelease : 1; //byte1
+            uint8_t	R2_TCMS_TLRelease : 1;
+            uint8_t	R3_TCMS_TLRelease : 1;
+            uint8_t	R4_TCMS_TLRelease : 1;
+            uint8_t	L1_TCMS_TLRelease : 1;
+            uint8_t	L2_TCMS_TLRelease : 1;
+            uint8_t	L3_TCMS_TLRelease : 1;
+            uint8_t	L4_TCMS_TLRelease : 1;
+            uint8_t	R1_TCMS_LoopLSDoorNotEmergOp : 1; //byte2
+            uint8_t	R2_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	R3_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	R4_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	L1_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	L2_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	L3_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	L4_TCMS_LoopLSDoorNotEmergOp : 1;
+            uint8_t	R1_TCMS_DoorFullyOpen : 1; //byte3
+            uint8_t	R2_TCMS_DoorFullyOpen : 1;
+            uint8_t	R3_TCMS_DoorFullyOpen : 1;
+            uint8_t	R4_TCMS_DoorFullyOpen : 1;
+            uint8_t	L1_TCMS_DoorFullyOpen : 1;
+            uint8_t	L2_TCMS_DoorFullyOpen : 1;
+            uint8_t	L3_TCMS_DoorFullyOpen : 1;
+            uint8_t	L4_TCMS_DoorFullyOpen : 1;
+            uint8_t	R1_TCMS_TLCentrOpen : 1; //byte4
+            uint8_t	R2_TCMS_TLCentrOpen : 1;
+            uint8_t	R3_TCMS_TLCentrOpen : 1;
+            uint8_t	R4_TCMS_TLCentrOpen : 1;
+            uint8_t	L1_TCMS_TLCentrOpen : 1;
+            uint8_t	L2_TCMS_TLCentrOpen : 1;
+            uint8_t	L3_TCMS_TLCentrOpen : 1;
+            uint8_t	L4_TCMS_TLCentrOpen : 1;
+            uint8_t	reserved_5 ; //byte5
+            uint8_t	reserved_6 ; //byte6
+            uint8_t	reserved_7 ; //byte7
+            uint8_t	HVAC1_HVAC_On : 1; //byte8
+            uint8_t	HVAC1_Reduce_Mode : 1;
+            uint8_t	HVAC1_Door_Open : 1;
+            uint8_t	bit67 : 1;
+            uint8_t	HVAC1_Automatic_Dumper_Switch : 1;
+            uint8_t	HVAC1_Close_Dumper : 1;
+            uint8_t	bit70 : 1;
+            uint8_t	bit71 : 1;
+            uint8_t	HVAC2_HVAC_On : 1; //byte9
+            uint8_t	HVAC2_Reduce_Mode : 1;
+            uint8_t	HVAC2_Door_Open : 1;
+            uint8_t	bit75 : 1;
+            uint8_t	HVAC2_Automatic_Dumper_Switch : 1;
+            uint8_t	HVAC2_Close_Dumper : 1;
+            uint8_t	bit78 : 1;
+            uint8_t	bit79 : 1;
+            uint8_t	reserved_10 ; //byte10
+            uint8_t	reserved_11 ; //byte11
+            uint8_t	reserved_12 ; //byte12
+            uint8_t	reserved_13 ; //byte13
+            uint8_t	reserved_14 ; //byte14
+            uint8_t	reserved_15 ; //byte15
 
         } bits;
         time_t last_update;
@@ -7487,8 +7492,8 @@ struct ska_ccu_output {
     struct ska_ccu_vh_riom_mvb1_d_outputs ska1_ccu_vh_riom_mvb1_d_outputs;
     struct ska_ccu_vh_riom_mvb1_d_outputs ska2_ccu_vh_riom_mvb1_d_outputs;
 
-    struct ska_ccu_vh_riom_mvb2_dcu_hvac ska1_ccu_vh_riom_mvb2_dcu_hvac;
-    struct ska_ccu_vh_riom_mvb2_dcu_hvac ska2_ccu_vh_riom_mvb2_dcu_hvac;
+    struct ska_ccu_vh_riom_mvb2_dcu_hvac_fdu ska1_ccu_vh_riom_mvb2_dcu_hvac_fdu;
+    struct ska_ccu_vh_riom_mvb2_dcu_hvac_fdu ska2_ccu_vh_riom_mvb2_dcu_hvac_fdu;
 
     struct ska_ccu_dd_riom_mvb1_d_outputs ska1_ccu_dd_riom_mvb1_d_outputs;
     struct ska_ccu_dd_riom_mvb1_d_outputs ska2_ccu_dd_riom_mvb1_d_outputs;
