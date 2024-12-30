@@ -18,10 +18,11 @@ MainWindow::MainWindow(QWidget *parent)
     , m_UdpHandler(new UdpHandler)
     , m_dockWidget(new QDockWidget("Read Dialog", this))
     , m_ccuTableHandler(new CCU_Table())
-
+    //, debugMonitorStates(new DebugMonitorStates())
 
 
 {
+    //DebugMonitorStates debugMonitorStates;
     ui->setupUi(this);
     init_readDialogDockWidget();
     applyMainwindowStyleSheetConfiguration();
@@ -37,6 +38,7 @@ MainWindow::~MainWindow()
     delete ui;
     delete m_UdpHandler;
     delete m_ReadDialog;
+    //delete debugMonitorStates;
 }
 
 /**
@@ -49,6 +51,8 @@ MainWindow::~MainWindow()
  */
 void MainWindow::makeSignalSlotConnection()
 {
+
+    //DebugMonitorStates debugMonitorStates;
     connect(m_UdpHandler, &UdpHandler::receivedUdpMessage, this, &MainWindow::readUdpSocketMessages);
     connect(m_UdpHandler, &UdpHandler::receivedUdpMessage, m_ReadDialog, &ReadShmDialog::receive_udp_message);
     connect(m_UdpHandler, &UdpHandler::receivedUdpMessage, m_ccuTableHandler, &CCU_Table::receiveUdpMessage);
@@ -56,6 +60,8 @@ void MainWindow::makeSignalSlotConnection()
     connect(m_ccuTableHandler, &CCU_Table::sendCommSystemPackageData, this, &MainWindow::sendSystemModulesToCommOverUdp);
     //connect(m_ccuTableHandler, &CCU_Table::sendCommSystemPackageData, this, &MainWindow::sendSystemModulesToCommOverUdpForce);//Force
     connect(this, &MainWindow::udptransmissionErrorOccured, m_ccuTableHandler, &CCU_Table::stopCcuTableTimer);
+
+    //connect(m_UdpHandler, &UdpHandler::receivedUdpMessage, debugMonitorStates, &DebugMonitorStates::handleUdpMessage);
 }
 
 void MainWindow::readUdpSocketMessages(QByteArray recv_data)

@@ -279,9 +279,9 @@ void Ska_Hvac::update_hvac2_map(SKA_VEHICLE_NUM ska_x_num){
     m_inputs_map[ska_num][HVAC2].at("Supply_Heating_Detect_Fault") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.Supply_Heating_Detect_Fault;
     m_inputs_map[ska_num][HVAC2].at("Cooling_Fault") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.Cooling_Fault;
     m_inputs_map[ska_num][HVAC2].at("Heating_Fault") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.Heating_Fault;
-    m_inputs_map[ska_num][HVAC2].at("bit180") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit180;
     m_inputs_map[ska_num][HVAC2].at("bit181") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit181;
     m_inputs_map[ska_num][HVAC2].at("bit182") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit182;
+    m_inputs_map[ska_num][HVAC2].at("bit183") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit183;
     m_inputs_map[ska_num][HVAC2].at("reserved23") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.reserved23;
     m_inputs_map[ska_num][HVAC2].at("reserved24") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.reserved24;
     m_inputs_map[ska_num][HVAC2].at("reserved25") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.reserved25;
@@ -417,7 +417,7 @@ void Ska_Hvac::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &s
 
     int ska_num = static_cast<int>(ska_x_num);
 
-    qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC1]->columnCount() ;
+    //qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC1]->columnCount() ;
     if (input.size() == sizeof(m_ska_x_hvac[ska_num])) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
         //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
@@ -439,14 +439,14 @@ void Ska_Hvac::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &s
         memcpy(&m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bytes, input.constData() + sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb13_hvac1.bytes), sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bytes));
 
 
-        update_hvac1_map(ska_x_num);
+        update_hvac2_map(ska_x_num);
         //set_struct_mvb1(oa_x_num);
         update_table(ska_x_num,Ska_Hvac::HVAC2);
 
         // Üçüncü alanı kopyala
         memcpy(&m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bytes, input.constData() + sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb13_hvac1.bytes) + sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bytes), sizeof(m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bytes));
 
-        update_hvac1_map(ska_x_num);
+        update_hvac3_map(ska_x_num);
         //set_struct_mvb1(oa_x_num);
         update_table(ska_x_num,Ska_Hvac::HVAC3);
 
@@ -471,7 +471,7 @@ void Ska_Hvac::update_table(SKA_VEHICLE_NUM ska_x_num, HVAC_NUM hvac_num)
 {
     int ska_num = static_cast<int>(ska_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC1]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC1]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[ska_num][hvac_num]){
 
@@ -693,9 +693,9 @@ void Ska_Hvac::set_struct_hvac2(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.Supply_Heating_Detect_Fault = m_inputs_map[ska_num][HVAC2].at("Supply_Heating_Detect_Fault");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.Cooling_Fault = m_inputs_map[ska_num][HVAC2].at("Cooling_Fault");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.Heating_Fault = m_inputs_map[ska_num][HVAC2].at("Heating_Fault");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit180 = m_inputs_map[ska_num][HVAC2].at("bit180");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit181 = m_inputs_map[ska_num][HVAC2].at("bit181");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit182 = m_inputs_map[ska_num][HVAC2].at("bit182");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.bit183 = m_inputs_map[ska_num][HVAC2].at("bit183");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.reserved23 = m_inputs_map[ska_num][HVAC2].at("reserved23");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.reserved24 = m_inputs_map[ska_num][HVAC2].at("reserved24");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb14_hvac2.bits.reserved25 = m_inputs_map[ska_num][HVAC2].at("reserved25");
@@ -978,7 +978,7 @@ void Ska_Hvac::init_ska_x_hvac1_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][HVAC1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC1]->columnCount() ;
 }
 
 void Ska_Hvac::init_ska_x_hvac2_table(SKA_VEHICLE_NUM vehicle_type)
@@ -1081,9 +1081,9 @@ void Ska_Hvac::init_ska_x_hvac2_table(SKA_VEHICLE_NUM vehicle_type)
                                     {"Supply_Heating_Detect_Fault", 0},
                                     {"Cooling_Fault", 0},
                                     {"Heating_Fault", 0},
-                                    {"bit180", 0},
                                     {"bit181", 0},
                                     {"bit182", 0},
+                                    {"bit183", 0},
                                     {"reserved23", 0},
                                     {"reserved24", 0},
                                     {"reserved25", 0},
@@ -1147,7 +1147,7 @@ void Ska_Hvac::init_ska_x_hvac2_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][HVAC2]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC2]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC2]->columnCount() ;
 }
 
 void Ska_Hvac::init_ska_x_hvac3_table(SKA_VEHICLE_NUM vehicle_type)
@@ -1316,7 +1316,7 @@ void Ska_Hvac::init_ska_x_hvac3_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][HVAC3]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC3]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][HVAC3]->columnCount() ;
 }
 
 void Ska_Hvac::update_struct_with_map(SKA_VEHICLE_NUM ska_x_num, HVAC_NUM HVAC_NUM)

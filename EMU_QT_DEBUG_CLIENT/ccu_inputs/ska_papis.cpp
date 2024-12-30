@@ -1556,7 +1556,7 @@ void SKA_PAPIS::init_ska_x_mvb10_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][MVB1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
 
 }
 
@@ -1893,7 +1893,7 @@ void SKA_PAPIS::init_ska_x_mvb11_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][MVB2]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB2]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB2]->columnCount() ;
 
 }
 
@@ -1982,7 +1982,7 @@ void SKA_PAPIS::init_ska_x_mvb12_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][MVB3]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB3]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB3]->columnCount() ;
 
 }
 

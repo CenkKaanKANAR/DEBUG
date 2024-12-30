@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QByteArray>
 #include <QVBoxLayout>
+
 class QByteArray;
 namespace IN {
 class CCU_Inputs;

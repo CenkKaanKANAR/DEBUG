@@ -37,7 +37,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_emu_conf">
          <property name="title">
-          <string>Emulator Config</string>
+          <string>Debug Config</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">

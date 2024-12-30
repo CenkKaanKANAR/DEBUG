@@ -253,7 +253,7 @@
              <item row="2" column="0">
               <widget class="QPushButton" name="pushButton_read_dialog">
                <property name="text">
-                <string>Open Read Dialog</string>
+                <string>System Function States</string>
                </property>
                <property name="iconSize">
                 <size>

@@ -92,6 +92,7 @@ void Ccu_To_All_Bcus::init_table()
         //m_tableWidget->item(row, 1)->setText(QString(pair.second));
         ++row;
     }
+     m_tableWidget->resizeColumnsToContents();
 }
 
 

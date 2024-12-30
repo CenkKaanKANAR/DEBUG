@@ -36,9 +36,15 @@ CCU_Table::CCU_Table(QWidget *parent) :
     forceControl11 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     forceControl12 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     forceControl13 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
+    forceControl14 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
+    forceControl15 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
+    forceControl16 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
+    forceControl17 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
+    forceControl18 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     frcConfig (new FrcConfig()),
     onOffForceControlButton(new QPushButton("FORCE OFF", this)),
-    forceSocket(new QUdpSocket(this)) // Force soket initialization
+    forceSocket(new QUdpSocket(this))// Force soket initialization
+
 
     //sendButton_ska1_ccu_vh_riom_mvb1_d_force(new QPushButton("SEND"))//FORCE
     //oa1_Layout_1 (new QVBoxLayout()),
@@ -47,7 +53,7 @@ CCU_Table::CCU_Table(QWidget *parent) :
     ui->setupUi(this);
 
     // Başlatma sırasında hedef port ve adresi ayarla (gerekirse değiştirilebilir)
-    forceTargetAddress = QHostAddress("192.168.56.28");//192.168.56.28
+    forceTargetAddress = QHostAddress("192.168.56.28");//10.0.11.21
     forceTargetPort = 9000;
 
     // Set the button's size and position (for example, at the top of the window) //FORCE ON OFF
@@ -114,6 +120,30 @@ CCU_Table::CCU_Table(QWidget *parent) :
     connect(forceControl13->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
     connect(m_ccu_out->get_Oa_Vh_Riom_Outputs_Force()->mvb1()->getTableWidget(OA_VEHICLE_NUM::OA2),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
     connect(m_ccu_out->get_Oa_Vh_Riom_Outputs_Force()->mvb2()->getTableWidget(OA_VEHICLE_NUM::OA2),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
+
+
+    //force oa1_etcs
+    connect(forceControl14->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
+    connect(m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA1),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
+
+    //force oa2_etcs
+    connect(forceControl15->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
+    connect(m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA2),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
+
+    //force ccu_to_all_etcs
+    connect(forceControl16->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
+    connect(m_ccu_out->get_Ccu_To_All_Etcs_Force()->getTableWidget(),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
+
+
+    //Force ccu_to_all_tcus
+    connect(forceControl17->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
+    connect(m_ccu_out->get_Ccu_To_All_Tcus_Force()->getTableWidget(),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
+
+
+    //Force ccu_to_all_apus
+    connect(forceControl18->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
+    connect(m_ccu_out->get_Ccu_To_All_Apus_Force()->getTableWidget(),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
+
 
     auto tableWidget = m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()->getTableWidget(SKA_VEHICLE_NUM::SKA2);
     if (tableWidget == nullptr) {
@@ -258,11 +288,29 @@ void CCU_Table::init_ccu_outputs_table()
     ui->verticalLayout_force_oa2_vh_riom_outputs_mvb2->addWidget(m_ccu_out->get_Oa_Vh_Riom_Outputs_Force()->mvb2()->getTableWidget(OA_VEHICLE_NUM::OA2));
     ui->verticalLayout_oa2_vh_riom_outside->addWidget(forceControl13);
 
+    //oa1_etcs
+    ui->verticalLayout_force_ccu_to_oa1_etcs->addWidget(m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA1));
+    ui->verticalLayout_force_ccu_to_oa1_etcs->addWidget(forceControl14);
+
+    //oa2_etcs
+    ui->verticalLayout_force_ccu_to_oa2_etcs->addWidget(m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA2));
+    ui->verticalLayout_force_ccu_to_oa2_etcs->addWidget(forceControl15);
+
+    //ccu_to_all_etcs
+    ui->verticalLayout_force_ccu_to_all_etcs->addWidget(m_ccu_out->get_Ccu_To_All_Etcs_Force()->getTableWidget());
+    ui->verticalLayout_force_ccu_to_all_etcs->addWidget(forceControl16);
+    //ccu_to_all_etcs
+    ui->verticalLayout_force_ccu_to_all_tcus->addWidget(m_ccu_out->get_Ccu_To_All_Tcus_Force()->getTableWidget());
+    ui->verticalLayout_force_ccu_to_all_tcus->addWidget(forceControl17);
+
+    ui->verticalLayout_force_ccu_to_all_apus->addWidget(m_ccu_out->get_Ccu_To_All_Apus_Force()->getTableWidget());
+    ui->verticalLayout_force_ccu_to_all_apus->addWidget(forceControl18);
 
     //ui->verticalLayout_force_ska1_vh_riom_outputs_mvb2->addWidget(m_ccu_out->get_Ska_Vh_Riom_Outputs_Force()->mvb2()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
     //BURADAN DEVAMMM
     //ui->verticalLayout_force_ska
     //CcuTableHandler::processCcuOutputTables(ui, m_ccu_out);
+
 
 }
 
@@ -303,6 +351,7 @@ void CCU_Table::onOnOffForceControlToggled() {
 
         // Perform actions for "OFF" state
         qDebug() << "Force Control OFF";
+
     }
 }
 
@@ -334,8 +383,10 @@ void CCU_Table::onForceCheckboxToggled(int state)
 
             //Diğer force checkboxlarını false yap
             if (checkbox != senderCheckbox && checkbox->isChecked()) {
+
                 checkbox->blockSignals(true);
-                checkbox->setChecked(false);
+                checkbox->setChecked(false); //FORCE CONFİG STRUCTUNDAKİ TÜM BİTLERİN SET EDİLMESİ BUNUN YÜZÜNDEN
+
                 checkbox->blockSignals(false);
             }
 
@@ -385,20 +436,39 @@ void CCU_Table::onForceCheckboxToggled(int state)
             else if(tableName == "ccu_to_all_bcus") {
                 frcConfig->bits.ccu_to_all_bcus = 1;
             }
+            else if(tableName == "oa_1_ccu_to_all_etcs") {
+                frcConfig->bits.ccu_to_oa1_etcs = 1;
+            }
+            else if(tableName == "oa_2_ccu_to_all_etcs") {
+                frcConfig->bits.ccu_to_oa2_etcs = 1;
+            }
+            else if(tableName == "ccu_to_all_etcs") {
+                frcConfig->bits.ccu_to_all_etcs = 1;
+            }
+            else if(tableName == "ccu_to_all_tcus") {
+                frcConfig->bits.ccu_to_all_tcus= 1;
+            }
+            else if(tableName == "ccu_to_all_apus") {
+                frcConfig->bits.ccu_to_all_apus= 1;
+            }
         } else {
 
             unlockAllCells(table);
 
             if(tableName == "ska_1_ccu_vh_riom_mvb1_d") {
+                qDebug() << "BURAYA HİÇ GİRMİYOR BENCE";
                 frcConfig->bits.ska1_vh_riom_outputs = 0;
             }
             else if(tableName == "ska_1_ccu_vh_riom_mvb2_dcu_hvac_fdu") {
+                qDebug() << "BURAYA HİÇ GİRMİYOR BENCE";
                 frcConfig->bits.ska1_vh_riom_outputs = 0;
             }
             else if(tableName == "ska_2_ccu_vh_riom_mvb1_d") {
+                qDebug() << "BURAYA HİÇ GİRMİYOR BENCE";
                 frcConfig->bits.ska2_vh_riom_outputs = 0;
             }
             else if(tableName == "ska_2_ccu_vh_riom_mvb2_dcu_hvac_fdu") {
+                qDebug() << "BURAYA HİÇ GİRMİYOR BENCE";
                 frcConfig->bits.ska2_vh_riom_outputs = 0;
             }
             else if(tableName == "ska_1_ccu_dd_riom_mvb1_d_outputs") {
@@ -424,6 +494,21 @@ void CCU_Table::onForceCheckboxToggled(int state)
             }
             else if(tableName == "ccu_to_all_bcus") {
                 frcConfig->bits.ccu_to_all_bcus = 0;
+            }
+            else if(tableName == "oa_1_ccu_to_all_etcs") {
+                frcConfig->bits.ccu_to_oa1_etcs = 0;
+            }
+            else if(tableName == "oa_2_ccu_to_all_etcs") {
+                frcConfig->bits.ccu_to_oa2_etcs = 0;
+            }
+            else if(tableName == "ccu_to_all_etcs") {
+                frcConfig->bits.ccu_to_all_etcs = 0;
+            }
+            else if(tableName == "ccu_to_all_tcus") {
+                frcConfig->bits.ccu_to_all_tcus= 0;
+            }
+            else if(tableName == "ccu_to_all_apus") {
+                frcConfig->bits.ccu_to_all_apus= 0;
             }
             //SKA_VEHICLE_NUM skaVehicle = utils::convertToSKAVehicleNum(vehicleNum); //BURADA TABLO TEKRAR SIFIR YAPILIP GÖNDERİLEBİLİR '^!^!^'!^
             //m_ccu_out->get_Ska_ccu_vh_riom_mvb1_d_force()->update_struct_with_map(skaVehicle);
@@ -541,6 +626,50 @@ void CCU_Table::onResetButtonClicked() {
         m_ccu_out->get_Oa_Vh_Riom_Outputs_Force()->mvb2()->update_struct_with_map(OA_VEHICLE_NUM::OA2);
         resetTableValues(Oa_Vh_Riom_Outputs);
     }
+    //oa1_etcs
+    else if(clickedButton == forceControl14->getResetButton()) {
+        qDebug() << "YOU PRESSED RESET DATA BUTTON OA1_ETCS_OUTPUTS";
+        auto* Oa_Etcs_Outputs = m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA1);
+        resetTableValues(Oa_Etcs_Outputs);
+        m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->update_struct_with_map(OA_VEHICLE_NUM::OA1);
+
+    }
+    //oa2_etcs
+    else if(clickedButton == forceControl15->getResetButton()) {
+
+        qDebug() << "YOU PRESSED RESET DATA BUTTON OA2_ETCS_OUTPUTS";
+        auto* Oa_Etcs_Outputs = m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA2);
+        resetTableValues(Oa_Etcs_Outputs);
+        m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->update_struct_with_map(OA_VEHICLE_NUM::OA2);
+
+
+    }
+    //ccu_to_all_etcs
+    else if(clickedButton == forceControl16->getResetButton()) {
+        qDebug() << "YOU PRESSED RESET DATA BUTTON CCU_TO_ALL_ETCS";
+        auto* Ccu_To_All_Etcs = m_ccu_out->get_Ccu_To_All_Etcs_Force()->getTableWidget();
+        resetTableValues(Ccu_To_All_Etcs);
+        m_ccu_out->get_Ccu_To_All_Etcs_Force()->update_struct_with_map();
+
+    }
+    //ccu_to_all_tcus
+    else if(clickedButton == forceControl17->getResetButton()) {
+        qDebug() << "YOU PRESSED RESET DATA BUTTON CCU_TO_ALL_TCUS";
+        auto* Ccu_To_All_Tcus = m_ccu_out->get_Ccu_To_All_Tcus_Force()->getTableWidget();
+        resetTableValues(Ccu_To_All_Tcus);
+        m_ccu_out->get_Ccu_To_All_Tcus_Force()->update_struct_with_map();
+
+    }
+    //ccu_to_all_apus
+    else if(clickedButton == forceControl18->getResetButton()) {
+        qDebug() << "YOU PRESSED RESET DATA BUTTON CCU_TO_ALL_APUS";
+        auto* Ccu_To_All_Apus = m_ccu_out->get_Ccu_To_All_Apus_Force()->getTableWidget();
+        resetTableValues(Ccu_To_All_Apus);
+        m_ccu_out->get_Ccu_To_All_Apus_Force()->update_struct_with_map();
+
+    }
+
+
 }
 
 
@@ -614,7 +743,7 @@ void CCU_Table::on_tableItemChanged(QTableWidgetItem *item) {
             for (QTableWidget* table : tables) {
                 if (table && table == item->tableWidget()) {
                     qDebug() << "Checked checkbox corresponds to table";
-                    if (item->text() == "1") {
+                    if (item->text() != "0") {
                         lockOtherCells(table); // Lock cells on the other tables
 
                         // Use enum conversion here
@@ -637,6 +766,7 @@ void CCU_Table::on_tableItemChanged(QTableWidgetItem *item) {
                             //Milad
                             m_ccu_out->get_Oa_Vh_Riom_Outputs_Force()->mvb1()->update_struct_with_map(oaVehicle);
                             m_ccu_out->get_Oa_Vh_Riom_Outputs_Force()->mvb2()->update_struct_with_map(oaVehicle);
+                            m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->update_struct_with_map(oaVehicle);
 
 
                             //m_ccu_out->get_Oa_Ccu_Vh_Riom_Mvb1_d_Outputs_Force()->update_struct_with_map(oaVehicle);
@@ -646,6 +776,9 @@ void CCU_Table::on_tableItemChanged(QTableWidgetItem *item) {
                         else { // SKA ARAÇ AYRIMI YOK VEHICLE_NUM::ALL
                             m_ccu_out->get_Ska_Ccu_Global_Out_Mvb1_Force()->update_struct_with_map();
                             m_ccu_out->get_Ccu_To_All_Bcus_Force()->update_struct_with_map();
+                            m_ccu_out->get_Ccu_To_All_Etcs_Force()->update_struct_with_map();
+                            m_ccu_out->get_Ccu_To_All_Tcus_Force()->update_struct_with_map();
+                            m_ccu_out->get_Ccu_To_All_Apus_Force()->update_struct_with_map();
                         }
 
                         // add more logic as needed for other vehicle types or further processing
@@ -718,8 +851,39 @@ void CCU_Table::initializeCheckboxTableMap() {
 
         }),
         VEHICLE_NUM::ALL);
+    //CCU_TO_OA1_ETCS
+    checkboxTableMap[forceControl14->getCheckBox()] = qMakePair(
+        QList<QTableWidget*>({
+            m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA1)
+        }),
+        VEHICLE_NUM::OA1);
+    //CCU_TO_OA2_ETCS
+    checkboxTableMap[forceControl15->getCheckBox()] = qMakePair(
+        QList<QTableWidget*>({
+            m_ccu_out->get_Ccu_To_Oax_Etcs_Force()->getTableWidget(OA_VEHICLE_NUM::OA2)
+        }),
+        VEHICLE_NUM::OA2);
+    //CCU_TO_ALL_ETCS
+    checkboxTableMap[forceControl16->getCheckBox()] = qMakePair(
+        QList<QTableWidget*>({
+            m_ccu_out->get_Ccu_To_All_Etcs_Force()->getTableWidget()
 
+        }),
+        VEHICLE_NUM::ALL);
+    //CCU_TO_ALL_TCUS
+    checkboxTableMap[forceControl17->getCheckBox()] = qMakePair(
+        QList<QTableWidget*>({
+            m_ccu_out->get_Ccu_To_All_Tcus_Force()->getTableWidget()
 
+        }),
+        VEHICLE_NUM::ALL);
+    //CCU_TO_ALL_APUS
+    checkboxTableMap[forceControl18->getCheckBox()] = qMakePair(
+        QList<QTableWidget*>({
+            m_ccu_out->get_Ccu_To_All_Apus_Force()->getTableWidget()
+
+        }),
+        VEHICLE_NUM::ALL);
 
     // Diğer checkbox ve tablo eşleştirmelerini buraya ekle //EKLENECEK
 }
@@ -747,8 +911,16 @@ void CCU_Table::setupSendDataConnections() {
     connect(forceControl11->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
     //oa2_vh_riom
     connect(forceControl13->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
-
-
+    //oa1_etcs
+    connect(forceControl14->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
+    //oa2_etcs
+    connect(forceControl15->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
+    //ccu_to_all_etcs
+    connect(forceControl16->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
+    //ccu_to_all_tcus
+    connect(forceControl17->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
+    //ccu_to_all_apus
+    connect(forceControl18->getSendButton(), &QPushButton::clicked, this, &CCU_Table::onSendButtonClicked);
 
     //FORCE RESET BUTON BAGLANTILARI
 
@@ -769,12 +941,19 @@ void CCU_Table::setupSendDataConnections() {
     connect(forceControl11->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
     //oa2_vh_riom
     connect(forceControl13->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
-
-
-
-
+    //oa1_etcs
+    connect(forceControl14->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
+    //oa2_etcs
+    connect(forceControl15->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
+    //ccu_to_all_etcs
+    connect(forceControl16->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
+    //ccu_to_all_tcus
+    connect(forceControl17->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
+    //ccu_to_all_apus
+    connect(forceControl18->getResetButton(), &QPushButton::clicked, this, &CCU_Table::onResetButtonClicked);
 
     // Diğer butonları da aynı şekilde bağla EKLENECEK
+
 }
 
 
@@ -857,6 +1036,53 @@ void CCU_Table::onSendButtonClicked()
         qDebug() << "Submodule DATA" << subModuleData;
         processAndSendDataForce(portId, subModuleData, "Oa2_Vh_Riom_Outputs");
     }
+    //oa1_etcs
+    else if(clickedButton == forceControl14->getSendButton()) {
+        qDebug() << "YOU PRESSED SEND DATA BUTTON OA1 ETCS";
+        auto* Oa_Ccu_To_Etcs = m_ccu_out->get_Ccu_To_Oax_Etcs_Force();
+        uint16_t portId = Oa_Ccu_To_Etcs->portId(OA_VEHICLE_NUM::OA1);
+        auto subModuleData = Oa_Ccu_To_Etcs->moduleData(OA_VEHICLE_NUM::OA1);
+        qDebug() << "Submodule DATA" << subModuleData;
+        processAndSendDataForce(portId, subModuleData, "Oa1_Ccu_To_Etcs_Outputs");
+    }
+    //oa2_etcs
+    else if(clickedButton == forceControl15->getSendButton()) {
+        qDebug() << "YOU PRESSED SEND DATA BUTTON OA2 ETCS";
+        auto* Oa_Ccu_To_Etcs = m_ccu_out->get_Ccu_To_Oax_Etcs_Force();
+        uint16_t portId = Oa_Ccu_To_Etcs->portId(OA_VEHICLE_NUM::OA2);
+        auto subModuleData = Oa_Ccu_To_Etcs->moduleData(OA_VEHICLE_NUM::OA2);
+        qDebug() << "Submodule DATA" << subModuleData;
+        processAndSendDataForce(portId, subModuleData, "Oa2_Ccu_To_Etcs_Outputs");
+    }
+    //ccu_to_all_etcs
+    else if (clickedButton == forceControl16->getSendButton()) {
+        qDebug() << "YOU PRESSED SEND DATA BUTTON FOR CCU TO ALL ETCS";
+        auto* Ccu_To_All_Etcs = m_ccu_out->get_Ccu_To_All_Etcs_Force();
+        uint16_t portId = Ccu_To_All_Etcs->portId();
+        auto subModuleData = Ccu_To_All_Etcs->moduleData();
+        qDebug() << "Submodule DATA" << subModuleData;
+        processAndSendDataForce(portId, subModuleData, "Ccu_To_All_Etcs");
+    }
+    //ccu_to_all_tcus
+    else if (clickedButton == forceControl17->getSendButton()) {
+        qDebug() << "YOU PRESSED SEND DATA BUTTON CCU TO ALL TCUS";
+        auto* Ccu_To_All_Tcus = m_ccu_out->get_Ccu_To_All_Tcus_Force();
+        uint16_t portId = Ccu_To_All_Tcus->portId();
+        auto subModuleData = Ccu_To_All_Tcus->moduleData();
+        qDebug() << "Submodule DATA" << subModuleData;
+        processAndSendDataForce(portId, subModuleData, "Ccu_To_All_Tcus");
+    }
+    //ccu_to_all_apus
+    else if (clickedButton == forceControl18->getSendButton()) {
+        qDebug() << "YOU PRESSED SEND DATA BUTTON CCU TO ALL APUS";
+        auto* Ccu_To_All_Apus = m_ccu_out->get_Ccu_To_All_Apus_Force();
+        uint16_t portId = Ccu_To_All_Apus->portId();
+        auto subModuleData = Ccu_To_All_Apus->moduleData();
+        qDebug() << "Submodule DATA" << subModuleData;
+        processAndSendDataForce(portId, subModuleData, "Ccu_To_All_Apus");
+    }
+
+
 
     //EKLENECEK
 
@@ -937,11 +1163,16 @@ void CCU_Table::stopCcuTableTimer()  //constexpr uint16_t portId = mvb_sink_addr
 
 void CCU_Table::receiveUdpMessage(QByteArray recv_data)
 {
+
     CcuTableHandler::handleIncomingCcuOutSystemUdpPacketes(m_ccu_out, recv_data);
+
 }
 
 void CCU_Table::receiveUdpInMessage(QByteArray recv_data)
 {
+
+
+    //emit sendDataToDebugMonitor(recv_data);
     CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(ccu_in, recv_data);
 }
 

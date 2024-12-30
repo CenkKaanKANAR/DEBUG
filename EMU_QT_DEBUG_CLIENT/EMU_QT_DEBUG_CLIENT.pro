@@ -1,6 +1,7 @@
 TEMPLATE = app
 TARGET = EMU_QT_DEBUG_CLIENT
 QT       += core gui  network  serialbus
+QT += svg
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -48,6 +49,7 @@ SOURCES += \
     ccu_inputs/ska_tcu.cpp \
     ccu_inputs/ska_vh_riom.cpp \
     ccu_outputs.cpp \
+    ccu_outputs/ccu_to_all_apus.cpp \
     ccu_outputs/ccu_to_all_bcus.cpp \
     ccu_outputs/ccu_to_all_etcs.cpp \
     ccu_outputs/ccu_to_all_jrus_1.cpp \
@@ -55,6 +57,7 @@ SOURCES += \
     ccu_outputs/ccu_to_all_jrus_3.cpp \
     ccu_outputs/ccu_to_all_jrus_4.cpp \
     ccu_outputs/ccu_to_all_jrus_5.cpp \
+    ccu_outputs/ccu_to_all_tcus.cpp \
     ccu_outputs/ccu_to_oax_etcs.cpp \
     ccu_outputs/oa_ccu_vh_riom_mvb1_d_outputs.cpp \
     ccu_outputs/oa_ccu_vh_riom_mvb2_dcu.cpp \
@@ -70,13 +73,17 @@ SOURCES += \
     ccu_outputs/ska_vh_riom_outputs.cpp \
     ccu_table.cpp \
     ccutablehandler.cpp \
+    debugmonitorstates.cpp \
     forcecontrol.cpp \
     frcconfig.cpp \
     main.cpp \
     mainwindow.cpp \
     messageconfig.cpp \
     qledlabel.cpp \
+    sysfuncstate.cpp \
+    systemfunctionmanager.cpp \
     udphandler.cpp \
+    udpmessagesdialog.cpp \
     utils.cpp
 
 HEADERS += \
@@ -114,6 +121,7 @@ HEADERS += \
     ccu_inputs/ska_tcu.h \
     ccu_inputs/ska_vh_riom.h \
     ccu_outputs.h \
+    ccu_outputs/ccu_to_all_apus.h \
     ccu_outputs/ccu_to_all_bcus.h \
     ccu_outputs/ccu_to_all_etcs.h \
     ccu_outputs/ccu_to_all_jrus_1.h \
@@ -121,6 +129,7 @@ HEADERS += \
     ccu_outputs/ccu_to_all_jrus_3.h \
     ccu_outputs/ccu_to_all_jrus_4.h \
     ccu_outputs/ccu_to_all_jrus_5.h \
+    ccu_outputs/ccu_to_all_tcus.h \
     ccu_outputs/ccu_to_oax_etcs.h \
     ccu_outputs/oa_ccu_vh_riom_mvb1_d_outputs.h \
     ccu_outputs/oa_ccu_vh_riom_mvb2_dcu.h \
@@ -136,6 +145,7 @@ HEADERS += \
     ccu_outputs/ska_vh_riom_outputs.h \
     ccu_table.h \
     ccutablehandler.h \
+    debugmonitorstates.h \
     emulator_common.h \
     forcecontrol.h \
     frcconfig.h \
@@ -144,7 +154,10 @@ HEADERS += \
     mvb_ports.h \
     qledlabel.h \
     shm_data_gaziray.h \
+    sysfuncstate.h \
+    systemfunctionmanager.h \
     udphandler.h \
+    udpmessagesdialog.h \
     utils.h
 
 FORMS += \
@@ -172,6 +185,7 @@ RESOURCES += \
     images.qrc
 
 DISTFILES += \
+    icons/chevron-down-solid.svg \
     icons/file_5251741.png \
     icons/gaziray.png \
     icons/icons8-input-96.png

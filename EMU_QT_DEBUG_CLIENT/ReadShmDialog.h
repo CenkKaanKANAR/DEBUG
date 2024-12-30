@@ -13,6 +13,9 @@
 #include <QFileDialog>
 #include <QWidget>
 #include "ccu_outputs.h"
+//#include "systemfunctionmanager.h"
+//#include "sysfuncstate.h"
+#include "debugmonitorstates.h"
 class CCU_Table;
 namespace Ui {
 class ReadShmDialog;
@@ -29,6 +32,7 @@ public:
 
     void receive_udp_message(const QByteArray& recv_data);
     void init_ccu_out_table();
+    void init_system_function_states();
 
 signals:
     void send_udp_message(QByteArray data);
@@ -38,8 +42,8 @@ private:
     Ui::ReadShmDialog *ui;
     CCU_Table * m_ccu_table = nullptr;
     OUT::CCU_Outputs* m_ccu_out;
-
-
+    //SystemFunctionManager *systemFunctionManager;
+    DebugMonitorStates *debugMonitorStates;
 };
 
 #endif // READSHMDIALOG_H

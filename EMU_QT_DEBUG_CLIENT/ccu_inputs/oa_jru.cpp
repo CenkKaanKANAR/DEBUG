@@ -90,7 +90,7 @@ void Oa_Jru::update_table(OA_VEHICLE_NUM oa_x_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[oa_num]){
 
@@ -431,6 +431,6 @@ void Oa_Jru::init_oa_x_mvb1_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num]->columnCount() ;
 
 }

@@ -17,5 +17,7 @@
         <file>icons/gaziray.png</file>
         <file>icons/icons8-input-96.png</file>
         <file>icons/icons8-check-all-200.png</file>
+        <file>icons/chevron-down-solid.svg</file>
+        <file>icons/arrow-down.png</file>
     </qresource>
 </RCC>

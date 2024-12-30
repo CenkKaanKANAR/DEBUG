@@ -17,9 +17,9 @@ struct emulator_config
         uint8_t bytes[8];
         struct
         {
-            uint8_t emul_connected :1;  //byte0
-            uint8_t emul_in_config_mode :1;
-            uint8_t emul_ready :1;/*config completed*/
+            uint8_t dbg_connected :1;  //byte0
+            uint8_t dbg_in_config_mode :1;
+            uint8_t dbg_ready :1;/*config completed*/
             uint8_t reserved3 :1;/*config completed*/
             uint8_t reserved4 :1;/*config completed*/
             uint8_t reserved5 :1;/*config completed*/

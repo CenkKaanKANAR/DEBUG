@@ -36,9 +36,9 @@ MessageConfig::~MessageConfig()
 void MessageConfig::initConfiguration()
 {
     m_message_config_names= {
-                              "emul_connected",
-                              "emul_in_config_mode",
-                              "emul_ready",
+                              "dbg_connected",
+                              "dbg_in_config_mode",
+                              "dbg_ready",
                               "reserved3",
                               "reserved4",
                               "reserved5",
@@ -101,11 +101,11 @@ void MessageConfig::initConfiguration()
 void MessageConfig::updateEmulatorConfigStruct()
 {
     qDebug() << "updateEmulatorConfigStruct() İÇİ" ;
-    m_emulator_config.bits.emul_connected       = checkBoxMap["emul_connected"]->isChecked() ? 1 : 0;
+    m_emulator_config.bits.dbg_connected       = checkBoxMap["dbg_connected"]->isChecked() ? 1 : 0;
     qDebug() << "updateEmulatorConfigStruct() VARAN 1" ;
-    m_emulator_config.bits.emul_in_config_mode  = checkBoxMap["emul_in_config_mode"]->isChecked() ? 1 : 0;
+    m_emulator_config.bits.dbg_in_config_mode  = checkBoxMap["dbg_in_config_mode"]->isChecked() ? 1 : 0;
     qDebug() << "updateEmulatorConfigStruct() VARAN 31" ;
-    m_emulator_config.bits.emul_ready           = checkBoxMap["emul_ready"]->isChecked() ? 1 : 0;
+    m_emulator_config.bits.dbg_ready           = checkBoxMap["dbg_ready"]->isChecked() ? 1 : 0;
     qDebug() << "updateEmulatorConfigStruct() VARAN 32" ;
     m_emulator_config.bits.reserved3            = checkBoxMap["reserved3"]->isChecked() ? 1 : 0;
     qDebug() << "updateEmulatorConfigStruct() VARAN 2" ;
@@ -175,7 +175,7 @@ void MessageConfig::updateEmulatorConfigStruct()
  * parameter name stored in `m_message_config_names`. These checkboxes are added to various layouts based on
  * their index. The checkboxes are connected to the `updateEmulatorConfigStruct` slot, allowing for dynamic
  * updates to the emulator configuration structure when the checkboxes are clicked. Additionally, a debug
- * message is printed when the "emul_connected" checkbox is clicked.
+ * message is printed when the "dbg_connected" checkbox is clicked.
  */
 void MessageConfig::initMessageConfigBox()
 {
@@ -242,8 +242,8 @@ void MessageConfig::initMessageConfigBox()
 
     }
 
-    connect(checkBoxMap["emul_connected"],  &QCheckBox::clicked, this, [=](){
-        qDebug() <<"emul_connected:"<< checkBoxMap["emul_connected"]->isChecked();
+    connect(checkBoxMap["dbg_connected"],  &QCheckBox::clicked, this, [=](){
+        qDebug() <<"dbg_connected:"<< checkBoxMap["dbg_connected"]->isChecked();
     });
     /*
     for (auto i =checkBoxMap.cbegin(), end = checkBoxMap.cend(); i != end; ++i)

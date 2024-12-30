@@ -83,18 +83,15 @@ void OA_DCU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
 
-    //qDebug() << "Gelen input veri tipi : " << typeof(input);
 
 
     int oa_num = static_cast<int>(oa_x_num);
     qDebug() << "sizeof(m_oa_x_dcu[oa_num] :  " << sizeof(m_oa_x_dcu[oa_num]);
-    qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU1]->columnCount() ;
+
     if (input.size() == sizeof(m_oa_x_dcu[oa_num])) {
-        //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
-        //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
+
 
         qDebug() << "SIZE of DCU1 :  " << sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1.bytes);
-        qDebug() << "SIZE of m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1 :  " << sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1);
         qDebug() << "SIZE of DCU2 :  " << sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb3_dcu2.bytes);
         qDebug() << "SIZE of DCU3 :  " << sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bytes);
         qDebug() << "SIZE of DCU4 :  " << sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bytes);
@@ -106,27 +103,31 @@ void OA_DCU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
         QByteArray data =  input.mid(0, 32);
         qDebug() << "32 Bytelık data :  " << data;
         update_dcu1_map(oa_x_num);
+        qDebug() << "update_dcu1_map altı :  " ;
         //set_struct_mvb1(oa_x_num);
         update_table(oa_x_num,OA_DCU::DCU1);
-
-        /* İkinci alanı kopyala, input.constData() + sizeof(etcs_ccu_mvb1) kadar ilerleyerek
+        qDebug() << "update_dcu1 table  altı :  " ;
+        //İkinci alanı kopyala, input.constData() + sizeof(etcs_ccu_mvb1) kadar ilerleyerek
         memcpy(&m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb3_dcu2.bytes, input.constData() + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1.bytes) , sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb3_dcu2.bytes));
         update_dcu2_map(oa_x_num);
+         qDebug() << "update_dcu2_map altı :  " ;
         //set_struct_mvb2(oa_x_num);
-        update_table(oa_x_num,OA_DCU::DCU2);*/
-
-        /*Üçüncü alanı kopyala
-        memcpy(&m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bytes, input.constData() + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1.bytes) + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb3_dcu2.bytes) + 16 , sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bytes));
+        update_table(oa_x_num,OA_DCU::DCU2);
+         qDebug() << "update_dcu2 table altı :  " ;
+        //Üçüncü alanı kopyala
+        memcpy(&m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bytes, input.constData() + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1.bytes) + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb3_dcu2.bytes) , sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bytes));
         update_dcu3_map(oa_x_num);
+        qDebug() << "update_dcu3_map altı :  " ;
         //set_struct_mvb2(oa_x_num);
-        update_table(oa_x_num,OA_DCU::DCU3);*/
-
-        /*Dördüncü alanı kopyala
+        update_table(oa_x_num,OA_DCU::DCU3);
+         qDebug() << "update_dcu3 table altı :  " ;
+        //Dördüncü alanı kopyala
         memcpy(&m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bytes, input.constData() + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb2_dcu1.bytes) + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb3_dcu2.bytes) + sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bytes), sizeof(m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bytes));
         update_dcu4_map(oa_x_num);
+        qDebug() << "update_dcu3_map altı :  " ;
         //set_struct_mvb2(oa_x_num);
-        update_table(oa_x_num,OA_DCU::DCU4);*/
-
+        update_table(oa_x_num,OA_DCU::DCU4);
+        qDebug() << "update_dcu3 table altı :  " ;
 
         //update maps
 
@@ -149,7 +150,7 @@ void OA_DCU::update_table(OA_VEHICLE_NUM oa_x_num, DCU_NUM dcu_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU1]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU1]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[oa_num][dcu_num]){
 
@@ -671,6 +672,7 @@ m_inputs_map[oa_num][DCU2].at("reserved_31") =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 void OA_DCU::update_dcu3_map(OA_VEHICLE_NUM oa_x_num)
 {
   int oa_num = static_cast<int>(oa_x_num);
+qDebug() << "ceko 1 " ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_IFESmartAssistDCU")               =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_IFESmartAssistDCU                ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_SuppEmergOp")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_SuppEmergOp                      ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DoorAntiDrag")                    =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DoorAntiDrag                     ;
@@ -687,6 +689,7 @@ m_inputs_map[oa_num][DCU3].at("L3_DCU_EADOp")                           =m_oa_x_
 m_inputs_map[oa_num][DCU3].at("L3_DCU_PBOpenDLRightOutsideOp")          =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_PBOpenDLRightOutsideOp           ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_PBOpenDLRightInsideOp")           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_PBOpenDLRightInsideOp            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_PBPRMPortalInsideOp")             =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_PBPRMPortalInsideOp              ;
+qDebug() << "ceko 2 " ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_LightBarrierPortalInsideInterr")  =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_LightBarrierPortalInsideInterr   ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_OutputTIL1")                      =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_OutputTIL1                       ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC001")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC001                            ;
@@ -704,6 +707,7 @@ m_inputs_map[oa_num][DCU3].at("L3_DCU_DC014")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC015")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC015                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC016")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC016                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC017")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC017                            ;
+qDebug() << "ceko 3 " ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC018")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC018                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC019")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC019                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC020")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC020                            ;
@@ -729,6 +733,7 @@ m_inputs_map[oa_num][DCU3].at("L3_DCU_DC053")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC065")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC065                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC066")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC066                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC067")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC067                            ;
+qDebug() << "ceko 4 " ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC068")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC068                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC069")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC069                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC090")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC090                            ;
@@ -751,79 +756,81 @@ m_inputs_map[oa_num][DCU3].at("bit76")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dc
 m_inputs_map[oa_num][DCU3].at("bit77")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit77                                           ;
 m_inputs_map[oa_num][DCU3].at("bit78")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit78                                           ;
 m_inputs_map[oa_num][DCU3].at("bit79")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit79                                           ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_IFESmartAssistDCU")               =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_IFESmartAssistDCU                ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_SuppEmergOp")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_SuppEmergOp                      ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorAntiDrag")                    =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorAntiDrag                     ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorObstDet")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorObstDet                      ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorMoveMonit")                   =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorMoveMonit                    ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_EntrRel")                         =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_EntrRel                          ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorClosed")                      =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorClosed                       ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorClosedAndLocked")             =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorClosedAndLocked              ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorFullyOpen")                   =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorFullyOpen                    ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorOutOfService")                =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorOutOfService                 ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DoorUnlEmergOp")                  =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorUnlEmergOp                   ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_EEDOp")                           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_EEDOp                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_EADOp")                           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_EADOp                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_PBOpenDLRightOutsideOp")          =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_PBOpenDLRightOutsideOp           ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_PBOpenDLRightInsideOp")           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_PBOpenDLRightInsideOp            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_PBPRMPortalInsideOp")             =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_PBPRMPortalInsideOp              ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_LightBarrierPortalInsideInterr")  =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_LightBarrierPortalInsideInterr   ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_OutputTIL1")                      =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_OutputTIL1                       ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC001")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC001                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC002")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC002                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC003")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC003                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC004")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC004                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC005")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC005                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC006")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC006                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC007")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC007                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC008")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC008                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC009")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC009                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC010")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC010                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC013")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC013                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC014")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC014                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC015")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC015                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC016")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC016                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC017")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC017                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC018")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC018                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC019")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC019                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC020")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC020                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC021")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC021                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC022")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC022                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC027")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC027                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC028")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC028                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC029")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC029                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC030")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC030                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC031")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC031                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC033")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC033                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC037")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC037                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC042")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC042                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC043")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC043                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC044")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC044                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC046")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC046                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC048")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC048                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC049")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC049                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC050")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC050                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC051")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC051                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC052")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC052                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC053")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC053                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC065")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC065                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC066")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC066                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC067")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC067                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC068")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC068                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC069")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC069                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC090")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC090                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC091")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC091                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC098")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC098                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC099")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC099                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC101")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC101                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC102")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC102                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC103")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC103                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC105")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC105                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC106")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC106                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC111")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC111                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DC116")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC116                            ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DiagPrioA")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DiagPrioA                        ;
-m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorL4_DiagPrioB")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DiagPrioB                        ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_IFESmartAssistDCU")               =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_IFESmartAssistDCU                ;
+qDebug() << "ceko 5 " ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_SuppEmergOp")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_SuppEmergOp                      ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorAntiDrag")                    =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorAntiDrag                     ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorObstDet")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorObstDet                      ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorMoveMonit")                   =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorMoveMonit                    ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_EntrRel")                         =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_EntrRel                          ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorClosed")                      =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorClosed                       ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorClosedAndLocked")             =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorClosedAndLocked              ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorFullyOpen")                   =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorFullyOpen                    ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorOutOfService")                =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorOutOfService                 ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorUnlEmergOp")                  =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorUnlEmergOp                   ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_EEDOp")                           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_EEDOp                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_EADOp")                           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_EADOp                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_PBOpenDLRightOutsideOp")          =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_PBOpenDLRightOutsideOp           ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_PBOpenDLRightInsideOp")           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_PBOpenDLRightInsideOp            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_PBPRMPortalInsideOp")             =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_PBPRMPortalInsideOp              ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_LightBarrierPortalInsideInterr")  =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_LightBarrierPortalInsideInterr   ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_OutputTIL1")                      =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_OutputTIL1                       ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC001")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC001                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC002")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC002                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC003")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC003                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC004")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC004                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC005")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC005                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC006")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC006                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC007")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC007                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC008")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC008                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC009")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC009                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC010")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC010                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC013")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC013                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC014")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC014                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC015")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC015                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC016")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC016                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC017")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC017                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC018")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC018                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC019")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC019                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC020")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC020                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC021")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC021                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC022")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC022                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC027")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC027                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC028")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC028                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC029")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC029                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC030")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC030                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC031")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC031                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC033")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC033                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC037")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC037                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC042")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC042                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC043")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC043                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC044")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC044                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC046")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC046                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC048")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC048                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC049")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC049                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC050")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC050                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC051")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC051                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC052")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC052                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC053")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC053                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC065")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC065                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC066")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC066                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC067")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC067                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC068")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC068                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC069")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC069                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC090")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC090                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC091")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC091                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC098")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC098                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC099")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC099                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC101")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC101                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC102")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC102                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC103")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC103                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC105")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC105                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC106")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC106                            ;
+qDebug() << "ceko 6 " ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC111")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC111                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DC116")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC116                            ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DiagPrioA")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DiagPrioA                        ;
+m_inputs_map[oa_num][DCU3].at("L4_DCU_DiagPrioB")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DiagPrioB                        ;
 m_inputs_map[oa_num][DCU3].at("bit153")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit153              ;
 m_inputs_map[oa_num][DCU3].at("bit154")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit154                                          ;
 m_inputs_map[oa_num][DCU3].at("bit155")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit155                                          ;
@@ -843,14 +850,15 @@ m_inputs_map[oa_num][DCU3].at("reserved_28")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_m
 m_inputs_map[oa_num][DCU3].at("reserved_29")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.reserved_29                                     ;
 m_inputs_map[oa_num][DCU3].at("reserved_30")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.reserved_30                                     ;
 m_inputs_map[oa_num][DCU3].at("reserved_31")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.reserved_31                                     ;
-
+qDebug() << "ceko 7 " ;
 }
 
 void OA_DCU::update_dcu4_map(OA_VEHICLE_NUM oa_x_num)
 {
 
 int oa_num = static_cast<int>(oa_x_num);
-m_inputs_map[oa_num][DCU4].at("Door_name_Byte1")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.Door_name_Byte1             ;
+m_inputs_map[oa_num][DCU4].at("Door_number")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.Door_number             ;
+m_inputs_map[oa_num][DCU4].at("reserved1")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.reserved1            ;
 //m_inputs_map[oa_num][DCU4].at("Door_name_Byte2")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.Door_name_Byte2             ;
 m_inputs_map[oa_num][DCU4].at("DCU_CycleCounter_Byte_1")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.DCU_CycleCounter_Byte_1 ;
 m_inputs_map[oa_num][DCU4].at("DCU_CycleCounter_Byte_2")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.DCU_CycleCounter_Byte_2 ;
@@ -1567,7 +1575,8 @@ void OA_DCU::set_struct_dcu4(OA_VEHICLE_NUM oa_x_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
 
-m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.Door_name_Byte1             =m_inputs_map[oa_num][DCU4].at("Door_name_Byte1");
+m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.Door_number            =m_inputs_map[oa_num][DCU4].at("Door_number");
+m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.reserved1           =m_inputs_map[oa_num][DCU4].at("reserved1");
 m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.DCU_CycleCounter_Byte_1    =m_inputs_map[oa_num][DCU4].at("DCU_CycleCounter_Byte_1");
 m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.DCU_CycleCounter_Byte_2    =m_inputs_map[oa_num][DCU4].at("DCU_CycleCounter_Byte_2");
 m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb5_dcu4.bits.DCU_CycleCounter_Byte_3    =m_inputs_map[oa_num][DCU4].at("DCU_CycleCounter_Byte_3");
@@ -1884,7 +1893,7 @@ void OA_DCU::init_oa_x_dcu1_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][DCU1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU1]->columnCount() ;
 }
 
 void OA_DCU::init_oa_x_dcu2_table(OA_VEHICLE_NUM vehicle_type)
@@ -2187,7 +2196,7 @@ void OA_DCU::init_oa_x_dcu2_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][DCU2]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU2]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU2]->columnCount() ;
 }
 
 void OA_DCU::init_oa_x_dcu3_table(OA_VEHICLE_NUM vehicle_type)
@@ -2419,7 +2428,7 @@ void OA_DCU::init_oa_x_dcu3_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][DCU3]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU3]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU3]->columnCount() ;
 }
 
 
@@ -2427,7 +2436,8 @@ void OA_DCU::init_oa_x_dcu4_table(OA_VEHICLE_NUM vehicle_type)
 {
     int oa_num = static_cast<int>(vehicle_type);
     m_inputs_map[oa_num][DCU4] = {
-        {"Door_name_Byte1", 0},
+        {"Door_number", 0},
+        {"reserved1", 0},
         {"DCU_CycleCounter_Byte_1", 0},
         {"DCU_CycleCounter_Byte_2", 0},
         {"DCU_CycleCounter_Byte_3", 0},
@@ -2494,7 +2504,7 @@ void OA_DCU::init_oa_x_dcu4_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][DCU4]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU4]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][DCU4]->columnCount() ;
 }
 
 

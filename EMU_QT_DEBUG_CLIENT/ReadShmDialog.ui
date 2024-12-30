@@ -47,7 +47,7 @@
               <string notr="true"/>
              </property>
              <property name="currentIndex">
-              <number>10</number>
+              <number>13</number>
              </property>
              <widget class="QWidget" name="tab_1">
               <attribute name="title">
@@ -317,6 +317,26 @@
                </item>
               </layout>
              </widget>
+             <widget class="QWidget" name="tab_21">
+              <attribute name="title">
+               <string>ccu_to_all_tcus</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_33">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_tcus"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_22">
+              <attribute name="title">
+               <string>ccu_to_all_apus</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_34">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_apus"/>
+               </item>
+              </layout>
+             </widget>
              <widget class="QWidget" name="tab_27">
               <attribute name="title">
                <string>ccu_to_all_jrus_1</string>
@@ -409,29 +429,11 @@
        </widget>
        <widget class="QWidget" name="tab_20">
         <attribute name="title">
-         <string>Inputs</string>
+         <string>System States</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QTabWidget" name="tabWidget_8">
-             <property name="currentIndex">
-              <number>0</number>
-             </property>
-             <widget class="QWidget" name="tab_21">
-              <attribute name="title">
-               <string>Tab 1</string>
-              </attribute>
-             </widget>
-             <widget class="QWidget" name="tab_22">
-              <attribute name="title">
-               <string>Tab 2</string>
-              </attribute>
-             </widget>
-            </widget>
-           </item>
-          </layout>
+          <layout class="QVBoxLayout" name="system_states_verticalLayout"/>
          </item>
         </layout>
        </widget>

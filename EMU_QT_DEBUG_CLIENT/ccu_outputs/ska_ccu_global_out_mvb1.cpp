@@ -72,6 +72,7 @@ void Ska_Ccu_Global_Out_Mvb1::init_table()
         //m_tableWidget->item(row, 1)->setText(QString(pair.second));
         ++row;
     }
+    m_tableWidget->resizeColumnsToContents();
 }
 
 

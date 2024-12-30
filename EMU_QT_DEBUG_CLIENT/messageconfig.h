@@ -36,15 +36,15 @@ public:
     emulator_config getMessageConfigStruct();
 
     bool isEmulConnected() const {
-        return m_emulator_config.bits.emul_connected;
+        return m_emulator_config.bits.dbg_connected;
     }
 
     bool isEmulInConfigMode() const {
-        return m_emulator_config.bits.emul_in_config_mode;
+        return m_emulator_config.bits.dbg_in_config_mode;
     }
 
     bool isEmulReady() const {
-        return m_emulator_config.bits.emul_ready;
+        return m_emulator_config.bits.dbg_ready;
     }
 
 

@@ -95,7 +95,7 @@ public slots:
 signals:
     void sendCommSystemPackageData(QByteArray comm_module_data);
     void backtoMainMenuSignal();
-
+    void dataReady();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -120,7 +120,6 @@ private:
     bool sendStatusActivated = false;
     QTimer * m_timer = nullptr;
     SwitchButton * m_ldr_switch = nullptr;
-
 
     QPushButton *maintenanceIDButton;
     QPushButton *developerIDButton;
@@ -170,11 +169,24 @@ private:
     //Force oa2_vh_riom_outputs
     ForceControl *forceControl13;
 
+    //Force oa1_etcs
+    ForceControl *forceControl14;
+    //Force oa2_etcs
+    ForceControl *forceControl15;
+    //Force all_etcs
+    ForceControl *forceControl16;
+    //ccu_to_all_tcus
+    ForceControl *forceControl17;
+    //ccu_to_all_apus
+    ForceControl *forceControl18;
+
+
     // Iterate over all ForceControl instances to uncheck other checkboxes
     QMap<QCheckBox*, QPair<QList<QTableWidget*>, VEHICLE_NUM>> checkboxTableMap;
     //QMap<QCheckBox*, QPair<QTableWidget*, VEHICLE_NUM>> checkboxTableMap;
 
     FrcConfig *frcConfig;
+
 };
 
 #endif // CCU_TABLE_H

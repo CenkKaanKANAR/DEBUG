@@ -98,7 +98,7 @@ void Ska_Bcu::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &sk
 
     int ska_num = static_cast<int>(ska_x_num);
 
-    qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
+    //qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
     if (input.size() == sizeof(m_ska_x_bcu[ska_num])) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
         //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
@@ -212,9 +212,9 @@ void Ska_Bcu::update_mvb1_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("S_BpAP")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_BpAP;
     m_inputs_map[ska_num][MVB1].at("S_Sanding_Heating_Release")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_Sanding_Heating_Release;
     m_inputs_map[ska_num][MVB1].at("S_Sanding_Active")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_Sanding_Active;
+    m_inputs_map[ska_num][MVB1].at("S_WSPTest_OK")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_WSPTest_OK;
     m_inputs_map[ska_num][MVB1].at("bit246")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit246;
     m_inputs_map[ska_num][MVB1].at("bit247")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit247;
-    m_inputs_map[ska_num][MVB1].at("bit248")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit248;
     m_inputs_map[ska_num][MVB1].at("reserved31")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31;
 
 
@@ -230,24 +230,24 @@ void Ska_Bcu::update_mvb2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB2].at("DIA_BOARD_MB03_07")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARD_MB03_07;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARD_EB01_08")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARD_EB01_08;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARD_EB02_09")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARD_EB02_09;
+    m_inputs_map[ska_num][MVB2].at("bit22")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit22;
     m_inputs_map[ska_num][MVB2].at("bit23")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit23;
-    m_inputs_map[ska_num][MVB2].at("bit24")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit24;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_MB04_04")                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_MB04_04;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_MB03_06")                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_MB03_06;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_MB03_07")                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_MB03_07;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_EB01_08")                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_EB01_08;
     m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_EB02_09")                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_EB02_09;
+    m_inputs_map[ska_num][MVB2].at("bit29")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit29;
     m_inputs_map[ska_num][MVB2].at("bit30")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit30;
     m_inputs_map[ska_num][MVB2].at("bit31")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit31;
-    m_inputs_map[ska_num][MVB2].at("bit32")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit32;
     m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_CB09_02")                   = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_CB09_02;
     m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_MB04_03")                   = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_MB04_03;
     m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_MB03_06")                   = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_MB03_06;
     m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_MB03_07")                   = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_MB03_07;
     m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_EB01_08")                   = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_EB01_08;
     m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_EB02_09")                   = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_EB02_09;
+    m_inputs_map[ska_num][MVB2].at("bit38")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit38;
     m_inputs_map[ska_num][MVB2].at("bit39")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit39;
-    m_inputs_map[ska_num][MVB2].at("bit40")                                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit40;
     m_inputs_map[ska_num][MVB2].at("DIA_PSENSOR_C")                           = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_PSENSOR_C;
     m_inputs_map[ska_num][MVB2].at("DIA_PSENSOR_BP")                          = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_PSENSOR_BP;
     m_inputs_map[ska_num][MVB2].at("DIA_PSENSOR1_PB")                        = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_PSENSOR1_PB;
@@ -263,7 +263,7 @@ void Ska_Bcu::update_mvb2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB2].at("DIA_REL_WSP_R_VLT5KMHDOOR")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_REL_WSP_R_VLT5KMHDOOR;
     m_inputs_map[ska_num][MVB2].at("DIA_REL_WSP_R_VGT5KMHDOOR")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_REL_WSP_R_VGT5KMHDOOR;
     m_inputs_map[ska_num][MVB2].at("DIA_REL_WSP_R_VGT10KMHDOOR")             = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_REL_WSP_R_VGT10KMHDOOR;
-    m_inputs_map[ska_num][MVB2].at("bit56")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit56;
+    m_inputs_map[ska_num][MVB2].at("bit55")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit55;
     m_inputs_map[ska_num][MVB2].at("DIA_WSP_FSI_AXLE1")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_WSP_FSI_AXLE1;
     m_inputs_map[ska_num][MVB2].at("DIA_WSP_FSI_AXLE2")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_WSP_FSI_AXLE2;
     m_inputs_map[ska_num][MVB2].at("DIA_WSP_FSI_AXLE3")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_WSP_FSI_AXLE3;
@@ -294,16 +294,16 @@ void Ska_Bcu::update_mvb2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB2].at("DIA_CAR_CONFIGURATION")                  = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAR_CONFIGURATION;
     m_inputs_map[ska_num][MVB2].at("DIA_EDACTUAL_Bo1_FAILURE")               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_EDACTUAL_Bo1_FAILURE;
     m_inputs_map[ska_num][MVB2].at("DIA_EDACTUAL_Bo2_FAILURE")               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_EDACTUAL_Bo2_FAILURE;
+    m_inputs_map[ska_num][MVB2].at("bit86")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit86;
     m_inputs_map[ska_num][MVB2].at("bit87")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit87;
-    m_inputs_map[ska_num][MVB2].at("bit88")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit88;
     m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_DIRECTION_S1")               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_DIRECTION_S1;
     m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_DIRECTION_S2")               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_DIRECTION_S2;
     m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_DRYING")                     = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_DRYING;
     m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_BLOWOUT")                    = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_BLOWOUT;
     m_inputs_map[ska_num][MVB2].at("DIA_SANDING_DISTURBED")                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_SANDING_DISTURBED;
+    m_inputs_map[ska_num][MVB2].at("bit93")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit93;
     m_inputs_map[ska_num][MVB2].at("bit94")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit94;
     m_inputs_map[ska_num][MVB2].at("bit95")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit95;
-    m_inputs_map[ska_num][MVB2].at("bit96")                                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit96;
     m_inputs_map[ska_num][MVB2].at("DIA_DCL_INCPRESS")                      = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_INCPRESS;
     m_inputs_map[ska_num][MVB2].at("DIA_DCL_DECPRESS")                      = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_DECPRESS;
     m_inputs_map[ska_num][MVB2].at("DIA_DCL_CONFIG")                        = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_CONFIG;
@@ -311,7 +311,7 @@ void Ska_Bcu::update_mvb2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB2].at("DIA_DCL_OFFSET")                        = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_OFFSET;
     m_inputs_map[ska_num][MVB2].at("DIA_DIRECTBRAKE_DIST")                 = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DIRECTBRAKE_DIST;
     m_inputs_map[ska_num][MVB2].at("DIA_EMERGVALVE")                        = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_EMERGVALVE;
-    m_inputs_map[ska_num][MVB2].at("bit104")                                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit104;
+    m_inputs_map[ska_num][MVB2].at("bit103")                                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit103;
     m_inputs_map[ska_num][MVB2].at("DIA_AIR_SUSP_PRESS_LOW")                = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_AIR_SUSP_PRESS_LOW;
     m_inputs_map[ska_num][MVB2].at("DIA_AIR_SUSP_PRESS_HIGH")               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_AIR_SUSP_PRESS_HIGH;
     m_inputs_map[ska_num][MVB2].at("DIA_AIR_SUSP_PRESS_BURST")             = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_AIR_SUSP_PRESS_BURST;
@@ -334,8 +334,8 @@ void Ska_Bcu::update_mvb2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB2].at("DIA_MVB_ERROR_BCU")                    = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_MVB_ERROR_BCU;
     m_inputs_map[ska_num][MVB2].at("DIA_MVB_ERROR_TCU")                    = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_MVB_ERROR_TCU;
     m_inputs_map[ska_num][MVB2].at("DIA_MVB_ERROR_VCU")                    = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_MVB_ERROR_VCU;
+    m_inputs_map[ska_num][MVB2].at("bit126")                               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit126;
     m_inputs_map[ska_num][MVB2].at("bit127")                               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit127;
-    m_inputs_map[ska_num][MVB2].at("bit128")                               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit128;
 
 
 
@@ -346,7 +346,7 @@ void Ska_Bcu::update_table(SKA_VEHICLE_NUM ska_x_num, SKA_MVB_NUM mvb_num)
 {
     int ska_num = static_cast<int>(ska_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[ska_num][mvb_num]){
 
@@ -602,10 +602,10 @@ void Ska_Bcu::set_struct_mvb1(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_BpAP = m_inputs_map[ska_num][MVB1].at("S_BpAP")                    ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_Sanding_Heating_Release = m_inputs_map[ska_num][MVB1].at("S_Sanding_Heating_Release") ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_Sanding_Active = m_inputs_map[ska_num][MVB1].at("S_Sanding_Active")          ;
+    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_WSPTest_OK = m_inputs_map[ska_num][MVB1].at("S_WSPTest_OK")                    ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit246 = m_inputs_map[ska_num][MVB1].at("bit246")                    ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit247 = m_inputs_map[ska_num][MVB1].at("bit247")                    ;
-    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.bit248 = m_inputs_map[ska_num][MVB1].at("bit248")                    ;
-    m_inputs_map[ska_num][MVB1].at("reserved31")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31;
+    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved31 = m_inputs_map[ska_num][MVB1].at("reserved31")  ;
 
 }
 
@@ -619,24 +619,24 @@ void Ska_Bcu::set_struct_mvb2(SKA_VEHICLE_NUM ska_x_num)
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARD_MB03_07=           m_inputs_map[ska_num][MVB2].at("DIA_BOARD_MB03_07");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARD_EB01_08=           m_inputs_map[ska_num][MVB2].at("DIA_BOARD_EB01_08");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARD_EB02_09=           m_inputs_map[ska_num][MVB2].at("DIA_BOARD_EB02_09");
+      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit22=           m_inputs_map[ska_num][MVB2].at("bit22");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit23=           m_inputs_map[ska_num][MVB2].at("bit23");
-      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit24=           m_inputs_map[ska_num][MVB2].at("bit24");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_MB04_04=           m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_MB04_04");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_MB03_06=           m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_MB03_06");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_MB03_07=           m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_MB03_07");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_EB01_08=           m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_EB01_08");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_BOARDCODING_EB02_09=           m_inputs_map[ska_num][MVB2].at("DIA_BOARDCODING_EB02_09");
+       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit29=           m_inputs_map[ska_num][MVB2].at("bit29");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit30=           m_inputs_map[ska_num][MVB2].at("bit30");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit31=           m_inputs_map[ska_num][MVB2].at("bit31");
-       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit32=           m_inputs_map[ska_num][MVB2].at("bit32");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_CB09_02=           m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_CB09_02");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_MB04_03=           m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_MB04_03");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_MB03_06=           m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_MB03_06");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_MB03_07=           m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_MB03_07");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_EB01_08=           m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_EB01_08");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAN_COMM_EB02_09=           m_inputs_map[ska_num][MVB2].at("DIA_CAN_COMM_EB02_09");
+       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit38=           m_inputs_map[ska_num][MVB2].at("bit38");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit39=           m_inputs_map[ska_num][MVB2].at("bit39");
-       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit40=           m_inputs_map[ska_num][MVB2].at("bit40");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_PSENSOR_C=           m_inputs_map[ska_num][MVB2].at("DIA_PSENSOR_C");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_PSENSOR_BP=           m_inputs_map[ska_num][MVB2].at("DIA_PSENSOR_BP");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_PSENSOR1_PB=           m_inputs_map[ska_num][MVB2].at("DIA_PSENSOR1_PB");
@@ -652,7 +652,7 @@ void Ska_Bcu::set_struct_mvb2(SKA_VEHICLE_NUM ska_x_num)
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_REL_WSP_R_VLT5KMHDOOR=           m_inputs_map[ska_num][MVB2].at("DIA_REL_WSP_R_VLT5KMHDOOR");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_REL_WSP_R_VGT5KMHDOOR=           m_inputs_map[ska_num][MVB2].at("DIA_REL_WSP_R_VGT5KMHDOOR");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_REL_WSP_R_VGT10KMHDOOR=           m_inputs_map[ska_num][MVB2].at("DIA_REL_WSP_R_VGT10KMHDOOR");
-       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit56=           m_inputs_map[ska_num][MVB2].at("bit56");
+       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit55=           m_inputs_map[ska_num][MVB2].at("bit55");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_WSP_FSI_AXLE1=           m_inputs_map[ska_num][MVB2].at("DIA_WSP_FSI_AXLE1");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_WSP_FSI_AXLE2=           m_inputs_map[ska_num][MVB2].at("DIA_WSP_FSI_AXLE2");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_WSP_FSI_AXLE3=           m_inputs_map[ska_num][MVB2].at("DIA_WSP_FSI_AXLE3");
@@ -683,16 +683,16 @@ void Ska_Bcu::set_struct_mvb2(SKA_VEHICLE_NUM ska_x_num)
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_CAR_CONFIGURATION=           m_inputs_map[ska_num][MVB2].at("DIA_CAR_CONFIGURATION");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_EDACTUAL_Bo1_FAILURE=           m_inputs_map[ska_num][MVB2].at("DIA_EDACTUAL_Bo1_FAILURE");
        m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_EDACTUAL_Bo2_FAILURE=           m_inputs_map[ska_num][MVB2].at("DIA_EDACTUAL_Bo2_FAILURE");
+      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit86=           m_inputs_map[ska_num][MVB2].at("bit86");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit87=           m_inputs_map[ska_num][MVB2].at("bit87");
-      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit88=           m_inputs_map[ska_num][MVB2].at("bit88");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_DIRECTION_S1=           m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_DIRECTION_S1");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_DIRECTION_S2=          m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_DIRECTION_S2");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_DRYING=           m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_DRYING");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_POP_SA_BLOWOUT=           m_inputs_map[ska_num][MVB2].at("DIA_POP_SA_BLOWOUT");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_SANDING_DISTURBED=           m_inputs_map[ska_num][MVB2].at("DIA_SANDING_DISTURBED");
+      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit93=           m_inputs_map[ska_num][MVB2].at("bit93");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit94=           m_inputs_map[ska_num][MVB2].at("bit94");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit95=           m_inputs_map[ska_num][MVB2].at("bit95");
-      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit96=           m_inputs_map[ska_num][MVB2].at("bit96");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_INCPRESS=           m_inputs_map[ska_num][MVB2].at("DIA_DCL_INCPRESS");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_DECPRESS=           m_inputs_map[ska_num][MVB2].at("DIA_DCL_DECPRESS");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_CONFIG=           m_inputs_map[ska_num][MVB2].at("DIA_DCL_CONFIG");
@@ -700,7 +700,7 @@ void Ska_Bcu::set_struct_mvb2(SKA_VEHICLE_NUM ska_x_num)
           m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DCL_OFFSET;           m_inputs_map[ska_num][MVB2].at("DIA_DCL_OFFSET");
           m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_DIRECTBRAKE_DIST=           m_inputs_map[ska_num][MVB2].at("DIA_DIRECTBRAKE_DIST");
           m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_EMERGVALVE=           m_inputs_map[ska_num][MVB2].at("DIA_EMERGVALVE");
-      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit104=           m_inputs_map[ska_num][MVB2].at("bit104");
+      m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit103=           m_inputs_map[ska_num][MVB2].at("bit103");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_AIR_SUSP_PRESS_LOW=           m_inputs_map[ska_num][MVB2].at("DIA_AIR_SUSP_PRESS_LOW");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_AIR_SUSP_PRESS_HIGH=           m_inputs_map[ska_num][MVB2].at("DIA_AIR_SUSP_PRESS_HIGH");
       m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_AIR_SUSP_PRESS_BURST=           m_inputs_map[ska_num][MVB2].at("DIA_AIR_SUSP_PRESS_BURST");
@@ -723,8 +723,8 @@ void Ska_Bcu::set_struct_mvb2(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_MVB_ERROR_BCU=           m_inputs_map[ska_num][MVB2].at("DIA_MVB_ERROR_BCU");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_MVB_ERROR_TCU=           m_inputs_map[ska_num][MVB2].at("DIA_MVB_ERROR_TCU");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.DIA_MVB_ERROR_VCU=           m_inputs_map[ska_num][MVB2].at("DIA_MVB_ERROR_VCU");
+    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit126=           m_inputs_map[ska_num][MVB2].at("bit126");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit127=           m_inputs_map[ska_num][MVB2].at("bit127");
-    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb2.bits.bit128=           m_inputs_map[ska_num][MVB2].at("bit128");
 
 
 }
@@ -965,9 +965,9 @@ void Ska_Bcu::init_ska_x_mvb1_table(SKA_VEHICLE_NUM vehicle_type)
         {"S_BpAP", 0},
         {"S_Sanding_Heating_Release", 0},
         {"S_Sanding_Active", 0},
+        {"S_WSPTest_OK", 0},
         {"bit246", 0},
         {"bit247", 0},
-        {"bit248", 0},
         {"reserved31", 0}
     };
 
@@ -1021,7 +1021,7 @@ void Ska_Bcu::init_ska_x_mvb1_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][MVB1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
 
 }
 
@@ -1036,24 +1036,24 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
                                    {"DIA_BOARD_MB03_07", 0},
                                    {"DIA_BOARD_EB01_08", 0},
                                    {"DIA_BOARD_EB02_09", 0},
+                                   {"bit22", 0},
                                    {"bit23", 0},
-                                   {"bit24", 0},
                                    {"DIA_BOARDCODING_MB04_04", 0}, // byte3
                                    {"DIA_BOARDCODING_MB03_06", 0},
                                    {"DIA_BOARDCODING_MB03_07", 0},
                                    {"DIA_BOARDCODING_EB01_08", 0},
                                    {"DIA_BOARDCODING_EB02_09", 0},
+                                   {"bit29", 0},
                                    {"bit30", 0},
                                    {"bit31", 0},
-                                   {"bit32", 0},
                                    {"DIA_CAN_COMM_CB09_02", 0}, // byte4
                                    {"DIA_CAN_COMM_MB04_03", 0},
                                    {"DIA_CAN_COMM_MB03_06", 0},
                                    {"DIA_CAN_COMM_MB03_07", 0},
                                    {"DIA_CAN_COMM_EB01_08", 0},
                                    {"DIA_CAN_COMM_EB02_09", 0},
+                                   {"bit38", 0},
                                    {"bit39", 0},
-                                   {"bit40", 0},
                                    {"DIA_PSENSOR_C", 0}, // byte5
                                    {"DIA_PSENSOR_BP", 0},
                                    {"DIA_PSENSOR1_PB", 0},
@@ -1069,7 +1069,7 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
                                    {"DIA_REL_WSP_R_VLT5KMHDOOR", 0},
                                    {"DIA_REL_WSP_R_VGT5KMHDOOR", 0},
                                    {"DIA_REL_WSP_R_VGT10KMHDOOR", 0},
-                                   {"bit56", 0},
+                                   {"bit55", 0},
                                    {"DIA_WSP_FSI_AXLE1", 0}, // byte7
                                    {"DIA_WSP_FSI_AXLE2", 0},
                                    {"DIA_WSP_FSI_AXLE3", 0},
@@ -1100,16 +1100,16 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
                                    {"DIA_CAR_CONFIGURATION", 0},
                                    {"DIA_EDACTUAL_Bo1_FAILURE", 0},
                                    {"DIA_EDACTUAL_Bo2_FAILURE", 0},
+                                   {"bit86", 0},
                                    {"bit87", 0},
-                                   {"bit88", 0},
                                    {"DIA_POP_SA_DIRECTION_S1", 0}, // byte11
                                    {"DIA_POP_SA_DIRECTION_S2", 0},
                                    {"DIA_POP_SA_DRYING", 0},
                                    {"DIA_POP_SA_BLOWOUT", 0},
                                    {"DIA_SANDING_DISTURBED", 0},
+                                   {"bit93", 0},
                                    {"bit94", 0},
                                    {"bit95", 0},
-                                   {"bit96", 0},
                                    {"DIA_DCL_INCPRESS", 0}, // byte12
                                    {"DIA_DCL_DECPRESS", 0},
                                    {"DIA_DCL_CONFIG", 0},
@@ -1117,7 +1117,7 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
                                    {"DIA_DCL_OFFSET", 0},
                                    {"DIA_DIRECTBRAKE_DIST", 0},
                                    {"DIA_EMERGVALVE", 0},
-                                   {"bit104", 0},
+                                   {"bit103", 0},
                                    {"DIA_AIR_SUSP_PRESS_LOW", 0}, // byte13
                                    {"DIA_AIR_SUSP_PRESS_HIGH", 0},
                                    {"DIA_AIR_SUSP_PRESS_BURST", 0},
@@ -1140,8 +1140,8 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
                                    {"DIA_MVB_ERROR_BCU", 0},
                                    {"DIA_MVB_ERROR_TCU", 0},
                                    {"DIA_MVB_ERROR_VCU", 0},
-                                   {"bit127", 0},
-                                   {"bit128", 0}
+                                   {"bit126", 0},
+                                   {"bit127", 0}
 
     };
 
@@ -1195,7 +1195,7 @@ void Ska_Bcu::init_ska_x_mvb2_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][MVB2]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB2]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB2]->columnCount() ;
 
 }
 /*

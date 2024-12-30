@@ -4,6 +4,7 @@
 Ccu_To_Oax_Etcs::Ccu_To_Oax_Etcs(QObject *parent)
     : QObject{parent}
 {
+    memset(m_ccu_to_oax_etcs.data(), 0, sizeof(m_ccu_to_oax_etcs));
     init_oa1_table();
     init_oa2_table();
 }
@@ -28,6 +29,24 @@ void Ccu_To_Oax_Etcs::set_data_struct(const QByteArray &output, const OA_VEHICLE
     {
         qDebug() << "Error: Output size mismatch";
     }
+}
+
+void Ccu_To_Oax_Etcs::update_struct_with_map(OA_VEHICLE_NUM oa_x_num)
+{
+    qDebug() << "OA ETCS UPDATE_STRUCT_WITH_MAP";
+    //(void)mvb_num; // unused_variable
+    int oa_num = static_cast<int>(oa_x_num);
+    // Define a lambda function to reduce redundancy
+    auto setInputMap = [&](const QString& signal_name) {
+        m_outputs_map[oa_num][signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget[oa_num], signal_name).toInt();
+    };
+    // update map with given tableWidget values
+    for(const auto& map : m_outputs_map[oa_num])
+    {
+        setInputMap(map.first);
+    }
+    // set struct parameters with given updated map parameters
+    set_struct(oa_x_num);
 }
 
 void Ccu_To_Oax_Etcs::init_oa1_table()
@@ -105,6 +124,8 @@ void Ccu_To_Oax_Etcs::init_oa1_table()
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)] ->setColumnCount(2);
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)] ->setRowCount(m_outputs_map[get_index(OA_VEHICLE_NUM::OA1)].size());
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)]->setHorizontalHeaderLabels(table_name);
+    m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)]->setObjectName("oa_1_ccu_to_all_etcs");
+
 
     int row = 0;
     for (const auto& pair:  m_outputs_map[get_index(OA_VEHICLE_NUM::OA1)]) {
@@ -130,6 +151,7 @@ void Ccu_To_Oax_Etcs::init_oa2_table()
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)] ->setColumnCount(2);
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)] ->setRowCount(m_outputs_map[get_index(OA_VEHICLE_NUM::OA2)].size());
     m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)]->setHorizontalHeaderLabels(table_name);
+    m_tableWidget[get_index(OA_VEHICLE_NUM::OA2)]->setObjectName("oa_2_ccu_to_all_etcs");
 
     int row = 0;
     for (const auto& pair:  m_outputs_map[get_index(OA_VEHICLE_NUM::OA2)]) {
@@ -173,69 +195,139 @@ void Ccu_To_Oax_Etcs::update_map(OA_VEHICLE_NUM oa_x_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
 
-    m_outputs_map[oa_num].at("Lifesign") = m_ccu_to_oax_etcs.at(oa_num).bits.Lifesign;
-    m_outputs_map[oa_num].at("bit0")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit0;
-    m_outputs_map[oa_num].at("bit1")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit1;
-    m_outputs_map[oa_num].at("bit2")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit2;
-    m_outputs_map[oa_num].at("bit3")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit3;
-    m_outputs_map[oa_num].at("bit4")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit4;
-    m_outputs_map[oa_num].at("bit5")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit5;
-    m_outputs_map[oa_num].at("bit6")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit6;
-    m_outputs_map[oa_num].at("bit7")      = m_ccu_to_oax_etcs.at(oa_num).bits.bit7;
-    m_outputs_map[oa_num].at("TR_OBU_TrainSleep")     = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_TrainSleep;
-    m_outputs_map[oa_num].at("TR_OBU_TrainSleep_Not") = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_TrainSleep_Not;
-    m_outputs_map[oa_num].at("bit10")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit10;
-    m_outputs_map[oa_num].at("TR_OBU_NLEnabled")      = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_NLEnabled;
-    m_outputs_map[oa_num].at("TR_OBU_DirectionFW")    = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_DirectionFW;
-    m_outputs_map[oa_num].at("TR_OBU_DirectionBW")    = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_DirectionBW;
-    m_outputs_map[oa_num].at("TR_OBU_CabStatusA")     = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_CabStatusA;
-    m_outputs_map[oa_num].at("TR_OBU_CabStatusB")     = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_CabStatusB;
-    m_outputs_map[oa_num].at("bit16")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit16;
-    m_outputs_map[oa_num].at("bit17")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit17;
-    m_outputs_map[oa_num].at("TR_OBU_Train_Integrity")= m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Integrity;
-    m_outputs_map[oa_num].at("bit19")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit19;
-    m_outputs_map[oa_num].at("TR_OBU_Traction_Status")= m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Traction_Status;
-    m_outputs_map[oa_num].at("TR_OBU_AirTightFitted") = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_AirTightFitted;
-    m_outputs_map[oa_num].at("bit22")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit22;
-    m_outputs_map[oa_num].at("bit23")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit23;
-    m_outputs_map[oa_num].at("reserved_5")            = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_5;
-    m_outputs_map[oa_num].at("reserved_6")            = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_6;
-    m_outputs_map[oa_num].at("Brake_status_EP_S")     = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_EP_S;
-    m_outputs_map[oa_num].at("Brake_status_EP_S_Not") = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_EP_S_Not;
-    m_outputs_map[oa_num].at("bit24")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit24;
-    m_outputs_map[oa_num].at("bit25")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit25;
-    m_outputs_map[oa_num].at("Brake_status_RP_S")     = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_RP_S;
-    m_outputs_map[oa_num].at("Brake_status_RP_S_Not") = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_RP_S_Not;
-    m_outputs_map[oa_num].at("bit26")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit26;
-    m_outputs_map[oa_num].at("bit27")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit27;
-    m_outputs_map[oa_num].at("reserved_8")            = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_8;
-    m_outputs_map[oa_num].at("reserved_9_10")         = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_9_10;
-    m_outputs_map[oa_num].at("TR_OBU_Train_Control_0")= m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_0;
-    m_outputs_map[oa_num].at("TR_OBU_Train_Control_1")= m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_1;
-    m_outputs_map[oa_num].at("TR_OBU_Train_Control_2")= m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_2;
-    m_outputs_map[oa_num].at("TR_OBU_Train_Control_3")= m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_3;
-    m_outputs_map[oa_num].at("bit28")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit28;
-    m_outputs_map[oa_num].at("bit29")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit29;
-    m_outputs_map[oa_num].at("bit30")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit30;
-    m_outputs_map[oa_num].at("bit31")                 = m_ccu_to_oax_etcs.at(oa_num).bits.bit31;
-    m_outputs_map[oa_num].at("reserved_12")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_12;
-    m_outputs_map[oa_num].at("reserved_13")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_13;
-    m_outputs_map[oa_num].at("reserved_14")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_14;
-    m_outputs_map[oa_num].at("reserved_15")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_15;
-    m_outputs_map[oa_num].at("reserved_16")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_16;
-    m_outputs_map[oa_num].at("reserved_17")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_17;
-    m_outputs_map[oa_num].at("reserved_18")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_18;
-    m_outputs_map[oa_num].at("reserved_19")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_19;
-    m_outputs_map[oa_num].at("reserved_20")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_20;
-    m_outputs_map[oa_num].at("reserved_21")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_21;
-    m_outputs_map[oa_num].at("reserved_22")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_22;
-    m_outputs_map[oa_num].at("reserved_23")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_23;
-    m_outputs_map[oa_num].at("reserved_24")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_24;
-    m_outputs_map[oa_num].at("reserved_25")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_25;
-    m_outputs_map[oa_num].at("reserved_26")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_26;
-    m_outputs_map[oa_num].at("reserved_27")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_27;
-    m_outputs_map[oa_num].at("reserved_28")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_28;
-    m_outputs_map[oa_num].at("reserved_29")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_29;
-    m_outputs_map[oa_num].at("reserved_30")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_30;
-    m_outputs_map[oa_num].at("reserved_31")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_31;
+    m_outputs_map[oa_num].at("Lifesign")                = m_ccu_to_oax_etcs.at(oa_num).bits.Lifesign;
+    m_outputs_map[oa_num].at("bit0")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit0;
+    m_outputs_map[oa_num].at("bit1")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit1;
+    m_outputs_map[oa_num].at("bit2")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit2;
+    m_outputs_map[oa_num].at("bit3")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit3;
+    m_outputs_map[oa_num].at("bit4")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit4;
+    m_outputs_map[oa_num].at("bit5")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit5;
+    m_outputs_map[oa_num].at("bit6")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit6;
+    m_outputs_map[oa_num].at("bit7")                    = m_ccu_to_oax_etcs.at(oa_num).bits.bit7;
+    m_outputs_map[oa_num].at("TR_OBU_TrainSleep")       = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_TrainSleep;
+    m_outputs_map[oa_num].at("TR_OBU_TrainSleep_Not")   = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_TrainSleep_Not;
+    m_outputs_map[oa_num].at("bit10")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit10;
+    m_outputs_map[oa_num].at("TR_OBU_NLEnabled")        = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_NLEnabled;
+    m_outputs_map[oa_num].at("TR_OBU_DirectionFW")      = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_DirectionFW;
+    m_outputs_map[oa_num].at("TR_OBU_DirectionBW")      = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_DirectionBW;
+    m_outputs_map[oa_num].at("TR_OBU_CabStatusA")       = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_CabStatusA;
+    m_outputs_map[oa_num].at("TR_OBU_CabStatusB")       = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_CabStatusB;
+    m_outputs_map[oa_num].at("bit16")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit16;
+    m_outputs_map[oa_num].at("bit17")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit17;
+    m_outputs_map[oa_num].at("TR_OBU_Train_Integrity")  = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Integrity;
+    m_outputs_map[oa_num].at("bit19")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit19;
+    m_outputs_map[oa_num].at("TR_OBU_Traction_Status")  = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Traction_Status;
+    m_outputs_map[oa_num].at("TR_OBU_AirTightFitted")   = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_AirTightFitted;
+    m_outputs_map[oa_num].at("bit22")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit22;
+    m_outputs_map[oa_num].at("bit23")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit23;
+    m_outputs_map[oa_num].at("reserved_5")              = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_5;
+    m_outputs_map[oa_num].at("reserved_6")              = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_6;
+    m_outputs_map[oa_num].at("Brake_status_EP_S")       = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_EP_S;
+    m_outputs_map[oa_num].at("Brake_status_EP_S_Not")   = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_EP_S_Not;
+    m_outputs_map[oa_num].at("bit24")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit24;
+    m_outputs_map[oa_num].at("bit25")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit25;
+    m_outputs_map[oa_num].at("Brake_status_RP_S")       = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_RP_S;
+    m_outputs_map[oa_num].at("Brake_status_RP_S_Not")   = m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_RP_S_Not;
+    m_outputs_map[oa_num].at("bit26")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit26;
+    m_outputs_map[oa_num].at("bit27")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit27;
+    m_outputs_map[oa_num].at("reserved_8")              = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_8;
+    m_outputs_map[oa_num].at("reserved_9_10")           = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_9_10;
+    m_outputs_map[oa_num].at("TR_OBU_Train_Control_0")  = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_0;
+    m_outputs_map[oa_num].at("TR_OBU_Train_Control_1")  = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_1;
+    m_outputs_map[oa_num].at("TR_OBU_Train_Control_2")  = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_2;
+    m_outputs_map[oa_num].at("TR_OBU_Train_Control_3")  = m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_3;
+    m_outputs_map[oa_num].at("bit28")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit28;
+    m_outputs_map[oa_num].at("bit29")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit29;
+    m_outputs_map[oa_num].at("bit30")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit30;
+    m_outputs_map[oa_num].at("bit31")                   = m_ccu_to_oax_etcs.at(oa_num).bits.bit31;
+    m_outputs_map[oa_num].at("reserved_12")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_12;
+    m_outputs_map[oa_num].at("reserved_13")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_13;
+    m_outputs_map[oa_num].at("reserved_14")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_14;
+    m_outputs_map[oa_num].at("reserved_15")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_15;
+    m_outputs_map[oa_num].at("reserved_16")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_16;
+    m_outputs_map[oa_num].at("reserved_17")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_17;
+    m_outputs_map[oa_num].at("reserved_18")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_18;
+    m_outputs_map[oa_num].at("reserved_19")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_19;
+    m_outputs_map[oa_num].at("reserved_20")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_20;
+    m_outputs_map[oa_num].at("reserved_21")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_21;
+    m_outputs_map[oa_num].at("reserved_22")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_22;
+    m_outputs_map[oa_num].at("reserved_23")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_23;
+    m_outputs_map[oa_num].at("reserved_24")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_24;
+    m_outputs_map[oa_num].at("reserved_25")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_25;
+    m_outputs_map[oa_num].at("reserved_26")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_26;
+    m_outputs_map[oa_num].at("reserved_27")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_27;
+    m_outputs_map[oa_num].at("reserved_28")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_28;
+    m_outputs_map[oa_num].at("reserved_29")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_29;
+    m_outputs_map[oa_num].at("reserved_30")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_30;
+    m_outputs_map[oa_num].at("reserved_31")             = m_ccu_to_oax_etcs.at(oa_num).bits.reserved_31;
+}
+
+void Ccu_To_Oax_Etcs::set_struct(OA_VEHICLE_NUM oa_x_num)
+{
+        int oa_num = static_cast<int>(oa_x_num);
+        m_ccu_to_oax_etcs.at(oa_num).bits.Lifesign         =         m_outputs_map[oa_num].at("Lifesign")              ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit0         =         m_outputs_map[oa_num].at("bit0")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit1         =         m_outputs_map[oa_num].at("bit1")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit2         =         m_outputs_map[oa_num].at("bit2")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit3         =         m_outputs_map[oa_num].at("bit3")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit4         =         m_outputs_map[oa_num].at("bit4")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit5         =         m_outputs_map[oa_num].at("bit5")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit6         =         m_outputs_map[oa_num].at("bit6")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit7         =         m_outputs_map[oa_num].at("bit7")                  ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_TrainSleep            =         m_outputs_map[oa_num].at("TR_OBU_TrainSleep")     ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_TrainSleep_Not            =         m_outputs_map[oa_num].at("TR_OBU_TrainSleep_Not") ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit10            =         m_outputs_map[oa_num].at("bit10")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_NLEnabled         =         m_outputs_map[oa_num].at("TR_OBU_NLEnabled")      ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_DirectionFW           =         m_outputs_map[oa_num].at("TR_OBU_DirectionFW")    ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_DirectionBW           =         m_outputs_map[oa_num].at("TR_OBU_DirectionBW")    ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_CabStatusA            =         m_outputs_map[oa_num].at("TR_OBU_CabStatusA")     ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_CabStatusB            =         m_outputs_map[oa_num].at("TR_OBU_CabStatusB")     ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit16            =         m_outputs_map[oa_num].at("bit16")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit17            =         m_outputs_map[oa_num].at("bit17")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Integrity           =         m_outputs_map[oa_num].at("TR_OBU_Train_Integrity");
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit19            =         m_outputs_map[oa_num].at("bit19")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Traction_Status           =         m_outputs_map[oa_num].at("TR_OBU_Traction_Status");
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_AirTightFitted            =         m_outputs_map[oa_num].at("TR_OBU_AirTightFitted") ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit22            =         m_outputs_map[oa_num].at("bit22")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit23            =         m_outputs_map[oa_num].at("bit23")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_5           =         m_outputs_map[oa_num].at("reserved_5")            ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_6           =         m_outputs_map[oa_num].at("reserved_6")            ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_EP_S            =         m_outputs_map[oa_num].at("Brake_status_EP_S")     ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_EP_S_Not            =         m_outputs_map[oa_num].at("Brake_status_EP_S_Not") ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit24            =         m_outputs_map[oa_num].at("bit24")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit25            =         m_outputs_map[oa_num].at("bit25")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_RP_S            =         m_outputs_map[oa_num].at("Brake_status_RP_S")     ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.Brake_status_RP_S_Not            =         m_outputs_map[oa_num].at("Brake_status_RP_S_Not") ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit26            =         m_outputs_map[oa_num].at("bit26")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit27            =         m_outputs_map[oa_num].at("bit27")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_8           =         m_outputs_map[oa_num].at("reserved_8")            ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_9_10            =         m_outputs_map[oa_num].at("reserved_9_10")         ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_0           =         m_outputs_map[oa_num].at("TR_OBU_Train_Control_0");
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_1           =         m_outputs_map[oa_num].at("TR_OBU_Train_Control_1");
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_2           =         m_outputs_map[oa_num].at("TR_OBU_Train_Control_2");
+        m_ccu_to_oax_etcs.at(oa_num).bits.TR_OBU_Train_Control_3           =         m_outputs_map[oa_num].at("TR_OBU_Train_Control_3");
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit28            =         m_outputs_map[oa_num].at("bit28")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit29            =         m_outputs_map[oa_num].at("bit29")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit30            =         m_outputs_map[oa_num].at("bit30")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.bit31            =         m_outputs_map[oa_num].at("bit31")                 ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_12          =         m_outputs_map[oa_num].at("reserved_12")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_13          =         m_outputs_map[oa_num].at("reserved_13")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_14          =         m_outputs_map[oa_num].at("reserved_14")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_15          =         m_outputs_map[oa_num].at("reserved_15")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_16          =         m_outputs_map[oa_num].at("reserved_16")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_17          =         m_outputs_map[oa_num].at("reserved_17")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_18          =         m_outputs_map[oa_num].at("reserved_18")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_19          =         m_outputs_map[oa_num].at("reserved_19")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_20          =         m_outputs_map[oa_num].at("reserved_20")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_21          =         m_outputs_map[oa_num].at("reserved_21")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_22          =         m_outputs_map[oa_num].at("reserved_22")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_23          =         m_outputs_map[oa_num].at("reserved_23")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_24          =         m_outputs_map[oa_num].at("reserved_24")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_25          =         m_outputs_map[oa_num].at("reserved_25")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_26          =         m_outputs_map[oa_num].at("reserved_26")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_27          =         m_outputs_map[oa_num].at("reserved_27")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_28          =         m_outputs_map[oa_num].at("reserved_28")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_29          =         m_outputs_map[oa_num].at("reserved_29")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_30          =         m_outputs_map[oa_num].at("reserved_30")           ;
+        m_ccu_to_oax_etcs.at(oa_num).bits.reserved_31          =         m_outputs_map[oa_num].at("reserved_31")           ;
 }

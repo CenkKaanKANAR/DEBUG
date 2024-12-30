@@ -291,7 +291,7 @@ void Oa_Vh_Riom::init_inputs_table(OA_VEHICLE_NUM oa_x_num)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
 
     //qDebug() << " [[[[[[[[[[[[[[[[[[[[[[[[8 SIZE OF OA1_VH_RIOM IS :    " << sizeof(m_oa_x_vh_riom[oa_num]);
 
@@ -450,7 +450,7 @@ void Oa_Vh_Riom::init_status_table(OA_VEHICLE_NUM oa_x_num)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][STATUS0]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][STATUS0]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][STATUS0]->columnCount() ;
 
 }
 

@@ -187,7 +187,7 @@ void SKA_DD_RIOM::init_inputs_table(SKA_VEHICLE_NUM ska_x_num)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][MVB1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][MVB1]->columnCount() ;
 
 
 }
@@ -335,7 +335,7 @@ void SKA_DD_RIOM::init_status_table(SKA_VEHICLE_NUM ska_x_num)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][STATUS0]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][STATUS0]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][STATUS0]->columnCount() ;
 }
 
 void SKA_DD_RIOM::make_signal_slot_connection()

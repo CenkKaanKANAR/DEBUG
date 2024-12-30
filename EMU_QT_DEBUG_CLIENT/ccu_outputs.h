@@ -24,7 +24,8 @@
 #include "ccu_outputs/ccu_to_all_jrus_3.h"
 #include "ccu_outputs/ccu_to_all_jrus_4.h"
 #include "ccu_outputs/ccu_to_all_jrus_5.h"
-
+#include "ccu_outputs/ccu_to_all_tcus.h"
+#include "ccu_outputs/ccu_to_all_apus.h"
 
 #include "ccu_outputs/ska_ccu_vh_riom_mvb1_d.h"
 #include "ccu_outputs/ska_ccu_vh_riom_mvb2_dcu.h"
@@ -129,6 +130,14 @@ public:
     {
         return m_ska_ccu_do_card_ptr;
     }
+    Ccu_To_All_TCUS *get_Ccu_To_All_Tcus() {
+        return m_ccu_to_all_tcus_ptr;
+    }
+    Ccu_To_All_APUS *get_Ccu_To_All_Apus() {
+        return m_ccu_to_all_apus_ptr;
+    }
+
+
 
     //FORCE
     Ska_ccu_vh_riom_mvb1_d* get_Ska_ccu_vh_riom_mvb1_d_force() {
@@ -170,6 +179,26 @@ public:
         return m_oa_vh_riom_outputs_force_ptr;
     }
 
+    Ccu_To_Oax_Etcs* get_Ccu_To_Oax_Etcs_Force()
+    {
+        return m_ccu_to_oax_etcs_force_ptr;
+    }
+
+    Ccu_To_All_Etcs* get_Ccu_To_All_Etcs_Force()
+    {
+        return m_ccu_to_all_etcs_force_ptr;
+    }
+
+    Ccu_To_All_TCUS* get_Ccu_To_All_Tcus_Force()
+    {
+        return m_ccu_to_all_tcus_force_ptr;
+    }
+
+    Ccu_To_All_APUS* get_Ccu_To_All_Apus_Force()
+    {
+        return m_ccu_to_all_apus_force_ptr;
+    }
+
 
     //DEVAMMMMM
 
@@ -192,6 +221,8 @@ private:
     Ccu_To_Oax_Etcs* m_ccu_to_oax_etcs_ptr;
     Ccu_To_All_Bcus* m_ccu_to_all_bcus_ptr;
     Ccu_To_All_Etcs* m_ccu_to_all_etcs_ptr;
+    Ccu_To_All_TCUS* m_ccu_to_all_tcus_ptr;
+    Ccu_To_All_APUS* m_ccu_to_all_apus_ptr;
 
     Ccu_To_All_Jrus_1* m_Ccu_To_All_Jrus_1_ptr;
     Ccu_To_All_Jrus_2* m_Ccu_To_All_Jrus_2_ptr;
@@ -210,6 +241,10 @@ private:
     Ska_Ccu_Vh_Riom_Mvb2_Dcu* m_ska_ccu_vh_riom_mvb2_dcu_hvac_fdu_force_ptr;
     Ska_Vh_Riom_Outputs* m_ska_vh_riom_outputs_force_ptr;
     Oa_Vh_Riom_Outputs* m_oa_vh_riom_outputs_force_ptr;
+    Ccu_To_Oax_Etcs* m_ccu_to_oax_etcs_force_ptr;
+    Ccu_To_All_Etcs* m_ccu_to_all_etcs_force_ptr;
+    Ccu_To_All_TCUS* m_ccu_to_all_tcus_force_ptr;
+    Ccu_To_All_APUS* m_ccu_to_all_apus_force_ptr;
 
 };
 }

@@ -12,7 +12,7 @@
 #include <QVBoxLayout>
 #include "ReadShmDialog.h"
 #include "udphandler.h"
-
+//#include "debugmonitorstates.h"
 class CCU_Table;
 
 enum class UdpConnetionState{Connected, Disconnected};
@@ -56,6 +56,7 @@ private slots:
 signals:
     void send_shared_memory_read_json_data_to_read_dialog(QByteArray shm_read_data);
     void udptransmissionErrorOccured();
+    void dataReady();
 private:
     Ui::MainWindow *ui;
 
@@ -72,11 +73,11 @@ private:
     QLedLabel *led3 = nullptr;
     QLedLabel *led4 = nullptr;
 
-    ReadShmDialog * m_ReadDialog = nullptr;
+    ReadShmDialog *m_ReadDialog = nullptr;
     UdpHandler *m_UdpHandler = nullptr;
     QDockWidget *m_dockWidget = nullptr;
     CCU_Table * m_ccuTableHandler = nullptr;
-
+    DebugMonitorStates *debugMonitorStates;
 
 
 

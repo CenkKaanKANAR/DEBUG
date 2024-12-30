@@ -99,6 +99,7 @@ m_inputs_map[ska_num].at("Fault_v12_contact")                  =m_ska_x_ats[ska_
 m_inputs_map[ska_num].at("Fault_v40_contact")                  =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Fault_v40_contact                ;
 m_inputs_map[ska_num].at("Fault_v65_contact")                  =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Fault_v65_contact                ;
 m_inputs_map[ska_num].at("Fault_ethernet")                     =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Fault_ethernet                   ;
+m_inputs_map[ska_num].at("reserved_10")                        =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_10;
 /*m_inputs_map[ska_num].at("bit80")                              =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit80                            ;
 m_inputs_map[ska_num].at("bit81")                              =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit81                            ;
 m_inputs_map[ska_num].at("bit82")                              =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit82                            ;
@@ -118,11 +119,11 @@ m_inputs_map[ska_num].at("Status_reset_bt_pressed")            =m_ska_x_ats[ska_
 m_inputs_map[ska_num].at("Status_uyari_onay_bt_pressed")       =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_uyari_onay_bt_pressed     ;
 m_inputs_map[ska_num].at("Status_izinli_gecis_activated")      =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_izinli_gecis_activated    ;
 m_inputs_map[ska_num].at("Status_hiz_serbest_activated")       =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_hiz_serbest_activated     ;
-m_inputs_map[ska_num].at("bit100")                              =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit100                            ;
+m_inputs_map[ska_num].at("bit99")                              =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit99                            ;
+m_inputs_map[ska_num].at("bit100")                             =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit100                           ;
 m_inputs_map[ska_num].at("bit101")                             =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit101                           ;
 m_inputs_map[ska_num].at("bit102")                             =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit102                           ;
-m_inputs_map[ska_num].at("bit103")                             =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit103                           ;
-m_inputs_map[ska_num].at("ATS_CANopen_Fault")                  =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.ATS_CANopen_Fault                ;
+m_inputs_map[ska_num].at("bit103")                  =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit103                ;
 m_inputs_map[ska_num].at("reserved_13")                        =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_13                      ;
 m_inputs_map[ska_num].at("reserved_14")                        =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_14                      ;
 m_inputs_map[ska_num].at("reserved_15")                        =m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_15                      ;
@@ -133,7 +134,7 @@ void Ska_Ats::update_table(SKA_VEHICLE_NUM ska_x_num)
 {
     int ska_num = static_cast<int>(ska_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[ska_num]){
 
@@ -240,6 +241,7 @@ void Ska_Ats::init_ska_x_table(SKA_VEHICLE_NUM ska_x_num)
         {"Fault_v40_contact", 0},
         {"Fault_v65_contact", 0},
         {"Fault_ethernet", 0},
+        {"reserved_10",0},
         {"Status_zz", 0},
         {"Status_zw", 0},
         {"Status_zg", 0},
@@ -251,11 +253,11 @@ void Ska_Ats::init_ska_x_table(SKA_VEHICLE_NUM ska_x_num)
         {"Status_uyari_onay_bt_pressed", 0},
         {"Status_izinli_gecis_activated", 0},
         {"Status_hiz_serbest_activated", 0},
+        {"bit99", 0},
         {"bit100", 0},
         {"bit101", 0},
         {"bit102", 0},
         {"bit103", 0},
-        {"ATS_CANopen_Fault", 0},
         {"reserved_13", 0},
         {"reserved_14", 0},
         {"reserved_15", 0}
@@ -312,7 +314,7 @@ void Ska_Ats::init_ska_x_table(SKA_VEHICLE_NUM ska_x_num)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num]->columnCount() ;
 }
 
 void Ska_Ats::update_struct_with_map(SKA_VEHICLE_NUM ska_x_num)
@@ -380,6 +382,7 @@ void Ska_Ats::set_struct(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Fault_v40_contact                = m_inputs_map[ska_num].at("Fault_v40_contact");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Fault_v65_contact                = m_inputs_map[ska_num].at("Fault_v65_contact");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Fault_ethernet                   = m_inputs_map[ska_num].at("Fault_ethernet");
+    m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_10                     = m_inputs_map[ska_num].at("reserved_10");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_zz                        = m_inputs_map[ska_num].at("Status_zz");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_zw                        = m_inputs_map[ska_num].at("Status_zw");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_zg                        = m_inputs_map[ska_num].at("Status_zg");
@@ -391,11 +394,11 @@ void Ska_Ats::set_struct(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_uyari_onay_bt_pressed     = m_inputs_map[ska_num].at("Status_uyari_onay_bt_pressed");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_izinli_gecis_activated    = m_inputs_map[ska_num].at("Status_izinli_gecis_activated");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.Status_hiz_serbest_activated     = m_inputs_map[ska_num].at("Status_hiz_serbest_activated");
-    m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit100                            = m_inputs_map[ska_num].at("bit100");
+    m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit99                           = m_inputs_map[ska_num].at("bit99");
+    m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit100                           = m_inputs_map[ska_num].at("bit100");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit101                           = m_inputs_map[ska_num].at("bit101");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit102                           = m_inputs_map[ska_num].at("bit102");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.bit103                           = m_inputs_map[ska_num].at("bit103");
-    m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.ATS_CANopen_Fault                = m_inputs_map[ska_num].at("ATS_CANopen_Fault");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_13                      = m_inputs_map[ska_num].at("reserved_13");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_14                      = m_inputs_map[ska_num].at("reserved_14");
     m_ska_x_ats[ska_num].ska_vh_riom_ccu_mvb9_ats.bits.reserved_15                      = m_inputs_map[ska_num].at("reserved_15");

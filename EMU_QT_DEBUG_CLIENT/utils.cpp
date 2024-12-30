@@ -123,7 +123,7 @@ namespace utils {
 
             if (valueItem  && column % 2 != 0) {
                 return valueItem->text();
-                qDebug() << "___ROW NUMBER IS : " << row << " ___COLUMN NUMBER IS INSIDE : " << column;
+                //qDebug() << "___ROW NUMBER IS : " << row << " ___COLUMN NUMBER IS INSIDE : " << column;
             }
         }
         return QString(); // Hücre boşsa veya geçersizse boş bir string döner
@@ -160,7 +160,7 @@ namespace utils {
                     //addBorderBlinkEffect(tableWidget, 500);  // Kısa süreli çerçeve büyütme efekti (500 ms)
                   }
 
-                qDebug() << "___ROW NUMBER IS : " << row << " ___COLUMN NUMBER IS INSIDE : " << column;
+                //qDebug() << "___ROW NUMBER IS : " << row << " ___COLUMN NUMBER IS INSIDE : " << column;
             }
         }
         else

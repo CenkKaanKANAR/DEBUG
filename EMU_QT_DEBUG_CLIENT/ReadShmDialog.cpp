@@ -13,13 +13,16 @@ ReadShmDialog::ReadShmDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReadShmDialog),
     m_ccu_table(new CCU_Table()),
-    m_ccu_out(new OUT::CCU_Outputs())
+    m_ccu_out(new OUT::CCU_Outputs()),
+    debugMonitorStates(new DebugMonitorStates(this))
+    //systemFunctionManager(new SystemFunctionManager(this))
 {
     ui->setupUi(this);
     ui->tabWidget_ccu_out->setCurrentIndex(0);
 
 
     init_ccu_out_table();
+    init_system_function_states();
     ui->tabWidget_ccu_out->setUsesScrollButtons(true); // Kaydırma düğmelerini etkinleştir
     applyMainwindowStyleSheetConfiguration();
     ui->tabWidget_ccu_out->setTabPosition(QTabWidget::West); // Sekme çubuğunu sola taşı
@@ -45,6 +48,7 @@ ReadShmDialog::~ReadShmDialog()
 void ReadShmDialog::receive_udp_message(const QByteArray& recv_data)
 {
 
+    debugMonitorStates->handleUdpMessage(recv_data);
     //utils::show_bytearray(recv_data, "receive udp_message:");
     // update ccu_out data and show on the table
     QDataStream stream(recv_data);
@@ -206,8 +210,16 @@ void ReadShmDialog::init_ccu_out_table()
 
     //ska2_ccu_do_card
     ui->verticalLayout_ska2_ccu_do_card->addWidget(m_ccu_out->get_Ska_Ccu_Do_Card()->getTableWidget(SKA_VEHICLE_NUM::SKA2));
+    //ccu_to_all_bcus
+    ui->verticalLayout_ccu_to_all_tcus->addWidget(m_ccu_out->get_Ccu_To_All_Tcus()->getTableWidget());
+    //ccu_to_all_apus
+    ui->verticalLayout_ccu_to_all_apus->addWidget(m_ccu_out->get_Ccu_To_All_Apus()->getTableWidget());
 
+}
 
+void ReadShmDialog::init_system_function_states()
+{
+    ui->system_states_verticalLayout->addWidget(debugMonitorStates);
 }
 
 

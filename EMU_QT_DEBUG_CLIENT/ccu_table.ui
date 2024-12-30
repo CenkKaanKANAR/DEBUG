@@ -1790,7 +1790,7 @@
              <item row="0" column="0">
               <widget class="QTabWidget" name="tabWidget_ccu_out">
                <property name="currentIndex">
-                <number>6</number>
+                <number>10</number>
                </property>
                <widget class="QWidget" name="tab_53">
                 <attribute name="title">
@@ -1916,7 +1916,7 @@
                    <item>
                     <widget class="QTabWidget" name="tabWidget_47">
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="tab_143">
                       <attribute name="title">
@@ -1981,6 +1981,70 @@
                 <layout class="QGridLayout" name="gridLayout_138">
                  <item row="0" column="0">
                   <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_all_bcus"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_51">
+                <attribute name="title">
+                 <string>Ccu_To_Oax_Etcs</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_132">
+                 <item row="0" column="0">
+                  <widget class="QTabWidget" name="tabWidget_56">
+                   <property name="currentIndex">
+                    <number>1</number>
+                   </property>
+                   <widget class="QWidget" name="tab_128">
+                    <attribute name="title">
+                     <string>Ccu_To_Oa1_Etcs</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_131">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_oa1_etcs"/>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_129">
+                    <attribute name="title">
+                     <string>Ccu_To_Oa2_Etcs</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_49">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_oa2_etcs"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_132">
+                <attribute name="title">
+                 <string>ccu_to_all_etcs</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_135">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_all_etcs"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_133">
+                <attribute name="title">
+                 <string>ccu_to_all_tcus</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_136">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_all_tcus"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_167">
+                <attribute name="title">
+                 <string>ccu_to_all_apus</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_170">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_all_apus"/>
                  </item>
                 </layout>
                </widget>

@@ -2143,7 +2143,7 @@ struct ska_vh_riom_ccu_mvb9_ats {
             uint8_t Fault_v40_contact : 1;
             uint8_t Fault_v65_contact : 1;
             uint8_t Fault_ethernet : 1;
-            uint8_t reserved_10 : 1; //byte 10
+            uint8_t reserved_10; //byte 10
             uint8_t Status_zz : 1; //byte 11
             uint8_t Status_zw : 1;
             uint8_t Status_zg : 1;
@@ -2155,11 +2155,11 @@ struct ska_vh_riom_ccu_mvb9_ats {
             uint8_t Status_uyari_onay_bt_pressed : 1; //byte 12
             uint8_t Status_izinli_gecis_activated : 1;
             uint8_t Status_hiz_serbest_activated : 1;
-            uint8_t bit100 : 1;
-            uint8_t bit101 : 1;
-            uint8_t bit102 : 1;
-            uint8_t bit103 : 1;
-            uint8_t ATS_CANopen_Fault : 1;
+            uint8_t bit99 : 1;//99
+            uint8_t bit100 : 1;//100
+            uint8_t bit101 : 1;//101
+            uint8_t bit102 : 1;//102
+            uint8_t bit103 : 1;//bit103
             uint8_t reserved_13; //byte 13
             uint8_t reserved_14; //byte 14
             uint8_t reserved_15; //byte 15
@@ -2979,9 +2979,9 @@ struct ska_vh_riom_ccu_mvb14_hvac2 {
             uint8_t Supply_Heating_Detect_Fault : 1;
             uint8_t Cooling_Fault : 1;
             uint8_t Heating_Fault : 1;
-            uint8_t bit180 : 1;
-            uint8_t bit181 : 1;
-            uint8_t bit182 : 1;
+            uint8_t bit181 : 1;//bit181
+            uint8_t bit182 : 1;//bit182
+            uint8_t bit183 : 1;//bit183
             uint8_t reserved23;
             uint8_t reserved24;
             uint8_t reserved25;
@@ -3030,7 +3030,7 @@ struct ska_vh_riom_ccu_mvb15_hvac3 {
             uint8_t Reduce_Mode : 1; //byte11
             uint8_t Emergency_Mode : 1;
             uint8_t Self_Test_Mode : 1;
-            uint8_t Spare : 1;
+            uint8_t Spare : 1;//bit91
             uint8_t Fire_Mode : 1;
             uint8_t Inside_Fire_On : 1;
             uint8_t Half_Cooling : 1;
@@ -3052,13 +3052,13 @@ struct ska_vh_riom_ccu_mvb15_hvac3 {
             uint8_t Emerg_Inv_On : 1;
             uint8_t Evap_Sel1_On : 1;
             uint8_t Evap_Sel2_On : 1; //byte14
-            uint8_t bit97 : 1;
-            uint8_t bit98 : 1;
-            uint8_t bit99 : 1;
-            uint8_t bit100 : 1;
-            uint8_t bit101 : 1;
-            uint8_t bit102 : 1;
-            uint8_t bit103 : 1;
+            uint8_t bit97 : 1;//bit113
+            uint8_t bit98 : 1;//bit114
+            uint8_t bit99 : 1;//bit115
+            uint8_t bit100 : 1;//bit116
+            uint8_t bit101 : 1;//bit117
+            uint8_t bit102 : 1;//bit118
+            uint8_t bit103 : 1;//bit119
             uint8_t Emerg_Shut_Air_Damp_Pos ; //byte15
             uint8_t Fresh_Air_Damp_Pos ; //byte16
             uint8_t Minor_Fault : 1; //byte 17
@@ -3109,15 +3109,15 @@ struct ska_vh_riom_ccu_mvb15_hvac3 {
             uint8_t bit181 : 1;
             uint8_t bit182 : 1;
             uint8_t bit183 : 1;
-            uint8_t reserved23 : 1;
-            uint8_t reserved24 : 1;
-            uint8_t reserved25 : 1;
-            uint8_t reserved26 : 1;
-            uint8_t reserved27 : 1;
-            uint8_t reserved28 : 1;
-            uint8_t reserved29 : 1;
-            uint8_t reserved30 : 1;
-            uint8_t reserved31 : 1;
+            uint8_t reserved23;
+            uint8_t reserved24;
+            uint8_t reserved25;
+            uint8_t reserved26;
+            uint8_t reserved27;
+            uint8_t reserved28;
+            uint8_t reserved29;
+            uint8_t reserved30;
+            uint8_t reserved31;
         } bits;
         time_t last_update;
     };
@@ -4169,7 +4169,8 @@ struct oa_vh_riom_ccu_mvb5_dcu4 {
         uint64_t qwords[BYTES_TO_QWORDS(IO_RAW_NBYTES_16)];
 
         struct {
-            uint8_t Door_name_Byte1; //byte 0
+            uint8_t Door_number; //byte 0
+            uint8_t reserved1;
             uint8_t DCU_CycleCounter_Byte_1;
             uint8_t DCU_CycleCounter_Byte_2;
             uint8_t DCU_CycleCounter_Byte_3;
@@ -4304,15 +4305,15 @@ struct oa_vh_riom_ccu_mvb6_hvac1 {
             uint8_t bit181 : 1;
             uint8_t bit182 : 1;
             uint8_t bit183 : 1;
-            uint8_t reserved_23 : 1;
-            uint8_t reserved_24 : 1;
-            uint8_t reserved_25 : 1;
-            uint8_t reserved_26 : 1;
-            uint8_t reserved_27 : 1;
-            uint8_t reserved_28 : 1;
-            uint8_t reserved_29 : 1;
-            uint8_t reserved_30 : 1;
-            uint8_t reserved_31 : 1;
+            uint8_t reserved_23;
+            uint8_t reserved_24;
+            uint8_t reserved_25;
+            uint8_t reserved_26;
+            uint8_t reserved_27;
+            uint8_t reserved_28;
+            uint8_t reserved_29;
+            uint8_t reserved_30;
+            uint8_t reserved_31;
 
 
         } bits;
@@ -4434,15 +4435,15 @@ struct oa_vh_riom_ccu_mvb7_hvac2 {
             uint8_t bit181 : 1;
             uint8_t bit182 : 1;
             uint8_t bit183 : 1;
-            uint8_t reserved_23 : 1;
-            uint8_t reserved_24 : 1;
-            uint8_t reserved_25 : 1;
-            uint8_t reserved_26 : 1;
-            uint8_t reserved_27 : 1;
-            uint8_t reserved_28 : 1;
-            uint8_t reserved_29 : 1;
-            uint8_t reserved_30 : 1;
-            uint8_t reserved_31 : 1;
+            uint8_t reserved_23;
+            uint8_t reserved_24;
+            uint8_t reserved_25;
+            uint8_t reserved_26;
+            uint8_t reserved_27;
+            uint8_t reserved_28;
+            uint8_t reserved_29;
+            uint8_t reserved_30;
+            uint8_t reserved_31;
 
         } bits;
         time_t last_update;
@@ -4530,9 +4531,9 @@ struct bcu_ccu_mvb1
             uint8_t S_BpAP : 1 ;
             uint8_t S_Sanding_Heating_Release : 1 ;
             uint8_t S_Sanding_Active : 1 ;
-            uint8_t bit246 :1 ;
+            uint8_t S_WSPTest_OK :1 ;
+            uint8_t bit246  :1;
             uint8_t bit247  :1;
-            uint8_t bit248  :1;
             uint8_t reserved31;//byte 31
 
         }bits;
@@ -4563,24 +4564,24 @@ struct bcu_ccu_mvb2
             uint8_t DIA_BOARD_MB03_07 : 1;
             uint8_t DIA_BOARD_EB01_08 : 1;
             uint8_t DIA_BOARD_EB02_09 : 1;
+            uint8_t bit22 : 1;
             uint8_t bit23 : 1;
-            uint8_t bit24 : 1;
             uint8_t DIA_BOARDCODING_MB04_04 : 1; //byte3
             uint8_t DIA_BOARDCODING_MB03_06 : 1;
             uint8_t DIA_BOARDCODING_MB03_07 : 1;
             uint8_t DIA_BOARDCODING_EB01_08 : 1;
             uint8_t DIA_BOARDCODING_EB02_09 : 1;
+            uint8_t bit29 : 1;
             uint8_t bit30 : 1;
             uint8_t bit31 : 1;
-            uint8_t bit32 : 1;
             uint8_t DIA_CAN_COMM_CB09_02 : 1; //byte4
             uint8_t DIA_CAN_COMM_MB04_03 : 1;
             uint8_t DIA_CAN_COMM_MB03_06 : 1;
             uint8_t DIA_CAN_COMM_MB03_07 : 1;
             uint8_t DIA_CAN_COMM_EB01_08 : 1;
             uint8_t DIA_CAN_COMM_EB02_09 : 1;
+            uint8_t bit38 : 1;
             uint8_t bit39 : 1;
-            uint8_t bit40 : 1;
             uint8_t DIA_PSENSOR_C : 1; //byte5
             uint8_t DIA_PSENSOR_BP : 1;
             uint8_t DIA_PSENSOR1_PB : 1;
@@ -4596,7 +4597,7 @@ struct bcu_ccu_mvb2
             uint8_t DIA_REL_WSP_R_VLT5KMHDOOR : 1;
             uint8_t DIA_REL_WSP_R_VGT5KMHDOOR : 1;
             uint8_t DIA_REL_WSP_R_VGT10KMHDOOR : 1;
-            uint8_t bit56 : 1;
+            uint8_t bit55 : 1;
             uint8_t DIA_WSP_FSI_AXLE1 : 1; //byte7
             uint8_t DIA_WSP_FSI_AXLE2 : 1;
             uint8_t DIA_WSP_FSI_AXLE3 : 1;
@@ -4627,16 +4628,16 @@ struct bcu_ccu_mvb2
             uint8_t DIA_CAR_CONFIGURATION : 1;
             uint8_t DIA_EDACTUAL_Bo1_FAILURE : 1;
             uint8_t DIA_EDACTUAL_Bo2_FAILURE : 1;
+            uint8_t bit86 : 1;
             uint8_t bit87 : 1;
-            uint8_t bit88 : 1;
             uint8_t DIA_POP_SA_DIRECTION_S1 : 1; //byte11
             uint8_t DIA_POP_SA_DIRECTION_S2 : 1;
             uint8_t DIA_POP_SA_DRYING : 1;
             uint8_t DIA_POP_SA_BLOWOUT : 1;
             uint8_t DIA_SANDING_DISTURBED : 1;
+            uint8_t bit93 : 1;
             uint8_t bit94 : 1;
             uint8_t bit95 : 1;
-            uint8_t bit96 : 1;
             uint8_t DIA_DCL_INCPRESS : 1; //byte12
             uint8_t DIA_DCL_DECPRESS : 1;
             uint8_t DIA_DCL_CONFIG : 1;
@@ -4644,7 +4645,7 @@ struct bcu_ccu_mvb2
             uint8_t DIA_DCL_OFFSET : 1;
             uint8_t DIA_DIRECTBRAKE_DIST : 1;
             uint8_t DIA_EMERGVALVE : 1;
-            uint8_t bit104 : 1;
+            uint8_t bit103 : 1;
             uint8_t DIA_AIR_SUSP_PRESS_LOW : 1; //byte13
             uint8_t DIA_AIR_SUSP_PRESS_HIGH : 1;
             uint8_t DIA_AIR_SUSP_PRESS_BURST : 1;
@@ -4667,8 +4668,8 @@ struct bcu_ccu_mvb2
             uint8_t DIA_MVB_ERROR_BCU : 1;
             uint8_t DIA_MVB_ERROR_TCU : 1;
             uint8_t DIA_MVB_ERROR_VCU : 1;
+            uint8_t bit126 : 1;
             uint8_t bit127 : 1;
-            uint8_t bit128 : 1;
 
 
         }bits;
@@ -7507,12 +7508,12 @@ struct ska_ccu_output {
     struct ccu_to_all_bcus ccu_to_all_bcus;
 
     struct ccu_to_all_tcus ccu_to_all_tcus;
+    struct ccu_to_all_apus ccu_to_all_apus;
+    //struct tcu_outputs all_tcu_outputs;
 
     struct ccu_to_oax_etcs ccu_to_oa1_etcs;
     struct ccu_to_oax_etcs ccu_to_oa2_etcs;
     struct ccu_to_all_etcs ccu_to_all_etcs;
-
-    struct ccu_to_all_apus ccu_to_all_apus;
 
 };
 

@@ -31,11 +31,11 @@ SKA_TCU::SKA_TCU(QObject *parent)
 
 void SKA_TCU::init_tcu_mvb_table(SKA_VEHICLE_NUM ska_x_num, TCU_NUM tcu_x_num, MVB_NUM mvb_num)
 {
-    qDebug() << "INIT TABLE";
+    //qDebug() << "INIT TABLE";
     int ska_num = static_cast<int>(ska_x_num);
     int tcu_num = static_cast<int>(tcu_x_num);
     if(mvb_num == MVB1) {
-        qDebug() << "INIT TABLE IF İÇİNDE";
+        //qDebug() << "INIT TABLE IF İÇİNDE";
         m_inputs_map[ska_num][tcu_num][MVB1] = {
             {"Lifesign",0},
             {"Ack_Reset",0},
@@ -245,11 +245,11 @@ void SKA_TCU::init_tcu_mvb_table(SKA_VEHICLE_NUM ska_x_num, TCU_NUM tcu_x_num, M
 
         // Tablo içeriğini yeniden boyutlandır
         m_tableWidget[ska_num][tcu_num][MVB1]->resizeColumnsToContents();
-        qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][tcu_num][MVB1]->columnCount() ;
+        //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][tcu_num][MVB1]->columnCount() ;
 
     }
     else if(mvb_num == MVB2) {
-        qDebug() << "MVB2 INIT TABLE";
+        //qDebug() << "MVB2 INIT TABLE";
         m_inputs_map[ska_num][tcu_num][MVB2] = {
             {"Lifesign", 0},                      // byte0
             {"Traction_Achieved", 0},             // byte2
@@ -328,7 +328,7 @@ void SKA_TCU::init_tcu_mvb_table(SKA_VEHICLE_NUM ska_x_num, TCU_NUM tcu_x_num, M
 
         // Tablo içeriğini yeniden boyutlandır
         m_tableWidget[ska_num][tcu_num][MVB2]->resizeColumnsToContents();
-        qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][tcu_num][MVB2]->columnCount() ;
+        //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][tcu_num][MVB2]->columnCount() ;
     }
     else {
         qDebug() << "NOOOOOOOOOOOOOOOOOOO";
@@ -788,7 +788,7 @@ void SKA_TCU::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &sk
     qDebug() << "TCU SKA NUM  _____________ :  " << ska_num ;
     qDebug() << "TCU NUM  _____________ :  " << tcu_num ;
 
-    qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT SKA_TCU ========== :  " << m_tableWidget[ska_num][TCU1][MVB1]->columnCount() ;
+    //qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT SKA_TCU ========== :  " << m_tableWidget[ska_num][TCU1][MVB1]->columnCount() ;
     if (input.size() == sizeof(m_ska_x_tcu[ska_num][tcu_num])) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
         //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));

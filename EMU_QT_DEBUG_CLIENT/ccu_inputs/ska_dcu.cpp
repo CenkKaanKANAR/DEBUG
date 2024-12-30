@@ -16,7 +16,7 @@ SKA_DCU::SKA_DCU(QObject *parent)
     init_ska_x_mvb4_dcu3_table(SKA_VEHICLE_NUM::SKA2);
     init_ska_x_mvb5_dcu4_table(SKA_VEHICLE_NUM::SKA2);
 
-
+    qDebug() << "SIZE OF SKA DCU" << sizeof(ska_dcu);
     make_signal_slot_connection();
 
 }
@@ -82,7 +82,7 @@ void SKA_DCU::update_table(SKA_VEHICLE_NUM ska_x_num, DCU_LIST dcu_num)
 {
     int ska_num = static_cast<int>(ska_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU1]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU1]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[ska_num][dcu_num]){
 
@@ -107,7 +107,7 @@ void SKA_DCU::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &sk
 
     int ska_num = static_cast<int>(ska_x_num);
 
-    qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU1]->columnCount() ;
+    //qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU1]->columnCount() ;
     if (input.size() == sizeof(m_ska_x_dcu[ska_num])) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
         //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
@@ -135,14 +135,14 @@ void SKA_DCU::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &sk
 
         // Üçüncü alanı kopyala
         memcpy(&m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb4_dcu3.bytes, input.constData() + sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb2_dcu1.bytes) + sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb3_dcu2.bytes) , sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb4_dcu3.bytes));
-        update_dcu2_map(ska_x_num,DCU3);
+        update_dcu3_map(ska_x_num,DCU3);
         //set_struct_mvb2(oa_x_num);
         update_table(ska_x_num,SKA_DCU::DCU3);
         //update maps
 
         // Dördüncü alanı kopyala
         memcpy(&m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb5_dcu4.bytes, input.constData() + sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb2_dcu1.bytes) + sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb3_dcu2.bytes) + sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb4_dcu3.bytes), sizeof(m_ska_x_dcu[ska_num].ska_vh_riom_ccu_mvb5_dcu4.bytes));
-        update_dcu2_map(ska_x_num,DCU4);
+        update_dcu4_map(ska_x_num,DCU4);
         //set_struct_mvb2(oa_x_num);
         update_table(ska_x_num,SKA_DCU::DCU4);
         //update maps
@@ -964,7 +964,7 @@ void SKA_DCU::init_ska_x_mvb2_dcu1_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][DCU1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU1]->columnCount() ;
 }
 
 
@@ -1773,7 +1773,7 @@ void SKA_DCU::init_ska_x_mvb3_dcu2_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][DCU2]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU2]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU2]->columnCount() ;
 }
 
 void SKA_DCU::update_dcu3_map(SKA_VEHICLE_NUM ska_x_num, DCU_LIST dcu)
@@ -2363,7 +2363,7 @@ void SKA_DCU::init_ska_x_mvb4_dcu3_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][DCU3]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU3]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU3]->columnCount() ;
 }
 
 
@@ -2503,7 +2503,7 @@ void SKA_DCU::init_ska_x_mvb5_dcu4_table(SKA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[ska_num][DCU4]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU4]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][DCU4]->columnCount() ;
 
 }
 

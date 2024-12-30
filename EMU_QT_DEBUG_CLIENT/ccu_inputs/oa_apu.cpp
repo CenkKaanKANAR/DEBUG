@@ -277,7 +277,7 @@ void OA_APU::update_table(OA_VEHICLE_NUM oa_x_num, OA_MVB_NUM mvb_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
     std::vector<int> valueColumns = {1, 3, 5, 7};
     for(const auto & map:m_inputs_map[oa_num][mvb_num]){
 
@@ -493,7 +493,7 @@ void OA_APU::init_oa_apu_mvb1_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB1]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
 
 
 
@@ -596,7 +596,7 @@ void OA_APU::init_oa_apu_mvb2_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB2]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB2]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB2]->columnCount() ;
 
 
 
@@ -678,7 +678,7 @@ void OA_APU::init_oa_apu_mvb3_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB3]->resizeColumnsToContents();
-    qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB3]->columnCount() ;
+    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB3]->columnCount() ;
 
 }
 
