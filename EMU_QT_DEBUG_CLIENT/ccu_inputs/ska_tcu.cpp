@@ -354,7 +354,7 @@ void SKA_TCU::set_struct(SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x_num, MVB_NUM 
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Brake           = m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Brake");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Forward             = m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Forward");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Reverse             = m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Reverse");
-        qDebug() << "CENK 1";
+
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Cab_SKA1            = m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Cab_SKA1");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Cab_SKA2            = m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Cab_SKA2");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Slip_Slide_Control          = m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Slip_Slide_Control");
@@ -369,7 +369,7 @@ void SKA_TCU::set_struct(SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x_num, MVB_NUM 
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.V_MV_Output_Motor2_Ok            = m_inputs_map[ska_num][tcu_num][MVB1].at("V_MV_Output_Motor2_Ok");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.V_HV_Presence            = m_inputs_map[ska_num][tcu_num][MVB1].at("V_HV_Presence");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.V_Traction_DC_Link_Ok            = m_inputs_map[ska_num][tcu_num][MVB1].at("V_Traction_DC_Link_Ok");
-        qDebug() << "CENK 2";
+
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.V_Pantograph_Permission          = m_inputs_map[ska_num][tcu_num][MVB1].at("V_Pantograph_Permission");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.V_Traction1_Ok           = m_inputs_map[ska_num][tcu_num][MVB1].at("V_Traction1_Ok");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.V_Traction2_Ok           = m_inputs_map[ska_num][tcu_num][MVB1].at("V_Traction2_Ok");
@@ -394,7 +394,7 @@ void SKA_TCU::set_struct(SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x_num, MVB_NUM 
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_9           = m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_9");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.SW_Version_Major             = m_inputs_map[ska_num][tcu_num][MVB1].at("SW_Version_Major");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.SW_Version_Minor             = m_inputs_map[ska_num][tcu_num][MVB1].at("SW_Version_Minor");
-        qDebug() << "CENK 3";
+
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_12          = m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_12");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.TCU_Location_SKA1_1          = m_inputs_map[ska_num][tcu_num][MVB1].at("TCU_Location_SKA1_1");
         m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.TCU_Location_SKA1_2          = m_inputs_map[ska_num][tcu_num][MVB1].at("TCU_Location_SKA1_2");
@@ -565,7 +565,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Reverse")                             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Reverse;
         m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Cab_SKA1")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Cab_SKA1;
         m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Cab_SKA2")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Cab_SKA2;
-        qDebug() << "CENK 0_1";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Slip_Slide_Control")                  = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Slip_Slide_Control;
         m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Traction_Null")                       = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Traction_Null;
         m_inputs_map[ska_num][tcu_num][MVB1].at("Mode_Traction_Cutoff")                     = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Mode_Traction_Cutoff;
@@ -590,7 +590,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit45")                                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit45;
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit46")                                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit46;
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit47")                                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit47;
-        qDebug() << "CENK 0_3";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("STS_Main_Cont1")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.STS_Main_Cont1;
         m_inputs_map[ska_num][tcu_num][MVB1].at("STS_Main_Cont2")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.STS_Main_Cont2;
         m_inputs_map[ska_num][tcu_num][MVB1].at("STS_Pre_Cont1")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.STS_Pre_Cont1;
@@ -600,7 +600,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit54")                                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit54;
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit55")                                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit55;
         m_inputs_map[ska_num][tcu_num][MVB1].at("Catenary_Voltage")                         = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.Catenary_Voltage;
-        qDebug() << "CENK 0_4";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_9")                               = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_9;
         m_inputs_map[ska_num][tcu_num][MVB1].at("SW_Version_Major")                         = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.SW_Version_Major;
         m_inputs_map[ska_num][tcu_num][MVB1].at("SW_Version_Minor")                         = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.SW_Version_Minor;
@@ -613,7 +613,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit109")                                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit109;
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit110")                                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit110;
         m_inputs_map[ska_num][tcu_num][MVB1].at("bit111")                                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit111;
-        qDebug() << "CENK 0_5";
+
         //m_inputs_map[ska_num][tcu_num][MVB1].at("bit112")                                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.bit112;
         m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_14")                              = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_14;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_Enable")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_Enable;
@@ -626,7 +626,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_Traction_CutOff")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_Traction_CutOff;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_Relay_Security_Emergency_Loop")     = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_Relay_Security_Emergency_Loop;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_MC_S1")                             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_MC_S1;
-        qDebug() << "CENK 0_6";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_MC_S2")                             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_MC_S2;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_MC_S3")                             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_MC_S3;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TL_MC_S4")                             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TL_MC_S4;
@@ -637,7 +637,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Catenary_Out_Of_Range")                = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Catenary_Out_Of_Range;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_DC_Link_OV")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_DC_Link_OV;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_DC_Link_LV")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_DC_Link_LV;
-        qDebug() << "CENK 0_7";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Input1_OC")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Input1_OC;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Input2_OC")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Input2_OC;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Input1_OL")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Input1_OL;
@@ -654,7 +654,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Module1_OT")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Module1_OT;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Module2_OT")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Module2_OT;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Module3_OT")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Module3_OT;
-        qDebug() << "CENK 0_8";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Module4_OT")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Module4_OT;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TC_OT")                                = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TC_OT;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TC_OH")                                = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TC_OH;
@@ -665,7 +665,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Coolant_Lvl_Fault")                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Coolant_Lvl_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Coolant_Fan_CB")                       = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Coolant_Fan_CB;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Cabinet_Fan_CB")                       = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Cabinet_Fan_CB;
-        qDebug() << "CENK 0_9";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_TCU_Fan_CB")                           = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_TCU_Fan_CB;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Pump_CB")                              = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Pump_CB;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Input_Contactor1_Jammed")              = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Input_Contactor1_Jammed;
@@ -677,7 +677,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_PreCharge_Contactor1_OER")             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_PreCharge_Contactor1_OER;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_PreCharge_Contactor2_OER")             = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_PreCharge_Contactor2_OER;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Capacitor_Fault")                      = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Capacitor_Fault;
-        qDebug() << "CENK 0_10";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_110VDC_Input_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_110VDC_Input_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_15VDC_GPLV_Fault")                     = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_15VDC_GPLV_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_24VDC_P_Fault")                        = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_24VDC_P_Fault;
@@ -689,7 +689,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Rec1_IGBT_UN_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Rec1_IGBT_UN_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Rec1_IGBT_VP_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Rec1_IGBT_VP_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Rec1_IGBT_VN_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Rec1_IGBT_VN_Fault;
-        qDebug() << "CENK 0_11";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Rec2_IGBT_UP_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Rec2_IGBT_UP_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Rec2_IGBT_UN_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Rec2_IGBT_UN_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Rec2_IGBT_VP_Fault")                   = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Rec2_IGBT_VP_Fault;
@@ -700,7 +700,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Inv_IGBT_VN_Fault")                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Inv_IGBT_VN_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Inv_IGBT_WP_Fault")                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Inv_IGBT_WP_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Inv_IGBT_WN_Fault")                    = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Inv_IGBT_WN_Fault;
-        qDebug() << "CENK 0_12";
+
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Chop_IGBT_OVP_Fault")                  = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Chop_IGBT_OVP_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_Chop_IGBT_FWD_Fault")                  = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_Chop_IGBT_FWD_Fault;
         m_inputs_map[ska_num][tcu_num][MVB1].at("DIA_CFD_Fault")                            = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.DIA_CFD_Fault;
@@ -717,7 +717,7 @@ void SKA_TCU::update_tcu_mvb_map(const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x
         m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_29")                              = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_29;
         m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_30")                              = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_30;
         m_inputs_map[ska_num][tcu_num][MVB1].at("reserved_31")                              = m_ska_x_tcu[ska_num][tcu_num].ska_tcu_ccu_mvb1.bits.reserved_31;
-        qDebug() << "CENK 0_13";
+
 
 
 
@@ -776,7 +776,7 @@ SKA_TCU::~SKA_TCU()
 void SKA_TCU::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &ska_x_num, TCU_NUM tcu_x_num)
 {
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);

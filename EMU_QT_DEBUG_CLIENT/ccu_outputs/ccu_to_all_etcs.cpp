@@ -27,7 +27,7 @@ void Ccu_To_All_Etcs::set_data_struct(const QByteArray &output)
 
 void Ccu_To_All_Etcs::update_struct_with_map()
 {
-    qDebug() << "Merhaba Update Struct with map GRİŞİ" ;
+
 
     auto setInputMap = [&](const QString& signal_name) {
         m_outputs_map[signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget, signal_name).toInt();

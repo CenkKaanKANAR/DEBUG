@@ -53,7 +53,7 @@ CCU_Table::CCU_Table(QWidget *parent) :
     ui->setupUi(this);
 
     // Başlatma sırasında hedef port ve adresi ayarla (gerekirse değiştirilebilir)
-    forceTargetAddress = QHostAddress("192.168.56.28");//10.0.11.21
+    forceTargetAddress = QHostAddress("10.0.11.21");//10.0.11.21
     forceTargetPort = 9000;
 
     // Set the button's size and position (for example, at the top of the window) //FORCE ON OFF
@@ -78,12 +78,12 @@ CCU_Table::CCU_Table(QWidget *parent) :
 
 
     //Force ska1_dd_riom_outputs
-    qDebug() << "CENK 1";
+
     connect(forceControl3->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
-    qDebug() << "CENK 2";
+
 
     connect(m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()->getTableWidget(SKA_VEHICLE_NUM::SKA1),&QTableWidget::itemChanged,this,&CCU_Table::on_tableItemChanged);
-    qDebug() << "CENK 3";
+
 
     //Force ska2_dd_riom_outputs
     connect(forceControl4->getCheckBox(), &QCheckBox::stateChanged, this, &CCU_Table::onForceCheckboxToggled);
@@ -159,7 +159,7 @@ CCU_Table::CCU_Table(QWidget *parent) :
 
 
 
-    qDebug() << "CENK 4";
+
 
 
     //FORCE BİTİŞŞ
@@ -725,13 +725,13 @@ void CCU_Table::on_tableItemChanged(QTableWidgetItem *item) {
     }
 }*/
 void CCU_Table::on_tableItemChanged(QTableWidgetItem *item) {
-    qDebug() << "ON TABLE ITEM CHANGED GİRİŞ";
+    //qDebug() << "ON TABLE ITEM CHANGED GİRİŞ";
     if (!item) return; // Null check
     qDebug() << "ON TABLE ITEM CHANGED ITEM IS NOT NULL";
     int row = item->row();
     int column = item->column();
 
-    qDebug() << "?????????????????? INSIDE onTABLEITEMCHANGED";
+    //qDebug() << "?????????????????? INSIDE onTABLEITEMCHANGED";
 
     // Find the active checkbox and get the corresponding table and vehicle number
     for (auto it = checkboxTableMap.begin(); it != checkboxTableMap.end(); ++it) {

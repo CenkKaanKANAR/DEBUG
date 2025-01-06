@@ -99,7 +99,7 @@ void SKA_DCU::update_table(SKA_VEHICLE_NUM ska_x_num, DCU_LIST dcu_num)
 void SKA_DCU::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &ska_x_num)
 {
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);

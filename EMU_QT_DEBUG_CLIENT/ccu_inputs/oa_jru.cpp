@@ -42,7 +42,7 @@ void Oa_Jru::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
 {
 
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);

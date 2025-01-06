@@ -67,15 +67,15 @@ void OA_BCU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
 {
 
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
-    //qDebug() << "Gelen input veri tipi : " << typeof(input);
+
 
 
     int oa_num = static_cast<int>(oa_x_num);
 
-    //qDebug() << "SET DATA STRUCT SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+
     if (input.size() == sizeof(m_oa_x_bcu[oa_num])) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
         //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
@@ -121,13 +121,12 @@ void OA_BCU::update_table(OA_VEHICLE_NUM oa_x_num, OA_MVB_NUM mvb_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
-    std::vector<int> valueColumns = {1, 3, 5, 7};
+
     for(const auto & map:m_inputs_map[oa_num][mvb_num]){
 
 
         utils::setTableWidgetValueByNameWithoutColumn(m_tableWidget[oa_num][mvb_num], map.first, map.second);
-        //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT INSIDE FOR LOOP ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+
 
         //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,3, map.second);
         //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,5, map.second);
@@ -262,7 +261,7 @@ void OA_BCU::init_oa_x_mvb1_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB1]->resizeColumnsToContents();
-    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+
 }
 
 void OA_BCU::init_oa_x_mvb2_table(OA_VEHICLE_NUM vehicle_type)
@@ -434,7 +433,7 @@ void OA_BCU::init_oa_x_mvb2_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB2]->resizeColumnsToContents();
-    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB2]->columnCount() ;
+
 
 }
 

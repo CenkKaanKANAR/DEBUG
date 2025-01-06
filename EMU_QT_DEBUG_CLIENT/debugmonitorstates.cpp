@@ -139,7 +139,7 @@ DebugMonitorStates::~DebugMonitorStates() {
 }
 
 void DebugMonitorStates::setupTable() {
-    qDebug() << "setupTable başlangıç ";
+
     table->setColumnCount(3);
     table->setHorizontalHeaderLabels({"Function", "Pre-State", "Current State"});
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -235,7 +235,7 @@ void DebugMonitorStates::setupTable() {
     }
     table->resizeColumnsToContents();
 
-    qDebug() << "setupTable sondan 1 önce ";
+
     // Get the layout
     //QVBoxLayout *layout = qobject_cast<QVBoxLayout *>(this->layout());
     QVBoxLayout *layout = qobject_cast<QVBoxLayout *>(this->layout());
@@ -245,7 +245,7 @@ void DebugMonitorStates::setupTable() {
         layout->addWidget(table);
         //mainLayout->addLayout(layout);
     }
-    qDebug() << "setupTable son ";
+
     // Create test button
     // Test button callback
     QPushButton *testButton = new QPushButton("Load Test Data", this);
@@ -290,7 +290,7 @@ void DebugMonitorStates::setupTable() {
 
 void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
 
-    qDebug() << "parseSystemStates başlangıç";
+
     int offset = 0; // First 40 bytes reserved for other purposes
     QList<SystemFunctionState> states;
 
@@ -375,9 +375,6 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
     };
 
 
-
-
-
     QByteArray data = recv_data.mid(128,152);
     //QByteArray data = recv_data;
     // Gelen veriyi DebugMonitorStates'den gelen pencereye iletelim
@@ -408,7 +405,7 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
     qDebug() << "parseSystemStates son";
     qDebug() << "SIZE OF STATES :" << states.size();
     updateTable(states);
-    //emit customSignal(states);
+
 
 }
 
@@ -421,10 +418,7 @@ void DebugMonitorStates::updateTable(const QList<SystemFunctionState> &states) {
         //table->setItem(row, 0, new QTableWidgetItem(states[row].functionName));
         table->setItem(row, 1, new QTableWidgetItem(states[row].preState));
         table->setItem(row, 2, new QTableWidgetItem(states[row].currentState));
-        //table->item(row,1)->setText("SELAMLAR");
-        //table->update();
-        //QVBoxLayout *layout = qobject_cast<QVBoxLayout *>(this->layout());
-        //layout->update();
+
         // Highlight changes
         if (states[row].preState != states[row].currentState) {
             highlightStateChange(table->item(row, 2), true);
@@ -874,7 +868,8 @@ void DebugMonitorStates::customizeCombobox()
 
 
 void DebugMonitorStates::handleUdpMessage(const QByteArray& recv_data) {
+
     qDebug() << "Received Udp message in Debug Monitor States :" << recv_data;
-    //setupTable();  // Setup the table after setting the layout
     parseSystemStates(recv_data);
+
 }

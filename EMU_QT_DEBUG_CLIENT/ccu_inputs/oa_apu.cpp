@@ -17,7 +17,6 @@ OA_APU::OA_APU(QObject *parent)
     init_oa_apu_mvb2_table(OA_VEHICLE_NUM::OA2);
     init_oa_apu_mvb3_table(OA_VEHICLE_NUM::OA2);
 
-    qDebug() << "SIZE OF OA APU IS : " << sizeof(oa_apu);
 
     make_signal_slot_connection();
 
@@ -70,7 +69,6 @@ void OA_APU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
 {
 
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);
@@ -78,7 +76,7 @@ void OA_APU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
 
     int oa_num = static_cast<int>(oa_x_num);
 
-    qDebug() << "SET DATA STRUCT SIZE of OA_APU COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+
     if (input.size() == sizeof(m_oa_x_apu[oa_num])) {
         //std::copy(output.begin(), output.begin() + sizeof(m_ska_ccu_vh_riom_mvb1_d_outputs.bytes), m_ska_ccu_vh_riom_mvb1_d_outputs.bytes);
         //memcpy(&m_oa_x_etcs[oa_num], input.constData(), sizeof(m_oa_x_etcs[oa_num]));
@@ -93,30 +91,30 @@ void OA_APU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
 
         QByteArray data =  input.mid(0, 32);
         qDebug() << "32 Bytelık data :  " << data;
-        qDebug() << "update map1 üstü";
+        //qDebug() << "update map1 üstü";
         update_mvb1_map(oa_x_num);
-        qDebug() << "update map1 altı";
+        //qDebug() << "update map1 altı";
         //set_struct_mvb1(oa_x_num);
         update_table(oa_x_num,OA_APU::MVB1);
-        qDebug() << "update table1 altı";
+        //qDebug() << "update table1 altı";
 
         // İkinci alanı kopyala, input.constData() + sizeof(etcs_ccu_mvb1) kadar ilerleyerek
         memcpy(&m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bytes, input.constData() + sizeof(m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bytes), sizeof(m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bytes));
-        qDebug() << "update map2 üstü";
+        //qDebug() << "update map2 üstü";
         update_mvb2_map(oa_x_num);
-        qDebug() << "update map2 altı";
+        //qDebug() << "update map2 altı";
         //set_struct_mvb2(oa_x_num);
         update_table(oa_x_num,OA_APU::MVB2);
-        qDebug() << "update table2 altı";
+        //qDebug() << "update table2 altı";
 
         // Üçüncü alanı kopyala, input.constData() + sizeof(etcs_ccu_mvb1) + sizeof(etcs_ccu_mvb2) kadar ilerleyerek
         memcpy(&m_oa_x_apu[oa_num].oa_apu_ccu_mvb3.bytes, input.constData() + sizeof(m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bytes) + sizeof(m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bytes), sizeof(m_oa_x_apu[oa_num].oa_apu_ccu_mvb3.bytes));
         qDebug() << "update map3 üstü";
         update_mvb3_map(oa_x_num);
-        qDebug() << "update map3 altı";
+        //qDebug() << "update map3 altı";
          //set_struct_mvb3(oa_x_num);
         update_table(oa_x_num,OA_APU::MVB3);
-        qDebug() << "update table3 altı";
+        //qDebug() << "update table3 altı";
         //update maps
 
         //
@@ -159,7 +157,7 @@ void OA_APU::update_mvb1_map(OA_VEHICLE_NUM oa_x_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
 
-    qDebug() << "KAAN 1";
+
     m_inputs_map[oa_num][MVB1].at("Lifesign")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.Lifesign;
     m_inputs_map[oa_num][MVB1].at("APUC_App_State")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.APUC_App_State;
     m_inputs_map[oa_num][MVB1].at("Door_Open")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.Door_Open;
@@ -168,7 +166,7 @@ void OA_APU::update_mvb1_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("APU_Start_Status")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.APU_Start_Status;
     m_inputs_map[oa_num][MVB1].at("Reset_Ack")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.Reset_Ack;
     m_inputs_map[oa_num][MVB1].at("bit23")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.bit23;
-    qDebug() << "KAAN 2";
+
     m_inputs_map[oa_num][MVB1].at("APS_Ok")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.APS_Ok;
     m_inputs_map[oa_num][MVB1].at("MV_Output_Ok")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.MV_Output_Ok;
     m_inputs_map[oa_num][MVB1].at("HV_Presence")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.HV_Presence;
@@ -178,7 +176,7 @@ void OA_APU::update_mvb1_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("bit30")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.bit30;
     m_inputs_map[oa_num][MVB1].at("bit31")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.bit31;
     m_inputs_map[oa_num][MVB1].at("reserved_4")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.reserved_4;
-    qDebug() << "KAAN 3";
+
     m_inputs_map[oa_num][MVB1].at("SW_Ver")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.SW_Ver;
     m_inputs_map[oa_num][MVB1].at("Catenary_Voltage")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.Catenary_Voltage;
     m_inputs_map[oa_num][MVB1].at("Fault_Code_APUC")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.Fault_Code_APUC;
@@ -189,7 +187,7 @@ void OA_APU::update_mvb1_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("Fault_Code_BCH")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.Fault_Code_BCH;
     m_inputs_map[oa_num][MVB1].at("reserved_14")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.reserved_14;
     m_inputs_map[oa_num][MVB1].at("reserved_15")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb1.bits.reserved_15;
-    qDebug() << "KAAN 4";
+
 
 
 }
@@ -198,7 +196,7 @@ void OA_APU::update_mvb2_map(OA_VEHICLE_NUM oa_x_num)
 {
 
     int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "CEKO 1";
+
     m_inputs_map[oa_num][MVB2].at("Lifesign")                          =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.Lifesign;
     m_inputs_map[oa_num][MVB2].at("PFC1_App_State")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC1_App_State;
     m_inputs_map[oa_num][MVB2].at("PFC2_App_State")                    =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC2_App_State;
@@ -212,7 +210,7 @@ void OA_APU::update_mvb2_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB2].at("bit30")                             =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.bit30;
     m_inputs_map[oa_num][MVB2].at("bit31")                             =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.bit31;
     m_inputs_map[oa_num][MVB2].at("PFC_A_CAN")                         =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC_A_CAN;
-    qDebug() << "CEKO 2";
+
     m_inputs_map[oa_num][MVB2].at("PFC_B_CAN")                         =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC_B_CAN;
     m_inputs_map[oa_num][MVB2].at("VSI_A_CAN")                         =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.VSI_A_CAN;
     m_inputs_map[oa_num][MVB2].at("VSI_B_CAN")                         =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.VSI_B_CAN;
@@ -226,7 +224,7 @@ void OA_APU::update_mvb2_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB2].at("PFC1_Fs")                           =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC1_Fs;
     m_inputs_map[oa_num][MVB2].at("PFC1_Vo")                           =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC1_Vo;
     m_inputs_map[oa_num][MVB2].at("PFC1_Temp1")                         =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC1_Temp1;
-    qDebug() << "CEKO 3";
+
     m_inputs_map[oa_num][MVB2].at("PFC1_Temp2")                         =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC1_Temp2;
     m_inputs_map[oa_num][MVB2].at("reserved_16")                       =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.reserved_16;
     m_inputs_map[oa_num][MVB2].at("PFC2_Vs")                           =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.PFC2_Vs;
@@ -240,7 +238,7 @@ void OA_APU::update_mvb2_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB2].at("reserved_29")                       =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.reserved_29;
     m_inputs_map[oa_num][MVB2].at("reserved_30")                       =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.reserved_30;
     m_inputs_map[oa_num][MVB2].at("reserved_31")                       =m_oa_x_apu[oa_num].oa_apu_ccu_mvb2.bits.reserved_31;
-    qDebug() << "CEKO 4";
+
 
 }
 
@@ -277,17 +275,15 @@ void OA_APU::update_table(OA_VEHICLE_NUM oa_x_num, OA_MVB_NUM mvb_num)
 {
     int oa_num = static_cast<int>(oa_x_num);
     // İndeksleri kullanarak tabloyu güncelle
-    //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
-    std::vector<int> valueColumns = {1, 3, 5, 7};
+
+
     for(const auto & map:m_inputs_map[oa_num][mvb_num]){
 
 
         utils::setTableWidgetValueByNameWithoutColumn(m_tableWidget[oa_num][mvb_num], map.first, map.second);
-        //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT INSIDE FOR LOOP ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
 
-        //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,3, map.second);
-        //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,5, map.second);
-        //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,7, map.second);
+
+
     }
 }
 
@@ -493,7 +489,7 @@ void OA_APU::init_oa_apu_mvb1_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB1]->resizeColumnsToContents();
-    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
+
 
 
 
@@ -596,7 +592,7 @@ void OA_APU::init_oa_apu_mvb2_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB2]->resizeColumnsToContents();
-    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB2]->columnCount() ;
+
 
 
 
@@ -678,7 +674,7 @@ void OA_APU::init_oa_apu_mvb3_table(OA_VEHICLE_NUM vehicle_type)
 
     // Tablo içeriğini yeniden boyutlandır
     m_tableWidget[oa_num][MVB3]->resizeColumnsToContents();
-    //qDebug() << "SIZE of COLUMN COUNT ========== :  " << m_tableWidget[oa_num][MVB3]->columnCount() ;
+
 
 }
 

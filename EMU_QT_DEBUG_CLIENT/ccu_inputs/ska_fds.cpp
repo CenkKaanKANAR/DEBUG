@@ -1158,7 +1158,7 @@ void SKA_FDS::init_ska_x_fds2_table(SKA_VEHICLE_NUM vehicle_type)
 void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
 {
     int ska_num = static_cast<int>(ska_x_num);
-    qDebug() <<"Ceko 1" ;
+
     m_inputs_map[ska_num][FDS2].at("S_OA2_SFD5_Smoke_alarm")    =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.S_OA2_SFD5_Smoke_alarm             ;
     m_inputs_map[ska_num][FDS2].at("S_OA2_SFD5_Heat_alarm")     =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.S_OA2_SFD5_Heat_alarm              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_SFD5_Disconnection")  =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_SFD5_Disconnection           ;
@@ -1187,7 +1187,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD1_FC181")         =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD1_FC181                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD1_FC190")         =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD1_FC190                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD1_FC229")         =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD1_FC229                  ;
-     qDebug() <<"Ceko 2" ;
+
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD1_FC232")         =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD1_FC232                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD1_FC138")         =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD1_FC138                  ;
     m_inputs_map[ska_num][FDS2].at("bit30")                     =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit30                              ;
@@ -1204,7 +1204,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD2_FC181")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD2_FC181                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD2_FC190")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD2_FC190                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD2_FC229")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD2_FC229                  ;
-     qDebug() <<"Ceko 3" ;
+
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD2_FC232")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD2_FC232                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD2_FC138")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD2_FC138                  ;
     m_inputs_map[ska_num][FDS2].at("bit46")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit46                              ;
@@ -1230,7 +1230,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD4_Disconnection")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD4_Disconnection          ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD4_FC128")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD4_FC128                  ;
     m_inputs_map[ska_num][FDS2].at("bit68")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit68                              ;
-     qDebug() <<"Ceko 4" ;
+
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD4_FC159")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD4_FC159                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD4_FC130")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD4_FC130                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD4_FC143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD4_FC143                  ;
@@ -1254,7 +1254,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD5_FC181")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD5_FC181                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD5_FC190")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD5_FC190                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD5_FC229")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD5_FC229                  ;
-     qDebug() <<"Ceko 5" ;
+
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD5_FC232")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD5_FC232                  ;
     m_inputs_map[ska_num][FDS2].at("D_SKA2_SFD5_FC138")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA2_SFD5_FC138                  ;
     m_inputs_map[ska_num][FDS2].at("bit94")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit94                              ;
@@ -1282,7 +1282,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_2_FC149")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_2_FC149             ;
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_2_FC159")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_2_FC159             ;
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_2_FC143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_2_FC143             ;
-     qDebug() <<"Ceko 6" ;
+
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_2_FC129")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_2_FC129             ;
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_2_FC137")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_2_FC137             ;
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_2_FC181")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_2_FC181             ;
@@ -1308,7 +1308,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_3_FC233")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_3_FC233             ;
     m_inputs_map[ska_num][FDS2].at("D_SKA1_CS_IC22_3_FC138")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_SKA1_CS_IC22_3_FC138             ;
     m_inputs_map[ska_num][FDS2].at("bit143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit143                             ;
-     qDebug() <<"Ceko 7" ;
+
     m_inputs_map[ska_num][FDS2].at("bit144")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit144                             ;
     m_inputs_map[ska_num][FDS2].at("S_OA1_CS_IC22_1_Heat_alarm")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.S_OA1_CS_IC22_1_Heat_alarm         ;
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_1_Disconnection")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_1_Disconnection      ;
@@ -1330,7 +1330,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_2_Disconnection")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_2_Disconnection      ;
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_2_FC128")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_2_FC128              ;
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_2_FC149")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_2_FC149              ;
-     qDebug() <<"Ceko 8" ;
+
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_2_FC159")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_2_FC159              ;
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_2_FC143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_2_FC143              ;
     m_inputs_map[ska_num][FDS2].at("D_OA1_CS_IC22_2_FC129")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA1_CS_IC22_2_FC129              ;
@@ -1371,7 +1371,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_1_FC190")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_1_FC190              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_1_FC229")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_1_FC229              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_1_FC232")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_1_FC232              ;
-     qDebug() <<"Ceko 9" ;
+
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_1_FC233")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_1_FC233              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_1_FC138")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_1_FC138              ;
     m_inputs_map[ska_num][FDS2].at("bit207")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit207                             ;
@@ -1399,7 +1399,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_3_FC159")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_3_FC159              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_3_FC143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_3_FC143              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_3_FC129")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_3_FC129              ;
-     qDebug() <<"Ceko 10" ;
+
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_3_FC137")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_3_FC137              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_3_FC181")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_3_FC181              ;
     m_inputs_map[ska_num][FDS2].at("D_OA2_CS_IC22_3_FC190")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.D_OA2_CS_IC22_3_FC190              ;
@@ -1410,7 +1410,7 @@ void SKA_FDS::update_fds2_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS2].at("bit239")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.bit239                              ;
     m_inputs_map[ska_num][FDS2].at("reserved_30")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.reserved_30                        ;
     m_inputs_map[ska_num][FDS2].at("reserved_31")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb7_fds2.bits.reserved_31                        ;
-     qDebug() <<"Ceko 11" ;
+
 }
 
 
@@ -1668,7 +1668,7 @@ void SKA_FDS::set_struct_fds2(SKA_VEHICLE_NUM ska_x_num)
 void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
 {
     int ska_num = static_cast<int>(ska_x_num);
-    qDebug() << "Ceko 1";
+
     m_inputs_map[ska_num][FDS3].at("bit0")                          =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit0                                ;
     m_inputs_map[ska_num][FDS3].at("S_SKA2_CS_IC22_1_Heat_alarm")   =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.S_SKA2_CS_IC22_1_Heat_alarm         ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_1_Disconnection")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_1_Disconnection      ;
@@ -1691,7 +1691,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC128")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC128              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC149")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC149              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC159")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC159              ;
-    qDebug() << "Ceko 2";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC143")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC143              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC129")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC129              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC137")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC137              ;
@@ -1712,7 +1712,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC129")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC129              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC137")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC137              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC181")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC181              ;
-    qDebug() << "Ceko 3";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC190")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC190              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC229")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC229              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC232")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC232              ;
@@ -1735,7 +1735,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC183")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC183              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC184")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC184              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC153")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC153              ;
-    qDebug() << "Ceko 4";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC176")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC176              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC181")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC181              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC189")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC189              ;
@@ -1773,7 +1773,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC159")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC159              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC143")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC143              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC129")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC129              ;
-    qDebug() << "Ceko 5";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC137")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC137              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC181")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC181              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_2_FC190")        =m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_2_FC190              ;
@@ -1798,7 +1798,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC233")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC233              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_IC22_3_FC138")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_IC22_3_FC138              ;
     m_inputs_map[ska_num][FDS3].at("bit47")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit47                               ;
-    qDebug() << "Ceko 6";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC128")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC128              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC230")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC230              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC231")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC231              ;
@@ -1817,7 +1817,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC153")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC153              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC176")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC176              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC181")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC181              ;
-    qDebug() << "Ceko 7";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC189")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC189              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC210")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC210              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CS_Loop_M_FC213")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CS_Loop_M_FC213              ;
@@ -1842,7 +1842,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CM_22_FC143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CM_22_FC143                  ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CM_22_FC169")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CM_22_FC169                  ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CM_22_FC225")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CM_22_FC225                  ;
-    qDebug() << "Ceko 8";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CM_22_FC176")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CM_22_FC176                  ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CM_22_FC210")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CM_22_FC210                  ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_CM_22_FC213")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_CM_22_FC213                  ;
@@ -1863,7 +1863,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_Loop_M_FC143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_Loop_M_FC143              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_Loop_M_FC169")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_Loop_M_FC169              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_Loop_M_FC183")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_Loop_M_FC183              ;
-    qDebug() << "Ceko 9";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_Loop_M_FC184")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_Loop_M_FC184              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_Loop_M_FC153")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_Loop_M_FC153              ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_CS_Loop_M_FC176")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_CS_Loop_M_FC176              ;
@@ -1898,7 +1898,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("bit141")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit141                              ;
     m_inputs_map[ska_num][FDS3].at("bit142")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit142                              ;
     m_inputs_map[ska_num][FDS3].at("bit143")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit143                              ;
-    qDebug() << "Ceko 10";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA1_Relay_M8_FC128")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_Relay_M8_FC128               ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_Relay_M8_FC230")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_Relay_M8_FC230               ;
     m_inputs_map[ska_num][FDS3].at("D_SKA1_Relay_M8_FC231")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA1_Relay_M8_FC231               ;
@@ -1926,7 +1926,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_FC128")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_FC128               ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_FC230")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_FC230               ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_FC231")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_FC231               ;
-    qDebug() << "Ceko 11";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_FC168")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_FC168               ;
     m_inputs_map[ska_num][FDS3].at("bit172")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit172                              ;
     m_inputs_map[ska_num][FDS3].at("bit173")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit173                              ;
@@ -1938,7 +1938,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_FC216")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_FC216               ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_FC232")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_FC232               ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_Relay_1_Any_fault")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_Relay_1_Any_fault   ;
-    qDebug() << "Ceko 11,25";
+
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_Relay_2_Any_fault")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_Relay_2_Any_fault   ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_Relay_3_Any_fault")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_Relay_3_Any_fault   ;
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_Relay_4_Any_fault")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_Relay_4_Any_fault   ;
@@ -1948,7 +1948,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("D_SKA2_Relay_M8_Relay_8_Any_fault")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.D_SKA2_Relay_M8_Relay_8_Any_fault   ;
     m_inputs_map[ska_num][FDS3].at("bit189")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit189                              ;
     m_inputs_map[ska_num][FDS3].at("bit190")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit190                              ;
-     qDebug() << "Ceko 11,50";
+
     m_inputs_map[ska_num][FDS3].at("bit191")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.bit191                              ;
     m_inputs_map[ska_num][FDS3].at("reserved_24")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.reserved_24                  ;
     m_inputs_map[ska_num][FDS3].at("SW_Release_Version")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.SW_Release_Version                  ;
@@ -1958,7 +1958,7 @@ void SKA_FDS::update_fds3_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][FDS3].at("reserved_29")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.reserved_29                         ;
     m_inputs_map[ska_num][FDS3].at("reserved_30")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.reserved_30                         ;
     m_inputs_map[ska_num][FDS3].at("reserved_31")=m_ska_x_fds[ska_num].ska_vh_riom_ccu_mvb8_fds3.bits.reserved_31                         ;
-    qDebug() << "Ceko 12";
+
 }
 
 void SKA_FDS::update_table(SKA_VEHICLE_NUM ska_x_num,FDS_NUM fds_num)
@@ -1983,7 +1983,7 @@ void SKA_FDS::update_table(SKA_VEHICLE_NUM ska_x_num,FDS_NUM fds_num)
 void SKA_FDS::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &ska_x_num)
 {
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);

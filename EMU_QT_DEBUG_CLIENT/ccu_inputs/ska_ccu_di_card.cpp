@@ -109,7 +109,7 @@ void Ska_Ccu_Di_Card::set_data_struct(const QByteArray &input)
 
     //int oa_num = static_cast<int>(oa_x_num);
      qDebug() << "DI CARD SET DATA STUCT IÇINDE " ;
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);
@@ -153,7 +153,7 @@ void Ska_Ccu_Di_Card::set_data_struct(const QByteArray &input)
 
 void Ska_Ccu_Di_Card::update_struct_with_map()
 {
-    qDebug() << "Merhaba Update Struct with map GRİŞİ" ;
+
 
     auto setInputMap = [&](const QString& signal_name) {
         m_inputs_map[signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget, signal_name).toInt();

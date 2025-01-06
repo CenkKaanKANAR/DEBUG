@@ -79,7 +79,7 @@ void OA_DCU::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x
 {
 
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
 
@@ -672,7 +672,7 @@ m_inputs_map[oa_num][DCU2].at("reserved_31") =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 void OA_DCU::update_dcu3_map(OA_VEHICLE_NUM oa_x_num)
 {
   int oa_num = static_cast<int>(oa_x_num);
-qDebug() << "ceko 1 " ;
+
 m_inputs_map[oa_num][DCU3].at("L3_DCU_IFESmartAssistDCU")               =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_IFESmartAssistDCU                ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_SuppEmergOp")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_SuppEmergOp                      ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DoorAntiDrag")                    =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DoorAntiDrag                     ;
@@ -689,7 +689,7 @@ m_inputs_map[oa_num][DCU3].at("L3_DCU_EADOp")                           =m_oa_x_
 m_inputs_map[oa_num][DCU3].at("L3_DCU_PBOpenDLRightOutsideOp")          =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_PBOpenDLRightOutsideOp           ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_PBOpenDLRightInsideOp")           =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_PBOpenDLRightInsideOp            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_PBPRMPortalInsideOp")             =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_PBPRMPortalInsideOp              ;
-qDebug() << "ceko 2 " ;
+
 m_inputs_map[oa_num][DCU3].at("L3_DCU_LightBarrierPortalInsideInterr")  =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_LightBarrierPortalInsideInterr   ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_OutputTIL1")                      =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_OutputTIL1                       ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC001")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC001                            ;
@@ -707,7 +707,7 @@ m_inputs_map[oa_num][DCU3].at("L3_DCU_DC014")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC015")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC015                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC016")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC016                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC017")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC017                            ;
-qDebug() << "ceko 3 " ;
+
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC018")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC018                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC019")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC019                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC020")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC020                            ;
@@ -733,7 +733,7 @@ m_inputs_map[oa_num][DCU3].at("L3_DCU_DC053")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC065")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC065                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC066")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC066                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC067")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC067                            ;
-qDebug() << "ceko 4 " ;
+
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC068")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC068                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC069")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC069                            ;
 m_inputs_map[oa_num][DCU3].at("L3_DCU_DC090")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L3_DCU_DC090                            ;
@@ -757,7 +757,7 @@ m_inputs_map[oa_num][DCU3].at("bit77")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dc
 m_inputs_map[oa_num][DCU3].at("bit78")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit78                                           ;
 m_inputs_map[oa_num][DCU3].at("bit79")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.bit79                                           ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_IFESmartAssistDCU")               =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_IFESmartAssistDCU                ;
-qDebug() << "ceko 5 " ;
+
 m_inputs_map[oa_num][DCU3].at("L4_DCU_SuppEmergOp")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_SuppEmergOp                      ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorAntiDrag")                    =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorAntiDrag                     ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DoorObstDet")                     =m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DoorObstDet                      ;
@@ -826,7 +826,7 @@ m_inputs_map[oa_num][DCU3].at("L4_DCU_DC102")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DC103")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC103                            ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DC105")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC105                            ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DC106")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC106                            ;
-qDebug() << "ceko 6 " ;
+
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DC111")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC111                            ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DC116")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DC116                            ;
 m_inputs_map[oa_num][DCU3].at("L4_DCU_DiagPrioA")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.L4_DCU_DiagPrioA                        ;
@@ -850,7 +850,7 @@ m_inputs_map[oa_num][DCU3].at("reserved_28")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_m
 m_inputs_map[oa_num][DCU3].at("reserved_29")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.reserved_29                                     ;
 m_inputs_map[oa_num][DCU3].at("reserved_30")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.reserved_30                                     ;
 m_inputs_map[oa_num][DCU3].at("reserved_31")=m_oa_x_dcu[oa_num].oa_vh_riom_ccu_mvb4_dcu3.bits.reserved_31                                     ;
-qDebug() << "ceko 7 " ;
+
 }
 
 void OA_DCU::update_dcu4_map(OA_VEHICLE_NUM oa_x_num)

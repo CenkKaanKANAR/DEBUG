@@ -12,7 +12,7 @@ Oa_Vh_Riom::Oa_Vh_Riom(QObject *parent)
     init_status_table(OA_VEHICLE_NUM::OA2);
 
 
-    qDebug() << "MERHABA" ;
+
     make_signal_slot_connection();
 
 }
@@ -34,7 +34,7 @@ Oa_Vh_Riom::~Oa_Vh_Riom()
 void Oa_Vh_Riom::make_signal_slot_connection()
 {
 
-    qDebug() << "SELAMLAR" ;
+
     //OA1_STATUS
     connect(m_tableWidget[get_index(OA_VEHICLE_NUM::OA1)][STATUS0], &QTableWidget::itemChanged,this, [&](){
         update_struct_with_map(OA_VEHICLE_NUM::OA1, STATUS0);
@@ -765,7 +765,7 @@ void Oa_Vh_Riom::update_table(OA_VEHICLE_NUM oa_x_num,MVB_NUM mvb_num)
 void Oa_Vh_Riom::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &oa_x_num)
 {
     //int oa_num = static_cast<int>(oa_x_num);
-    qDebug() << "azdan az çoktan çok " ;
+
     qDebug() << "size of input " << input.size();
     qDebug() << "Gelen input verileri :  " << input;
     //qDebug() << "Gelen input veri tipi : " << typeof(input);
