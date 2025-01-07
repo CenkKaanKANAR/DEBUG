@@ -52,7 +52,7 @@ extern "C" {
         } bits;
     };
 };
-
+/*0x250*/
 struct ska_ccu_di_card {
     union {
         uint8_t bytes[2];
@@ -78,7 +78,7 @@ struct ska_ccu_di_card {
     };
 
 };
-
+/*0x251*/
 struct ska_ccu_do_card {
     union {
         uint8_t bytes[1];
@@ -226,14 +226,14 @@ struct ska_dd_riom_ccu_mvb1_inputs {
             uint8_t CONTROL_DESK_RIOM_1_CB_PROTECTION : 1;
             uint8_t HATCH_FULL_CLOSED : 1;
             uint8_t HATCH_FULL_OPEN : 1;
-            uint8_t bit39 : 1;
-            uint8_t bit40 : 1; //byte 5
-            uint8_t bit41 : 1;
-            uint8_t bit42 : 1;
-            uint8_t bit43 : 1;
-            uint8_t bit44 : 1;
-            uint8_t bit45 : 1;
-            uint8_t bit46 : 1;
+            uint8_t EED_DOOR1 : 1;
+            uint8_t EED_DOOR2 : 1; //byte 5
+            uint8_t EED_DOOR3 : 1;
+            uint8_t EED_DOOR4 : 1;
+            uint8_t EED_DOOR5 : 1;
+            uint8_t EED_DOOR6 : 1;
+            uint8_t EED_DOOR7 : 1;
+            uint8_t EED_DOOR8 : 1;
             uint8_t bit47 : 1;
             uint8_t MANUAL_CLOSING_DUMPER : 1; //byte 6
             uint8_t PARKING_BRAKE_APPLICATION : 1;
@@ -3320,10 +3320,10 @@ struct oa_vh_riom_ccu_mvb1_inputs {
             uint8_t HVAC_2_FLOOR_HEATER_1_START : 1;
             uint8_t HVAC_2_FLOOR_HEATER_2_START : 1; //byte 8
             uint8_t bit65 : 1;
-            uint8_t bit66 : 1;
-            uint8_t bit67 : 1;
-            uint8_t bit68 : 1;
-            uint8_t bit69 : 1;
+            uint8_t EED_DOOR1 : 1;
+            uint8_t EED_DOOR3 : 1;
+            uint8_t EED_DOOR5 : 1;
+            uint8_t EED_DOOR7 : 1;
             uint8_t bit70 : 1;
             uint8_t bit71 : 1;
             uint8_t HVAC_2_CB_PROTECTION : 1; //byte 9
@@ -3344,10 +3344,10 @@ struct oa_vh_riom_ccu_mvb1_inputs {
             uint8_t ISOLATION_COCKS_AIR_SUPPLY_UNIT : 1;
             uint8_t PRESSURE_GOVERNOR_BP_NO_EMERGENCY_BRAKE : 1; //byte 11
             uint8_t MOTOR_COMPRESSOR_CURRENT_MONITORING : 1;
-            uint8_t bit90 : 1;
-            uint8_t bit91 : 1;
-            uint8_t bit92 : 1;
-            uint8_t bit93 : 1;
+            uint8_t EED_DOOR8 : 1;
+            uint8_t EED_DOOR6 : 1;
+            uint8_t EED_DOOR4 : 1;
+            uint8_t EED_DOOR2 : 1;
             uint8_t bit94 : 1;
             uint8_t bit95 : 1;
             uint8_t PRESSURE_GOVERNOR_PB_RELEASED : 1; //byte 12
@@ -4470,20 +4470,20 @@ struct bcu_ccu_mvb1
         {
             uint16_t XLifeSign; //byte 0
             uint8_t EBCU_MainVersion; //byte2
-            uint8_t EBCU_SubVersion;
-            uint8_t X_Cpress;
-            uint8_t X_Tpress;
-            uint8_t X_PrkBrPress_1;
-            uint8_t X_PrkBrPress_2;
-            uint8_t X_BPPress;
-            uint8_t X_MRPPress;
-            uint8_t reserved10;
-            uint16_t X_LoadWeight; //byte11
-            uint16_t X_VAxl1; //byte13
-            uint16_t X_VAxl2; //byte15
-            uint16_t X_VAxl3; //byte17
-            uint16_t X_VAxl4; //byte19
-            uint16_t X_Vref;  //byte21
+            uint8_t EBCU_SubVersion; //byte3
+            uint8_t X_Cpress; //byte4
+            uint8_t X_Tpress; //byte5
+            uint8_t X_PrkBrPress_1; //byte6
+            uint8_t X_PrkBrPress_2; //byte7
+            uint8_t X_BPPress; //byte8
+            uint8_t X_MRPPress; //byte9
+            uint16_t X_LoadWeight; //byte10
+            uint16_t X_VAxl1; //byte12
+            uint16_t X_VAxl2; //byte14
+            uint16_t X_VAxl3; //byte16
+            uint16_t X_VAxl4; //byte18
+            uint16_t X_Vref;  //byte20
+            uint8_t reserved22  ;
             uint8_t reserved23  ;
             uint8_t reserved24  ;
             uint8_t S_HolBrRe : 1 ; //byte25

@@ -12,7 +12,7 @@
 #include <QVBoxLayout>
 #include "ReadShmDialog.h"
 #include "udphandler.h"
-//#include "debugmonitorstates.h"
+
 class CCU_Table;
 
 enum class UdpConnetionState{Connected, Disconnected};

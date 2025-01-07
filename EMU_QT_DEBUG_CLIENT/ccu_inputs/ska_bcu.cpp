@@ -155,7 +155,7 @@ void Ska_Bcu::update_mvb1_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("X_PrkBrPress_2")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_PrkBrPress_2;
     m_inputs_map[ska_num][MVB1].at("X_BPPress")            = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_BPPress;
     m_inputs_map[ska_num][MVB1].at("X_MRPPress")           = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_MRPPress;
-    m_inputs_map[ska_num][MVB1].at("reserved10")           = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved10;
+
 
     m_inputs_map[ska_num][MVB1].at("X_LoadWeight")         = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_LoadWeight;
     m_inputs_map[ska_num][MVB1].at("X_VAxl1")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_VAxl1;
@@ -163,7 +163,7 @@ void Ska_Bcu::update_mvb1_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("X_VAxl3")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_VAxl3;
     m_inputs_map[ska_num][MVB1].at("X_VAxl4")              = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_VAxl4;    ;
     m_inputs_map[ska_num][MVB1].at("X_Vref")               = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_Vref;
-
+    m_inputs_map[ska_num][MVB1].at("reserved22")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved22;
     m_inputs_map[ska_num][MVB1].at("reserved23")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved23;
     m_inputs_map[ska_num][MVB1].at("reserved24")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved24;
     m_inputs_map[ska_num][MVB1].at("S_HolBrRe")       = m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_HolBrRe ;
@@ -544,7 +544,7 @@ void Ska_Bcu::set_struct_mvb1(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_PrkBrPress_2 =     m_inputs_map[ska_num][MVB1].at("X_PrkBrPress_2");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_BPPress= m_inputs_map[ska_num][MVB1].at("X_BPPress")            ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_MRPPress = m_inputs_map[ska_num][MVB1].at("X_MRPPress")           ;
-    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved10 = m_inputs_map[ska_num][MVB1].at("reserved10")           ;
+
 
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_LoadWeight=        m_inputs_map[ska_num][MVB1].at("X_LoadWeight")   ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_VAxl1     =   m_inputs_map[ska_num][MVB1].at("X_VAxl1")             ;
@@ -552,7 +552,7 @@ void Ska_Bcu::set_struct_mvb1(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_VAxl3     =   m_inputs_map[ska_num][MVB1].at("X_VAxl3")             ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_VAxl4     =       m_inputs_map[ska_num][MVB1].at("X_VAxl4")         ;
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.X_Vref      =  m_inputs_map[ska_num][MVB1].at("X_Vref")               ;
-
+    m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved22          =     m_inputs_map[ska_num][MVB1].at("reserved22");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved23          =     m_inputs_map[ska_num][MVB1].at("reserved23");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.reserved24          =     m_inputs_map[ska_num][MVB1].at("reserved24");
     m_ska_x_bcu[ska_num].ska_bcu_ccu_mvb1.bits.S_HolBrRe       =         m_inputs_map[ska_num][MVB1].at("S_HolBrRe") ;
@@ -904,22 +904,22 @@ void Ska_Bcu::init_ska_x_mvb1_table(SKA_VEHICLE_NUM vehicle_type)
     m_inputs_map[ska_num][MVB1] = {
         {"XLifeSign", 0},               // byte 0
         {"EBCU_MainVersion", 0},        // byte 2
-        {"EBCU_SubVersion", 0},
+        {"EBCU_SubVersion", 0},         // byte 3
         {"X_Cpress", 0},
         {"X_Tpress", 0},
         {"X_PrkBrPress_1", 0},
         {"X_PrkBrPress_2", 0},
         {"X_BPPress", 0},
         {"X_MRPPress", 0},
-        {"reserved10", 0},              // byte 10
-        {"X_LoadWeight", 0},            // byte 11
-        {"X_VAxl1", 0},                 // byte 13
-        {"X_VAxl2", 0},                 // byte 15
-        {"X_VAxl3", 0},                 // byte 17
-        {"X_VAxl4", 0},                 // byte 19
-        {"X_Vref", 0},                  // byte 21
-        {"reserved23", 0},              // byte 23
-        {"reserved24", 0},              // byte 24
+        {"X_LoadWeight", 0},            // byte 10
+        {"X_VAxl1", 0},                 // byte 12
+        {"X_VAxl2", 0},                 // byte 14
+        {"X_VAxl3", 0},                 // byte 16
+        {"X_VAxl4", 0},                 // byte 18
+        {"X_Vref", 0},                  // byte 20
+        {"reserved22", 0},
+        {"reserved23", 0},
+        {"reserved24", 0},
         {"S_HolBrRe", 0},               // byte 25
         {"V_HolBrRe", 0},
         {"S_HolBrAp", 0},

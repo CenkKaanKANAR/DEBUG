@@ -706,20 +706,7 @@ void SKA_VH_RIOM::update_table(SKA_VEHICLE_NUM ska_x_num,MVB_NUM mvb_num)
         //qDebug() <<  map.first << map.second;
         utils::setTableWidgetValueByNameWithoutColumn(m_tableWidget[ska_num][mvb_num], map.first, map.second );
     }
-    /*    int ska_num = static_cast<int>(ska_x_num);
-    // İndeksleri kullanarak tabloyu güncelle
-    qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT ========== :  " << m_tableWidget[ska_num][FDS1]->columnCount() ;
-    std::vector<int> valueColumns = {1, 3, 5, 7};
-    for(const auto & map:m_inputs_map[ska_num][fds_num]){
 
-
-            utils::setTableWidgetValueByNameWithoutColumn(m_tableWidget[ska_num][fds_num], map.first, map.second);
-            //qDebug() << "UPDATE STRUCT WITH MAP SIZE of COLUMN COUNT INSIDE FOR LOOP ========== :  " << m_tableWidget[oa_num][MVB1]->columnCount() ;
-
-            //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,3, map.second);
-            //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,5, map.second);
-            //utils::setTableWidgetValueByName(m_tableWidget[oa_num][mvb_num], map.first,7, map.second);
-    }*/
 }
 
 void SKA_VH_RIOM::set_data_struct(const QByteArray &input, const SKA_VEHICLE_NUM &ska_x_num)

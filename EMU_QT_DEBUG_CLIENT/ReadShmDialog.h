@@ -13,8 +13,6 @@
 #include <QFileDialog>
 #include <QWidget>
 #include "ccu_outputs.h"
-//#include "systemfunctionmanager.h"
-//#include "sysfuncstate.h"
 #include "debugmonitorstates.h"
 class CCU_Table;
 namespace Ui {

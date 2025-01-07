@@ -80,8 +80,6 @@ SOURCES += \
     mainwindow.cpp \
     messageconfig.cpp \
     qledlabel.cpp \
-    sysfuncstate.cpp \
-    systemfunctionmanager.cpp \
     udphandler.cpp \
     udpmessagesdialog.cpp \
     utils.cpp
@@ -154,8 +152,6 @@ HEADERS += \
     mvb_ports.h \
     qledlabel.h \
     shm_data_gaziray.h \
-    sysfuncstate.h \
-    systemfunctionmanager.h \
     udphandler.h \
     udpmessagesdialog.h \
     utils.h

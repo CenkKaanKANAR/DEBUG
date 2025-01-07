@@ -50,7 +50,7 @@ void Ska_Ccu_DD_Riom_Mvb1_d_Outputs::set_data_struct(const QByteArray &output, c
 
 void Ska_Ccu_DD_Riom_Mvb1_d_Outputs::update_struct_with_map(SKA_VEHICLE_NUM ska_x_num)
 {
-    //qDebug() << "Merhaba Update Struct with map GRİŞİ" ;
+
     //(void)mvb_num; // unused_variable
     int ska_num = static_cast<int>(ska_x_num);
     // Define a lambda function to reduce redundancy

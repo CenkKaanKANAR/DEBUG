@@ -74,14 +74,14 @@ void SKA_DD_RIOM::init_inputs_table(SKA_VEHICLE_NUM ska_x_num)
                                                       {"CONTROL_DESK_RIOM_1_CB_PROTECTION", 0},
                                                       {"HATCH_FULL_CLOSED", 0},
                                                       {"HATCH_FULL_OPEN", 0},
-                                                      {"bit39", 0},
-                                                      {"bit40", 0},
-                                                      {"bit41", 0},
-                                                      {"bit42", 0},
-                                                      {"bit43", 0},
-                                                      {"bit44", 0},
-                                                      {"bit45", 0},
-                                                      {"bit46", 0},
+                                                      {"EED_DOOR1", 0},
+                                                      {"EED_DOOR2", 0},
+                                                      {"EED_DOOR3", 0},
+                                                      {"EED_DOOR4", 0},
+                                                      {"EED_DOOR5", 0},
+                                                      {"EED_DOOR6", 0},
+                                                      {"EED_DOOR7", 0},
+                                                      {"EED_DOOR8", 0},
                                                       {"bit47", 0},
                                                       {"MANUAL_CLOSING_DUMPER", 0},
                                                       {"PARKING_BRAKE_APPLICATION", 0},
@@ -410,14 +410,14 @@ void SKA_DD_RIOM::update_inputs_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("CONTROL_DESK_RIOM_1_CB_PROTECTION")         =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.CONTROL_DESK_RIOM_1_CB_PROTECTION;
     m_inputs_map[ska_num][MVB1].at("HATCH_FULL_CLOSED")                         =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.HATCH_FULL_CLOSED;
     m_inputs_map[ska_num][MVB1].at("HATCH_FULL_OPEN")                           =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.HATCH_FULL_OPEN;
-    m_inputs_map[ska_num][MVB1].at("bit39")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit39;
-    m_inputs_map[ska_num][MVB1].at("bit40")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit40;
-    m_inputs_map[ska_num][MVB1].at("bit41")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit41;
-    m_inputs_map[ska_num][MVB1].at("bit42")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit42;
-    m_inputs_map[ska_num][MVB1].at("bit43")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit43;
-    m_inputs_map[ska_num][MVB1].at("bit44")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit44;
-    m_inputs_map[ska_num][MVB1].at("bit45")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit45;
-    m_inputs_map[ska_num][MVB1].at("bit46")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit46;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR1")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR1;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR2")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR2;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR3")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR3;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR4")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR4;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR5")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR5;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR6")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR6;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR7")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR7;
+    m_inputs_map[ska_num][MVB1].at("EED_DOOR8")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR8;
     m_inputs_map[ska_num][MVB1].at("bit47")                                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit47;
     m_inputs_map[ska_num][MVB1].at("MANUAL_CLOSING_DUMPER")                     =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.MANUAL_CLOSING_DUMPER;
     m_inputs_map[ska_num][MVB1].at("PARKING_BRAKE_APPLICATION")                 =m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.PARKING_BRAKE_APPLICATION;
@@ -686,14 +686,14 @@ void SKA_DD_RIOM::set_inputs_struct(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.CONTROL_DESK_RIOM_1_CB_PROTECTION         =  m_inputs_map[ska_num][MVB1].at("CONTROL_DESK_RIOM_1_CB_PROTECTION")         ;
     m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.HATCH_FULL_CLOSED                         =  m_inputs_map[ska_num][MVB1].at("HATCH_FULL_CLOSED")                         ;
     m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.HATCH_FULL_OPEN                           =  m_inputs_map[ska_num][MVB1].at("HATCH_FULL_OPEN")                           ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit39                                     =  m_inputs_map[ska_num][MVB1].at("bit39")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit40                                     =  m_inputs_map[ska_num][MVB1].at("bit40")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit41                                     =  m_inputs_map[ska_num][MVB1].at("bit41")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit42                                     =  m_inputs_map[ska_num][MVB1].at("bit42")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit43                                     =  m_inputs_map[ska_num][MVB1].at("bit43")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit44                                     =  m_inputs_map[ska_num][MVB1].at("bit44")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit45                                     =  m_inputs_map[ska_num][MVB1].at("bit45")                                     ;
-    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit46                                     =  m_inputs_map[ska_num][MVB1].at("bit46")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR1                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR1")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR2                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR2")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR3                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR3")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR4                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR4")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR5                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR5")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR6                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR6")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR7                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR7")                                     ;
+    m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.EED_DOOR8                                     =  m_inputs_map[ska_num][MVB1].at("EED_DOOR8")                                     ;
     m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.bit47                                     =  m_inputs_map[ska_num][MVB1].at("bit47")                                     ;
     m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.MANUAL_CLOSING_DUMPER                     =  m_inputs_map[ska_num][MVB1].at("MANUAL_CLOSING_DUMPER")                     ;
     m_ska_x_dd_riom[ska_num].ska_dd_riom_ccu_mvb1_inputs.bits.PARKING_BRAKE_APPLICATION                 =  m_inputs_map[ska_num][MVB1].at("PARKING_BRAKE_APPLICATION")                 ;

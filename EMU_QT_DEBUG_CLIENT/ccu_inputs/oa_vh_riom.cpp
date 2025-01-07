@@ -129,10 +129,10 @@ void Oa_Vh_Riom::init_inputs_table(OA_VEHICLE_NUM oa_x_num)
         {"HVAC_2_FLOOR_HEATER_1_START", 0},
         {"HVAC_2_FLOOR_HEATER_2_START", 0},
         {"bit65", 0},
-        {"bit66", 0},
-        {"bit67", 0},
-        {"bit68", 0},
-        {"bit69", 0},
+        {"EED_DOOR1", 0},
+        {"EED_DOOR3", 0},
+        {"EED_DOOR5", 0},
+        {"EED_DOOR7", 0},
         {"bit70", 0},
         {"bit71", 0},
         {"HVAC_2_CB_PROTECTION", 0},
@@ -153,10 +153,10 @@ void Oa_Vh_Riom::init_inputs_table(OA_VEHICLE_NUM oa_x_num)
         {"ISOLATION_COCKS_AIR_SUPPLY_UNIT", 0},
         {"PRESSURE_GOVERNOR_BP_NO_EMERGENCY_BRAKE", 0},
         {"MOTOR_COMPRESSOR_CURRENT_MONITORING", 0},
-        {"bit90", 0},
-        {"bit91", 0},
-        {"bit92", 0},
-        {"bit93", 0},
+        {"EED_DOOR8", 0},
+        {"EED_DOOR6", 0},
+        {"EED_DOOR4", 0},
+        {"EED_DOOR2", 0},
         {"bit94", 0},
         {"bit95", 0},
         {"PRESSURE_GOVERNOR_PB_RELEASED", 0},
@@ -525,10 +525,10 @@ void Oa_Vh_Riom::update_inputs_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("HVAC_2_FLOOR_HEATER_1_START")                 = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.HVAC_2_FLOOR_HEATER_1_START;
     m_inputs_map[oa_num][MVB1].at("HVAC_2_FLOOR_HEATER_2_START")                 = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.HVAC_2_FLOOR_HEATER_2_START;
     m_inputs_map[oa_num][MVB1].at("bit65")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit65;
-    m_inputs_map[oa_num][MVB1].at("bit66")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit66;
-    m_inputs_map[oa_num][MVB1].at("bit67")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit67;
-    m_inputs_map[oa_num][MVB1].at("bit68")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit68;
-    m_inputs_map[oa_num][MVB1].at("bit69")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit69;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR1")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR1;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR3")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR3;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR5")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR5;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR7")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR7;
     m_inputs_map[oa_num][MVB1].at("bit70")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit70;
     m_inputs_map[oa_num][MVB1].at("bit71")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit71;
     m_inputs_map[oa_num][MVB1].at("HVAC_2_CB_PROTECTION")                        = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.HVAC_2_CB_PROTECTION;
@@ -549,10 +549,10 @@ void Oa_Vh_Riom::update_inputs_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_AIR_SUPPLY_UNIT")             = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_AIR_SUPPLY_UNIT;
     m_inputs_map[oa_num][MVB1].at("PRESSURE_GOVERNOR_BP_NO_EMERGENCY_BRAKE")     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.PRESSURE_GOVERNOR_BP_NO_EMERGENCY_BRAKE;
     m_inputs_map[oa_num][MVB1].at("MOTOR_COMPRESSOR_CURRENT_MONITORING")         = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.MOTOR_COMPRESSOR_CURRENT_MONITORING;
-    m_inputs_map[oa_num][MVB1].at("bit90")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit90;
-    m_inputs_map[oa_num][MVB1].at("bit91")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit91;
-    m_inputs_map[oa_num][MVB1].at("bit92")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit92;
-    m_inputs_map[oa_num][MVB1].at("bit93")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit93;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR8")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR8;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR6")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR6;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR4")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR4;
+    m_inputs_map[oa_num][MVB1].at("EED_DOOR2")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR2;
     m_inputs_map[oa_num][MVB1].at("bit94")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit94;
     m_inputs_map[oa_num][MVB1].at("bit95")                                       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit95;
 
@@ -809,7 +809,7 @@ void Oa_Vh_Riom::set_data_struct(const QByteArray &input, const OA_VEHICLE_NUM &
 
 void Oa_Vh_Riom::update_struct_with_map(OA_VEHICLE_NUM oa_x_num, MVB_NUM mvb_num)
 {
-    qDebug() << "UPDATE STRUCT WITH MAP" ;
+
     int oa_num = static_cast<int>(oa_x_num);
     // Define a lambda function to reduce redundancy
     auto setInputMap = [&](const QString& signal_name) {
@@ -900,10 +900,10 @@ void Oa_Vh_Riom::set_inputs_struct(OA_VEHICLE_NUM oa_x_num)
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.HVAC_2_FLOOR_HEATER_1_START                      = m_inputs_map[oa_num][MVB1].at("HVAC_2_FLOOR_HEATER_1_START")                   ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.HVAC_2_FLOOR_HEATER_2_START                      = m_inputs_map[oa_num][MVB1].at("HVAC_2_FLOOR_HEATER_2_START")                   ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit65                                            = m_inputs_map[oa_num][MVB1].at("bit65")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit66                                            = m_inputs_map[oa_num][MVB1].at("bit66")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit67                                            = m_inputs_map[oa_num][MVB1].at("bit67")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit68                                            = m_inputs_map[oa_num][MVB1].at("bit68")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit69                                            = m_inputs_map[oa_num][MVB1].at("bit69")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR1                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR1")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR3                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR3")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR5                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR5")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR7                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR7")                                       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit70                                            = m_inputs_map[oa_num][MVB1].at("bit70")                                       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit71                                            = m_inputs_map[oa_num][MVB1].at("bit71")                                       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.HVAC_2_CB_PROTECTION                             = m_inputs_map[oa_num][MVB1].at("HVAC_2_CB_PROTECTION")                         ;
@@ -924,10 +924,10 @@ void Oa_Vh_Riom::set_inputs_struct(OA_VEHICLE_NUM oa_x_num)
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_AIR_SUPPLY_UNIT                  = m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_AIR_SUPPLY_UNIT")               ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.PRESSURE_GOVERNOR_BP_NO_EMERGENCY_BRAKE          = m_inputs_map[oa_num][MVB1].at("PRESSURE_GOVERNOR_BP_NO_EMERGENCY_BRAKE")       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.MOTOR_COMPRESSOR_CURRENT_MONITORING              = m_inputs_map[oa_num][MVB1].at("MOTOR_COMPRESSOR_CURRENT_MONITORING")           ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit90                                            = m_inputs_map[oa_num][MVB1].at("bit90")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit91                                            = m_inputs_map[oa_num][MVB1].at("bit91")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit92                                            = m_inputs_map[oa_num][MVB1].at("bit92")                                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit93                                            = m_inputs_map[oa_num][MVB1].at("bit93")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR8                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR8")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR6                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR6")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR4                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR4")                                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EED_DOOR2                                            = m_inputs_map[oa_num][MVB1].at("EED_DOOR2")                                       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit94                                            = m_inputs_map[oa_num][MVB1].at("bit94")                                       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.bit95                                            = m_inputs_map[oa_num][MVB1].at("bit95")                                       ;
 
