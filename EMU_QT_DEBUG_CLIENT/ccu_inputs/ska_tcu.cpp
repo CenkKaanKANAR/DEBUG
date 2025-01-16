@@ -22,7 +22,7 @@ SKA_TCU::SKA_TCU(QObject *parent)
 
     init_tcu_mvb_table(SKA_VEHICLE_NUM::SKA2,TCU_NUM::TCU2,MVB_NUM::MVB1);
     init_tcu_mvb_table(SKA_VEHICLE_NUM::SKA2,TCU_NUM::TCU2,MVB_NUM::MVB2);
-    qDebug() << "SIZE OF SKA TCU IS : " << sizeof(ska_tcu);
+    //qDebug() << "SIZE OF SKA TCU IS : " << sizeof(ska_tcu);
 
 
     make_signal_slot_connection();

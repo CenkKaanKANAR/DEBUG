@@ -57,19 +57,24 @@ void Ccu_To_All_Bcus::init_table()
         {"TL_Traction",0},
         {"bit38",0},
         {"bit39",0},
-        {"reserved_5",0},
+
         {"S_PB_EmerRel_Conf_SKA1",0},
         {"S_PB_EmerRel_Conf_SKA2",0},
         {"S_PB_EmerRel_Conf_OA1",0},
         {"S_PB_EmerRel_Conf_OA2",0},
-        {"bit52",0},
-        {"bit53",0},
-        {"bit54",0},
-        {"bit55",0},
-        {"C_ASC_Brake_demand_SKA1",0},
-        {"C_ASC_Brake_demand_OA1",0},
-        {"C_ASC_Brake_demand_OA2",0},
-        {"C_ASC_Brake_demand_SKA2",0},
+        {"bit44",0},
+        {"bit45",0},
+        {"bit46",0},
+        {"bit47",0},
+        {"C_ASC_Brake_demand",0},
+
+        {"reserved_8",0},
+        {"reserved_9",0},
+        {"reserved_10",0},
+        {"reserved_11",0},
+        {"reserved_12",0},
+        {"reserved_13",0},
+        {"reserved_14",0},
         {"reserved_15",0}
 
         };
@@ -150,20 +155,26 @@ void Ccu_To_All_Bcus::update_map()
     m_outputs_map.at("TL_Traction")                             = m_ccu_to_all_bcus.bits.TL_Traction;
     m_outputs_map.at("bit38")                                   = m_ccu_to_all_bcus.bits.bit38;
     m_outputs_map.at("bit39")                                   = m_ccu_to_all_bcus.bits.bit39;
-    m_outputs_map.at("reserved_5")                              = m_ccu_to_all_bcus.bits.reserved_5;
+
     m_outputs_map.at("S_PB_EmerRel_Conf_SKA1")                  = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA1;
     m_outputs_map.at("S_PB_EmerRel_Conf_SKA2")                  = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA2;
     m_outputs_map.at("S_PB_EmerRel_Conf_OA1")                   = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA1;
     m_outputs_map.at("S_PB_EmerRel_Conf_OA2")                   = m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA2;
-    m_outputs_map.at("bit52")                                   = m_ccu_to_all_bcus.bits.bit52;
-    m_outputs_map.at("bit53")                                   = m_ccu_to_all_bcus.bits.bit53;
-    m_outputs_map.at("bit54")                                   = m_ccu_to_all_bcus.bits.bit54;
-    m_outputs_map.at("bit55")                                   = m_ccu_to_all_bcus.bits.bit55;
-    m_outputs_map.at("C_ASC_Brake_demand_SKA1")                 = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA1;
-    m_outputs_map.at("C_ASC_Brake_demand_OA1")                  = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA1;
-    m_outputs_map.at("C_ASC_Brake_demand_OA2")                  = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA2;
-    m_outputs_map.at("C_ASC_Brake_demand_SKA2")                 = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA2;
+    m_outputs_map.at("bit44")                                   = m_ccu_to_all_bcus.bits.bit44;
+    m_outputs_map.at("bit45")                                   = m_ccu_to_all_bcus.bits.bit45;
+    m_outputs_map.at("bit46")                                   = m_ccu_to_all_bcus.bits.bit46;
+    m_outputs_map.at("bit47")                                   = m_ccu_to_all_bcus.bits.bit47;
+    m_outputs_map.at("C_ASC_Brake_demand")                      = m_ccu_to_all_bcus.bits.C_ASC_Brake_demand;
+
+    m_outputs_map.at("reserved_8")                              = m_ccu_to_all_bcus.bits.reserved_8;
+    m_outputs_map.at("reserved_9")                              = m_ccu_to_all_bcus.bits.reserved_9;
+    m_outputs_map.at("reserved_10")                             = m_ccu_to_all_bcus.bits.reserved_10;
+    m_outputs_map.at("reserved_11")                             = m_ccu_to_all_bcus.bits.reserved_11;
+    m_outputs_map.at("reserved_12")                             = m_ccu_to_all_bcus.bits.reserved_12;
+    m_outputs_map.at("reserved_13")                             = m_ccu_to_all_bcus.bits.reserved_13;
+    m_outputs_map.at("reserved_14")                             = m_ccu_to_all_bcus.bits.reserved_14;
     m_outputs_map.at("reserved_15")                             = m_ccu_to_all_bcus.bits.reserved_15;
+
 
 
 }
@@ -196,30 +207,25 @@ void Ccu_To_All_Bcus::set_struct() {
         m_ccu_to_all_bcus.bits.TL_Traction                        = m_outputs_map.at("TL_Traction") ;
         m_ccu_to_all_bcus.bits.bit38                          = m_outputs_map.at("bit38") ;
         m_ccu_to_all_bcus.bits.bit39                          = m_outputs_map.at("bit39") ;
-        m_ccu_to_all_bcus.bits.reserved_5                         = m_outputs_map.at("reserved_5") ;
+;
         m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA1                         = m_outputs_map.at("S_PB_EmerRel_Conf_SKA1") ;
         m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_SKA2                         = m_outputs_map.at("S_PB_EmerRel_Conf_SKA2") ;
         m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA1                          = m_outputs_map.at("S_PB_EmerRel_Conf_OA1") ;
         m_ccu_to_all_bcus.bits.S_PB_EmerRel_Conf_OA2                          = m_outputs_map.at("S_PB_EmerRel_Conf_OA2") ;
-        m_ccu_to_all_bcus.bits.bit52                          = m_outputs_map.at("bit52") ;
-        m_ccu_to_all_bcus.bits.bit53                          = m_outputs_map.at("bit53") ;
-        m_ccu_to_all_bcus.bits.bit54                          = m_outputs_map.at("bit54") ;
-        m_ccu_to_all_bcus.bits.bit55                          = m_outputs_map.at("bit55") ;
-        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA1                        = m_outputs_map.at("C_ASC_Brake_demand_SKA1") ;
-        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA1                         = m_outputs_map.at("C_ASC_Brake_demand_OA1") ;
-        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_OA2                         = m_outputs_map.at("C_ASC_Brake_demand_OA2") ;
-        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand_SKA2                        = m_outputs_map.at("C_ASC_Brake_demand_SKA2") ;
+        m_ccu_to_all_bcus.bits.bit44                          = m_outputs_map.at("bit44") ;
+        m_ccu_to_all_bcus.bits.bit45                          = m_outputs_map.at("bit45") ;
+        m_ccu_to_all_bcus.bits.bit46                          = m_outputs_map.at("bit46") ;
+        m_ccu_to_all_bcus.bits.bit47                          = m_outputs_map.at("bit47") ;
+        m_ccu_to_all_bcus.bits.C_ASC_Brake_demand             = m_outputs_map.at("C_ASC_Brake_demand") ;
+
+        m_ccu_to_all_bcus.bits.reserved_8                         = m_outputs_map.at("reserved_8") ;
+        m_ccu_to_all_bcus.bits.reserved_9                         = m_outputs_map.at("reserved_9") ;
+        m_ccu_to_all_bcus.bits.reserved_10                        = m_outputs_map.at("reserved_10") ;
+        m_ccu_to_all_bcus.bits.reserved_11                        = m_outputs_map.at("reserved_11") ;
+        m_ccu_to_all_bcus.bits.reserved_12                        = m_outputs_map.at("reserved_12") ;
+        m_ccu_to_all_bcus.bits.reserved_13                        = m_outputs_map.at("reserved_13") ;
+        m_ccu_to_all_bcus.bits.reserved_14                        = m_outputs_map.at("reserved_14") ;
         m_ccu_to_all_bcus.bits.reserved_15                        = m_outputs_map.at("reserved_15") ;
-
-
-
-
-
-
-
-
-
-
 
 
 

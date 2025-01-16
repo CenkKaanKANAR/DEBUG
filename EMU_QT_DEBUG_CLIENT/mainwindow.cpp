@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m_UdpHandler(new UdpHandler)
     , m_dockWidget(new QDockWidget("Read Dialog", this))
     , m_ccuTableHandler(new CCU_Table())
+    , ruteImageLabel(new QLabel())
     //, debugMonitorStates(new DebugMonitorStates())
 
 
@@ -27,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     init_readDialogDockWidget();
     applyMainwindowStyleSheetConfiguration();
     ui->stackedWidget_main->addWidget(m_ccuTableHandler);
-
+    setupBottomLayout();
     makeSignalSlotConnection();
     //Cenk Kaan Kanar
 }
@@ -80,27 +81,6 @@ void MainWindow::readUdpSocketMessages(QByteArray recv_data)
 
 void MainWindow::on_pushButton_connect_udp_socket_clicked()
 {
-//    if (!clientSocketConnectionStatus) {
-
-//        QString IpAdress = getIpAdress();
-//        qint16 portAdress =  getPortAdress();
-
-//        if(m_UdpHandler->initUdpConnection(IpAdress, portAdress)) {
-//            clientSocketConnectionStatus = true;
-//            ui->pushButton_connect_udp_socket->setText("Disconnect");
-//        }
-//        else
-//        {
-//            QMessageBox::critical(this, "UDP Socket", "Socket is not Connected");
-//        }
-
-//    }
-//    else
-//    {
-//        m_UdpHandler->disconnectUdpConnection();
-//        clientSocketConnectionStatus = false;
-//        ui->pushButton_connect_udp_socket->setText("Connect");
-//    }
 
     if(m_udpConnectionState == UdpConnetionState::Disconnected)
     {
@@ -209,6 +189,16 @@ void MainWindow::init_readDialogDockWidget()
     m_dockWidget->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
 
     m_dockWidget->hide();
+}
+
+void MainWindow::setupBottomLayout()
+{
+    // QPixmap ile PNG dosyasını yükleme
+    QPixmap pixmap(":/icons/rute_amblem.PNG"); // Dosya yolu
+    ruteImageLabel->setPixmap(pixmap);
+    ruteImageLabel->setPixmap(pixmap.scaled(70, 70, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ruteImageLabel->setAlignment(Qt::AlignCenter); // Ortala
+    ui->horizontalLayout_BottomThree->addWidget(ruteImageLabel);
 }
 
 void MainWindow::on_pushButton_ccu_table_clicked()

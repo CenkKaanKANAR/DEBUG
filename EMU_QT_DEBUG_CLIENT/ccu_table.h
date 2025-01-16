@@ -59,7 +59,7 @@ private:
     void appendEmuConfigToQByteArray(QByteArray& array, const uint8_t *data, size_t byteCount){
         array.append(reinterpret_cast<const char*>(data), byteCount);
     }
-    void init_switch();
+    //void init_switch();
     void processSka1();
 
     void processSka2();
@@ -67,7 +67,6 @@ private:
     void processOa2();
     void processAndSendData2(const uint16_t& portId, const std::vector<uint8_t>& data, const QString &debugMessage);
     void processIDScreenData();
-    void setIDButtonLayout();
     void processAndSendDataForce(const uint16_t& portId, const std::vector<uint8_t>& subModuleData, const QString &debugMessage);//Force
     void setupSendDataConnections();//FORCE
 
@@ -80,13 +79,6 @@ public slots:
 
 
     void onSendButtonClicked();//FORCE
-
-
-    void maintenanceIDButtonClickedAction();
-    void developerIDButtonClickedAction();
-    void adminIDButtonClickedAction();
-    void wrongIDButtonClickedAction();
-    void resetIDButtonClickedAction();
 
     //void on_tableCellChanged(int row, int column);//FORCE
     void on_tableItemChanged(QTableWidgetItem *item); //FORCE
@@ -180,6 +172,8 @@ private:
     //ccu_to_all_apus
     ForceControl *forceControl18;
 
+    //ccu_to_all_rioms
+    ForceControl *forceControl19;
 
     // Iterate over all ForceControl instances to uncheck other checkboxes
     QMap<QCheckBox*, QPair<QList<QTableWidget*>, VEHICLE_NUM>> checkboxTableMap;

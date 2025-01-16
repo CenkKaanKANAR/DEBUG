@@ -309,8 +309,6 @@ enum CCU_IN_PORTS_SIZE{
     SKA2_BCU_INPUTS_SIZE                  = 48,
     SKA1_CCU_DI_CARD_INPUTS_SIZE          = 2,
     SKA2_CCU_DI_CARD_INPUTS_SIZE          = 2,
-    SKA1_CCU_DO_CARD_INPUTS_SIZE          = 0,
-    SKA2_CCU_DO_CARD_INPUTS_SIZE          = 0,
     SKA1_DCU_INPUTS_SIZE                  = 112,
     SKA2_DCU_INPUTS_SIZE                  = 112,
     SKA1_DD_RIOM_INPUTS_SIZE              = 32,

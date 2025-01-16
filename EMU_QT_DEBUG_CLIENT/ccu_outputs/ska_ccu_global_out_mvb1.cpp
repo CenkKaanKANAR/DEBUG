@@ -78,7 +78,6 @@ void Ska_Ccu_Global_Out_Mvb1::init_table()
 
 void Ska_Ccu_Global_Out_Mvb1::update_struct_with_map()
 {
-    //qDebug() << "Merhaba Update Struct with map GRİŞİ" ;
 
     auto setInputMap = [&](const QString& signal_name) {
         m_outputs_map[signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget, signal_name).toInt();

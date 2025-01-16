@@ -78,7 +78,7 @@ void Oa_Ccu_Vh_Riom_Mvb2_Dcu::init_oa1_table()
       {"L3_TCMS_TLCentrOpen",0},
       {"L4_TCMS_TLCentrOpen",0},
       {"reserved_5",0},
-      {"reserved_6",0},
+      {"TCMS_CarID",0},
       {"reserved_7",0},
       {"HVAC1_HVAC_On",0},
       {"HVAC1_Reduce_Mode",0},
@@ -200,7 +200,7 @@ void Oa_Ccu_Vh_Riom_Mvb2_Dcu::set_struct(OA_VEHICLE_NUM oa_x_num)
                 m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.L3_TCMS_TLCentrOpen = m_outputs_map[oa_num].at("L3_TCMS_TLCentrOpen");
                 m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.L4_TCMS_TLCentrOpen = m_outputs_map[oa_num].at("L4_TCMS_TLCentrOpen");
                 m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.reserved_5 = m_outputs_map[oa_num].at("reserved_5");
-                m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.reserved_6 = m_outputs_map[oa_num].at("reserved_6");
+                m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.TCMS_CarID = m_outputs_map[oa_num].at("TCMS_CarID");
                 m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.reserved_7 = m_outputs_map[oa_num].at("reserved_7");
                 m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.HVAC1_HVAC_On = m_outputs_map[oa_num].at("HVAC1_HVAC_On");
                 m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.HVAC1_Reduce_Mode = m_outputs_map[oa_num].at("HVAC1_Reduce_Mode");
@@ -295,7 +295,7 @@ void Oa_Ccu_Vh_Riom_Mvb2_Dcu::update_map(OA_VEHICLE_NUM oa_x_num)
     m_outputs_map[oa_num].at("L3_TCMS_TLCentrOpen")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.L3_TCMS_TLCentrOpen;
     m_outputs_map[oa_num].at("L4_TCMS_TLCentrOpen")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.L4_TCMS_TLCentrOpen;
     m_outputs_map[oa_num].at("reserved_5")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.reserved_5;
-    m_outputs_map[oa_num].at("reserved_6")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.reserved_6;
+    m_outputs_map[oa_num].at("TCMS_CarID")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.TCMS_CarID;
     m_outputs_map[oa_num].at("reserved_7")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.reserved_7;
     m_outputs_map[oa_num].at("HVAC1_HVAC_On")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.HVAC1_HVAC_On;
     m_outputs_map[oa_num].at("HVAC1_Reduce_Mode")                   = m_oa_ccu_vh_riom_mvb2_dcu.at(oa_num).bits.HVAC1_Reduce_Mode;

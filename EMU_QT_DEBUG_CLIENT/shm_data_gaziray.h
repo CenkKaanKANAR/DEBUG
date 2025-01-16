@@ -227,13 +227,13 @@ struct ska_dd_riom_ccu_mvb1_inputs {
             uint8_t HATCH_FULL_CLOSED : 1;
             uint8_t HATCH_FULL_OPEN : 1;
             uint8_t EED_DOOR1 : 1;
-            uint8_t EED_DOOR2 : 1; //byte 5
-            uint8_t EED_DOOR3 : 1;
-            uint8_t EED_DOOR4 : 1;
+            uint8_t EED_DOOR3 : 1;//byte 5
             uint8_t EED_DOOR5 : 1;
-            uint8_t EED_DOOR6 : 1;
             uint8_t EED_DOOR7 : 1;
             uint8_t EED_DOOR8 : 1;
+            uint8_t EED_DOOR6 : 1;
+            uint8_t EED_DOOR4 : 1;
+            uint8_t EED_DOOR2 : 1;
             uint8_t bit47 : 1;
             uint8_t MANUAL_CLOSING_DUMPER : 1; //byte 6
             uint8_t PARKING_BRAKE_APPLICATION : 1;
@@ -428,27 +428,27 @@ struct ska_vh_riom_ccu_mvb1_d_inputs {
             uint8_t DEVICE_ID_DI_4 : 1;
             uint8_t DEVICE_ID_DI_5 : 1;
             uint8_t CABINET_TEST_HW_OK_HEALT_RIOM_2 : 1;
-            uint8_t TRACTION_OK_2_TC_1 : 1; //byte 3
+            uint8_t TRACTION_2_OK_TC_1 : 1; //byte 3
             uint8_t VCB_LOOP_OUT_TC_1 : 1;
             uint8_t TRACTION_ACTIVE_RELAY_TC_1 : 1;
             uint8_t EDB_BRAKE_ACTIVE_TC_1 : 1;
-            uint8_t CFIR_TC_1 : 1;
+            uint8_t bit28 : 1;
             uint8_t SYSTEM_RESET_TC_1 : 1;
             uint8_t MV_OUTPUT_MOTOR_3_OK_TC_2 : 1;
             uint8_t MV_OUTPUT_MOTOR_4_OK_TC_2 : 1;
             uint8_t HV_PRESENCE_TO_TRACTION_TC_2 : 1; //byte 4
             uint8_t TRACTION_DC_LINK_OK_TC_2 : 1;
             uint8_t PANTOGRAPH_PERMISSION_TC_2 : 1;
-            uint8_t TRACTION_OK_4_TC_2 : 1;
-            uint8_t TRACTION_OK_3_TC_2 : 1;
+            uint8_t TRACTION_3_OK_TC_2 : 1;
+            uint8_t TRACTION_4_OK_TC_2 : 1;
             uint8_t VCB_LOOP_OUT_TC_2 : 1;
             uint8_t TRACTION_ACTIVE_RELAY_TC_2 : 1;
             uint8_t EDB_BRAKE_ACTIVE_TC_2 : 1;
-            uint8_t CFIR_TC_2 : 1; //byte 5
+            uint8_t bit40 : 1; //byte 5
             uint8_t SYSTEM_RESET_TC_2 : 1;
             uint8_t VENTILATION_TRACTION_CONVERTER_CB_PROTECTION : 1;
             uint8_t SL_CUT_OFF_BYPASS : 1;
-            uint8_t TRACTION_OK_1_TC_1 : 1;
+            uint8_t TRACTION_1_OK_TC_1 : 1;
             uint8_t CONTACTOR_2_1_NORMAL_LOAD_Ln : 1;
             uint8_t TRACTION_DC_LINK_OK_TC_1 : 1;
             uint8_t PANTOGRAPH_PERMISSION_TC_1 : 1;
@@ -481,8 +481,8 @@ struct ska_vh_riom_ccu_mvb1_d_inputs {
             uint8_t ISOLATION_COCKS_PNEUMATIC_BRAKE : 1;
             uint8_t ISOLATION_COCKS_DIRECT_BRAKE : 1;
             uint8_t ISOLATION_COCKS_INDIRECT_BRAKE : 1;
-            uint8_t ISOLATION_COCKS_DIRECT_BRAKE_BO1 : 1;
-            uint8_t ISOLATION_COCKS_DIRECT_BRAKE_BO2 : 1;
+            uint8_t ISOLATION_COCKS_CPRESS_BRAKE_BO1 : 1;
+            uint8_t ISOLATION_COCKS_CPRESS_BRAKE_BO2 : 1;
             uint8_t ISOLATION_COCKS_PB_ISOLATED : 1;
             uint8_t ISOLATION_COCKS_SAND_ISOLATED : 1; //byte 10
             uint8_t AIR_SUSPENSION_STATUSS : 1;
@@ -564,25 +564,25 @@ struct ska_vh_riom_ccu_mvb1_d_inputs {
             uint8_t AUTOMATIC_EXTERNAL_LIGHT_COMMAND : 1;
             uint8_t SL_ETCS_BY_PASS : 1;
             uint8_t SL_DOORS_SIDE_CONTROL_ETCS_BYPASS : 1;
-            uint8_t GSM_R_RADIO_DIAGNOSTIC_INFORMATION : 1; //byte 20
+            uint8_t GSM_R_RADIO_WORKING_STATUS : 1; //byte 20
             uint8_t GSM_R_RADIO_VOICE : 1;
             uint8_t ATS_BYPASS : 1;
             uint8_t PLANT_7_7_CB_PROTECTION : 1;
             uint8_t PLANT_7_8_CB_PROTECTION : 1;
             uint8_t CONTROL_UNIT_RADIO_THALES_CB_PROTECTION : 1;
             uint8_t CB_PROTECTION_AXLE_BOX : 1;
-            uint8_t bit167 : 1;
-            uint8_t spare_21;
-            uint8_t spare_22;
-            uint8_t spare_23;
-            uint8_t spare_24;
-            uint8_t spare_25;
-            uint8_t spare_26;
-            uint8_t spare_27;
-            uint8_t spare_28;
-            uint8_t spare_29;
-            uint8_t spare_30;
-            uint8_t spare_31;
+            uint8_t EBCU_C_EDCUT_OFF : 1;
+            uint8_t reserved_21;
+            uint8_t reserved_22;
+            uint8_t reserved_23;
+            uint8_t reserved_24;
+            uint8_t reserved_25;
+            uint8_t reserved_26;
+            uint8_t reserved_27;
+            uint8_t reserved_28;
+            uint8_t reserved_29;
+            uint8_t reserved_30;
+            uint8_t reserved_31;
         } bits;
         time_t last_update;
     };
@@ -6058,7 +6058,7 @@ struct oa_ccu_vh_riom_mvb2_dcu_hvac {
             uint8_t	L3_TCMS_TLCentrOpen : 1;
             uint8_t	L4_TCMS_TLCentrOpen : 1;
             uint8_t	reserved_5 ; //byte5
-            uint8_t	reserved_6 ; //byte6
+            uint8_t	TCMS_CarID ; //byte6
             uint8_t	reserved_7 ; //byte7
             uint8_t	HVAC1_HVAC_On : 1; //byte8
             uint8_t	HVAC1_Reduce_Mode : 1;
@@ -6125,21 +6125,23 @@ struct ccu_to_all_bcus {
             uint8_t TL_Traction : 1;
             uint8_t bit38 : 1;
             uint8_t bit39 : 1;
-            uint8_t reserved_5; //byte5
-            uint8_t S_PB_EmerRel_Conf_SKA1 : 1; //byte6
+            uint8_t S_PB_EmerRel_Conf_SKA1 : 1; //byte5
             uint8_t S_PB_EmerRel_Conf_SKA2 : 1;
             uint8_t S_PB_EmerRel_Conf_OA1 : 1;
             uint8_t S_PB_EmerRel_Conf_OA2 : 1;
-            uint8_t bit52 : 1;
-            uint8_t bit53 : 1;
-            uint8_t bit54 : 1;
-            uint8_t bit55 : 1;
-            uint16_t C_ASC_Brake_demand_SKA1 ; //byte7
-            uint16_t C_ASC_Brake_demand_OA1 ; //byte9
-            uint16_t C_ASC_Brake_demand_OA2 ; //byte11
-            uint16_t C_ASC_Brake_demand_SKA2 ; //byte13
-            uint8_t reserved_15 ; //byte15
-
+            uint8_t bit44 : 1;
+            uint8_t bit45 : 1;
+            uint8_t bit46 : 1;
+            uint8_t bit47 : 1;
+            uint16_t C_ASC_Brake_demand; //byte6
+            uint8_t reserved_8;	 //byte8
+            uint8_t reserved_9; //byte9
+            uint8_t reserved_10; //byte10
+            uint8_t reserved_11; //byte11
+            uint8_t reserved_12; //byte12
+            uint8_t reserved_13; //byte13
+            uint8_t reserved_14; //byte14
+            uint8_t reserved_15; //byte15
         } bits;
         time_t last_update;
     };
@@ -6160,50 +6162,46 @@ struct ccu_to_oax_etcs {
 
         struct {
             uint16_t Lifesign ;//byte 0
-            uint8_t bit0 : 1;//byte 2
-            uint8_t bit1 : 1;
-            uint8_t bit2 : 1;
-            uint8_t bit3 : 1;
-            uint8_t bit4 : 1;
-            uint8_t bit5 : 1;
-            uint8_t bit6 : 1;
-            uint8_t bit7 : 1;
+            uint8_t bit16 : 2; //byte 2 //reserved for Valid signal
+            uint8_t bit18 : 1;
+            uint8_t bit19 : 1;
+            uint8_t bit20 : 1;
+            uint8_t bit21 : 1;
+            uint8_t bit22 : 1;
+            uint8_t bit23 : 1;
             uint8_t TR_OBU_TrainSleep : 1;//byte 3
             uint8_t TR_OBU_TrainSleep_Not : 1;
-            uint8_t bit10 : 1;
+            uint8_t bit26 : 1;
             uint8_t TR_OBU_NLEnabled : 1;
             uint8_t TR_OBU_DirectionFW : 1;
             uint8_t TR_OBU_DirectionBW : 1;
             uint8_t TR_OBU_CabStatusA : 1;
             uint8_t TR_OBU_CabStatusB : 1;
-            uint8_t bit16 : 1;//byte 4
-            uint8_t bit17 : 1;
+            uint8_t bit32 : 1;//byte 4
+            uint8_t bit33 : 1;
             uint8_t TR_OBU_Train_Integrity : 1;
-            uint8_t bit19 : 1;
+            uint8_t bit35 : 1;
             uint8_t TR_OBU_Traction_Status : 1;
             uint8_t TR_OBU_AirTightFitted : 1;
-            uint8_t bit22 : 1;
-            uint8_t bit23 : 1;
+            uint8_t bit38 : 1;
+            uint8_t bit39 : 1;
             uint8_t reserved_5;//byte 5
             uint8_t reserved_6;//byte 6
-            uint8_t Brake_status_EP_S : 1;//byte 7
-            uint8_t Brake_status_EP_S_Not : 1;
-            uint8_t bit24 : 1;
-            uint8_t bit25 : 1;
-            uint8_t Brake_status_RP_S : 1;
-            uint8_t Brake_status_RP_S_Not : 1;
-            uint8_t bit26 : 1;
-            uint8_t bit27 : 1;
+            uint8_t Brake_status_EP_S : 1;//byte 7  /* EP_S ve EP_S_Not birlikte değerlendirilecektir. 2x bool*/
+            uint8_t Brake_status_EP_S_Not : 1;		/*"00: invalid 01: brake not active 10: brake active 11: invalid."*/
+            uint8_t bit58 : 1;
+            uint8_t bit59 : 1;
+            uint8_t Brake_status_RB_S : 1;			/* RB_S ve RB_S_Not birlikte değerlendirilecektir. 2x bool*/
+            uint8_t Brake_status_RB_S_Not : 1;		/*"00: invalid 01: brake not active 10: brake active 11: invalid*/
+            uint8_t bit62 : 1;
+            uint8_t bit63 : 1;
             uint8_t reserved_8;//byte 8
             uint16_t reserved_9_10;
-            uint8_t TR_OBU_Train_Control_0 : 1;//byte 11
-            uint8_t TR_OBU_Train_Control_1 : 1;
-            uint8_t TR_OBU_Train_Control_2 : 1;
-            uint8_t TR_OBU_Train_Control_3 : 1;
-            uint8_t bit28 : 1;
-            uint8_t bit29 : 1;
-            uint8_t bit30 : 1;
-            uint8_t bit31 : 1;
+            uint8_t TR_OBU_Train_Control : 4;
+            uint8_t bit92 : 1;
+            uint8_t bit93 : 1;
+            uint8_t bit94 : 1;
+            uint8_t bit95 : 1;
             uint8_t reserved_12;//byte 12
             uint8_t reserved_13;//byte 13
             uint8_t reserved_14;//byte 14
@@ -6244,16 +6242,16 @@ struct ccu_to_all_etcs {
 
         struct {
             uint16_t Lifesign ;//byte 0
-            uint8_t bit0 : 1;//byte 2
-            uint8_t bit1 : 1;
-            uint8_t bit2 : 1;
-            uint8_t bit3 : 1;
-            uint8_t bit4 : 1;
-            uint8_t bit5 : 1;
-            uint8_t bit6 : 1;
-            uint8_t bit7 : 1;
-            uint8_t bit8 : 1;//byte 3
-            uint8_t bit9 : 1;
+            uint8_t bit16 : 1;//byte 2
+            uint8_t bit17 : 1;
+            uint8_t bit18 : 1;
+            uint8_t bit19 : 1;
+            uint8_t bit20 : 1;
+            uint8_t bit21 : 1;
+            uint8_t bit22 : 1;
+            uint8_t bit23 : 1;
+            uint8_t bit24 : 1;//byte 3
+            uint8_t bit25 : 1;
             uint8_t Train_data_Brake_Position:4;
             uint8_t bit14 : 1;
             uint8_t bit15 : 1;

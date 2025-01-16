@@ -49,6 +49,7 @@ SOURCES += \
     ccu_inputs/ska_tcu.cpp \
     ccu_inputs/ska_vh_riom.cpp \
     ccu_outputs.cpp \
+    ccu_outputs/ccu_all_rioms_output.cpp \
     ccu_outputs/ccu_to_all_apus.cpp \
     ccu_outputs/ccu_to_all_bcus.cpp \
     ccu_outputs/ccu_to_all_etcs.cpp \
@@ -119,6 +120,7 @@ HEADERS += \
     ccu_inputs/ska_tcu.h \
     ccu_inputs/ska_vh_riom.h \
     ccu_outputs.h \
+    ccu_outputs/ccu_all_rioms_output.h \
     ccu_outputs/ccu_to_all_apus.h \
     ccu_outputs/ccu_to_all_bcus.h \
     ccu_outputs/ccu_to_all_etcs.h \

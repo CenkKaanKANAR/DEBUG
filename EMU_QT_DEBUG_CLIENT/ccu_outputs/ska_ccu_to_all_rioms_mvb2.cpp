@@ -155,3 +155,57 @@ void Ska_Ccu_To_All_Rioms_Mvb2::update_map()
 
 
 }
+
+void Ska_Ccu_To_All_Rioms_Mvb2::update_struct_with_map()
+{
+    auto setInputMap = [&](const QString& signal_name) {
+        m_outputs_map[signal_name] = utils::getTableWidgetValueByNameWithoutColumn(m_tableWidget, signal_name).toInt();
+    };
+    // update map with given tableWidget values
+    for(const auto& map : m_outputs_map)
+    {
+        setInputMap(map.first);
+    }
+    // set struct parameters with given updated map parameters
+    set_struct();
+}
+
+void Ska_Ccu_To_All_Rioms_Mvb2::set_struct()
+{
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte1 =  m_outputs_map.at("DriverID_Byte1")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte2 =  m_outputs_map.at("DriverID_Byte2")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte3 =  m_outputs_map.at("DriverID_Byte3")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte4 =  m_outputs_map.at("DriverID_Byte4")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte5 =  m_outputs_map.at("DriverID_Byte5")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte6 =  m_outputs_map.at("DriverID_Byte6")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.DriverID_Byte7 =  m_outputs_map.at("DriverID_Byte7")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_7 =  m_outputs_map.at("reserved_7")          ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte1  =  m_outputs_map.at("TrainID_Byte1")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte2  =  m_outputs_map.at("TrainID_Byte2")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte3  =  m_outputs_map.at("TrainID_Byte3")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte4  =  m_outputs_map.at("TrainID_Byte4")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte5  =  m_outputs_map.at("TrainID_Byte5")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte6  =  m_outputs_map.at("TrainID_Byte6")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte7  =  m_outputs_map.at("TrainID_Byte7")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte8  =  m_outputs_map.at("TrainID_Byte8")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte9  =  m_outputs_map.at("TrainID_Byte9")       ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte10 =  m_outputs_map.at("TrainID_Byte10")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte11 =  m_outputs_map.at("TrainID_Byte11")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TrainID_Byte12 =  m_outputs_map.at("TrainID_Byte12")      ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_20    =  m_outputs_map.at("reserved_20")         ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.Distance_in_pulse  =  m_outputs_map.at("Distance_in_pulse")   ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_25    =  m_outputs_map.at("reserved_25")         ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLCentrClose  =  m_outputs_map.at("TCMS_TLCentrClose")   ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLStandstill  =  m_outputs_map.at("TCMS_TLStandstill")   ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.bit210 =  m_outputs_map.at("bit210")              ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TLSuppEmergOp =  m_outputs_map.at("TCMS_TLSuppEmergOp")  ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.TCMS_TIL   =  m_outputs_map.at("TCMS_TIL")            ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.bit213 =  m_outputs_map.at("bit213")              ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.bit214 =  m_outputs_map.at("bit214")              ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.bit215 =  m_outputs_map.at("bit215")              ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_27    =  m_outputs_map.at("reserved_27")         ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.HVAC_Offset    =  m_outputs_map.at("HVAC_Offset")         ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_29    =  m_outputs_map.at("reserved_29")         ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_30    =  m_outputs_map.at("reserved_30")         ;
+    m_ska_ccu_to_all_rioms_mvb2.bits.reserved_31    =  m_outputs_map.at("reserved_31")         ;
+}

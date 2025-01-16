@@ -28,6 +28,9 @@
    <iconset resource="images.qrc">
     <normaloff>:/icons/gaziray.png</normaloff>:/icons/gaziray.png</iconset>
   </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -301,31 +304,35 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_ccu_table">
-      <property name="text">
-       <string>Ccu Table</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_connection_window_widget">
-      <property name="text">
-       <string>Connection</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>1050</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
+     <layout class="QHBoxLayout" name="horizontalLayout_BottomThree">
+      <item>
+       <widget class="QPushButton" name="pushButton_ccu_table">
+        <property name="text">
+         <string>Ccu Table</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_connection_window_widget">
+        <property name="text">
+         <string>Connection</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

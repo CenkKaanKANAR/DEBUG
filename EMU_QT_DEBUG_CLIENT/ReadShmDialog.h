@@ -38,7 +38,6 @@ signals:
 
 private:
     Ui::ReadShmDialog *ui;
-    CCU_Table * m_ccu_table = nullptr;
     OUT::CCU_Outputs* m_ccu_out;
     //SystemFunctionManager *systemFunctionManager;
     DebugMonitorStates *debugMonitorStates;

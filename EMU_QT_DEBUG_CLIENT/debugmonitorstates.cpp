@@ -3,248 +3,429 @@
 
 
 
-QList<int> stateCounts = {4, 4, 5, 7, 5, 5, 4, 4, 8, 4, 6, 3, 5, 6, 5, 6, 20, 14, 7, 7, 8, 7, 7, 5, 5, 7, 5, 5, 9, 9, 9, 9, 5, 5, 5, 5, 5, 5, 4, 4, 6, 6, 5, 5, 4, 4, 9, 9, 6, 6,
-                          5, 5, 6, 6, 9, 9, 5, 5, 5, 6, 6, 6, 9, 9, 5, 5, 6, 6, 6, 6, 7, 4, 5, 5, 4, 2 }; // Array sizes
-
-
-
 void DebugMonitorStates::initVectors()
 {
 
-ssf_emu_config_states_name = {"INIT", "WAIT", "SINGLE", "MULTIPLE"};
-ssf_emu_coupled_vehicle_states_name = {"INIT", "WAIT", "SKA1", "SKA2"};
-ssf_emu_sequence_states_name = {"INIT", "WAIT", "HEAD_TO_TAIL", "HEAD_TO_HEAD", "TAIL_TO_TAIL"};
-ssf_emu_cac_states_name = {"INIT", "WAIT", "NO_CAB", "SKA1_ACTIVE", "SKA2_ACTIVE", "SET2_ACTIVE", "ERROR"};
-ssf_emu_dir_states_name = {"INIT", "WAIT", "NEUTRAL", "FORWARD", "REVERSE"};
-ssf_emu_mascon_states_name = {"INIT", "WAIT", "NEUTRAL", "TRACTION", "BRAKE"};
-ssf_ccu_location_states_name = {"INIT", "WAIT", "SKA1", "SKA2"};
-ssf_ccu_direction_states_name = {"INIT", "WAIT", "INWARD", "OUTWARD"};
-ssf_ccu_role_states_name = {"INIT", "WAIT", "DEFAULT_SET_MASTER", "DEFAULT_SET_REDUNDANT", "EMU_MASTER", "EMU_REDUNDANT", "FOLLOWING_SET_MASTER", "FOLLOWING_SET_REDUNDANT"};
-ssf_idm_reply_states_name = {"INIT", "WAIT", "ID_VALID", "ID_INVALID"};
-ssf_idm_session_states_name = {"INIT", "WAIT", "LOGOUT", "ID_CHECK", "LOGIN", "DDU_LOGOUT"};
-ssf_idm_second_card_states_name = {"INIT", "WAIT", "SECONDARY_ID"};
-ssf_idm_user_role_states_name = {"INIT", "WAIT", "DRIVER", "MAINTENANCE", "DEVELOPER_ADMIN"};
-ssf_hvm_earth_states_name = {"INIT", "WAIT", "ERROR", "SERVICE", "YK_EXTRACTED", "EARTH"};
-ssf_hvm_line_select_states_name = {"INIT", "WAIT", "NO_LINE", "OA1", "OA2"};
-ssf_hvm_usable_line_states_name = {"INIT", "WAIT", "ALL_USABLE", "OA1_USABLE", "OA2_USABLE", "NONE_USABLE"};
-ssf_hvm_reset_procedure_states_name = {"INIT", "WAIT", "NO_RESET", "CHECK_COND", "INIT_HV_LINE", "DR_DECIDE", "DR_PAN1_UP", "DR_MCB1_CLOSE", "CHECK_OC1", "DR_MCB1_OPEN", "DR_PAN1_DOWN", "DR_PAN2_UP", "DR_MCB2_CLOSE", "CHECK_OC2", "DR_MCB2_OPEN", "DR_PAN2_DOWN", "OC1_DETECTED", "OC_PAN1_DOWN", "OC2_DETECTED", "OC_PAN2_DOWN"};
-ssf_hvm_action_states_name = {"INIT", "WAIT", "NO_ACTION", "HVD_IN", "HVD_OUT", "PAN_IN", "PAN_MCB_OUT", "MCB_BACK_IN", "MCB_IN", "MCB_OUT", "ALL_IN", "ALL_OUT", "WAIT_MCB_OUT", "WAIT_ALL_OUT"};
-ssf_linm_hv_level_states_name = {"INIT", "WAIT", "LOWER_10KV", "LOW_HV", "RED_PWR", "NOM_PWR", "HIGH_HV"};
-ssf_linm_neutral_zone_states_name = {"INIT", "WAIT", "ETCS_CONTROL", "IN_RANGE", "ZONE_BEGIN", "CHECK_LINE", "ZONE_END"};
-ssf_linm_range_check_states_name = { "INIT", "WAIT", "IN_RANGE", "HIGH_TIMER", "OUT_OF_RANGE", "CHECK_RANGE", "RANGE_TIMER" ,"BACK_IN_RANGE" };
-ssf_linm_1_current_check_states_name = { "INIT",    "WAIT", "NORMAL",  "CHECK_ZERO", "HV_ZERO", "CHECK_SHORT", "HV_SHORT" };
-ssf_linm_2_current_check_states_name = { "INIT",    "WAIT", "NORMAL",  "CHECK_ZERO", "HV_ZERO", "CHECK_SHORT", "HV_SHORT" };
-ssf_hvd_select_states_name = { "INIT", "WAIT", "OPEN_SELECTED", "DDU_REQ_CHECK", "CLOSE_SELECTED" };
-ssf_hvd_confirm_states_name = { "INIT", "WAIT", "UNCONFIRMED", "CHECK_CONFIRM", "CONFIRMED" };
-ssf_hvd_config_states_name = { "INIT", "WAIT", "WAIT_CONFIRM", "WAIT_HVD_OPEN", "WAIT_HVD_CLOSE", "DONE","ERROR" };
-ssf_hvd_1_status_states_name = { "INIT", "WAIT", "OPENED", "CLOSED", "MOVING" };
-ssf_hvd_2_status_states_name = { "INIT", "WAIT", "OPENED", "CLOSED", "MOVING" };
-ssf_hvd_1_control_states_name = { "INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN" };
-ssf_hvd_2_control_states_name = { "INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN" };
-ssf_auxc_1_status_states_name = { "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT" , "ERROR" };
-ssf_auxc_2_status_states_name = { "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT" , "ERROR" };
-ssf_auxc_1_control_states_name = { "INIT", "WAIT", "STOP", "START", "WAIT4MIN" };
-ssf_auxc_2_control_states_name = { "INIT", "WAIT", "STOP", "START", "WAIT4MIN" };
-ssf_pan_1_readiness_states_name = { "INIT", "WAIT", "NOT_READY", "READY", "ISOLATED" };
-ssf_pan_2_readiness_states_name = { "INIT", "WAIT", "NOT_READY", "READY", "ISOLATED" };
-ssf_pan_1_add_status_states_name = { "INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP" };
-ssf_pan_2_add_status_states_name = { "INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP" };
-ssf_pan_1_add_control_states_name = { "INIT", "WAIT", "RELEASE", "HOLD" };
-ssf_pan_2_add_control_states_name = { "INIT", "WAIT", "RELEASE", "HOLD" };
-ssf_pan_1_status_states_name = { "INIT", "WAIT", "DOWN", "CHECK_UP", "UP", "UP_ERROR" };
-ssf_pan_2_status_states_name = { "INIT", "WAIT", "DOWN", "CHECK_UP", "UP", "UP_ERROR" };
-ssf_pan_1_control_states_name = { "INIT", "WAIT", "LOWER", "WAIT_PRESS", "RAISE" };
-ssf_pan_2_control_states_name = { "INIT", "WAIT", "LOWER", "WAIT_PRESS", "RAISE" };
-ssf_mcb_1_readiness_states_name = { "INIT", "WAIT", "NOT_READY", "READY" };
-ssf_mcb_2_readiness_states_name = { "INIT", "WAIT", "NOT_READY", "READY" };
-ssf_mcb_1_status_states_name = {"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "ERROR" };
-ssf_mcb_2_status_states_name = {"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "ERROR" };
-ssf_mcb_1_control_states_name = { "INIT", "WAIT", "OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE" };
-ssf_mcb_2_control_states_name = { "INIT", "WAIT", "OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE" };
-ssf_trf_1_readiness_states_name = { "INIT", "WAIT", "READY", "FAULT", "OUT_OF_SERVICE" };
-ssf_trf_2_readiness_states_name = { "INIT", "WAIT", "READY", "FAULT", "OUT_OF_SERVICE" };
-ssf_trf_1_temp_states_name = { "INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110" };
-ssf_trf_2_temp_states_name = { "INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110" };
-ssf_trf_1_status_states_name = {"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL", "FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR" };
-ssf_trf_2_status_states_name = {"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL", "FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR" };
-ssf_trf_1_control_states_name = { "INIT", "WAIT", "NO_CMD", "LOW_CMD", "FULL_CMD" };
-ssf_trf_2_control_states_name = { "INIT", "WAIT", "NO_CMD", "LOW_CMD", "FULL_CMD" };
-ssf_lvm_control_states_name = { "INIT", "WAIT", "LP_OFF", "LP_ON", "LAST_HOLD" };
-ssf_comp_select_states_name = { "INIT", "WAIT", "NONE", "OA1",  "OA2",  "BOTH" };
-ssf_comp_1_heater_states_name = { "INIT", "WAIT", "NO_HEAT", "INACTIVE", "PREHEAT", "HEAT" };
-ssf_comp_2_heater_states_name = { "INIT", "WAIT", "NO_HEAT", "INACTIVE", "PREHEAT", "HEAT" };
-ssf_comp_1_status_states_name = { "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR" };
-ssf_comp_2_status_states_name = { "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR" };
-ssf_comp_1_control_states_name = { "INIT", "WAIT", "STOP", "WAIT_PREHEAT", "START" };
-ssf_comp_2_control_states_name = { "INIT", "WAIT", "STOP", "WAIT_PREHEAT", "START" };
-ssf_ska_1_tcu_1_mcb_open_states_name = { "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-ssf_ska_1_tcu_2_mcb_open_states_name = { "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-ssf_ska_2_tcu_1_mcb_open_states_name = { "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-ssf_ska_2_tcu_2_mcb_open_states_name = { "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-ssf_park_mode_states_name = { "INIT", "WAIT", "OFF", "CHECK_ON", "ON", "CHECK_OFF", "ERROR" };
-ssf_door_close_req_states_name = { "INIT", "WAIT", "NO_REQ", "CLOSE" };
-ssf_door_right_req_states_name = { "INIT", "WAIT", "NO_REQ", "RELEASE_RIGHT", "OPEN_RIGHT" };
-ssf_door_left_req_states_name = { "INIT", "WAIT", "NO_REQ", "RELEASE_LEFT", "OPEN_LEFT" };
-ssf_door_reset_req_states_name = { "INIT", "WAIT", "NO_REQ", "EED_RESET" };
-sf_stat_states_name = { "INIT", "WAIT" };
+    ssf_emu_config_states_name = {"INIT", "WAIT", "SINGLE", "MULTIPLE"};
+    ssf_emu_coupled_vehicle_states_name = {"INIT", "WAIT", "SKA1", "SKA2"};
+    ssf_emu_sequence_states_name = {"INIT", "WAIT", "HEAD_TO_TAIL", "HEAD_TO_HEAD", "TAIL_TO_TAIL"};
+    ssf_emu_cac_states_name = {"INIT", "WAIT", "NO_CAB", "SKA1_ACTIVE", "SKA2_ACTIVE", "SET2_ACTIVE", "ERROR"};
+    ssf_emu_dir_states_name = {"INIT", "WAIT", "NEUTRAL", "FORWARD", "REVERSE"};
+    ssf_emu_mascon_states_name = {"INIT", "WAIT", "NEUTRAL", "TRACTION", "BRAKE"};
+    ssf_emu_pan_1_up_cmd_states_name = {"INIT", "WAIT", "NO_CMD", "CHECK_CMD", "CMD_ON", "WAIT_NEXT"};
+    ssf_emu_pan_2_up_cmd_states_name = {"INIT", "WAIT", "NO_CMD", "CHECK_CMD", "CMD_ON", "WAIT_NEXT"};
+    ssf_emu_mcb_close_cmd_states_name = {"INIT", "WAIT", "NO_CMD", "CHECK_CMD", "CMD_ON", "WAIT_NEXT"};
+    ssf_bcu_wsp_test_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "TEST_CMD"};
+    ssf_ccu_location_states_name = {"INIT", "WAIT", "SKA1", "SKA2"};
+    ssf_ccu_direction_states_name = {"INIT", "WAIT", "INWARD", "OUTWARD"};
+    ssf_ccu_role_states_name = {"INIT", "WAIT", "DEFAULT_SET_MASTER", "DEFAULT_SET_REDUNDANT", "EMU_MASTER", "EMU_REDUNDANT", "FOLLOWING_SET_MASTER", "FOLLOWING_SET_REDUNDANT"};
+    ssf_apu_1_enable_states_name = {"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
+    ssf_apu_2_enable_states_name = {"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
+    ssf_apu_1_reset_states_name = {"INIT", "WAIT", "NO_RESET", "RESET"};
+    ssf_apu_2_reset_states_name = {"INIT", "WAIT", "NO_RESET", "RESET"};
+    ssf_auxc_1_status_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT", "ERROR"};
+    ssf_auxc_2_status_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT", "ERROR"};
+    ssf_auxc_1_control_states_name = {"INIT", "WAIT", "STOP", "START", "WAIT4MIN"};
+    ssf_auxc_2_control_states_name = {"INIT", "WAIT", "STOP", "START", "WAIT4MIN"};
+    ssf_park_mode_states_name = {"INIT", "WAIT", "OFF", "CHECK_ON", "ON", "CHECK_OFF", "ERROR"};
+    ssf_hvd_select_states_name = {"INIT", "WAIT", "OPEN_SELECTED", "DDU_REQ_CHECK", "CLOSE_SELECTED"};
+    ssf_hvd_confirm_states_name = {"INIT", "WAIT", "UNCONFIRMED", "CHECK_CONFIRM", "CONFIRMED"};
+    ssf_hvd_config_states_name = {"INIT", "WAIT", "WAIT_CONFIRM", "WAIT_HVD_OPEN", "WAIT_HVD_CLOSE", "DONE", "ERROR"};
+    ssf_hvd_1_status_states_name = {"INIT", "WAIT", "OPENED", "CLOSED", "MOVING"};
+    ssf_hvd_2_status_states_name = {"INIT", "WAIT", "OPENED", "CLOSED", "MOVING"};
+    ssf_hvd_1_control_states_name = {"INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN"};
+    ssf_hvd_2_control_states_name = {"INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN"};
+    ssf_idm_1_reply_states_name = {"INIT", "WAIT", "ID_VALID", "ID_INVALID"};
+    ssf_idm_2_reply_states_name = {"INIT", "WAIT", "ID_VALID", "ID_INVALID"};
+    ssf_idm_session_states_name = {"INIT", "WAIT", "LOGOUT", "ID_CHECK", "LOGIN", "DDU_LOGOUT"};
+    ssf_idm_second_card_states_name = {"INIT", "WAIT", "SECONDARY_ID"};
+    ssf_idm_user_role_states_name = {"INIT", "WAIT", "DRIVER", "MAINTENANCE", "DEVELOPER_ADMIN"};
+    ssf_pan_1_readiness_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "ISOLATED"};
+    ssf_pan_2_readiness_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "ISOLATED"};
+    ssf_pan_1_add_status_states_name = {"INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP"};
+    ssf_pan_2_add_status_states_name = {"INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP"};
+    ssf_pan_1_add_control_states_name = {"INIT", "WAIT", "RELEASE","HOLD"};
+    ssf_pan_2_add_control_states_name = {"INIT", "WAIT", "RELEASE","HOLD"};
+    ssf_pan_1_status_states_name = {"INIT", "WAIT", "DOWN","CHECK_UP", "UP", "UP_ERROR"};
+    ssf_pan_2_status_states_name = {"INIT", "WAIT", "DOWN","CHECK_UP", "UP", "UP_ERROR"};
+    ssf_pan_1_control_states_name = {"INIT", "WAIT", "LOWER","WAIT_PRESS", "RAISE"};
+    ssf_pan_2_control_states_name = {"INIT", "WAIT", "LOWER","WAIT_PRESS", "RAISE"};
+    ssf_mcb_1_readiness_states_name = {"INIT", "WAIT", "NOT_READY","READY"};
+    ssf_mcb_2_readiness_states_name = {"INIT", "WAIT", "NOT_READY","READY"};
+    ssf_mcb_1_status_states_name = {"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "CHECK_UNK_ERROR", "ERROR"};
+    ssf_mcb_2_status_states_name = {"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "CHECK_UNK_ERROR", "ERROR"};
+    ssf_mcb_1_control_states_name = {"INIT", "WAIT","OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE"};
+    ssf_mcb_2_control_states_name = {"INIT", "WAIT","OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE"};
+    ssf_door_close_req_states_name = {"INIT", "WAIT", "NO_REQ", "CLOSE"};
+    ssf_door_right_req_states_name = {"INIT", "WAIT", "NO_REQ", "RELEASE_RIGHT", "OPEN_RIGHT"};
+    ssf_door_left_req_states_name = {"INIT", "WAIT", "NO_REQ", "RELEASE_LEFT", "OPEN_LEFT"};
+    ssf_door_reset_req_states_name = {"INIT", "WAIT", "NO_REQ", "EED_RESET"};
+    ssf_ska_1_tcu_1_mcb_open_states_name = {"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+    ssf_ska_1_tcu_2_mcb_open_states_name = {"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+    ssf_ska_2_tcu_1_mcb_open_states_name = {"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+    ssf_ska_2_tcu_2_mcb_open_states_name = {"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+    ssf_ska_1_tcu_1_enable_states_name = {"INIT", "WAIT", "ENABLE","OUT_OF_SERVICE"};
+    ssf_ska_1_tcu_2_enable_states_name = {"INIT", "WAIT", "ENABLE","OUT_OF_SERVICE"};
+    ssf_ska_2_tcu_1_enable_states_name = {"INIT", "WAIT", "ENABLE","OUT_OF_SERVICE"};
+    ssf_ska_2_tcu_2_enable_states_name = {"INIT", "WAIT", "ENABLE","OUT_OF_SERVICE"};
+    ssf_ska_1_tcu_1_reset_states_name = {"INIT", "WAIT", "NO_RESET","RESET"};
+    ssf_ska_1_tcu_2_reset_states_name = {"INIT", "WAIT", "NO_RESET","RESET"};
+    ssf_ska_2_tcu_1_reset_states_name = {"INIT", "WAIT", "NO_RESET","RESET"};
+    ssf_ska_2_tcu_2_reset_states_name = {"INIT", "WAIT", "NO_RESET","RESET"};
+    ssf_linm_hv_level_states_name = {"INIT", "WAIT", "LOWER_10KV", "LOW_HV", "RED_PWR", "NOM_PWR", "HIGH_HV"};
+    ssf_linm_neutral_zone_states_name = {"INIT", "WAIT", "ETCS_CONTROL", "IN_RANGE","ZONE_BEGIN", "CHECK_LINE", "ZONE_END"};
+    ssf_linm_range_check_states_name = {"INIT", "WAIT", "IN_RANGE", "HIGH_TIMER","OUT_OF_RANGE", "CHECK_RANGE", "RANGE_TIMER", "BACK_IN_RANGE"};
+    ssf_linm_1_current_check_states_name = {"INIT", "WAIT","NORMAL", "CHECK_ZERO","HV_ZERO", "CHECK_SHORT","HV_SHORT"};
+    ssf_linm_2_current_check_states_name = {"INIT", "WAIT","NORMAL", "CHECK_ZERO","HV_ZERO", "CHECK_SHORT","HV_SHORT"};
+    ssf_comp_select_states_name = {"INIT", "WAIT", "NONE","OA1", "OA2", "BOTH"};
+    ssf_comp_1_heater_states_name = {"INIT", "WAIT","NO_HEAT", "INACTIVE","PREHEAT", "HEAT"};
+    ssf_comp_2_heater_states_name = {"INIT", "WAIT","NO_HEAT", "INACTIVE","PREHEAT", "HEAT"};
+    ssf_comp_1_status_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR","RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR"};
+    ssf_comp_2_status_states_name = {"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR","RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR"};
+    ssf_comp_1_control_states_name = {"INIT", "WAIT", "STOP","WAIT_PREHEAT", "START"};
+    ssf_comp_2_control_states_name = {"INIT", "WAIT", "STOP","WAIT_PREHEAT", "START"};
+    ssf_sand_enable_states_name = {"INIT", "WAIT", "ENABLED","DISABLED"};
+    ssf_sand_dry_states_name = {"INIT", "WAIT", "NOT_READY", "DRY_60MIN", "PAUSE_60MIN","WAIT_330MIN", "DRY_30MIN", "PAUSE_30MIN", "DRY", "NO_DRY"};
+    ssf_sand_1_heater_states_name = {"INIT", "WAIT", "NO_HEAT","HEAT"};
+    ssf_sand_2_heater_states_name = {"INIT", "WAIT", "NO_HEAT","HEAT"};
+    ssf_sand_control_states_name = {"INIT", "WAIT", "NO_CMD","SHORT", "LONG", "REQ_END"};
+    ssf_sand_test_states_name = {"INIT", "WAIT", "READY", "TEST_CMD", "TESTING", "NOT_READY"};
+    ssf_sand_level_test_states_name = {"INIT", "WAIT", "READY","TEST_CMD", "NOT_READY"};
+    ssf_lvm_control_states_name = {"INIT", "WAIT", "LP_OFF", "LP_ON","LAST_HOLD"};
+    ssf_trf_1_readiness_states_name = {"INIT", "WAIT", "READY", "FAULT", "CHECK_OOS", "OUT_OF_SERVICE"};
+    ssf_trf_2_readiness_states_name = {"INIT", "WAIT", "READY", "FAULT", "CHECK_OOS", "OUT_OF_SERVICE"};
+    ssf_trf_1_temp_states_name = {"INIT", "WAIT", "NORMAL","OVER60", "OVER90", "OVER110"};
+    ssf_trf_2_temp_states_name = {"INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110"};
+    ssf_trf_1_status_states_name = {"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL","FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR"};
+    ssf_trf_2_status_states_name = {"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL","FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR"};
+    ssf_trf_1_control_states_name = {"INIT", "WAIT", "NO_CMD","LOW_CMD", "FULL_CMD"};
+    ssf_trf_2_control_states_name = {"INIT", "WAIT", "NO_CMD","LOW_CMD", "FULL_CMD"};
+    ssf_hvm_earth_states_name = {"INIT", "WAIT", "ERROR", "SERVICE", "YK_EXTRACTED", "EARTH"};
+    ssf_hvm_line_select_states_name = {"INIT", "WAIT", "NO_LINE","OA1", "OA2"};
+    ssf_hvm_usable_line_states_name = {"INIT", "WAIT", "ALL_USABLE", "OA1_USABLE", "OA2_USABLE", "NONE_USABLE"};
+    ssf_hvm_reset_procedure_states_name = {"INIT", "WAIT", "NO_RESET", "CHECK_COND","INIT_HV_LINE", "DR_DECIDE", "DR_PAN1_UP", "DR_MCB1_CLOSE","CHECK_OC1", "DR_MCB1_OPEN", "DR_PAN1_DOWN", "DR_PAN2_UP","DR_MCB2_CLOSE", "CHECK_OC2", "DR_MCB2_OPEN", "DR_PAN2_DOWN","OC1_DETECTED", "OC_PAN1_DOWN", "OC2_DETECTED", "OC_PAN2_DOWN"};
+    ssf_hvm_action_states_name = {"INIT", "WAIT", "NO_ACTION", "HVD_IN", "HVD_OUT","PAN_IN", "PAN_MCB_OUT", "MCB_BACK_IN", "MCB_IN", "MCB_OUT","ALL_IN", "ALL_OUT", "WAIT_MCB_OUT", "WAIT_ALL_OUT"};
+    ssf_susp_fault_lamp_states_name = {"INIT", "WAIT","OFF", "BLINK_ON","BLINK_OFF", "ON"};
+    sf_stat_states_name = {"INIT", "WAIT"};
 
-functionNames << "ssf_emu_config"
-              << "ssf_emu_coupled_vehicle"
-              << "ssf_emu_sequence"
-              << "ssf_emu_cac"
-              << "ssf_emu_dir"
-              << "ssf_emu_mascon"
-              << "ssf_ccu_location"
-              << "ssf_ccu_direction"
-              << "ssf_ccu_role"
-              << "ssf_idm_reply"
-              << "ssf_idm_session"
-              << "ssf_idm_second_card"
-              << "ssf_idm_user_role"
-              << "ssf_hvm_earth"
-              << "ssf_hvm_line_select"
-              << "ssf_hvm_usable_line"
-              << "ssf_hvm_reset_procedure"
-              << "ssf_hvm_action"
-              << "ssf_linm_hv_level"
-              << "ssf_linm_neutral_zone"
-              << "ssf_linm_range_check"
-              << "ssf_linm_1_current_check"
-              << "ssf_linm_2_current_check_"
-              << "ssf_hvd_select"
-              << "ssf_hvd_confirm"
-              << "ssf_hvd_config"
-              << "ssf_hvd_1_status"
-              << "ssf_hvd_2_status"
-              << "ssf_hvd_1_control"
-              << "ssf_hvd_2_control"
-              << "ssf_auxc_1_status"
-              << "ssf_auxc_2_status"
-              << "ssf_auxc_1_control"
-              << "ssf_auxc_2_control"
-              << "ssf_pan_1_readiness"
-              << "ssf_pan_2_readiness"
-              << "ssf_pan_1_add_status"
-              << "ssf_pan_2_add_status"
-              << "ssf_pan_1_add_control"
-              << "ssf_pan_2_add_control"
-              << "ssf_pan_1_status"
-              << "ssf_pan_2_status"
-              << "ssf_pan_1_control"
-              << "ssf_pan_2_control"
-              << "ssf_mcb_1_readiness"
-              << "ssf_mcb_2_readiness"
-              << "ssf_mcb_1_status"
-              << "ssf_mcb_2_status"
-              << "ssf_mcb_1_control"
-              << "ssf_mcb_2_control"
-              << "ssf_trf_1_readiness"
-              << "ssf_trf_2_readiness"
-              << "ssf_trf_1_temp"
-              << "ssf_trf_2_temp"
-              << "ssf_trf_1_status"
-              << "ssf_trf_2_status"
-              << "ssf_trf_1_control"
-              << "ssf_trf_2_control"
-              << "ssf_lvm_control"
-              << "ssf_comp_select"
-              << "ssf_comp_1_heater"
-              << "ssf_comp_2_heater"
-              << "ssf_comp_1_status"
-              << "ssf_comp_2_status"
-              << "ssf_comp_1_control"
-              << "ssf_comp_2_control"
-              << "ssf_ska_1_tcu_1_mcb_open"
-              << "ssf_ska_1_tcu_2_mcb_open"
-              << "ssf_ska_2_tcu_1_mcb_open"
-              << "ssf_ska_2_tcu_2_mcb_open"
-              << "ssf_park_mode"
-              << "ssf_door_close_req"
-              << "ssf_door_right_req"
-              << "ssf_door_left_req"
-              << "ssf_door_reset_req"
-              << "sf_stat"
+
+    stateCounts = {
+        ssf_emu_config_states_name.size(),
+        ssf_emu_coupled_vehicle_states_name.size(),
+        ssf_emu_sequence_states_name.size(),
+        ssf_emu_cac_states_name.size(),
+        ssf_emu_dir_states_name.size(),
+        ssf_emu_mascon_states_name.size(),
+        ssf_emu_pan_1_up_cmd_states_name.size(),
+        ssf_emu_pan_2_up_cmd_states_name.size(),
+        ssf_emu_mcb_close_cmd_states_name.size(),
+        ssf_bcu_wsp_test_states_name.size(),
+        ssf_ccu_location_states_name.size(),
+        ssf_ccu_direction_states_name.size(),
+        ssf_ccu_role_states_name.size(),
+        ssf_apu_1_enable_states_name.size(),
+        ssf_apu_2_enable_states_name.size(),
+        ssf_apu_1_reset_states_name.size(),
+        ssf_apu_2_reset_states_name.size(),
+        ssf_auxc_1_status_states_name.size(),
+        ssf_auxc_2_status_states_name.size(),
+        ssf_auxc_1_control_states_name.size(),
+        ssf_auxc_2_control_states_name.size(),
+        ssf_park_mode_states_name.size(),
+        ssf_hvd_select_states_name.size(),
+        ssf_hvd_confirm_states_name.size(),
+        ssf_hvd_config_states_name.size(),
+        ssf_hvd_1_status_states_name.size(),
+        ssf_hvd_2_status_states_name.size(),
+        ssf_hvd_1_control_states_name.size(),
+        ssf_hvd_2_control_states_name.size(),
+        ssf_idm_1_reply_states_name.size(),
+        ssf_idm_2_reply_states_name.size(),
+        ssf_idm_session_states_name.size(),
+        ssf_idm_second_card_states_name.size(),
+        ssf_idm_user_role_states_name.size(),
+        ssf_pan_1_readiness_states_name.size(),
+        ssf_pan_2_readiness_states_name.size(),
+        ssf_pan_1_add_status_states_name.size(),
+        ssf_pan_2_add_status_states_name.size(),
+        ssf_pan_1_add_control_states_name.size(),
+        ssf_pan_2_add_control_states_name.size(),
+        ssf_pan_1_status_states_name.size(),
+        ssf_pan_2_status_states_name.size(),
+        ssf_pan_1_control_states_name.size(),
+        ssf_pan_2_control_states_name.size(),
+        ssf_mcb_1_readiness_states_name.size(),
+        ssf_mcb_2_readiness_states_name.size(),
+        ssf_mcb_1_status_states_name.size(),
+        ssf_mcb_2_status_states_name.size(),
+        ssf_mcb_1_control_states_name.size(),
+        ssf_mcb_2_control_states_name.size(),
+        ssf_door_close_req_states_name.size(),
+        ssf_door_right_req_states_name.size(),
+        ssf_door_left_req_states_name.size(),
+        ssf_door_reset_req_states_name.size(),
+        ssf_ska_1_tcu_1_mcb_open_states_name.size(),
+        ssf_ska_1_tcu_2_mcb_open_states_name.size(),
+        ssf_ska_2_tcu_1_mcb_open_states_name.size(),
+        ssf_ska_2_tcu_2_mcb_open_states_name.size(),
+        ssf_ska_1_tcu_1_enable_states_name.size(),
+        ssf_ska_1_tcu_2_enable_states_name.size(),
+        ssf_ska_2_tcu_1_enable_states_name.size(),
+        ssf_ska_2_tcu_2_enable_states_name.size(),
+        ssf_ska_1_tcu_1_reset_states_name.size(),
+        ssf_ska_1_tcu_2_reset_states_name.size(),
+        ssf_ska_2_tcu_1_reset_states_name.size(),
+        ssf_ska_2_tcu_2_reset_states_name.size(),
+        ssf_linm_hv_level_states_name.size(),
+        ssf_linm_neutral_zone_states_name.size(),
+        ssf_linm_range_check_states_name.size(),
+        ssf_linm_1_current_check_states_name.size(),
+        ssf_linm_2_current_check_states_name.size(),
+        ssf_comp_select_states_name.size(),
+        ssf_comp_1_heater_states_name.size(),
+        ssf_comp_2_heater_states_name.size(),
+        ssf_comp_1_status_states_name.size(),
+        ssf_comp_2_status_states_name.size(),
+        ssf_comp_1_control_states_name.size(),
+        ssf_comp_2_control_states_name.size(),
+        ssf_sand_enable_states_name.size(),
+        ssf_sand_dry_states_name.size(),
+        ssf_sand_1_heater_states_name.size(),
+        ssf_sand_2_heater_states_name.size(),
+        ssf_sand_control_states_name.size(),
+        ssf_sand_test_states_name.size(),
+        ssf_sand_level_test_states_name.size(),
+        ssf_lvm_control_states_name.size(),
+        ssf_trf_1_readiness_states_name.size(),
+        ssf_trf_2_readiness_states_name.size(),
+        ssf_trf_1_temp_states_name.size(),
+        ssf_trf_2_temp_states_name.size(),
+        ssf_trf_1_status_states_name.size(),
+        ssf_trf_2_status_states_name.size(),
+        ssf_trf_1_control_states_name.size(),
+        ssf_trf_2_control_states_name.size(),
+        ssf_hvm_earth_states_name.size(),
+        ssf_hvm_line_select_states_name.size(),
+        ssf_hvm_usable_line_states_name.size(),
+        ssf_hvm_reset_procedure_states_name.size(),
+        ssf_hvm_action_states_name.size(),
+        ssf_susp_fault_lamp_states_name.size(),
+        sf_stat_states_name.size()
+    };
+
+    functionNames
+
+        << "ssf_emu_config_states_name"
+        << "ssf_emu_coupled_vehicle_states_name"
+        << "ssf_emu_sequence_states_name"
+        << "ssf_emu_cac_states_name"
+        << "ssf_emu_dir_states_name"
+        << "ssf_emu_mascon_states_name"
+        << "ssf_emu_pan_1_up_cmd_states_name"
+        << "ssf_emu_pan_2_up_cmd_states_name"
+        << "ssf_emu_mcb_close_cmd_states_name"
+        << "ssf_bcu_wsp_test_states_name"
+        << "ssf_ccu_location_states_name"
+        << "ssf_ccu_direction_states_name"
+        << "ssf_ccu_role_states_name"
+        << "ssf_apu_1_enable_states_name"
+        << "ssf_apu_2_enable_states_name"
+        << "ssf_apu_1_reset_states_name"
+        << "ssf_apu_2_reset_states_name"
+        << "ssf_auxc_1_status_states_name"
+        << "ssf_auxc_2_status_states_name"
+        << "ssf_auxc_1_control_states_name"
+        << "ssf_auxc_2_control_states_name"
+        << "ssf_park_mode_states_name"
+        << "ssf_hvd_select_states_name"
+        << "ssf_hvd_confirm_states_name"
+        << "ssf_hvd_config_states_name"
+        << "ssf_hvd_1_status_states_name"
+        << "ssf_hvd_2_status_states_name"
+        << "ssf_hvd_1_control_states_name"
+        << "ssf_hvd_2_control_states_name"
+        << "ssf_idm_1_reply_states_name"
+        << "ssf_idm_2_reply_states_name"
+        << "ssf_idm_session_states_name"
+        << "ssf_idm_second_card_states_name"
+        << "ssf_idm_user_role_states_name"
+        << "ssf_pan_1_readiness_states_name"
+        << "ssf_pan_2_readiness_states_name"
+        << "ssf_pan_1_add_status_states_name"
+        << "ssf_pan_2_add_status_states_name"
+        << "ssf_pan_1_add_control_states_name"
+        << "ssf_pan_2_add_control_states_name"
+        << "ssf_pan_1_status_states_name"
+        << "ssf_pan_2_status_states_name"
+        << "ssf_pan_1_control_states_name"
+        << "ssf_pan_2_control_states_name"
+        << "ssf_mcb_1_readiness_states_name"
+        << "ssf_mcb_2_readiness_states_name"
+        << "ssf_mcb_1_status_states_name"
+        << "ssf_mcb_2_status_states_name"
+        << "ssf_mcb_1_control_states_name"
+        << "ssf_mcb_2_control_states_name"
+        << "ssf_door_close_req_states_name"
+        << "ssf_door_right_req_states_name"
+        << "ssf_door_left_req_states_name"
+        << "ssf_door_reset_req_states_name"
+        << "ssf_ska_1_tcu_1_mcb_open_states_name"
+        << "ssf_ska_1_tcu_2_mcb_open_states_name"
+        << "ssf_ska_2_tcu_1_mcb_open_states_name"
+        << "ssf_ska_2_tcu_2_mcb_open_states_name"
+        << "ssf_ska_1_tcu_1_enable_states_name"
+        << "ssf_ska_1_tcu_2_enable_states_name"
+        << "ssf_ska_2_tcu_1_enable_states_name"
+        << "ssf_ska_2_tcu_2_enable_states_name"
+        << "ssf_ska_1_tcu_1_reset_states_name"
+        << "ssf_ska_1_tcu_2_reset_states_name"
+        << "ssf_ska_2_tcu_1_reset_states_name"
+        << "ssf_ska_2_tcu_2_reset_states_name"
+        << "ssf_linm_hv_level_states_name"
+        << "ssf_linm_neutral_zone_states_name"
+        << "ssf_linm_range_check_states_name"
+        << "ssf_linm_1_current_check_states_name"
+        << "ssf_linm_2_current_check_states_name"
+        << "ssf_comp_select_states_name"
+        << "ssf_comp_1_heater_states_name"
+        << "ssf_comp_2_heater_states_name"
+        << "ssf_comp_1_status_states_name"
+        << "ssf_comp_2_status_states_name"
+        << "ssf_comp_1_control_states_name"
+        << "ssf_comp_2_control_states_name"
+        << "ssf_sand_enable_states_name"
+        << "ssf_sand_dry_states_name"
+        << "ssf_sand_1_heater_states_name"
+        << "ssf_sand_2_heater_states_name"
+        << "ssf_sand_control_states_name"
+        << "ssf_sand_test_states_name"
+        << "ssf_sand_level_test_states_name"
+        << "ssf_lvm_control_states_name"
+        << "ssf_trf_1_readiness_states_name"
+        << "ssf_trf_2_readiness_states_name"
+        << "ssf_trf_1_temp_states_name"
+        << "ssf_trf_2_temp_states_name"
+        << "ssf_trf_1_status_states_name"
+        << "ssf_trf_2_status_states_name"
+        << "ssf_trf_1_control_states_name"
+        << "ssf_trf_2_control_states_name"
+        << "ssf_hvm_earth_states_name"
+        << "ssf_hvm_line_select_states_name"
+        << "ssf_hvm_usable_line_states_name"
+        << "ssf_hvm_reset_procedure_states_name"
+        << "ssf_hvm_action_states_name"
+        << "ssf_susp_fault_lamp_states_name"
+        << "sf_stat_states_name"
 
     ;
 
-stateNames = {
-    ssf_emu_config_states_name,
-    ssf_emu_coupled_vehicle_states_name,
-    ssf_emu_sequence_states_name,
-    ssf_emu_cac_states_name,
-    ssf_emu_dir_states_name,
-    ssf_emu_mascon_states_name,
-    ssf_ccu_location_states_name,
-    ssf_ccu_direction_states_name,
-    ssf_ccu_role_states_name,
-    ssf_idm_reply_states_name,
-    ssf_idm_session_states_name,
-    ssf_idm_second_card_states_name,
-    ssf_idm_user_role_states_name,
-    ssf_hvm_earth_states_name,
-    ssf_hvm_line_select_states_name,
-    ssf_hvm_usable_line_states_name,
-    ssf_hvm_reset_procedure_states_name,
-    ssf_hvm_action_states_name,
-    ssf_linm_hv_level_states_name,
-    ssf_linm_neutral_zone_states_name,
-    ssf_linm_range_check_states_name,
-    ssf_linm_1_current_check_states_name,
-    ssf_linm_2_current_check_states_name,
-    ssf_hvd_select_states_name,
-    ssf_hvd_confirm_states_name,
-    ssf_hvd_config_states_name,
-    ssf_hvd_1_status_states_name,
-    ssf_hvd_2_status_states_name,
-    ssf_hvd_1_control_states_name,
-    ssf_hvd_2_control_states_name,
-    ssf_auxc_1_status_states_name,
-    ssf_auxc_2_status_states_name,
-    ssf_auxc_1_control_states_name,
-    ssf_auxc_2_control_states_name,
-    ssf_pan_1_readiness_states_name,
-    ssf_pan_2_readiness_states_name,
-    ssf_pan_1_add_status_states_name,
-    ssf_pan_2_add_status_states_name,
-    ssf_pan_1_add_control_states_name,
-    ssf_pan_2_add_control_states_name,
-    ssf_pan_1_status_states_name,
-    ssf_pan_2_status_states_name,
-    ssf_pan_1_control_states_name,
-    ssf_pan_2_control_states_name,
-    ssf_mcb_1_readiness_states_name,
-    ssf_mcb_2_readiness_states_name,
-    ssf_mcb_1_status_states_name,
-    ssf_mcb_2_status_states_name,
-    ssf_mcb_1_control_states_name,
-    ssf_mcb_2_control_states_name,
-    ssf_trf_1_readiness_states_name,
-    ssf_trf_2_readiness_states_name,
-    ssf_trf_1_temp_states_name,
-    ssf_trf_2_temp_states_name,
-    ssf_trf_1_status_states_name,
-    ssf_trf_2_status_states_name,
-    ssf_trf_1_control_states_name,
-    ssf_trf_2_control_states_name,
-    ssf_lvm_control_states_name,
-    ssf_comp_select_states_name,
-    ssf_comp_1_heater_states_name,
-    ssf_comp_2_heater_states_name,
-    ssf_comp_1_status_states_name,
-    ssf_comp_2_status_states_name,
-    ssf_comp_1_control_states_name,
-    ssf_comp_2_control_states_name,
-    ssf_ska_1_tcu_1_mcb_open_states_name,
-    ssf_ska_1_tcu_2_mcb_open_states_name,
-    ssf_ska_2_tcu_1_mcb_open_states_name,
-    ssf_ska_2_tcu_2_mcb_open_states_name,
-    ssf_park_mode_states_name,
-    ssf_door_close_req_states_name,
-    ssf_door_right_req_states_name,
-    ssf_door_left_req_states_name,
-    ssf_door_reset_req_states_name,
-    sf_stat_states_name
-};
+    stateNames = {
+
+      ssf_emu_config_states_name,
+      ssf_emu_coupled_vehicle_states_name ,
+      ssf_emu_sequence_states_name ,
+      ssf_emu_cac_states_name ,
+      ssf_emu_dir_states_name ,
+      ssf_emu_mascon_states_name ,
+      ssf_emu_pan_1_up_cmd_states_name ,
+      ssf_emu_pan_2_up_cmd_states_name ,
+      ssf_emu_mcb_close_cmd_states_name ,
+      ssf_bcu_wsp_test_states_name,
+      ssf_ccu_location_states_name ,
+      ssf_ccu_direction_states_name ,
+      ssf_ccu_role_states_name ,
+      ssf_apu_1_enable_states_name ,
+      ssf_apu_2_enable_states_name,
+      ssf_apu_1_reset_states_name ,
+      ssf_apu_2_reset_states_name ,
+      ssf_auxc_1_status_states_name ,
+      ssf_auxc_2_status_states_name ,
+      ssf_auxc_1_control_states_name ,
+      ssf_auxc_2_control_states_name ,
+      ssf_park_mode_states_name ,
+      ssf_hvd_select_states_name ,
+      ssf_hvd_confirm_states_name ,
+      ssf_hvd_config_states_name,
+      ssf_hvd_1_status_states_name ,
+      ssf_hvd_2_status_states_name ,
+      ssf_hvd_1_control_states_name,
+      ssf_hvd_2_control_states_name,
+      ssf_idm_1_reply_states_name ,
+      ssf_idm_2_reply_states_name  ,
+      ssf_idm_session_states_name ,
+      ssf_idm_second_card_states_name ,
+      ssf_idm_user_role_states_name,
+      ssf_pan_1_readiness_states_name ,
+      ssf_pan_2_readiness_states_name ,
+      ssf_pan_1_add_status_states_name ,
+      ssf_pan_2_add_status_states_name ,
+      ssf_pan_1_add_control_states_name ,
+      ssf_pan_2_add_control_states_name ,
+      ssf_pan_1_status_states_name ,
+      ssf_pan_2_status_states_name ,
+      ssf_pan_1_control_states_name ,
+      ssf_pan_2_control_states_name ,
+      ssf_mcb_1_readiness_states_name ,
+      ssf_mcb_2_readiness_states_name ,
+      ssf_mcb_1_status_states_name ,
+      ssf_mcb_2_status_states_name ,
+      ssf_mcb_1_control_states_name ,
+      ssf_mcb_2_control_states_name ,
+      ssf_door_close_req_states_name ,
+      ssf_door_right_req_states_name ,
+      ssf_door_left_req_states_name ,
+      ssf_door_reset_req_states_name ,
+      ssf_ska_1_tcu_1_mcb_open_states_name,
+      ssf_ska_1_tcu_2_mcb_open_states_name,
+      ssf_ska_2_tcu_1_mcb_open_states_name,
+      ssf_ska_2_tcu_2_mcb_open_states_name,
+      ssf_ska_1_tcu_1_enable_states_name ,
+      ssf_ska_1_tcu_2_enable_states_name ,
+      ssf_ska_2_tcu_1_enable_states_name ,
+      ssf_ska_2_tcu_2_enable_states_name ,
+      ssf_ska_1_tcu_1_reset_states_name ,
+      ssf_ska_1_tcu_2_reset_states_name ,
+      ssf_ska_2_tcu_1_reset_states_name ,
+      ssf_ska_2_tcu_2_reset_states_name ,
+      ssf_linm_hv_level_states_name,
+      ssf_linm_neutral_zone_states_name ,
+      ssf_linm_range_check_states_name,
+      ssf_linm_1_current_check_states_name,
+      ssf_linm_2_current_check_states_name,
+      ssf_comp_select_states_name  ,
+      ssf_comp_1_heater_states_name ,
+      ssf_comp_2_heater_states_name ,
+      ssf_comp_1_status_states_name ,
+      ssf_comp_2_status_states_name ,
+      ssf_comp_1_control_states_name ,
+      ssf_comp_2_control_states_name ,
+      ssf_sand_enable_states_name  ,
+      ssf_sand_dry_states_name,
+      ssf_sand_1_heater_states_name ,
+      ssf_sand_2_heater_states_name ,
+      ssf_sand_control_states_name ,
+      ssf_sand_test_states_name ,
+      ssf_sand_level_test_states_name ,
+      ssf_lvm_control_states_name ,
+      ssf_trf_1_readiness_states_name ,
+      ssf_trf_2_readiness_states_name ,
+      ssf_trf_1_temp_states_name ,
+      ssf_trf_2_temp_states_name,
+      ssf_trf_1_status_states_name ,
+      ssf_trf_2_status_states_name,
+      ssf_trf_1_control_states_name ,
+      ssf_trf_2_control_states_name,
+      ssf_hvm_earth_states_name,
+      ssf_hvm_line_select_states_name,
+      ssf_hvm_usable_line_states_name,
+      ssf_hvm_reset_procedure_states_name,
+      ssf_hvm_action_states_name,
+      ssf_susp_fault_lamp_states_name,
+      sf_stat_states_name
+
+
+
+    };
 
 }
 DebugMonitorStates::DebugMonitorStates(QWidget *parent)
@@ -303,15 +484,14 @@ void DebugMonitorStates::setupTable() {
 
 
     // Initialize table with "Unknown" values
-    table->setRowCount(76);  // Adjust row count based on the number of functions
-    for (int row = 0; row < 76; ++row) {  // 5 functions in total
+    table->setRowCount(101);  // Adjust row count based on the number of functions
+    for (int row = 0; row < 101; ++row) {  // 5 functions in total
         table->setItem(row, 0, new QTableWidgetItem(functionNames.at(row)));
         table->setItem(row,1,new QTableWidgetItem("Unknown"));
         table->setItem(row, 1, new QTableWidgetItem("Unknown"));
         table->setItem(row, 2, new QTableWidgetItem("Unknown"));
     }
     table->resizeColumnsToContents();
-
 
     // Get the layout
     //QVBoxLayout *layout = qobject_cast<QVBoxLayout *>(this->layout());
@@ -368,15 +548,15 @@ void DebugMonitorStates::setupTable() {
 void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
 
 
-    int offset = 0; // First 40 bytes reserved for other purposes
+    int offset = 0;
     QList<SystemFunctionState> states;
 
     //QList<std::vector<std::string>> stateNames
     //QList<const char**> stateNames
 
 
-    QByteArray data = recv_data.mid(128,152);
-    //QByteArray data = recv_data.mid(0,152);
+    QByteArray data = recv_data.mid(128,202);
+    //QByteArray data = recv_data.mid(0,202);
 
     // Gelen veriyi DebugMonitorStates'den gelen pencereye iletelim
     if (udpMessagesDialog) {
@@ -384,13 +564,17 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
     }
 
 
-    for (int i = 0; i < stateNames.size(); ++i) {
+    for (int i = 0; i < stateNames.size(); i++) {
         int preStateIndex = static_cast<unsigned char>(data[offset]); // Pre-state
         int currentStateIndex = static_cast<unsigned char>(data[offset + 1]); // Current-state
 
-        if (preStateIndex < 0 || preStateIndex >= stateCounts[i] ||
-            currentStateIndex < 0 || currentStateIndex >= stateCounts[i]) {
-            offset += 2;
+        //
+        if (preStateIndex < 0 || currentStateIndex < 0 || preStateIndex >= stateCounts[i]
+            || currentStateIndex >= stateCounts[i]) {
+            qDebug() << "STATE ATLAMA:" << i;
+            qDebug() << "preStateIndex:" << preStateIndex;
+            qDebug() << "stateNames[i][preStateIndex]:" << QString::fromStdString(stateNames[i][preStateIndex]);
+            offset += 1;
             continue; // Invalid data
         }
 
@@ -400,10 +584,11 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
             QString::fromStdString(stateNames[i][currentStateIndex]) // std::string -> QString
         });
 
-        offset += 2; // Advance by 2 bytes
+        offset += 2; // Advance by 1 bytes
     }
 
     qDebug() << "SIZE OF STATES :" << states.size();
+    qDebug() << "SIZE OF STATENAMES :" << stateNames.size();
     updateTable(states);
 
 
@@ -489,92 +674,10 @@ void DebugMonitorStates::setupOptionSystemFunc()
 {
     QVBoxLayout *layout = qobject_cast<QVBoxLayout *>(this->layout());
 
-    // Add system functions to the combo box
     systemFunctionComboBox->addItem("SELECT A SYSTEM FUCTION");
-    systemFunctionComboBox->addItem("SSF Emu Config");
-    systemFunctionComboBox->addItem("SSF Emu Coupled Vehicle");
-    systemFunctionComboBox->addItem("SSF Emu Sequence");
-    systemFunctionComboBox->addItem("SSF Emu CAC");
-    systemFunctionComboBox->addItem("SSF Emu Direction");
-    systemFunctionComboBox->addItem("SSF Emu Mascon");
-    systemFunctionComboBox->addItem("SSF CCU Location");
-    systemFunctionComboBox->addItem("SSF CCU Direction");
-    systemFunctionComboBox->addItem("SSF CCU Role");
-    systemFunctionComboBox->addItem("SSF IDM Reply");
-    systemFunctionComboBox->addItem("SSF IDM Session");
-
-    systemFunctionComboBox->addItem("SSF IDM Second Card");
-    systemFunctionComboBox->addItem("SSF IDM User Role");
-    systemFunctionComboBox->addItem("SSF HVM Earth");
-    systemFunctionComboBox->addItem("SSF HVM Line Select");
-    systemFunctionComboBox->addItem("SSF HVM Usable Line");
-    systemFunctionComboBox->addItem("SSF HVM Reset Procedure");
-    systemFunctionComboBox->addItem("SSF HVM Action");
-    systemFunctionComboBox->addItem("SSF LINM HV level");
-
-
-    systemFunctionComboBox->addItem("SSF LINM Neutral Zone");
-    systemFunctionComboBox->addItem("SSF LINM Range Check");
-    systemFunctionComboBox->addItem("SSF LINM1 Current Check");
-    systemFunctionComboBox->addItem("SSF LINM2 Current Check");
-    systemFunctionComboBox->addItem("SSF HVD Select");
-    systemFunctionComboBox->addItem("SSF HVD Confirm");
-    systemFunctionComboBox->addItem("SSF HVD Config");
-    systemFunctionComboBox->addItem("SSF HVD1 Status");
-    systemFunctionComboBox->addItem("SSF HVD2 Status");
-    systemFunctionComboBox->addItem("SSF HVD1 Control");
-    systemFunctionComboBox->addItem("SSF HVD2 Control");
-
-    systemFunctionComboBox->addItem("SSF AUXC1 STATUS");
-    systemFunctionComboBox->addItem("SSF AUXC2 STATUS");
-    systemFunctionComboBox->addItem("SSF AUXC1 CONTROL");
-    systemFunctionComboBox->addItem("SSF AUXC2 CONTROL");
-    systemFunctionComboBox->addItem("SSF PAN1 READINESS");
-    systemFunctionComboBox->addItem("SSF PAN2 READINESS");
-    systemFunctionComboBox->addItem("SSF PAN1 ADD STATUS");
-    systemFunctionComboBox->addItem("SSF PAN2 ADD STATUS");
-    systemFunctionComboBox->addItem("SSF PAN1 ADD CONTROL");
-    systemFunctionComboBox->addItem("SSF PAN1 ADD CONTROL");
-
-    systemFunctionComboBox->addItem("SSF PAN1 STATUS");
-    systemFunctionComboBox->addItem("SSF PAN2 STATUS");
-    systemFunctionComboBox->addItem("SSF PAN1 CONTROL");
-    systemFunctionComboBox->addItem("SSF PAN2 CONTROL");
-    systemFunctionComboBox->addItem("SSF MCB1 READINESS");
-    systemFunctionComboBox->addItem("SSF MCB2 READINESS");
-    systemFunctionComboBox->addItem("SSF MCB1 STATUS");
-    systemFunctionComboBox->addItem("SSF MCB2 STATUS");
-    systemFunctionComboBox->addItem("SSF MCB1 CONTROL");
-    systemFunctionComboBox->addItem("SSF MCB2 CONTROL");
-
-    systemFunctionComboBox->addItem("SSF TRF1 READINESS");
-    systemFunctionComboBox->addItem("SSF TRF2 READINESS");
-    systemFunctionComboBox->addItem("SSF TRF1 TEMP");
-    systemFunctionComboBox->addItem("SSF TRF2 TEMP");
-    systemFunctionComboBox->addItem("SSF TRF1 STATUS");
-    systemFunctionComboBox->addItem("SSF TRF2 STATUS");
-    systemFunctionComboBox->addItem("SSF TRF1 CONTROL");
-    systemFunctionComboBox->addItem("SSF TRF2 CONTROL");
-    systemFunctionComboBox->addItem("SSF LVM CONTROL");
-    systemFunctionComboBox->addItem("SSF COMP SELECT");
-    systemFunctionComboBox->addItem("SSF COMP1 HEATER");
-    systemFunctionComboBox->addItem("SSF COMP2 HEATER");
-    systemFunctionComboBox->addItem("SSF COMP1 STATUS CONTROL");
-    systemFunctionComboBox->addItem("SSF COMP2 STATUS CONTROL");
-    systemFunctionComboBox->addItem("SSF COMP1 CONTROL");
-    systemFunctionComboBox->addItem("SSF COMP2 CONTROL");
-
-    systemFunctionComboBox->addItem("SSF SKA1 TCU1 MCB OPEN");
-    systemFunctionComboBox->addItem("SSF SKA1 TCU2 MCB OPEN");
-    systemFunctionComboBox->addItem("SSF SKA2 TCU1 MCB OPEN");
-    systemFunctionComboBox->addItem("SSF SKA2 TCU2 MCB OPEN");
-    systemFunctionComboBox->addItem("SSF PARK MODE");
-    systemFunctionComboBox->addItem("SSF DOOR CLOSE REQ");
-    systemFunctionComboBox->addItem("SSF DOOR RIGHT REQ");
-    systemFunctionComboBox->addItem("SSF DOOR LEFT REQ");
-    systemFunctionComboBox->addItem("SSF DOOR RESET REQ");
-    systemFunctionComboBox->addItem("SF STAT");
-
+    for(int i = 0; i < functionNames.size(); i ++) {
+        systemFunctionComboBox->addItem(functionNames[i]);
+    }
 
 
     // Add combo box and label to the layout
@@ -595,234 +698,345 @@ void DebugMonitorStates::onStateFunctionChanged(int index)
     QStringList states;
 
     switch (index) {
-    case 1:  // SS Emu Config
+    case 1:  // ssf_emu_config_states_name
         states = QStringList{"INIT", "WAIT", "SINGLE", "MULTIPLE"};
         break;
-    case 2:  // SS Emu Coupled Vehicle
+    case 2:  // ssf_emu_coupled_vehicle_states_name
         states = QStringList{"INIT", "WAIT", "SKA1", "SKA2"};
         break;
-    case 3:  // SS Emu Sequence
+    case 3:  // ssf_emu_sequence_states_name
         states = QStringList{"INIT", "WAIT", "HEAD_TO_TAIL", "HEAD_TO_HEAD", "TAIL_TO_TAIL"};
         break;
-    case 4:  // SS Emu CAC
+    case 4:  // ssf_emu_cac_states_name
         states = QStringList{"INIT", "WAIT", "NO_CAB", "SKA1_ACTIVE", "SKA2_ACTIVE", "SET2_ACTIVE", "ERROR"};
         break;
-    case 5:  // SS Emu Direction
-        states = QStringList{"INIT", "WAIT", "NEUTRAL", "FORWARD", "REVERSE"};
+    case 5:  // ssf_emu_dir_states_name
+        states = QStringList {"INIT", "WAIT", "NEUTRAL", "FORWARD", "REVERSE"};
         break;
-    case 6:  // SS Emu Mascon
-        states = QStringList{"INIT", "WAIT", "NEUTRAL", "TRACTION", "BRAKE"};
+    case 6:  // ssf_emu_mascon_states_name
+        states = QStringList {"INIT", "WAIT", "NEUTRAL", "TRACTION", "BRAKE"};
         break;
-    case 7:  // SS CCU Location
-        states = QStringList{"INIT", "WAIT", "SKA1", "SKA2"};
+    case 7:  // ssf_emu_pan_1_up_cmd_states_name
+        states = QStringList {"INIT", "WAIT", "NO_CMD", "CHECK_CMD", "CMD_ON", "WAIT_NEXT"};
         break;
-    case 8:  // SS CCU Direction
-        states = QStringList{"INIT", "WAIT", "INWARD", "OUTWARD"};
+    case 8:  // ssf_emu_pan_2_up_cmd_states_name
+        states = QStringList  {"INIT", "WAIT", "NO_CMD", "CHECK_CMD", "CMD_ON", "WAIT_NEXT"};
         break;
-    case 9:  // SS CCU Role
-        states = QStringList{"INIT", "WAIT", "DEFAULT_SET_MASTER", "DEFAULT_SET_REDUNDANT", "EMU_MASTER", "EMU_REDUNDANT", "FOLLOWING_SET_MASTER", "FOLLOWING_SET_REDUNDANT"};
+    case 9:  // ssf_emu_mcb_close_cmd_states_name
+        states = QStringList {"INIT", "WAIT", "NO_CMD", "CHECK_CMD", "CMD_ON", "WAIT_NEXT"};
         break;
-    case 10:  // SS IDM Reply
-        states = QStringList{"INIT", "WAIT", "ID_VALID", "ID_INVALID"};
+    case 10:  // ssf_bcu_wsp_test_states_name
+        states = QStringList {"INIT", "WAIT", "NOT_READY", "READY", "TEST_CMD"};
         break;
-    case 11:  // SS IDM Session
-        states = QStringList{"INIT", "WAIT", "LOGOUT", "ID_CHECK", "LOGIN", "DDU_LOGOUT"};
+    case 11:  // ssf_ccu_location_states_name
+        states = QStringList {"INIT", "WAIT", "SKA1", "SKA2"};
         break;
-    case 12:  //SSF IDM Second Card
-        states = QStringList{"INIT", "WAIT", "SECONDARY_ID" };;
+    case 12:  // ssf_ccu_direction_states_name
+        states = QStringList {"INIT", "WAIT", "INWARD", "OUTWARD"};
         break;
-    case 13:  //SSF IDM User Role
-        states = QStringList{"INIT", "WAIT", "DRIVER", "MAINTENANCE", "DEVELOPER_ADMIN" };;
+    case 13:  // ssf_ccu_role_states_name
+        states = QStringList {"INIT", "WAIT", "DEFAULT_SET_MASTER", "DEFAULT_SET_REDUNDANT", "EMU_MASTER", "EMU_REDUNDANT", "FOLLOWING_SET_MASTER", "FOLLOWING_SET_REDUNDANT"};
         break;
-    case 14:  //SSF HVM Earth
-        states = QStringList{"INIT", "WAIT", "ERROR", "SERVICE", "YK_EXTRACTED", "EARTH"};;
+    case 14:  // ssf_apu_1_enable_states_name
+        states = QStringList {"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
         break;
-    case 15:  //SSF HVM Line Select
-        states = QStringList{"INIT", "WAIT", "NO_LINE", "OA1", "OA2" };
+    case 15:  // ssf_apu_2_enable_states_name
+        states = QStringList {"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
         break;
-    case 16:  //SSF HVM Usable Line
-        states = QStringList{"INIT",   "WAIT", "ALL_USABLE", "OA1_USABLE", "OA2_USABLE", "NONE_USABLE" };
+    case 16:  // ssf_apu_1_reset_states_name
+        states = QStringList {"INIT", "WAIT", "NO_RESET", "RESET"};
         break;
-    case 17:  //SSF HVM Reset Procedure
-        states = QStringList{"INIT", "WAIT", "NO_RESET", "CHECK_COND", "INIT_HV_LINE",  "DR_DECIDE", "DR_PAN1_UP", "DR_MCB1_CLOSE", "CHECK_OC1", "DR_MCB1_OPEN", "DR_PAN1_DOWN", "DR_PAN2_UP", "DR_MCB2_CLOSE", "CHECK_OC2", "DR_MCB2_OPEN", "DR_PAN2_DOWN", "OC1_DETECTED",  "OC_PAN1_DOWN", "OC2_DETECTED", "OC_PAN2_DOWN" };
+    case 17:  // ssf_apu_2_reset_states_name
+        states = QStringList {"INIT", "WAIT", "NO_RESET", "RESET"};
         break;
-    case 18:  //SSF HVM Action
-        states = QStringList{"INIT", "WAIT", "NO_ACTION", "HVD_IN", "HVD_OUT","PAN_IN", "PAN_MCB_OUT", "MCB_BACK_IN", "MCB_IN", "MCB_OUT", "ALL_IN", "ALL_OUT", "WAIT_MCB_OUT", "WAIT_ALL_OUT" };
+    case 18:  // ssf_auxc_1_status_states_name
+        states = QStringList {"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT", "ERROR"};
         break;
-    case 19:  // SSF LINM HV level
-        states = QStringList{"INIT", "WAIT", "LOWER_10KV", "LOW_HV", "RED_PWR", "NOM_PWR", "HIGH_HV" };
+    case 19:  // ssf_auxc_2_status_states_name
+        states = QStringList {"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT", "ERROR"};
         break;
-    case 20: //ssf_linm_neutral_zone
+    case 20:  // ssf_auxc_1_control_states_name
+        states = QStringList {"INIT", "WAIT", "STOP", "START", "WAIT4MIN"};
+        break;
+    case 21:  // ssf_auxc_2_control_states_name
+        states = QStringList {"INIT", "WAIT", "STOP", "START", "WAIT4MIN"};
+        break;
+    case 22:  // ssf_park_mode_states_name
+        states = QStringList  {"INIT", "WAIT", "OFF", "CHECK_ON", "ON", "CHECK_OFF", "ERROR"};
+        break;
+    case 23:  // ssf_hvd_select_states_name
+        states = QStringList  {"INIT", "WAIT", "OPEN_SELECTED", "DDU_REQ_CHECK", "CLOSE_SELECTED"};
+        break;
+    case 24:  // ssf_hvd_confirm_states_name
+        states = QStringList  {"INIT", "WAIT", "UNCONFIRMED", "CHECK_CONFIRM", "CONFIRMED"};
+        break;
+    case 25:  // ssf_hvd_config_states_name
+        states = QStringList  {"INIT", "WAIT", "WAIT_CONFIRM", "WAIT_HVD_OPEN", "WAIT_HVD_CLOSE", "DONE", "ERROR"};
+        break;
+    case 26:  // ssf_hvd_1_status_states_name
+        states = QStringList {"INIT", "WAIT", "OPENED", "CLOSED", "MOVING"};
+        break;
+    case 27:  // ssf_hvd_2_status_states_name
+        states = QStringList {"INIT", "WAIT", "OPENED", "CLOSED", "MOVING"};
+        break;
+    case 28:  // ssf_hvd_1_control_states_name
+        states = QStringList {"INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN"};
+        break;
+    case 29:  // ssf_hvd_2_control_states_name
+        states = QStringList {"INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN"};
+        break;
+    case 30:  // ssf_idm_1_reply_states_name
+        states = QStringList {"INIT", "WAIT", "ID_VALID", "ID_INVALID"};
+        break;
+    case 31:  // ssf_idm_2_reply_states_name
+        states = QStringList {"INIT", "WAIT", "ID_VALID", "ID_INVALID"};
+        break;
+    case 32:  // ssf_idm_session_states_name
+        states = QStringList {"INIT", "WAIT", "LOGOUT", "ID_CHECK", "LOGIN", "DDU_LOGOUT"};
+        break;
+    case 33:  // ssf_idm_second_card_states_name
+        states = QStringList {"INIT", "WAIT", "SECONDARY_ID"};
+        break;
+    case 34:  // ssf_idm_user_role_states_name
+        states = QStringList {"INIT", "WAIT", "DRIVER", "MAINTENANCE", "DEVELOPER_ADMIN"};
+        break;
+        break;
+    case 35:  // ssf_pan_1_readiness_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "READY", "ISOLATED"};
+        break;
+    case 36:  // ssf_pan_2_readiness_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "READY", "ISOLATED"};
+        break;
+    case 37:  // ssf_pan_1_add_status_states_name
+        states = QStringList{"INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP"};
+        break;
+    case 38:  // ssf_pan_2_add_status_states_name
+        states = QStringList{"INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP"};
+        break;
+    case 39:  // ssf_pan_1_add_control_states_name
+        states = QStringList{"INIT", "WAIT", "RELEASE", "HOLD"};
+        break;
+    case 40:  // ssf_pan_2_add_control_states_name
+        states = QStringList{"INIT", "WAIT", "RELEASE", "HOLD"};
+        break;
+    case 41:  // ssf_pan_1_status_states_name
+        states = QStringList{"INIT", "WAIT", "DOWN", "CHECK_UP", "UP", "UP_ERROR"};
+        break;
+    case 42:  // ssf_pan_2_status_states_name
+        states = QStringList{"INIT", "WAIT", "DOWN", "CHECK_UP", "UP", "UP_ERROR"};
+        break;
+    case 43:  // ssf_pan_1_control_states_name
+        states = QStringList{"INIT", "WAIT", "LOWER", "WAIT_PRESS", "RAISE"};
+        break;
+    case 44:  // ssf_pan_2_control_states_name
+        states = QStringList{"INIT", "WAIT", "LOWER", "WAIT_PRESS", "RAISE"};
+        break;
+    case 45:  // ssf_mcb_1_readiness_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "READY"};
+        break;
+    case 46:  // ssf_mcb_2_readiness_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "READY"};
+        break;
+    case 47:  // ssf_mcb_1_status_states_name
+        states = QStringList{"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "CHECK_UNK_ERROR", "ERROR"};
+        break;
+    case 48:  // ssf_mcb_2_status_states_name
+        states = QStringList{"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "CHECK_UNK_ERROR", "ERROR"};
+        break;
+    case 49:  // ssf_mcb_1_control_states_name
+        states = QStringList{"INIT", "WAIT", "OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE"};
+        break;
+    case 50:  // ssf_mcb_2_control_states_name
+        states = QStringList{"INIT", "WAIT", "OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE"};
+        break;
+    case 51:  // ssf_door_close_req_states_name
+        states = QStringList{"INIT", "WAIT", "NO_REQ", "CLOSE"};
+        break;
+    case 52:  // ssf_door_right_req_states_name
+        states = QStringList{"INIT", "WAIT", "NO_REQ", "RELEASE_RIGHT", "OPEN_RIGHT"};
+        break;
+    case 53:  // ssf_door_left_req_states_name
+        states = QStringList{"INIT", "WAIT", "NO_REQ", "RELEASE_LEFT", "OPEN_LEFT"};
+        break;
+    case 54:  // ssf_door_reset_req_states_name
+        states = QStringList{"INIT", "WAIT", "NO_REQ", "EED_RESET"};
+        break;
+    case 55:  // ssf_ska_1_tcu_1_mcb_open_states_name
+        states = QStringList{"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+        break;
+    case 56:  // ssf_ska_1_tcu_2_mcb_open_states_name
+        states = QStringList{"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+        break;
+    case 57:  // ssf_ska_2_tcu_1_mcb_open_states_name
+        states = QStringList{"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+        break;
+    case 58:  // ssf_ska_2_tcu_2_mcb_open_states_name
+        states = QStringList{"INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN"};
+        break;
+    case 59:  // ssf_ska_1_tcu_1_enable_states_name
+        states = QStringList{"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
+        break;
+    case 60:  // ssf_ska_1_tcu_2_enable_states_name
+        states = QStringList{"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
+        break;
+    case 61:  // ssf_ska_2_tcu_1_enable_states_name
+        states = QStringList{"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
+        break;
+    case 62:  // ssf_ska_2_tcu_2_enable_states_name
+        states = QStringList{"INIT", "WAIT", "ENABLE", "OUT_OF_SERVICE"};
+        break;
+    case 63:  // ssf_ska_1_tcu_1_reset_states_name
+        states = QStringList{"INIT", "WAIT", "NO_RESET", "RESET"};
+        break;
+    case 64:  // ssf_ska_1_tcu_2_reset_states_name
+        states = QStringList{"INIT", "WAIT", "NO_RESET", "RESET"};
+        break;
+    case 65:  // ssf_ska_2_tcu_1_reset_states_name
+        states = QStringList{"INIT", "WAIT", "NO_RESET", "RESET"};
+        break;
+    case 66:  // ssf_ska_2_tcu_2_reset_states_name
+        states = QStringList{"INIT", "WAIT", "NO_RESET", "RESET"};
+        break;
+    case 67:  // ssf_linm_hv_level_states_name
+        states = QStringList{"INIT", "WAIT", "LOWER_10KV", "LOW_HV", "RED_PWR", "NOM_PWR", "HIGH_HV"};
+        break;
+
+    case 68:  // ssf_linm_neutral_zone_states_name
         states = QStringList{"INIT", "WAIT", "ETCS_CONTROL", "IN_RANGE", "ZONE_BEGIN", "CHECK_LINE", "ZONE_END"};
         break;
-    case 21: //ssf_linm_range_check
-        states = QStringList{ "INIT", "WAIT", "IN_RANGE", "HIGH_TIMER", "OUT_OF_RANGE", "CHECK_RANGE", "RANGE_TIMER" ,"BACK_IN_RANGE" };
+
+    case 69:  // ssf_linm_range_check_states_name
+        states = QStringList{"INIT", "WAIT", "IN_RANGE", "HIGH_TIMER", "OUT_OF_RANGE", "CHECK_RANGE", "RANGE_TIMER", "BACK_IN_RANGE"};
         break;
-    case 22: //ssf_linm_1_current_check
-        states = QStringList{ "INIT",    "WAIT", "NORMAL",  "CHECK_ZERO", "HV_ZERO", "CHECK_SHORT", "HV_SHORT" };
+
+    case 70:  // ssf_linm_1_current_check_states_name
+        states = QStringList{"INIT", "WAIT", "NORMAL", "CHECK_ZERO", "HV_ZERO", "CHECK_SHORT", "HV_SHORT"};
         break;
-    case 23: //ssf_linm_2_current_check
-        states = QStringList{ "INIT",    "WAIT", "NORMAL",  "CHECK_ZERO", "HV_ZERO", "CHECK_SHORT", "HV_SHORT" };
+
+    case 71:  // ssf_linm_2_current_check_states_name
+        states = QStringList{"INIT", "WAIT", "NORMAL", "CHECK_ZERO", "HV_ZERO", "CHECK_SHORT", "HV_SHORT"};
         break;
-    case 24: //ssf_hvd_select
-        states = QStringList{ "INIT", "WAIT", "OPEN_SELECTED", "DDU_REQ_CHECK", "CLOSE_SELECTED" };
+
+    case 72:  // ssf_comp_select_states_name
+        states = QStringList{"INIT", "WAIT", "NONE", "OA1", "OA2", "BOTH"};
         break;
-    case 25: //ssf_hvd_confirm
-        states = QStringList{ "INIT", "WAIT", "UNCONFIRMED", "CHECK_CONFIRM", "CONFIRMED" };
+
+    case 73:  // ssf_comp_1_heater_states_name
+        states = QStringList{"INIT", "WAIT", "NO_HEAT", "INACTIVE", "PREHEAT", "HEAT"};
         break;
-    case 26: //ssf_hvd_config
-        states = QStringList{ "INIT", "WAIT", "WAIT_CONFIRM", "WAIT_HVD_OPEN", "WAIT_HVD_CLOSE", "DONE","ERROR" };
+
+    case 74:  // ssf_comp_2_heater_states_name
+        states = QStringList{"INIT", "WAIT", "NO_HEAT", "INACTIVE", "PREHEAT", "HEAT"};
         break;
-    case 27: //ssf_hvd_1_status
-        states = QStringList{ "INIT", "WAIT", "OPENED", "CLOSED", "MOVING" };
+
+    case 75:  // ssf_comp_1_status_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR"};
         break;
-    case 28: //ssf_hvd_2_status
-        states = QStringList{ "INIT", "WAIT", "OPENED", "CLOSED", "MOVING" };
+
+    case 76:  // ssf_comp_2_status_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR"};
         break;
-    case 29: //ssf_hvd_1_control
-        states = QStringList{ "INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN" };
+
+    case 77:  // ssf_comp_1_control_states_name
+        states = QStringList{"INIT", "WAIT", "STOP", "WAIT_PREHEAT", "START"};
         break;
-    case 30: //ssf_hvd_2_control
-        states = QStringList{ "INIT", "WAIT", "NO_CMD", "OPEN", "OPEN_250_MS", "CLOSE", "CLOSE_250_MS", "WAIT_20_SEC", "WAIT_15_MIN" };
+
+    case 78:  // ssf_comp_2_control_states_name
+        states = QStringList{"INIT", "WAIT", "STOP", "WAIT_PREHEAT", "START"};
         break;
-    case 31: //ssf_auxc_1_status
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT" , "ERROR" };
+
+    case 79:  // ssf_sand_enable_states_name
+        states = QStringList{"INIT", "WAIT", "ENABLED", "DISABLED"};
         break;
-    case 32: //ssf_auxc_2_status
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "PRESS_OK", "TIMEOUT" , "ERROR" };
+
+    case 80:  // ssf_sand_dry_states_name
+        states = QStringList{"INIT", "WAIT", "NOT_READY", "DRY_60MIN", "PAUSE_60MIN", "WAIT_330MIN", "DRY_30MIN", "PAUSE_30MIN", "DRY", "NO_DRY"};
         break;
-    case 33: //ssf_auxc_1_control
-        states = QStringList{ "INIT", "WAIT", "STOP", "START", "WAIT4MIN" };
+
+    case 81:  // ssf_sand_1_heater_states_name
+        states = QStringList{"INIT", "WAIT", "NO_HEAT", "HEAT"};
         break;
-    case 34: //ssf_auxc_2_control
-        states = QStringList{ "INIT", "WAIT", "STOP", "START", "WAIT4MIN" };
+
+    case 82:  // ssf_sand_2_heater_states_name
+        states = QStringList{"INIT", "WAIT", "NO_HEAT", "HEAT"};
         break;
-    case 35: //ssf_pan_1_readiness
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY", "ISOLATED" };
+
+    case 83:  // ssf_sand_control_states_name
+        states = QStringList{"INIT", "WAIT", "NO_CMD", "SHORT", "LONG", "REQ_END"};
         break;
-    case 36: //ssf_pan_2_readiness
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY", "ISOLATED" };
+
+    case 84:  // ssf_sand_test_states_name
+        states = QStringList{"INIT", "WAIT", "READY", "TEST_CMD", "TESTING", "NOT_READY"};
         break;
-    case 37: //ssf_pan_1_add_status
-        states = QStringList{ "INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP" };
+
+    case 85:  // ssf_sand_level_test_states_name
+        states = QStringList{"INIT", "WAIT", "READY", "TEST_CMD", "NOT_READY"};
         break;
-    case 38: // ssf_pan_2_add_status
-        states = QStringList{ "INIT", "WAIT", "WAIT_PAN_UP", "ADD_OK", "ADD_DROP" };
+
+    case 86:  // ssf_lvm_control_states_name
+        states = QStringList{"INIT", "WAIT", "LP_OFF", "LP_ON", "LAST_HOLD"};
         break;
-    case 39: //ssf_pan_1_add_control
-        states = QStringList{ "INIT", "WAIT", "RELEASE", "HOLD" };
+
+    case 87:  // ssf_trf_1_readiness_states_name
+        states = QStringList{"INIT", "WAIT", "READY", "FAULT", "CHECK_OOS", "OUT_OF_SERVICE"};
         break;
-    case 40: //ssf_pan_2_add_control
-        states = QStringList{ "INIT", "WAIT", "RELEASE", "HOLD" };
+
+    case 88:  // ssf_trf_2_readiness_states_name
+        states = QStringList{"INIT", "WAIT", "READY", "FAULT", "CHECK_OOS", "OUT_OF_SERVICE"};
         break;
-    case 41: //ssf_pan_1_status
-        states = QStringList{ "INIT", "WAIT", "DOWN", "CHECK_UP", "UP", "UP_ERROR" };
+
+    case 89:  // ssf_trf_1_temp_states_name
+        states = QStringList{"INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110"};
         break;
-    case 42: //ssf_pan_2_status
-        states = QStringList{ "INIT", "WAIT", "DOWN", "CHECK_UP", "UP", "UP_ERROR" };
+
+    case 90:  // ssf_trf_2_temp_states_name
+        states = QStringList{"INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110"};
         break;
-    case 43: //ssf_pan_1_control
-        states = QStringList{ "INIT", "WAIT", "LOWER", "WAIT_PRESS", "RAISE" };
+
+    case 91:  // ssf_trf_1_status_states_name
+        states = QStringList{"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL", "FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR"};
         break;
-    case 44: //ssf_pan_2_control
-        states = QStringList{ "INIT", "WAIT", "LOWER", "WAIT_PRESS", "RAISE" };
+
+    case 92:  // ssf_trf_2_status_states_name
+        states = QStringList{"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL", "FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR"};
         break;
-    case 45: //ssf_mcb_1_readiness
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY" };
+
+    case 93:  // ssf_trf_1_control_states_name
+        states = QStringList{"INIT", "WAIT", "NO_CMD", "LOW_CMD", "FULL_CMD"};
         break;
-    case 46: //ssf_mcb_2_readiness
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY" };
+
+    case 94:  // ssf_trf_2_control_states_name
+        states = QStringList{"INIT", "WAIT", "NO_CMD", "LOW_CMD", "FULL_CMD"};
         break;
-    case 47: //ssf_mcb_1_status
-        states = QStringList{"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "ERROR" };
+
+    case 95:  // ssf_hvm_earth_states_name
+        states = QStringList{"INIT", "WAIT", "ERROR", "SERVICE", "YK_EXTRACTED", "EARTH"};
         break;
-    case 48: //ssf_mcb_2_status
-        states = QStringList{"INIT", "WAIT", "OPENED", "CHECK_CLOSE", "CLOSE_ERROR", "CLOSED", "CHECK_OPEN", "OPEN_ERROR", "ERROR" };
+
+    case 96:  // ssf_hvm_line_select_states_name
+        states = QStringList{"INIT", "WAIT", "NO_LINE", "OA1", "OA2"};
         break;
-    case 49: //ssf_mcb_1_control
-        states = QStringList{ "INIT", "WAIT", "OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE" };
+
+    case 97:  // ssf_hvm_usable_line_states_name
+        states = QStringList{"INIT", "WAIT", "ALL_USABLE", "OA1_USABLE", "OA2_USABLE", "NONE_USABLE"};
         break;
-    case 50: //ssf_mcb_2_control
-        states = QStringList{ "INIT", "WAIT", "OPEN", "CLOSE", "WARN_OPEN", "WAIT_RECLOSE" };
+
+    case 98:  // ssf_hvm_reset_procedure_states_name
+        states = QStringList{"INIT", "WAIT", "NO_RESET", "CHECK_COND", "INIT_HV_LINE", "DR_DECIDE", "DR_PAN1_UP", "DR_MCB1_CLOSE", "CHECK_OC1", "DR_MCB1_OPEN", "DR_PAN1_DOWN", "DR_PAN2_UP", "DR_MCB2_CLOSE", "CHECK_OC2", "DR_MCB2_OPEN", "DR_PAN2_DOWN", "OC1_DETECTED", "OC_PAN1_DOWN", "OC2_DETECTED", "OC_PAN2_DOWN"};
         break;
-    case 51: //ssf_trf_1_readiness
-        states = QStringList{ "INIT", "WAIT", "READY", "FAULT", "OUT_OF_SERVICE" };
+
+    case 99:  // ssf_hvm_action_states_name
+        states = QStringList{"INIT", "WAIT", "NO_ACTION", "HVD_IN", "HVD_OUT", "PAN_IN", "PAN_MCB_OUT", "MCB_BACK_IN", "MCB_IN", "MCB_OUT", "ALL_IN", "ALL_OUT", "WAIT_MCB_OUT", "WAIT_ALL_OUT"};
         break;
-    case 52: //ssf_trf_2_readiness
-        states = QStringList{ "INIT", "WAIT", "READY", "FAULT", "OUT_OF_SERVICE" };
+
+    case 100:  // ssf_susp_fault_lamp_states_name
+        states = QStringList{"INIT", "WAIT", "OFF", "BLINK_ON", "BLINK_OFF", "ON"};
         break;
-    case 53: //ssf_trf_1_temp
-        states = QStringList{ "INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110" };
+
+    case 101:  // sf_stat_states_name
+        states = QStringList{"INIT", "WAIT"};
         break;
-    case 54: //ssf_trf_2_temp
-        states = QStringList{ "INIT", "WAIT", "NORMAL", "OVER60", "OVER90", "OVER110" };
-        break;
-    case 55: //ssf_trf_1_status
-        states = QStringList{ "INIT", "WAIT", "OFF", "LOW", "CHECK_FULL", "FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR" };
-        break;
-    case 56: //ssf_trf_2_status
-        states = QStringList{"INIT", "WAIT", "OFF", "LOW", "CHECK_FULL", "FULL", "CHECK_LOW", "FULL_ERROR", "LOW_ERROR" };
-        break;
-    case 57: //ssf_trf_1_control
-        states = QStringList{ "INIT", "WAIT", "NO_CMD", "LOW_CMD", "FULL_CMD" };
-        break;
-    case 58: //ssf_trf_2_control
-        states = QStringList{ "INIT", "WAIT", "NO_CMD", "LOW_CMD", "FULL_CMD" };
-        break;
-    case 59: //ssf_lvm_control
-        states = QStringList{ "INIT", "WAIT", "LP_OFF", "LP_ON", "LAST_HOLD" };
-        break;
-    case 60: //ssf_comp_select
-        states = QStringList{ "INIT", "WAIT", "NONE", "OA1",  "OA2",  "BOTH" };
-        break;
-    case 61: //ssf_comp_1_heater
-        states = QStringList{ "INIT", "WAIT", "NO_HEAT", "INACTIVE", "PREHEAT", "HEAT" };
-        break;
-    case 62: //ssf_comp_2_heater
-        states = QStringList{ "INIT", "WAIT", "NO_HEAT", "INACTIVE", "PREHEAT", "HEAT" };
-        break;
-    case 63: //ssf_comp_1_status
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR" };
-        break;
-    case 64: //ssf_comp_2_status
-        states = QStringList{ "INIT", "WAIT", "NOT_READY", "READY", "CHECK_MOTOR", "RUNNING", "SUPPLY_ERROR", "HIGH_CURRENT", "RELAY_ERROR" };
-        break;
-    case 65: //ssf_comp_1_control
-        states = QStringList{ "INIT", "WAIT", "STOP", "WAIT_PREHEAT", "START" };
-        break;
-    case 66: //ssf_comp_2_control
-        states = QStringList{ "INIT", "WAIT", "STOP", "WAIT_PREHEAT", "START" };
-        break;
-    case 67: //ssf_ska_1_tcu_1_mcb_open
-        states = QStringList{ "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-        break;
-    case 68: //ssf_ska_1_tcu_2_mcb_open
-        states = QStringList{ "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-        break;
-    case 69: //ssf_ska_2_tcu_1_mcb_open
-        states = QStringList{ "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-        break;
-    case 70: //ssf_ska_2_tcu_2_mcb_open
-        states = QStringList{ "INIT", "WAIT", "OPENED_MCB", "CATENARY", "JAMMED", "UNKNOWN" };
-        break;
-    case 71: //ssf_park_mode
-        states = QStringList{ "INIT", "WAIT", "OFF", "CHECK_ON", "ON", "CHECK_OFF", "ERROR" };
-        break;
-    case 72: //ssf_door_close_req
-        states = QStringList{ "INIT", "WAIT", "NO_REQ", "CLOSE" };
-        break;
-    case 73: //ssf_door_right_req
-        states = QStringList{ "INIT", "WAIT", "NO_REQ", "RELEASE_RIGHT", "OPEN_RIGHT" };
-        break;
-    case 74: //ssf_door_left_req
-        states = QStringList{ "INIT", "WAIT", "NO_REQ", "RELEASE_LEFT", "OPEN_LEFT" };
-        break;
-    case 75: //ssf_door_reset_req
-        states = QStringList{ "INIT", "WAIT", "NO_REQ", "EED_RESET" };
-        break;
-    case 76: //sf_stat
-        states = QStringList{ "INIT", "WAIT" };
-        break;
+
     default:
         states = QStringList{"No states available"};
         break;
@@ -875,3 +1089,4 @@ void DebugMonitorStates::handleUdpMessage(const QByteArray& recv_data) {
     parseSystemStates(recv_data);
 
 }
+

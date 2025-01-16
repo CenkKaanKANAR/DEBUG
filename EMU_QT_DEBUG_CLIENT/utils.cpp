@@ -116,14 +116,14 @@ namespace utils {
 
             int row = items.first()->row();
             int column = items.first()->column();
-            //qDebug() << "@@@ROW NUMBER IS  OUTSIDE :  " << row << " @@@COLUMN NUMBER IS  OUTSIDE : " << column;
+
             column++;
             QTableWidgetItem* valueItem = tableWidget->item(row, column);
 
 
             if (valueItem  && column % 2 != 0) {
                 return valueItem->text();
-                //qDebug() << "___ROW NUMBER IS : " << row << " ___COLUMN NUMBER IS INSIDE : " << column;
+
             }
         }
         return QString(); // Hücre boşsa veya geçersizse boş bir string döner
@@ -138,9 +138,9 @@ namespace utils {
 
             int row = items.first()->row();
             int column = items.first()->column();
-            //qDebug() << "@@@ROW NUMBER IS OUTSIDE : " << row << " @@@COLUMN NUMBER IS OUTSIDE : " << column;
+
             column++;
-            //tableWidget->setItem(row, valueColumn, new QTableWidgetItem(QString::number(value)));
+
             if(column % 2 != 0) {
 
                 tableWidget->item(row,column )->setText(QString::number(value));
@@ -149,18 +149,13 @@ namespace utils {
                     tableWidget->item(row,column )->setBackground(QColor(57, 255, 20));  // Neon Yeşil
                     addGlowEffect(tableWidget, row, column -1, QColor(255, 125, 100), 500);// Kısa süreli sarı parlatma (500 ms)
                     addGlowEffect(tableWidget, row, column, QColor(125, 255, 0), 500);// Kısa süreli sarı parlatma (500 ms)
-                    //addGlowEffect(tableWidget->item(row,column), tableWidget, QColor(255, 255, 0), 500);
-                    //addBorderBlinkEffect(tableWidget, 500);  // Kısa süreli çerçeve büyütme efekti (500 ms)
-                    //addGlowEffect(QTableWidget* table, int row, int column, QColor glowColor, int durationMs)
+
                   }
                 else {
                     tableWidget->item(row,column -1)->setBackground(QColor("turquoise"));
                     tableWidget->item(row,column )->setBackground(QColor("turquoise"));
-                    //addGlowEffect(tableWidget->item(row,column -1), tableWidget, QColor(255, 255, 0), 500);// Kısa süreli sarı parlatma (500 ms)
-                    //addBorderBlinkEffect(tableWidget, 500);  // Kısa süreli çerçeve büyütme efekti (500 ms)
-                  }
 
-                //qDebug() << "___ROW NUMBER IS : " << row << " ___COLUMN NUMBER IS INSIDE : " << column;
+                  }
             }
         }
         else
@@ -234,18 +229,6 @@ namespace utils {
         }
     }
 
-
-    /*void addBorderBlinkEffect(QWidget* widget, int durationMs) {
-        QPropertyAnimation* animation = new QPropertyAnimation(widget, "geometry");
-        QRect originalGeometry = widget->geometry();
-        QRect expandedGeometry = originalGeometry.adjusted(-2, -2, 2, 2);  // Çerçeveyi büyüt
-
-        animation->setDuration(durationMs);
-        animation->setStartValue(originalGeometry);
-        animation->setKeyValueAt(0.5, expandedGeometry);
-        animation->setEndValue(originalGeometry);
-        animation->start(QAbstractAnimation::DeleteWhenStopped);
-    }*/
 
 }
 

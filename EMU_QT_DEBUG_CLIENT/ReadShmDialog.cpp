@@ -12,7 +12,6 @@
 ReadShmDialog::ReadShmDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReadShmDialog),
-    m_ccu_table(new CCU_Table()),
     m_ccu_out(new OUT::CCU_Outputs()),
     debugMonitorStates(new DebugMonitorStates(this))
     //systemFunctionManager(new SystemFunctionManager(this))
@@ -86,20 +85,6 @@ void ReadShmDialog::receive_udp_message(const QByteArray& recv_data)
         m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs()->set_data_struct(source, SKA_VEHICLE_NUM::SKA2);
     }
 
-    if (port_id == SKA1_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, SKA1_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        m_ccu_out->get_Ska_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source, SKA_VEHICLE_NUM::SKA1);
-    }
-
-    if (port_id == SKA2_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, SKA2_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        m_ccu_out->get_Ska_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source, SKA_VEHICLE_NUM::SKA2);
-    }
-
     if (port_id == OA1_VH_RIOM_1_OUTPUTS)
     {
         qDebug("Valid Port Id: %x", port_id);
@@ -114,19 +99,6 @@ void ReadShmDialog::receive_udp_message(const QByteArray& recv_data)
         m_ccu_out->get_Oa_Ccu_Vh_Riom_Mvb1_d_Outputs()->set_data_struct(source,OA_VEHICLE_NUM::OA2);
     }
 
-    if (port_id == OA1_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA1_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        m_ccu_out->get_Oa_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source,OA_VEHICLE_NUM::OA1);
-    }
-
-    if (port_id == OA2_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA2_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        m_ccu_out->get_Oa_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source,OA_VEHICLE_NUM::OA2);
-    }
 
     else
     {
@@ -143,7 +115,7 @@ void ReadShmDialog::receive_udp_message(const QByteArray& recv_data)
  */
 void ReadShmDialog::init_ccu_out_table()
 {
-    // ska_ccu_vh_riom_mvb1_d_outputs
+    /*   // ska_ccu_vh_riom_mvb1_d_outputs
     ui->verticalLayout_ska1_ccu_vh_riom_mvb1_d_outputs->addWidget(m_ccu_out->get_Ska_ccu_vh_riom_mvb1_d()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
     ui->verticalLayout_ska2_ccu_vh_riom_mvb1_d_outputs->addWidget(m_ccu_out->get_Ska_ccu_vh_riom_mvb1_d()->getTableWidget(SKA_VEHICLE_NUM::SKA2));
 
@@ -213,7 +185,7 @@ void ReadShmDialog::init_ccu_out_table()
     //ccu_to_all_bcus
     ui->verticalLayout_ccu_to_all_tcus->addWidget(m_ccu_out->get_Ccu_To_All_Tcus()->getTableWidget());
     //ccu_to_all_apus
-    ui->verticalLayout_ccu_to_all_apus->addWidget(m_ccu_out->get_Ccu_To_All_Apus()->getTableWidget());
+    ui->verticalLayout_ccu_to_all_apus->addWidget(m_ccu_out->get_Ccu_To_All_Apus()->getTableWidget());*/
 
 }
 

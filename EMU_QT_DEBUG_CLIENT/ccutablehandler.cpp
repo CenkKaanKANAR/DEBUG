@@ -270,56 +270,6 @@ void CcuTableHandler::handleIncomingCcuOutSystemUdpPacketes(OUT::CCU_Outputs *cc
         ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs()->set_data_struct(source, SKA_VEHICLE_NUM::SKA2);
     }
 
-    if (port_id == SKA1_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, SKA1_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        ccu_out->get_Ska_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source, SKA_VEHICLE_NUM::SKA1);
-    }
-
-    if (port_id == SKA2_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, SKA2_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        ccu_out->get_Ska_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source, SKA_VEHICLE_NUM::SKA2);
-    }
-
-    /*if (port_id == OA1_VH_RIOM_1_OUTPUTS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA1_VH_RIOM_1_OUTPUTS_SIZE);
-        ccu_out->get_Oa_Ccu_Vh_Riom_Mvb1_d_Outputs()->set_data_struct(source,OA_VEHICLE_NUM::OA1);
-    }
-
-    if (port_id == OA2_VH_RIOM_1_OUTPUTS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA2_VH_RIOM_1_OUTPUTS_SIZE);
-        ccu_out->get_Oa_Ccu_Vh_Riom_Mvb1_d_Outputs()->set_data_struct(source,OA_VEHICLE_NUM::OA2);
-    }*/
-
-    if (port_id == OA1_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA1_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        ccu_out->get_Oa_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source,OA_VEHICLE_NUM::OA1);
-    }
-
-    if (port_id == OA2_VH_RIOM_1_DOOR_COMMANDS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA2_VH_RIOM_1_DOOR_COMMANDS_SIZE);
-        ccu_out->get_Oa_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source,OA_VEHICLE_NUM::OA2);
-
-    }
-    if(port_id == OA1_ETCS_INPUTS)
-    {
-        qDebug("Valid Port Id: %x", port_id);
-        QByteArray source = recv_data.mid(2, OA1_ETCS_INPUTS_SIZE);
-        //ccu_in->getOaEtcs().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-        //ccu_in->getOaEtcs().update_table(OA_VEHICLE_NUM::OA1);
-       ccu_out->get_Oa_Ccu_Vh_Riom_Mvb2_Dcu()->set_data_struct(source,OA_VEHICLE_NUM::OA2);
-    }
     else
     {
 

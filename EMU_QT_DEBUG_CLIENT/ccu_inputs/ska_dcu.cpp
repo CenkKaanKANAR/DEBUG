@@ -16,7 +16,7 @@ SKA_DCU::SKA_DCU(QObject *parent)
     init_ska_x_mvb4_dcu3_table(SKA_VEHICLE_NUM::SKA2);
     init_ska_x_mvb5_dcu4_table(SKA_VEHICLE_NUM::SKA2);
 
-    qDebug() << "SIZE OF SKA DCU" << sizeof(ska_dcu);
+    //qDebug() << "SIZE OF SKA DCU" << sizeof(ska_dcu);
     make_signal_slot_connection();
 
 }

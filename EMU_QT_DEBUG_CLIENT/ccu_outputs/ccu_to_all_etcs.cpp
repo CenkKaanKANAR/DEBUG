@@ -47,16 +47,16 @@ void Ccu_To_All_Etcs::init_table()
 {
     m_outputs_map = {
         {"Lifesign", 0},
-        {"bit0", 0},
-        {"bit1", 0},
-        {"bit2", 0},
-        {"bit3", 0},
-        {"bit4", 0},
-        {"bit5", 0},
-        {"bit6", 0},
-        {"bit7", 0},
-        {"bit8", 0},
-        {"bit9", 0},
+        {"bit16", 0},
+        {"bit17", 0},
+        {"bit18", 0},
+        {"bit19", 0},
+        {"bit20", 0},
+        {"bit21", 0},
+        {"bit22", 0},
+        {"bit23", 0},
+        {"bit24", 0},
+        {"bit25", 0},
         {"Train_data_Brake_Position", 0},
         {"bit14", 0},
         {"bit15", 0},
@@ -136,16 +136,16 @@ void Ccu_To_All_Etcs::update_map()
 {
 
     m_outputs_map.at("Lifesign")                                = m_ccu_to_all_etcs.bits.Lifesign;
-    m_outputs_map.at("bit0")                                    = m_ccu_to_all_etcs.bits.bit0;
-    m_outputs_map.at("bit1")                                    = m_ccu_to_all_etcs.bits.bit1;
-    m_outputs_map.at("bit2")                                    = m_ccu_to_all_etcs.bits.bit2;
-    m_outputs_map.at("bit3")                                    = m_ccu_to_all_etcs.bits.bit3;
-    m_outputs_map.at("bit4")                                    = m_ccu_to_all_etcs.bits.bit4;
-    m_outputs_map.at("bit5")                                    = m_ccu_to_all_etcs.bits.bit5;
-    m_outputs_map.at("bit6")                                    = m_ccu_to_all_etcs.bits.bit6;
-    m_outputs_map.at("bit7")                                    = m_ccu_to_all_etcs.bits.bit7;
-    m_outputs_map.at("bit8")                                    = m_ccu_to_all_etcs.bits.bit8;
-    m_outputs_map.at("bit9")                                    = m_ccu_to_all_etcs.bits.bit9;
+    m_outputs_map.at("bit16")                                    = m_ccu_to_all_etcs.bits.bit16;
+    m_outputs_map.at("bit17")                                    = m_ccu_to_all_etcs.bits.bit17;
+    m_outputs_map.at("bit18")                                    = m_ccu_to_all_etcs.bits.bit18;
+    m_outputs_map.at("bit19")                                    = m_ccu_to_all_etcs.bits.bit19;
+    m_outputs_map.at("bit20")                                    = m_ccu_to_all_etcs.bits.bit20;
+    m_outputs_map.at("bit21")                                    = m_ccu_to_all_etcs.bits.bit21;
+    m_outputs_map.at("bit22")                                    = m_ccu_to_all_etcs.bits.bit22;
+    m_outputs_map.at("bit23")                                    = m_ccu_to_all_etcs.bits.bit23;
+    m_outputs_map.at("bit24")                                    = m_ccu_to_all_etcs.bits.bit24;
+    m_outputs_map.at("bit25")                                    = m_ccu_to_all_etcs.bits.bit25;
     m_outputs_map.at("Train_data_Brake_Position")               = m_ccu_to_all_etcs.bits.Train_data_Brake_Position;
     m_outputs_map.at("bit14")                                   = m_ccu_to_all_etcs.bits.bit14;
     m_outputs_map.at("bit15")                                   = m_ccu_to_all_etcs.bits.bit15;
@@ -179,16 +179,16 @@ void Ccu_To_All_Etcs::update_map()
 void Ccu_To_All_Etcs::set_struct()
 {
         m_ccu_to_all_etcs.bits.Lifesign      = m_outputs_map.at("Lifesign")                  ;
-        m_ccu_to_all_etcs.bits.bit0          = m_outputs_map.at("bit0")                      ;
-        m_ccu_to_all_etcs.bits.bit1          = m_outputs_map.at("bit1")                      ;
-        m_ccu_to_all_etcs.bits.bit2          = m_outputs_map.at("bit2")                      ;
-        m_ccu_to_all_etcs.bits.bit3          = m_outputs_map.at("bit3")                      ;
-        m_ccu_to_all_etcs.bits.bit4          = m_outputs_map.at("bit4")                      ;
-        m_ccu_to_all_etcs.bits.bit5          = m_outputs_map.at("bit5")                      ;
-        m_ccu_to_all_etcs.bits.bit6          = m_outputs_map.at("bit6")                      ;
-        m_ccu_to_all_etcs.bits.bit7          = m_outputs_map.at("bit7")                      ;
-        m_ccu_to_all_etcs.bits.bit8          = m_outputs_map.at("bit8")                      ;
-        m_ccu_to_all_etcs.bits.bit9          = m_outputs_map.at("bit9")                      ;
+        m_ccu_to_all_etcs.bits.bit16          = m_outputs_map.at("bit16")                      ;
+        m_ccu_to_all_etcs.bits.bit17          = m_outputs_map.at("bit17")                      ;
+        m_ccu_to_all_etcs.bits.bit18          = m_outputs_map.at("bit18")                      ;
+        m_ccu_to_all_etcs.bits.bit19          = m_outputs_map.at("bit19")                      ;
+        m_ccu_to_all_etcs.bits.bit20          = m_outputs_map.at("bit20")                      ;
+        m_ccu_to_all_etcs.bits.bit21          = m_outputs_map.at("bit21")                      ;
+        m_ccu_to_all_etcs.bits.bit22          = m_outputs_map.at("bit22")                      ;
+        m_ccu_to_all_etcs.bits.bit23          = m_outputs_map.at("bit23")                      ;
+        m_ccu_to_all_etcs.bits.bit24          = m_outputs_map.at("bit24")                      ;
+        m_ccu_to_all_etcs.bits.bit25          = m_outputs_map.at("bit25")                      ;
         m_ccu_to_all_etcs.bits.Train_data_Brake_Position         = m_outputs_map.at("Train_data_Brake_Position") ;
         m_ccu_to_all_etcs.bits.bit14         = m_outputs_map.at("bit14")                     ;
         m_ccu_to_all_etcs.bits.bit15         = m_outputs_map.at("bit15")                     ;

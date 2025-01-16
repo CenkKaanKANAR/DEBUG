@@ -23,11 +23,6 @@ CCU_Table::CCU_Table(QWidget *parent) :
     m_ConfigWidget (new MessageConfig()),
     m_timer(new QTimer(this)),
     m_ldr_switch (new SwitchButton()),
-    maintenanceIDButton  (new QPushButton("Maintenance ID", this)),
-    developerIDButton  (new QPushButton("Developer ID",this)),
-    adminIDButton  (new QPushButton("Admin ID")),
-    wrongIDButton  (new QPushButton("Wrong ID",this)),
-    resetIDButton (new QPushButton("ID RESET")),
     forceControl3 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     forceControl4 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     forceControl7 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
@@ -41,6 +36,7 @@ CCU_Table::CCU_Table(QWidget *parent) :
     forceControl16 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     forceControl17 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     forceControl18 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
+    forceControl19 (new ForceControl("Enable Force Control","Send Data","Reset",this)),
     frcConfig (new FrcConfig()),
     onOffForceControlButton(new QPushButton("FORCE OFF", this)),
     forceSocket(new QUdpSocket(this))// Force soket initialization
@@ -65,10 +61,6 @@ CCU_Table::CCU_Table(QWidget *parent) :
     connect(onOffForceControlButton, &QPushButton::clicked, this, &CCU_Table::onOnOffForceControlToggled);
 
     ui->tabWidget_ccu_out->setTabPosition(QTabWidget::West); // Sekme çubuğunu sola taşı
-
-
-
-    setIDButtonLayout();
 
 
     //Force
@@ -164,18 +156,6 @@ CCU_Table::CCU_Table(QWidget *parent) :
 
     //FORCE BİTİŞŞ
 
-
-
-
-
-    connect(maintenanceIDButton, &QPushButton::clicked, this, &CCU_Table::maintenanceIDButtonClickedAction);
-    connect(developerIDButton, &QPushButton::clicked, this, &CCU_Table::developerIDButtonClickedAction);
-    connect(adminIDButton, &QPushButton::clicked, this, &CCU_Table::adminIDButtonClickedAction);
-    connect(wrongIDButton, &QPushButton::clicked, this, &CCU_Table::wrongIDButtonClickedAction);
-    connect(resetIDButton, &QPushButton::clicked, this, &CCU_Table::resetIDButtonClickedAction);
-
-
-    //connect(maintenanceIDButton, &QPushButton::clicked, this, &CcuTable::testSlot);
     // Add ccu input signals to tablewidget
     init_ccu_outputs_table();
 
@@ -186,7 +166,7 @@ CCU_Table::CCU_Table(QWidget *parent) :
     ui->tabWidget_ccu_in->setCurrentIndex(0);
 
     // LDR switch test status button
-    init_switch();
+    //init_switch();
 
     /*
      * udp message timer that is used for sending ccu input
@@ -306,10 +286,21 @@ void CCU_Table::init_ccu_outputs_table()
     ui->verticalLayout_force_ccu_to_all_apus->addWidget(m_ccu_out->get_Ccu_To_All_Apus_Force()->getTableWidget());
     ui->verticalLayout_force_ccu_to_all_apus->addWidget(forceControl18);
 
+    //ui->verticalLayout_force_ccu_to_all_rioms_mvb1->addWidget(m_ccu_out->get_Ccu_To_All_Rioms().mvb1()->getTableWidget());
+    //ui->verticalLayout_force_ccu_to_all_rioms_mvb1->addWidget(forceControl19);
+
+    //ui->verticalLayout_force_ccu_to_all_rioms_mvb1->addWidget(m_ccu_out->get_Ccu_To_All_Rioms().mvb1()->getTableWidget());
+
+
     //ui->verticalLayout_force_ska1_vh_riom_outputs_mvb2->addWidget(m_ccu_out->get_Ska_Vh_Riom_Outputs_Force()->mvb2()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
     //BURADAN DEVAMMM
     //ui->verticalLayout_force_ska
     //CcuTableHandler::processCcuOutputTables(ui, m_ccu_out);
+
+    //Output izleme/debug -> ccu_outputs
+    //ska_vh_riom_outputs
+    ui->verticalLayout_ska1_vh_riom_outputs_mvb1->addWidget(m_ccu_out->get_Ska_Vh_Riom_Outputs()->mvb1()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
+    ui->verticalLayout_ska1_vh_riom_outputs_mvb2->addWidget(m_ccu_out->get_Ska_Vh_Riom_Outputs()->mvb2()->getTableWidget(SKA_VEHICLE_NUM::SKA1));
 
 
 }
@@ -349,6 +340,22 @@ void CCU_Table::onOnOffForceControlToggled() {
         frcConfig->bits.frc_in_config_mode = 0;
         frcConfig->bits.frc_ready = 0;
 
+        QByteArray udp_message_package;
+
+        // Append Emulator Config Data (6 bytes)
+        appendEmuConfigToQByteArray(udp_message_package, frcConfig->bytes, 1);
+
+        // Debug output
+        utils::show_bytearray(udp_message_package, "Force Has Been Deactivated :: Frc_Config Modes sent 0");
+
+        // Force datasını belirlenen port ve adrese gönder
+        if (forceSocket->writeDatagram(udp_message_package, forceTargetAddress, forceTargetPort) == -1) {
+            qDebug() << "Force data gönderimi başarısız oldu:" << forceSocket->errorString();
+        } else {
+            qDebug() << "Force Off Frc_Cnf Data Başarıyla Gönderildi.";
+            qDebug() << "Force Target Port:" << forceTargetPort;
+            qDebug() << "Force Target Port:" << forceTargetAddress;
+        }
         // Perform actions for "OFF" state
         qDebug() << "Force Control OFF";
 
@@ -565,12 +572,14 @@ void CCU_Table::onResetButtonClicked() {
         qDebug() << "YOU PRESSED RESET DATA BUTTON FOR Ska1_Ccu_DD_Riom_mvb1_d";
         auto* Ska_Ccu_DD_Riom_mvb1_d = m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()->getTableWidget(SKA_VEHICLE_NUM::SKA1);
         resetTableValues(Ska_Ccu_DD_Riom_mvb1_d);
+        m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()->update_struct_with_map(SKA_VEHICLE_NUM::SKA1);
     }
     //ska2_dd
     else if (clickedButton == forceControl4->getResetButton()) {
         qDebug() << "YOU PRESSED RESET DATA BUTTON FOR Ska2_Ccu_DD_Riom_mvb1_d";
         auto* Ska_Ccu_DD_Riom_mvb1_d = m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()->getTableWidget(SKA_VEHICLE_NUM::SKA2);
         resetTableValues(Ska_Ccu_DD_Riom_mvb1_d);
+        m_ccu_out->get_Ska_Ccu_DD_Riom_Mvb1_d_Outputs_force()->update_struct_with_map(SKA_VEHICLE_NUM::SKA2);
     }
     //ska_global_out
     else if (clickedButton == forceControl7->getResetButton()) {
@@ -1176,10 +1185,10 @@ void CCU_Table::receiveUdpInMessage(QByteArray recv_data)
     CcuTableHandler::handleIncomingCcuInSystemUdpPacketes(ccu_in, recv_data);
 }
 
-void CCU_Table::init_switch()
+/*void CCU_Table::init_switch()
 {
     ui->verticalLayout_driver_key->addWidget(m_ldr_switch);
-}
+}*/
 
 
 void CCU_Table::on_pushButton_send_shm_data_clicked()
@@ -1865,339 +1874,4 @@ void CCU_Table::on_pushButton_ccu_inputs_clicked()
     ui->stackedWidget_ccu_table->setCurrentIndex(0);
 }
 
-void CCU_Table::setIDButtonLayout()
-{
-    ui->verticalLayout_driver_key->addWidget(maintenanceIDButton);
-    ui->verticalLayout_driver_key->addWidget(developerIDButton);
-    ui->verticalLayout_driver_key->addWidget(adminIDButton);
-    ui->verticalLayout_driver_key->addWidget(wrongIDButton);
-    ui->verticalLayout_driver_key->addWidget(resetIDButton);
 
-    //oa1_Layout_1->addWidget(maintenanceIDButton);
-    //oa1_Layout_1->addWidget(developerIDButton);
-    //oa1_Layout_1->addWidget(adminIDButton);
-    //oa1_Layout_1->addWidget(wrongIDButton);
-
-    //oa1_Layout_2->addWidget(ccu_in->getOaJru().getTableWidget(OA_VEHICLE_NUM::OA1));
-    //ui->horizontalLayout_oa_1_jru_1->addLayout(oa1_Layout_1);
-    ui->horizontalLayout_oa_1_jru_1->addWidget(ccu_in->getOaJru().getTableWidget(OA_VEHICLE_NUM::OA1));
-
-    //ui->verticalLayout_oa_1_jru_1->addWidget(ccu_in->getOaJru().getTableWidget(OA_VEHICLE_NUM::OA1));
-    ui->verticalLayout_oa_2_jru_1->addWidget(ccu_in->getOaJru().getTableWidget(OA_VEHICLE_NUM::OA2));
-}
-
-void CCU_Table::maintenanceIDButtonClickedAction(){
-
-    //OA1 JRU
-    //QMessageBox::information(this, "Wrong ID Value Sent", "Wrong ID Value: ");
-    qDebug() << "maintenanceIDButtonClickedAction";
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte2 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte3 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte4 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-
-    //OA2 JRU
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte2 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte3 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte4 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-
-}
-
-
-void CCU_Table::developerIDButtonClickedAction() {
-
-    //OA1 JRU
-    qDebug() << "developerIDButtonClickedAction";
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte2 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte3 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte4 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-
-    //OA2 JRU
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte2 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte3 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte4 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-}
-
-
-void CCU_Table::adminIDButtonClickedAction() {
-
-    //OA1 JRU
-    //qDebug() << "adminIDButtonClickedAction";
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte2 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte3 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte4 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    //OA2 JRU
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte2 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte3 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte4 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-}
-
-void CCU_Table::wrongIDButtonClickedAction() {
-
-    qDebug() << "wrongIDButtonClickedAction";
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte2 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte3 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte4 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    //OA2 JRU
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte1 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte2 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte3 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte4 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte5 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte6 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte7 = 1;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-}
-
-void CCU_Table::resetIDButtonClickedAction() {
-
-    //OA1 JRU
-    //qDebug() << "resetIDButtonClickedAction";
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte1 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte2 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte3 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte4 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte5 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte6 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA1).bits.Badge_id_byte7 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA1);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA1);
-
-    //OA2 JRU
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte1 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte2 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte3 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte4 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte5 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte6 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-
-    ccu_in->getOaJru().oa_x_jru_ccu_mvb1(OA_VEHICLE_NUM::OA2).bits.Badge_id_byte7 = 0;
-    ccu_in->getOaJru().update_mvb1_map(OA_VEHICLE_NUM::OA2);
-    ccu_in->getOaJru().update_table(OA_VEHICLE_NUM::OA2);
-}

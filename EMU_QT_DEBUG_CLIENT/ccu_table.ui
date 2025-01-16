@@ -14,37 +14,6 @@
    <string>CCU_Tables</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
-   <item row="0" column="0">
-    <widget class="QPushButton" name="pushButton_ccu_inputs">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>ccu inputs</string>
-     </property>
-     <property name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/icons/icons8-input-96.png</normaloff>:/icons/icons8-input-96.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1">
     <widget class="QPushButton" name="pushButton_send_shm_data">
      <property name="text">
@@ -79,6 +48,37 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0">
+    <widget class="QPushButton" name="pushButton_ccu_inputs">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>ccu inputs</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/icons/icons8-input-96.png</normaloff>:/icons/icons8-input-96.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0" colspan="3">
     <widget class="QStackedWidget" name="stackedWidget_ccu_table">
      <property name="currentIndex">
@@ -104,7 +104,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="tab_12">
             <attribute name="title">
@@ -1766,31 +1766,15 @@
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="tab">
-            <attribute name="title">
-             <string>Driver Panel</string>
-            </attribute>
-            <widget class="QWidget" name="verticalLayoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>120</x>
-               <y>60</y>
-               <width>651</width>
-               <height>261</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_driver_key"/>
-            </widget>
-           </widget>
            <widget class="QWidget" name="tab_2">
             <attribute name="title">
-             <string>ccu_outputs</string>
+             <string>Force</string>
             </attribute>
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="0">
               <widget class="QTabWidget" name="tabWidget_ccu_out">
                <property name="currentIndex">
-                <number>10</number>
+                <number>12</number>
                </property>
                <widget class="QWidget" name="tab_53">
                 <attribute name="title">
@@ -1802,7 +1786,7 @@
                    <item>
                     <widget class="QTabWidget" name="ska1_vh_riom_tabWidget">
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <widget class="QWidget" name="tab_69">
                       <attribute name="title">
@@ -2047,6 +2031,109 @@
                   <layout class="QVBoxLayout" name="verticalLayout_force_ccu_to_all_apus"/>
                  </item>
                 </layout>
+               </widget>
+               <widget class="QWidget" name="tab">
+                <attribute name="title">
+                 <string>ccu_to_all_rioms</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_175">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_rioms_force_outside">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget_59">
+                     <property name="currentIndex">
+                      <number>1</number>
+                     </property>
+                     <widget class="QWidget" name="tab_176">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                     </widget>
+                     <widget class="QWidget" name="tab_177">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_168">
+            <attribute name="title">
+             <string>ccu_outputs</string>
+            </attribute>
+            <layout class="QGridLayout" name="gridLayout_171">
+             <item row="0" column="0">
+              <widget class="QTabWidget" name="tabWidget_57">
+               <property name="tabPosition">
+                <enum>QTabWidget::West</enum>
+               </property>
+               <property name="currentIndex">
+                <number>1</number>
+               </property>
+               <widget class="QWidget" name="tab_169">
+                <attribute name="title">
+                 <string>SKA1_VH_RIOM_OUTPUTS</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_174">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_mnt_ska1_vh_riom_outside_2">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget_58">
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="tab_174">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_172">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_ska1_vh_riom_outputs_mvb1"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_175">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_173">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_ska1_vh_riom_outputs_mvb2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_170">
+                <attribute name="title">
+                 <string>Tab 2</string>
+                </attribute>
+               </widget>
+               <widget class="QWidget" name="tab_171">
+                <attribute name="title">
+                 <string>Page</string>
+                </attribute>
+               </widget>
+               <widget class="QWidget" name="tab_172">
+                <attribute name="title">
+                 <string>Page</string>
+                </attribute>
+               </widget>
+               <widget class="QWidget" name="tab_173">
+                <attribute name="title">
+                 <string>Page</string>
+                </attribute>
                </widget>
               </widget>
              </item>

@@ -53,27 +53,27 @@ void SKA_VH_RIOM::init_inputs_table(SKA_VEHICLE_NUM ska_x_num)
         {"DEVICE_ID_DI_4",0},
         {"DEVICE_ID_DI_5",0},
         {"CABINET_TEST_HW_OK_HEALT_RIOM_2",0},
-        {"TRACTION_OK_2_TC_1",0},
+        {"TRACTION_2_OK_TC_1",0},
         {"VCB_LOOP_OUT_TC_1",0},
         {"TRACTION_ACTIVE_RELAY_TC_1",0},
         {"EDB_BRAKE_ACTIVE_TC_1",0},
-        {"CFIR_TC_1",0},
+        {"bit28",0},
         {"SYSTEM_RESET_TC_1",0},
         {"MV_OUTPUT_MOTOR_3_OK_TC_2",0},
         {"MV_OUTPUT_MOTOR_4_OK_TC_2",0},
         {"HV_PRESENCE_TO_TRACTION_TC_2",0},
         {"TRACTION_DC_LINK_OK_TC_2",0},
         {"PANTOGRAPH_PERMISSION_TC_2",0},
-        {"TRACTION_OK_4_TC_2",0},
-        {"TRACTION_OK_3_TC_2",0},
+        {"TRACTION_3_OK_TC_2",0},
+        {"TRACTION_4_OK_TC_2",0},
         {"VCB_LOOP_OUT_TC_2",0},
         {"TRACTION_ACTIVE_RELAY_TC_2",0},
         {"EDB_BRAKE_ACTIVE_TC_2",0},
-        {"CFIR_TC_2",0},
+        {"bit40",0},
         {"SYSTEM_RESET_TC_2",0},
         {"VENTILATION_TRACTION_CONVERTER_CB_PROTECTION",0},
         {"SL_CUT_OFF_BYPASS",0},
-        {"TRACTION_OK_1_TC_1",0},
+        {"TRACTION_1_OK_TC_1",0},
         {"CONTACTOR_2_1_NORMAL_LOAD_Ln",0},
         {"TRACTION_DC_LINK_OK_TC_1",0},
         {"PANTOGRAPH_PERMISSION_TC_1",0},
@@ -106,8 +106,8 @@ void SKA_VH_RIOM::init_inputs_table(SKA_VEHICLE_NUM ska_x_num)
         {"ISOLATION_COCKS_PNEUMATIC_BRAKE",0},
         {"ISOLATION_COCKS_DIRECT_BRAKE",0},
         {"ISOLATION_COCKS_INDIRECT_BRAKE",0},
-        {"ISOLATION_COCKS_DIRECT_BRAKE_BO1",0},
-        {"ISOLATION_COCKS_DIRECT_BRAKE_BO2",0},
+        {"ISOLATION_COCKS_CPRESS_BRAKE_BO1",0},
+        {"ISOLATION_COCKS_CPRESS_BRAKE_BO2",0},
         {"ISOLATION_COCKS_PB_ISOLATED",0},
         {"ISOLATION_COCKS_SAND_ISOLATED",0},
         {"AIR_SUSPENSION_STATUSS",0},
@@ -189,25 +189,25 @@ void SKA_VH_RIOM::init_inputs_table(SKA_VEHICLE_NUM ska_x_num)
         {"AUTOMATIC_EXTERNAL_LIGHT_COMMAND",0},
         {"SL_ETCS_BY_PASS",0},
         {"SL_DOORS_SIDE_CONTROL_ETCS_BYPASS",0},
-        {"GSM_R_RADIO_DIAGNOSTIC_INFORMATION",0},
+        {"GSM_R_RADIO_WORKING_STATUS",0},
         {"GSM_R_RADIO_VOICE",0},
         {"ATS_BYPASS",0},
         {"PLANT_7_7_CB_PROTECTION",0},
         {"PLANT_7_8_CB_PROTECTION",0},
         {"CONTROL_UNIT_RADIO_THALES_CB_PROTECTION",0},
         {"CB_PROTECTION_AXLE_BOX",0},
-        {"bit167",0},
-        {"spare_21",0},
-        {"spare_22",0},
-        {"spare_23",0},
-        {"spare_24",0},
-        {"spare_25",0},
-        {"spare_26",0},
-        {"spare_27",0},
-        {"spare_28",0},
-        {"spare_29",0},
-        {"spare_30",0},
-        {"spare_31",0}
+        {"EBCU_C_EDCUT_OFF",0},
+        {"reserved_21",0},
+        {"reserved_22",0},
+        {"reserved_23",0},
+        {"reserved_24",0},
+        {"reserved_25",0},
+        {"reserved_26",0},
+        {"reserved_27",0},
+        {"reserved_28",0},
+        {"reserved_29",0},
+        {"reserved_30",0},
+        {"reserved_31",0}
     };
 
     /*QStringList table_name = {"ska_1_vh_riom_ccu_mvb1_d_inputs", "value"};
@@ -450,27 +450,27 @@ void SKA_VH_RIOM::update_inputs_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("DEVICE_ID_DI_4")                                  =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.DEVICE_ID_DI_4;
     m_inputs_map[ska_num][MVB1].at("DEVICE_ID_DI_5")                                  =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.DEVICE_ID_DI_5;
     m_inputs_map[ska_num][MVB1].at("CABINET_TEST_HW_OK_HEALT_RIOM_2")                 =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CABINET_TEST_HW_OK_HEALT_RIOM_2;
-    m_inputs_map[ska_num][MVB1].at("TRACTION_OK_2_TC_1")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_2_TC_1;
+    m_inputs_map[ska_num][MVB1].at("TRACTION_2_OK_TC_1")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_2_OK_TC_1;
     m_inputs_map[ska_num][MVB1].at("VCB_LOOP_OUT_TC_1")                               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.VCB_LOOP_OUT_TC_1;
     m_inputs_map[ska_num][MVB1].at("TRACTION_ACTIVE_RELAY_TC_1")                      =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_ACTIVE_RELAY_TC_1;
     m_inputs_map[ska_num][MVB1].at("EDB_BRAKE_ACTIVE_TC_1")                           =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.EDB_BRAKE_ACTIVE_TC_1;
-    m_inputs_map[ska_num][MVB1].at("CFIR_TC_1")                                       =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CFIR_TC_1;
+    m_inputs_map[ska_num][MVB1].at("bit28")                                       =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.bit28;
     m_inputs_map[ska_num][MVB1].at("SYSTEM_RESET_TC_1")                               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SYSTEM_RESET_TC_1;
     m_inputs_map[ska_num][MVB1].at("MV_OUTPUT_MOTOR_3_OK_TC_2")                       =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.MV_OUTPUT_MOTOR_3_OK_TC_2;
     m_inputs_map[ska_num][MVB1].at("MV_OUTPUT_MOTOR_4_OK_TC_2")                       =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.MV_OUTPUT_MOTOR_4_OK_TC_2;
     m_inputs_map[ska_num][MVB1].at("HV_PRESENCE_TO_TRACTION_TC_2")                    =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.HV_PRESENCE_TO_TRACTION_TC_2;
     m_inputs_map[ska_num][MVB1].at("TRACTION_DC_LINK_OK_TC_2")                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_DC_LINK_OK_TC_2;
     m_inputs_map[ska_num][MVB1].at("PANTOGRAPH_PERMISSION_TC_2")                      =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PANTOGRAPH_PERMISSION_TC_2;
-    m_inputs_map[ska_num][MVB1].at("TRACTION_OK_4_TC_2")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_4_TC_2;
-    m_inputs_map[ska_num][MVB1].at("TRACTION_OK_3_TC_2")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_3_TC_2;
+    m_inputs_map[ska_num][MVB1].at("TRACTION_3_OK_TC_2")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_3_OK_TC_2;
+    m_inputs_map[ska_num][MVB1].at("TRACTION_4_OK_TC_2")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_4_OK_TC_2;
     m_inputs_map[ska_num][MVB1].at("VCB_LOOP_OUT_TC_2")                               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.VCB_LOOP_OUT_TC_2;
     m_inputs_map[ska_num][MVB1].at("TRACTION_ACTIVE_RELAY_TC_2")                      =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_ACTIVE_RELAY_TC_2;
     m_inputs_map[ska_num][MVB1].at("EDB_BRAKE_ACTIVE_TC_2")                           =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.EDB_BRAKE_ACTIVE_TC_2;
-    m_inputs_map[ska_num][MVB1].at("CFIR_TC_2")                                       =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CFIR_TC_2;
+    m_inputs_map[ska_num][MVB1].at("bit40")                                       =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.bit40;
     m_inputs_map[ska_num][MVB1].at("SYSTEM_RESET_TC_2")                               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SYSTEM_RESET_TC_2;
     m_inputs_map[ska_num][MVB1].at("VENTILATION_TRACTION_CONVERTER_CB_PROTECTION")    =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.VENTILATION_TRACTION_CONVERTER_CB_PROTECTION;
     m_inputs_map[ska_num][MVB1].at("SL_CUT_OFF_BYPASS")                               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SL_CUT_OFF_BYPASS;
-    m_inputs_map[ska_num][MVB1].at("TRACTION_OK_1_TC_1")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_1_TC_1;
+    m_inputs_map[ska_num][MVB1].at("TRACTION_1_OK_TC_1")                              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_1_OK_TC_1;
     m_inputs_map[ska_num][MVB1].at("CONTACTOR_2_1_NORMAL_LOAD_Ln")                    =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CONTACTOR_2_1_NORMAL_LOAD_Ln;
     m_inputs_map[ska_num][MVB1].at("TRACTION_DC_LINK_OK_TC_1")                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_DC_LINK_OK_TC_1;
     m_inputs_map[ska_num][MVB1].at("PANTOGRAPH_PERMISSION_TC_1")                      =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PANTOGRAPH_PERMISSION_TC_1;
@@ -503,8 +503,8 @@ void SKA_VH_RIOM::update_inputs_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_PNEUMATIC_BRAKE")                =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_PNEUMATIC_BRAKE;
     m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE")                   =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE;
     m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_INDIRECT_BRAKE")                 =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_INDIRECT_BRAKE;
-    m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO1")               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO1;
-    m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO2")               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO2;
+    m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_CPRESS_BRAKE_BO1")               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_CPRESS_BRAKE_BO1;
+    m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_CPRESS_BRAKE_BO2")               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_CPRESS_BRAKE_BO2;
     m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_PB_ISOLATED")                    =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_PB_ISOLATED;
     m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_SAND_ISOLATED")                  =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_SAND_ISOLATED;
     m_inputs_map[ska_num][MVB1].at("AIR_SUSPENSION_STATUSS")                          =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.AIR_SUSPENSION_STATUSS;
@@ -586,25 +586,25 @@ void SKA_VH_RIOM::update_inputs_map(SKA_VEHICLE_NUM ska_x_num)
     m_inputs_map[ska_num][MVB1].at("AUTOMATIC_EXTERNAL_LIGHT_COMMAND")                =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.AUTOMATIC_EXTERNAL_LIGHT_COMMAND;
     m_inputs_map[ska_num][MVB1].at("SL_ETCS_BY_PASS")                                 =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SL_ETCS_BY_PASS;
     m_inputs_map[ska_num][MVB1].at("SL_DOORS_SIDE_CONTROL_ETCS_BYPASS")               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SL_DOORS_SIDE_CONTROL_ETCS_BYPASS;
-    m_inputs_map[ska_num][MVB1].at("GSM_R_RADIO_DIAGNOSTIC_INFORMATION")              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.GSM_R_RADIO_DIAGNOSTIC_INFORMATION;
+    m_inputs_map[ska_num][MVB1].at("GSM_R_RADIO_WORKING_STATUS")              =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.GSM_R_RADIO_WORKING_STATUS;
     m_inputs_map[ska_num][MVB1].at("GSM_R_RADIO_VOICE")                               =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.GSM_R_RADIO_VOICE;
     m_inputs_map[ska_num][MVB1].at("ATS_BYPASS")                                      =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ATS_BYPASS;
     m_inputs_map[ska_num][MVB1].at("PLANT_7_7_CB_PROTECTION")                         =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PLANT_7_7_CB_PROTECTION;
     m_inputs_map[ska_num][MVB1].at("PLANT_7_8_CB_PROTECTION")                         =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PLANT_7_8_CB_PROTECTION;
     m_inputs_map[ska_num][MVB1].at("CONTROL_UNIT_RADIO_THALES_CB_PROTECTION")         =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CONTROL_UNIT_RADIO_THALES_CB_PROTECTION;
     m_inputs_map[ska_num][MVB1].at("CB_PROTECTION_AXLE_BOX")                          =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CB_PROTECTION_AXLE_BOX;
-    m_inputs_map[ska_num][MVB1].at("bit167")                                          =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.bit167;
-    m_inputs_map[ska_num][MVB1].at("spare_21")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_21;
-    m_inputs_map[ska_num][MVB1].at("spare_22")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_22;
-    m_inputs_map[ska_num][MVB1].at("spare_23")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_23;
-    m_inputs_map[ska_num][MVB1].at("spare_24")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_24;
-    m_inputs_map[ska_num][MVB1].at("spare_25")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_25;
-    m_inputs_map[ska_num][MVB1].at("spare_26")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_26;
-    m_inputs_map[ska_num][MVB1].at("spare_27")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_27;
-    m_inputs_map[ska_num][MVB1].at("spare_28")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_28;
-    m_inputs_map[ska_num][MVB1].at("spare_29")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_29;
-    m_inputs_map[ska_num][MVB1].at("spare_30")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_30;
-    m_inputs_map[ska_num][MVB1].at("spare_31")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_31;
+    m_inputs_map[ska_num][MVB1].at("EBCU_C_EDCUT_OFF")                                          =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.EBCU_C_EDCUT_OFF;
+    m_inputs_map[ska_num][MVB1].at("reserved_21")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_21;
+    m_inputs_map[ska_num][MVB1].at("reserved_22")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_22;
+    m_inputs_map[ska_num][MVB1].at("reserved_23")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_23;
+    m_inputs_map[ska_num][MVB1].at("reserved_24")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_24;
+    m_inputs_map[ska_num][MVB1].at("reserved_25")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_25;
+    m_inputs_map[ska_num][MVB1].at("reserved_26")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_26;
+    m_inputs_map[ska_num][MVB1].at("reserved_27")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_27;
+    m_inputs_map[ska_num][MVB1].at("reserved_28")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_28;
+    m_inputs_map[ska_num][MVB1].at("reserved_29")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_29;
+    m_inputs_map[ska_num][MVB1].at("reserved_30")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_30;
+    m_inputs_map[ska_num][MVB1].at("reserved_31")                                        =m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_31;
 
     //qDebug() << "m_inputs_map[ska_num][DRIVER_LOAD_SELECTOR_ON]:"  << m_inputs_map[ska_num]["DRIVER_LOAD_SELECTOR_ON"];
     //qDebug() <<"struct val: " << m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.DRIVER_LOAD_SELECTOR_ON;
@@ -801,27 +801,27 @@ void SKA_VH_RIOM::set_inputs_struct(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.DEVICE_ID_DI_4                               = m_inputs_map[ska_num][MVB1].at("DEVICE_ID_DI_4")                                  ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.DEVICE_ID_DI_5                               = m_inputs_map[ska_num][MVB1].at("DEVICE_ID_DI_5")                                  ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CABINET_TEST_HW_OK_HEALT_RIOM_2              = m_inputs_map[ska_num][MVB1].at("CABINET_TEST_HW_OK_HEALT_RIOM_2")                 ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_2_TC_1                           = m_inputs_map[ska_num][MVB1].at("TRACTION_OK_2_TC_1")                              ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_2_OK_TC_1                           = m_inputs_map[ska_num][MVB1].at("TRACTION_2_OK_TC_1")                              ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.VCB_LOOP_OUT_TC_1                            = m_inputs_map[ska_num][MVB1].at("VCB_LOOP_OUT_TC_1")                               ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_ACTIVE_RELAY_TC_1                   = m_inputs_map[ska_num][MVB1].at("TRACTION_ACTIVE_RELAY_TC_1")                      ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.EDB_BRAKE_ACTIVE_TC_1                        = m_inputs_map[ska_num][MVB1].at("EDB_BRAKE_ACTIVE_TC_1")                           ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CFIR_TC_1                                    = m_inputs_map[ska_num][MVB1].at("CFIR_TC_1")                                       ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.bit28                                    = m_inputs_map[ska_num][MVB1].at("bit28")                                       ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SYSTEM_RESET_TC_1                            = m_inputs_map[ska_num][MVB1].at("SYSTEM_RESET_TC_1")                               ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.MV_OUTPUT_MOTOR_3_OK_TC_2                    = m_inputs_map[ska_num][MVB1].at("MV_OUTPUT_MOTOR_3_OK_TC_2")                       ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.MV_OUTPUT_MOTOR_4_OK_TC_2                    = m_inputs_map[ska_num][MVB1].at("MV_OUTPUT_MOTOR_4_OK_TC_2")                       ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.HV_PRESENCE_TO_TRACTION_TC_2                 = m_inputs_map[ska_num][MVB1].at("HV_PRESENCE_TO_TRACTION_TC_2")                    ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_DC_LINK_OK_TC_2                     = m_inputs_map[ska_num][MVB1].at("TRACTION_DC_LINK_OK_TC_2")                        ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PANTOGRAPH_PERMISSION_TC_2                   = m_inputs_map[ska_num][MVB1].at("PANTOGRAPH_PERMISSION_TC_2")                      ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_4_TC_2                           = m_inputs_map[ska_num][MVB1].at("TRACTION_OK_4_TC_2")                              ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_3_TC_2                           = m_inputs_map[ska_num][MVB1].at("TRACTION_OK_3_TC_2")                              ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_3_OK_TC_2                           = m_inputs_map[ska_num][MVB1].at("TRACTION_3_OK_TC_2")                              ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_4_OK_TC_2                           = m_inputs_map[ska_num][MVB1].at("TRACTION_4_OK_TC_2")                              ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.VCB_LOOP_OUT_TC_2                            = m_inputs_map[ska_num][MVB1].at("VCB_LOOP_OUT_TC_2")                               ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_ACTIVE_RELAY_TC_2                   = m_inputs_map[ska_num][MVB1].at("TRACTION_ACTIVE_RELAY_TC_2")                      ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.EDB_BRAKE_ACTIVE_TC_2                        = m_inputs_map[ska_num][MVB1].at("EDB_BRAKE_ACTIVE_TC_2")                           ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CFIR_TC_2                                    = m_inputs_map[ska_num][MVB1].at("CFIR_TC_2")                                       ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.bit40                                    = m_inputs_map[ska_num][MVB1].at("bit40")                                       ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SYSTEM_RESET_TC_2                            = m_inputs_map[ska_num][MVB1].at("SYSTEM_RESET_TC_2")                               ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.VENTILATION_TRACTION_CONVERTER_CB_PROTECTION = m_inputs_map[ska_num][MVB1].at("VENTILATION_TRACTION_CONVERTER_CB_PROTECTION")    ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SL_CUT_OFF_BYPASS                            = m_inputs_map[ska_num][MVB1].at("SL_CUT_OFF_BYPASS")                               ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_OK_1_TC_1                           = m_inputs_map[ska_num][MVB1].at("TRACTION_OK_1_TC_1")                              ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_1_OK_TC_1                           = m_inputs_map[ska_num][MVB1].at("TRACTION_1_OK_TC_1")                              ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CONTACTOR_2_1_NORMAL_LOAD_Ln                 = m_inputs_map[ska_num][MVB1].at("CONTACTOR_2_1_NORMAL_LOAD_Ln")                    ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.TRACTION_DC_LINK_OK_TC_1                     = m_inputs_map[ska_num][MVB1].at("TRACTION_DC_LINK_OK_TC_1")                        ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PANTOGRAPH_PERMISSION_TC_1                   = m_inputs_map[ska_num][MVB1].at("PANTOGRAPH_PERMISSION_TC_1")                      ;
@@ -854,8 +854,8 @@ void SKA_VH_RIOM::set_inputs_struct(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_PNEUMATIC_BRAKE             = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_PNEUMATIC_BRAKE")                ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE                = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE")                   ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_INDIRECT_BRAKE              = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_INDIRECT_BRAKE")                 ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO1            = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO1")               ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO2            = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO2")               ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_CPRESS_BRAKE_BO1            = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_CPRESS_BRAKE_BO1")               ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_CPRESS_BRAKE_BO2            = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_CPRESS_BRAKE_BO2")               ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_PB_ISOLATED                 = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_PB_ISOLATED")                    ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ISOLATION_COCKS_SAND_ISOLATED               = m_inputs_map[ska_num][MVB1].at("ISOLATION_COCKS_SAND_ISOLATED")                  ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.AIR_SUSPENSION_STATUSS                       = m_inputs_map[ska_num][MVB1].at("AIR_SUSPENSION_STATUSS")                          ;
@@ -937,25 +937,25 @@ void SKA_VH_RIOM::set_inputs_struct(SKA_VEHICLE_NUM ska_x_num)
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.AUTOMATIC_EXTERNAL_LIGHT_COMMAND             = m_inputs_map[ska_num][MVB1].at("AUTOMATIC_EXTERNAL_LIGHT_COMMAND")                ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SL_ETCS_BY_PASS                              = m_inputs_map[ska_num][MVB1].at("SL_ETCS_BY_PASS")                                 ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.SL_DOORS_SIDE_CONTROL_ETCS_BYPASS            = m_inputs_map[ska_num][MVB1].at("SL_DOORS_SIDE_CONTROL_ETCS_BYPASS")               ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.GSM_R_RADIO_DIAGNOSTIC_INFORMATION           = m_inputs_map[ska_num][MVB1].at("GSM_R_RADIO_DIAGNOSTIC_INFORMATION")                                          ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.GSM_R_RADIO_WORKING_STATUS           = m_inputs_map[ska_num][MVB1].at("GSM_R_RADIO_WORKING_STATUS")                                          ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.GSM_R_RADIO_VOICE                            = m_inputs_map[ska_num][MVB1].at("GSM_R_RADIO_VOICE")                               ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.ATS_BYPASS                                   = m_inputs_map[ska_num][MVB1].at("ATS_BYPASS")                                      ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PLANT_7_7_CB_PROTECTION                      = m_inputs_map[ska_num][MVB1].at("PLANT_7_7_CB_PROTECTION")                         ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.PLANT_7_8_CB_PROTECTION                      = m_inputs_map[ska_num][MVB1].at("PLANT_7_8_CB_PROTECTION")                         ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CONTROL_UNIT_RADIO_THALES_CB_PROTECTION      = m_inputs_map[ska_num][MVB1].at("CONTROL_UNIT_RADIO_THALES_CB_PROTECTION")         ;
     m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.CB_PROTECTION_AXLE_BOX                       = m_inputs_map[ska_num][MVB1].at("CB_PROTECTION_AXLE_BOX")                          ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.bit167                                       = m_inputs_map[ska_num][MVB1].at("bit167")                                          ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_21                                     = m_inputs_map[ska_num][MVB1].at("spare_21")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_22                                     = m_inputs_map[ska_num][MVB1].at("spare_22")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_23                                     = m_inputs_map[ska_num][MVB1].at("spare_23")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_24                                     = m_inputs_map[ska_num][MVB1].at("spare_24")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_25                                     = m_inputs_map[ska_num][MVB1].at("spare_25")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_26                                     = m_inputs_map[ska_num][MVB1].at("spare_26")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_27                                     = m_inputs_map[ska_num][MVB1].at("spare_27")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_28                                     = m_inputs_map[ska_num][MVB1].at("spare_28")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_29                                     = m_inputs_map[ska_num][MVB1].at("spare_29")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_30                                     = m_inputs_map[ska_num][MVB1].at("spare_30")                                        ;
-    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.spare_31                                     = m_inputs_map[ska_num][MVB1].at("spare_31")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.EBCU_C_EDCUT_OFF                                       = m_inputs_map[ska_num][MVB1].at("EBCU_C_EDCUT_OFF")                                          ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_21                                     = m_inputs_map[ska_num][MVB1].at("reserved_21")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_22                                     = m_inputs_map[ska_num][MVB1].at("reserved_22")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_23                                     = m_inputs_map[ska_num][MVB1].at("reserved_23")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_24                                     = m_inputs_map[ska_num][MVB1].at("reserved_24")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_25                                     = m_inputs_map[ska_num][MVB1].at("reserved_25")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_26                                     = m_inputs_map[ska_num][MVB1].at("reserved_26")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_27                                     = m_inputs_map[ska_num][MVB1].at("reserved_27")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_28                                     = m_inputs_map[ska_num][MVB1].at("reserved_28")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_29                                     = m_inputs_map[ska_num][MVB1].at("reserved_29")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_30                                     = m_inputs_map[ska_num][MVB1].at("reserved_30")                                        ;
+    m_ska_x_vh_riom[ska_num].ska_vh_riom_ccu_mvb1_d_inputs.bits.reserved_31                                     = m_inputs_map[ska_num][MVB1].at("reserved_31")                                        ;
 
 }
 

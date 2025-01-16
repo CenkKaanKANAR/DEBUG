@@ -33,6 +33,7 @@ public:
     void makeSignalSlotConnection();
     void applyMainwindowStyleSheetConfiguration();
     void init_readDialogDockWidget();
+    void setupBottomLayout();
     UdpConnetionState m_udpConnectionState;
 
 
@@ -64,6 +65,9 @@ private:
     bool tcp_heartbeat = false;
 
     bool clientSocketConnectionStatus = false;
+
+    // QLabel oluşturma ve resim ekleme
+    QLabel *ruteImageLabel;
 
     //QTcpSocket* TCPSocket = nullptr;
     QUdpSocket* UDPSocket = nullptr;
