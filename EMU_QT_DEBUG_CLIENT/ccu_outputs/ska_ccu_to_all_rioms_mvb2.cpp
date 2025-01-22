@@ -4,6 +4,7 @@
 Ska_Ccu_To_All_Rioms_Mvb2::Ska_Ccu_To_All_Rioms_Mvb2(QObject *parent)
     : QObject{parent}
 {
+    memset(m_ska_ccu_to_all_rioms_mvb2.bytes, 0, sizeof(m_ska_ccu_to_all_rioms_mvb2));
     init_table();
 }
 
@@ -89,6 +90,7 @@ for (const auto& pair:  m_outputs_map) {
     //m_tableWidget->item(row, 1)->setText(QString(pair.second));
     ++row;
 }
+m_tableWidget->resizeColumnsToContents();
 }
 
 void Ska_Ccu_To_All_Rioms_Mvb2::update_table()

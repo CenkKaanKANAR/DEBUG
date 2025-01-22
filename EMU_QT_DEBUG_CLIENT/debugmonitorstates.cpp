@@ -215,107 +215,107 @@ void DebugMonitorStates::initVectors()
 
     functionNames
 
-        << "ssf_emu_config_states_name"
-        << "ssf_emu_coupled_vehicle_states_name"
-        << "ssf_emu_sequence_states_name"
-        << "ssf_emu_cac_states_name"
-        << "ssf_emu_dir_states_name"
-        << "ssf_emu_mascon_states_name"
-        << "ssf_emu_pan_1_up_cmd_states_name"
-        << "ssf_emu_pan_2_up_cmd_states_name"
-        << "ssf_emu_mcb_close_cmd_states_name"
-        << "ssf_bcu_wsp_test_states_name"
-        << "ssf_ccu_location_states_name"
-        << "ssf_ccu_direction_states_name"
-        << "ssf_ccu_role_states_name"
-        << "ssf_apu_1_enable_states_name"
-        << "ssf_apu_2_enable_states_name"
-        << "ssf_apu_1_reset_states_name"
-        << "ssf_apu_2_reset_states_name"
-        << "ssf_auxc_1_status_states_name"
-        << "ssf_auxc_2_status_states_name"
-        << "ssf_auxc_1_control_states_name"
-        << "ssf_auxc_2_control_states_name"
-        << "ssf_park_mode_states_name"
-        << "ssf_hvd_select_states_name"
-        << "ssf_hvd_confirm_states_name"
-        << "ssf_hvd_config_states_name"
-        << "ssf_hvd_1_status_states_name"
-        << "ssf_hvd_2_status_states_name"
-        << "ssf_hvd_1_control_states_name"
-        << "ssf_hvd_2_control_states_name"
-        << "ssf_idm_1_reply_states_name"
-        << "ssf_idm_2_reply_states_name"
-        << "ssf_idm_session_states_name"
-        << "ssf_idm_second_card_states_name"
-        << "ssf_idm_user_role_states_name"
-        << "ssf_pan_1_readiness_states_name"
-        << "ssf_pan_2_readiness_states_name"
-        << "ssf_pan_1_add_status_states_name"
-        << "ssf_pan_2_add_status_states_name"
-        << "ssf_pan_1_add_control_states_name"
-        << "ssf_pan_2_add_control_states_name"
-        << "ssf_pan_1_status_states_name"
-        << "ssf_pan_2_status_states_name"
-        << "ssf_pan_1_control_states_name"
-        << "ssf_pan_2_control_states_name"
-        << "ssf_mcb_1_readiness_states_name"
-        << "ssf_mcb_2_readiness_states_name"
-        << "ssf_mcb_1_status_states_name"
-        << "ssf_mcb_2_status_states_name"
-        << "ssf_mcb_1_control_states_name"
-        << "ssf_mcb_2_control_states_name"
-        << "ssf_door_close_req_states_name"
-        << "ssf_door_right_req_states_name"
-        << "ssf_door_left_req_states_name"
-        << "ssf_door_reset_req_states_name"
-        << "ssf_ska_1_tcu_1_mcb_open_states_name"
-        << "ssf_ska_1_tcu_2_mcb_open_states_name"
-        << "ssf_ska_2_tcu_1_mcb_open_states_name"
-        << "ssf_ska_2_tcu_2_mcb_open_states_name"
-        << "ssf_ska_1_tcu_1_enable_states_name"
-        << "ssf_ska_1_tcu_2_enable_states_name"
-        << "ssf_ska_2_tcu_1_enable_states_name"
-        << "ssf_ska_2_tcu_2_enable_states_name"
-        << "ssf_ska_1_tcu_1_reset_states_name"
-        << "ssf_ska_1_tcu_2_reset_states_name"
-        << "ssf_ska_2_tcu_1_reset_states_name"
-        << "ssf_ska_2_tcu_2_reset_states_name"
-        << "ssf_linm_hv_level_states_name"
-        << "ssf_linm_neutral_zone_states_name"
-        << "ssf_linm_range_check_states_name"
-        << "ssf_linm_1_current_check_states_name"
-        << "ssf_linm_2_current_check_states_name"
-        << "ssf_comp_select_states_name"
-        << "ssf_comp_1_heater_states_name"
-        << "ssf_comp_2_heater_states_name"
-        << "ssf_comp_1_status_states_name"
-        << "ssf_comp_2_status_states_name"
-        << "ssf_comp_1_control_states_name"
-        << "ssf_comp_2_control_states_name"
-        << "ssf_sand_enable_states_name"
-        << "ssf_sand_dry_states_name"
-        << "ssf_sand_1_heater_states_name"
-        << "ssf_sand_2_heater_states_name"
-        << "ssf_sand_control_states_name"
-        << "ssf_sand_test_states_name"
-        << "ssf_sand_level_test_states_name"
-        << "ssf_lvm_control_states_name"
-        << "ssf_trf_1_readiness_states_name"
-        << "ssf_trf_2_readiness_states_name"
-        << "ssf_trf_1_temp_states_name"
-        << "ssf_trf_2_temp_states_name"
-        << "ssf_trf_1_status_states_name"
-        << "ssf_trf_2_status_states_name"
-        << "ssf_trf_1_control_states_name"
-        << "ssf_trf_2_control_states_name"
-        << "ssf_hvm_earth_states_name"
-        << "ssf_hvm_line_select_states_name"
-        << "ssf_hvm_usable_line_states_name"
-        << "ssf_hvm_reset_procedure_states_name"
-        << "ssf_hvm_action_states_name"
-        << "ssf_susp_fault_lamp_states_name"
-        << "sf_stat_states_name"
+        << "ssf_emu_config"
+        << "ssf_emu_coupled_vehicle"
+        << "ssf_emu_sequence"
+        << "ssf_emu_cac"
+        << "ssf_emu_dir"
+        << "ssf_emu_mascon"
+        << "ssf_emu_pan_1_up_cmd"
+        << "ssf_emu_pan_2_up_cmd"
+        << "ssf_emu_mcb_close_cmd"
+        << "ssf_bcu_wsp_test"
+        << "ssf_ccu_location"
+        << "ssf_ccu_direction"
+        << "ssf_ccu_role"
+        << "ssf_apu_1_enable"
+        << "ssf_apu_2_enable"
+        << "ssf_apu_1_reset"
+        << "ssf_apu_2_reset"
+        << "ssf_auxc_1_status"
+        << "ssf_auxc_2_status"
+        << "ssf_auxc_1_control"
+        << "ssf_auxc_2_control"
+        << "ssf_park_mode"
+        << "ssf_hvd_select"
+        << "ssf_hvd_confirm"
+        << "ssf_hvd_config"
+        << "ssf_hvd_1_status"
+        << "ssf_hvd_2_status"
+        << "ssf_hvd_1_control"
+        << "ssf_hvd_2_control"
+        << "ssf_idm_1_reply"
+        << "ssf_idm_2_reply"
+        << "ssf_idm_session"
+        << "ssf_idm_second_card"
+        << "ssf_idm_user_role"
+        << "ssf_pan_1_readiness"
+        << "ssf_pan_2_readiness"
+        << "ssf_pan_1_add_status"
+        << "ssf_pan_2_add_status"
+        << "ssf_pan_1_add_control"
+        << "ssf_pan_2_add_control"
+        << "ssf_pan_1_status"
+        << "ssf_pan_2_status"
+        << "ssf_pan_1_control"
+        << "ssf_pan_2_control"
+        << "ssf_mcb_1_readiness"
+        << "ssf_mcb_2_readiness"
+        << "ssf_mcb_1_status"
+        << "ssf_mcb_2_status"
+        << "ssf_mcb_1_control"
+        << "ssf_mcb_2_control"
+        << "ssf_door_close_req"
+        << "ssf_door_right_req"
+        << "ssf_door_left_req"
+        << "ssf_door_reset_req"
+        << "ssf_ska_1_tcu_1_mcb_open"
+        << "ssf_ska_1_tcu_2_mcb_open"
+        << "ssf_ska_2_tcu_1_mcb_open"
+        << "ssf_ska_2_tcu_2_mcb_open"
+        << "ssf_ska_1_tcu_1_enable"
+        << "ssf_ska_1_tcu_2_enable"
+        << "ssf_ska_2_tcu_1_enable"
+        << "ssf_ska_2_tcu_2_enable"
+        << "ssf_ska_1_tcu_1_reset"
+        << "ssf_ska_1_tcu_2_reset"
+        << "ssf_ska_2_tcu_1_reset"
+        << "ssf_ska_2_tcu_2_reset"
+        << "ssf_linm_hv_level"
+        << "ssf_linm_neutral_zone"
+        << "ssf_linm_range_check"
+        << "ssf_linm_1_current_check"
+        << "ssf_linm_2_current_check"
+        << "ssf_comp_select"
+        << "ssf_comp_1_heater"
+        << "ssf_comp_2_heater"
+        << "ssf_comp_1_status"
+        << "ssf_comp_2_status"
+        << "ssf_comp_1_control"
+        << "ssf_comp_2_control"
+        << "ssf_sand_enable"
+        << "ssf_sand_dry"
+        << "ssf_sand_1_heater"
+        << "ssf_sand_2_heater"
+        << "ssf_sand_control"
+        << "ssf_sand_test"
+        << "ssf_sand_level_test"
+        << "ssf_lvm_control"
+        << "ssf_trf_1_readiness"
+        << "ssf_trf_2_readiness"
+        << "ssf_trf_1_temp"
+        << "ssf_trf_2_temp"
+        << "ssf_trf_1_status"
+        << "ssf_trf_2_status"
+        << "ssf_trf_1_control"
+        << "ssf_trf_2_control"
+        << "ssf_hvm_earth"
+        << "ssf_hvm_line_select"
+        << "ssf_hvm_usable_line"
+        << "ssf_hvm_reset_procedure"
+        << "ssf_hvm_action"
+        << "ssf_susp_fault_lamp"
+        << "sf_stat"
 
     ;
 
@@ -555,7 +555,7 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
     //QList<const char**> stateNames
 
 
-    QByteArray data = recv_data.mid(128,202);
+    QByteArray data = recv_data.mid(129,202);
     //QByteArray data = recv_data.mid(0,202);
 
     // Gelen veriyi DebugMonitorStates'den gelen pencereye iletelim
@@ -564,7 +564,7 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
     }
 
 
-    for (int i = 0; i < stateNames.size(); i++) {
+    /*for (int i = 0; i < stateNames.size(); i++) {
         int preStateIndex = static_cast<unsigned char>(data[offset]); // Pre-state
         int currentStateIndex = static_cast<unsigned char>(data[offset + 1]); // Current-state
 
@@ -574,6 +574,34 @@ void DebugMonitorStates::parseSystemStates(const QByteArray& recv_data) {
             qDebug() << "STATE ATLAMA:" << i;
             qDebug() << "preStateIndex:" << preStateIndex;
             qDebug() << "stateNames[i][preStateIndex]:" << QString::fromStdString(stateNames[i][preStateIndex]);
+            offset += 1;
+            continue; // Invalid data
+        }
+
+        states.append({
+            functionNames.at(i),
+            QString::fromStdString(stateNames[i][preStateIndex]), // std::string -> QString
+            QString::fromStdString(stateNames[i][currentStateIndex]) // std::string -> QString
+        });
+
+        offset += 2; // Advance by 1 bytes
+    }*/
+
+    for (int i = 0; i < stateNames.size(); i++) {
+
+        int currentStateIndex = static_cast<unsigned char>(data[offset]); // Current-state
+        int preStateIndex = static_cast<unsigned char>(data[offset + 1]); // Pre-state
+        //
+        if (preStateIndex < 0 || currentStateIndex < 0 || preStateIndex >= stateCounts[i]
+            || currentStateIndex >= stateCounts[i]) {
+            qDebug() << "STATE ATLAMA:" << i;
+            //qDebug() << "currentStateIndex:" << currentStateIndex;
+            //qDebug() << "stateNames[i][currentStateIndex]:" << QString::fromStdString(stateNames[i][currentStateIndex]);
+            states.append({
+                functionNames.at(i),
+                QString::fromStdString("WRONG"), // std::string -> QString
+                QString::fromStdString("WRONG") // std::string -> QString
+            });
             offset += 1;
             continue; // Invalid data
         }
@@ -609,6 +637,15 @@ void DebugMonitorStates::updateTable(const QList<SystemFunctionState> &states) {
         if (states[row].preState != states[row].currentState) {
             highlightStateChange(table->item(row, 2), true);
         }
+        if (table->item(row, 1) && table->item(row, 1)->text() == "WRONG") {
+            table->item(row, 1)->setBackground(Qt::red);
+            qDebug() << "RED COLOR";
+        }
+       if (table->item(row, 2) && table->item(row, 2)->text() == "WRONG") {
+            table->item(row, 2)->setBackground(Qt::red);
+            qDebug() << "RED COLOR";
+        }
+
     }
 
     table->resizeColumnsToContents();
@@ -618,7 +655,8 @@ void DebugMonitorStates::highlightStateChange(QTableWidgetItem *item, bool isCha
 
     if (isChanged) {
         item->setBackground(Qt::yellow);
-    } else {
+    }
+    else {
         item->setBackground(Qt::white);
     }
 }

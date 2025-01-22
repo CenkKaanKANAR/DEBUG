@@ -100,20 +100,20 @@ void MessageConfig::initConfiguration()
  */
 void MessageConfig::updateEmulatorConfigStruct()
 {
-    qDebug() << "updateEmulatorConfigStruct() İÇİ" ;
+
     m_emulator_config.bits.dbg_connected       = checkBoxMap["dbg_connected"]->isChecked() ? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() VARAN 1" ;
+
     m_emulator_config.bits.dbg_in_config_mode  = checkBoxMap["dbg_in_config_mode"]->isChecked() ? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() VARAN 31" ;
+
     m_emulator_config.bits.dbg_ready           = checkBoxMap["dbg_ready"]->isChecked() ? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() VARAN 32" ;
+
     m_emulator_config.bits.reserved3            = checkBoxMap["reserved3"]->isChecked() ? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() VARAN 2" ;
+
     m_emulator_config.bits.reserved4            = checkBoxMap["reserved4"]->isChecked() ? 1 : 0;
     m_emulator_config.bits.reserved5            = checkBoxMap["reserved5"]->isChecked() ? 1 : 0;
     m_emulator_config.bits.ska_di_card          = checkBoxMap["ska_di_card"]->isChecked() ? 1 : 0;
     m_emulator_config.bits.reserved7            = checkBoxMap["reserved7"]->isChecked() ? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() VARAN 3" ;
+
     m_emulator_config.bits.ska1_ddinputs_m      = checkBoxMap["ska1_ddinputs_m"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska1_vhinputs_m      = checkBoxMap["ska1_vhinputs_m"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska2_ddinputs_m      = checkBoxMap["ska2_ddinputs_m"]->isChecked()? 1 : 0;
@@ -121,7 +121,7 @@ void MessageConfig::updateEmulatorConfigStruct()
     m_emulator_config.bits.oa1_vhinputs_m       = checkBoxMap["oa1_vhinputs_m"]->isChecked()? 1 : 0;
     m_emulator_config.bits.oa2_vhinputs_m       = checkBoxMap["oa2_vhinputs_m"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska1_dcu             = checkBoxMap["ska1_dcu"]->isChecked()? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() ORTALAR" ;
+
     m_emulator_config.bits.ska2_dcu             = checkBoxMap["ska2_dcu"]->isChecked()? 1 : 0;
     m_emulator_config.bits.oa1_dcu              = checkBoxMap["oa1_dcu"]->isChecked()? 1 : 0;
     m_emulator_config.bits.oa2_dcu              = checkBoxMap["oa2_dcu"]->isChecked()? 1 : 0;
@@ -137,7 +137,7 @@ void MessageConfig::updateEmulatorConfigStruct()
     m_emulator_config.bits.ska2_papis           = checkBoxMap["ska2_papis"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska1_ats             = checkBoxMap["ska1_ats"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska2_ats             = checkBoxMap["ska2_ats"]->isChecked()? 1 : 0;
-    qDebug() << "updateEmulatorConfigStruct() ARALAR ORTALAR" ;
+
     m_emulator_config.bits.ska1_bcu             = checkBoxMap["ska1_bcu"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska2_bcu             = checkBoxMap["ska2_bcu"]->isChecked()? 1 : 0;
     m_emulator_config.bits.oa1_bcu              = checkBoxMap["oa1_bcu"]->isChecked()? 1 : 0;
@@ -156,7 +156,7 @@ void MessageConfig::updateEmulatorConfigStruct()
     m_emulator_config.bits.ska2_wtbgw           = checkBoxMap["ska2_wtbgw"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska1_hmi             = checkBoxMap["ska1_hmi"]->isChecked()? 1 : 0;
     m_emulator_config.bits.ska2_hmi             = checkBoxMap["ska2_hmi"]->isChecked()? 1 : 0;
-     qDebug() << "updateEmulatorConfigStruct() SON..." ;
+
     //
 
 
@@ -270,7 +270,7 @@ emulator_config MessageConfig::getMessageConfigStruct()
  */
 void MessageConfig::update_check_states()
 {
-    qDebug() << "UPDATE CHECK STATES İÇİ" ;
+
     for(auto& box : checkBoxMap)
     {
         box->setChecked(m_checkbox_control_button_status);
@@ -287,7 +287,7 @@ void MessageConfig::update_check_states()
  */
 void MessageConfig::on_pushButton_check_all_clicked()
 {
-    qDebug() << "CHECK ALL BUTONU İÇİ" ;
+
     if(!m_checkbox_control_button_status)
     {
         //clear_checkBox_button->setText("uncheck all");

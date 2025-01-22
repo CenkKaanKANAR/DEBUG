@@ -25,6 +25,7 @@ void UdpMessagesDialog::appendMessage(QByteArray data, int size)
     qDebug() << "APPEND MESSAGE DATASIZE : " << data.size();
     QString message;
     for (int i = 0; i < size; ++i) {
+        message += "b" + QString::number(static_cast<unsigned char>(i)) + " :";
         message += QString::number(static_cast<unsigned char>(data[i]), 16).toUpper() + " ";  // Byte'ları hex formatında yazdır
 
     }

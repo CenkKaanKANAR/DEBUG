@@ -37,9 +37,9 @@ public:
 
         return combined_data;
     }
-    uint16_t portId(SKA_VEHICLE_NUM ska_x_num) const
+    uint16_t portId() const
     {
-        return m_port_id.at(static_cast<int>(ska_x_num));
+        return m_port_id.at(0);
     }
 private:
     Ska_Ccu_To_All_Rioms_Mvb1* m_mvb1;

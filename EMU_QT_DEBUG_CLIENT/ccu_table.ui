@@ -104,7 +104,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="tab_12">
             <attribute name="title">
@@ -1774,7 +1774,7 @@
              <item row="0" column="0">
               <widget class="QTabWidget" name="tabWidget_ccu_out">
                <property name="currentIndex">
-                <number>12</number>
+                <number>4</number>
                </property>
                <widget class="QWidget" name="tab_53">
                 <attribute name="title">
@@ -2042,17 +2042,27 @@
                    <item>
                     <widget class="QTabWidget" name="tabWidget_59">
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <widget class="QWidget" name="tab_176">
                       <attribute name="title">
                        <string>MVB1</string>
                       </attribute>
+                      <layout class="QGridLayout" name="gridLayout_176">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_rioms_force_mvb1"/>
+                       </item>
+                      </layout>
                      </widget>
                      <widget class="QWidget" name="tab_177">
                       <attribute name="title">
                        <string>MVB2</string>
                       </attribute>
+                      <layout class="QGridLayout" name="gridLayout_177">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_ccu_to_all_rioms_force_mvb2"/>
+                       </item>
+                      </layout>
                      </widget>
                     </widget>
                    </item>
@@ -2075,7 +2085,7 @@
                 <enum>QTabWidget::West</enum>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="tab_169">
                 <attribute name="title">
@@ -2117,18 +2127,61 @@
                </widget>
                <widget class="QWidget" name="tab_170">
                 <attribute name="title">
-                 <string>Tab 2</string>
+                 <string>SKA2_VH_RIOM_OUTPUTS</string>
                 </attribute>
+                <layout class="QGridLayout" name="gridLayout_178">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_mnt_ska2_vh_riom_outside_2">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget_60">
+                     <property name="currentIndex">
+                      <number>1</number>
+                     </property>
+                     <widget class="QWidget" name="tab_178">
+                      <attribute name="title">
+                       <string>MVB1</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_179">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_ska2_vh_riom_outputs_mvb1"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_179">
+                      <attribute name="title">
+                       <string>MVB2</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_180">
+                       <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_ska2_vh_riom_outputs_mvb2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
                </widget>
                <widget class="QWidget" name="tab_171">
                 <attribute name="title">
-                 <string>Page</string>
+                 <string>SKA1_DD_RIOM_OUTPUTS</string>
                 </attribute>
+                <layout class="QGridLayout" name="gridLayout_181">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_mnt_ska1_dd_riom_outputs"/>
+                 </item>
+                </layout>
                </widget>
                <widget class="QWidget" name="tab_172">
                 <attribute name="title">
-                 <string>Page</string>
+                 <string>SKA2_DD_RIOM_OUTPUTS</string>
                 </attribute>
+                <layout class="QGridLayout" name="gridLayout_182">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_mnt_ska2_dd_riom_outputs"/>
+                 </item>
+                </layout>
                </widget>
                <widget class="QWidget" name="tab_173">
                 <attribute name="title">

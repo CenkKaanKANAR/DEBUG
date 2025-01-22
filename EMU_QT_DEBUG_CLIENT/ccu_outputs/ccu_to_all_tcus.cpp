@@ -51,6 +51,7 @@ void Ccu_To_All_TCUS::init_table()
             {"bit31",0},
             {"TL_Relay_Security_Emergency_Loop_SKA1",0},
             {"TL_Relay_Security_Emergency_Loop_SKA2",0},
+            {"TL_MC_S1",0},
             {"TL_MC_S2",0},
             {"TL_MC_S3",0},
             {"TL_MC_S4",0},
@@ -175,6 +176,7 @@ void Ccu_To_All_TCUS::update_map() {
     m_outputs_map.at("bit31")                                   = m_ccu_to_all_tcus.bits.bit31;
     m_outputs_map.at("TL_Relay_Security_Emergency_Loop_SKA1")                                   = m_ccu_to_all_tcus.bits.TL_Relay_Security_Emergency_Loop_SKA1;
     m_outputs_map.at("TL_Relay_Security_Emergency_Loop_SKA2")                                   = m_ccu_to_all_tcus.bits.TL_Relay_Security_Emergency_Loop_SKA2;
+    m_outputs_map.at("TL_MC_S1")                                   = m_ccu_to_all_tcus.bits.TL_MC_S1;
     m_outputs_map.at("TL_MC_S2")                                   = m_ccu_to_all_tcus.bits.TL_MC_S2;
     m_outputs_map.at("TL_MC_S3")                                   = m_ccu_to_all_tcus.bits.TL_MC_S3;
     m_outputs_map.at("TL_MC_S4")                                   = m_ccu_to_all_tcus.bits.TL_MC_S4;
@@ -254,6 +256,7 @@ void Ccu_To_All_TCUS::set_struct() {
     m_ccu_to_all_tcus.bits.bit31                         = m_outputs_map.at("bit31") ;
     m_ccu_to_all_tcus.bits.TL_Relay_Security_Emergency_Loop_SKA1                         = m_outputs_map.at("TL_Relay_Security_Emergency_Loop_SKA1") ;
     m_ccu_to_all_tcus.bits.TL_Relay_Security_Emergency_Loop_SKA2                         = m_outputs_map.at("TL_Relay_Security_Emergency_Loop_SKA2") ;
+    m_ccu_to_all_tcus.bits.TL_MC_S1                         = m_outputs_map.at("TL_MC_S1") ;
     m_ccu_to_all_tcus.bits.TL_MC_S2                         = m_outputs_map.at("TL_MC_S2") ;
     m_ccu_to_all_tcus.bits.TL_MC_S3                         = m_outputs_map.at("TL_MC_S3") ;
     m_ccu_to_all_tcus.bits.TL_MC_S4                         = m_outputs_map.at("TL_MC_S4") ;

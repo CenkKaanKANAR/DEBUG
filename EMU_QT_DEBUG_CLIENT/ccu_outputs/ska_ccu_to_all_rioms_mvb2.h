@@ -38,11 +38,12 @@ public:
     {
         return m_port_id.at(0);
     }
+    void update_struct_with_map();
 private:
     void init_table();
     void update_table();
     void update_map();
-    void update_struct_with_map();
+
     void set_struct();
 
     tsl::ordered_map<QString, int> get_map()

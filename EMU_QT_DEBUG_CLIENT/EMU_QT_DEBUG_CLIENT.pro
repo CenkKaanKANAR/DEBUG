@@ -15,19 +15,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    DriverDeskPanels/DriverPanels/panel12.cpp \
-    DriverDeskPanels/DriverPanels/panel13.cpp \
-    DriverDeskPanels/DriverPanels/panel14.cpp \
-    DriverDeskPanels/DriverPanels/panel16.cpp \
-    DriverDeskPanels/DriverPanels/panel22.cpp \
-    DriverDeskPanels/DriverPanels/panel8.cpp \
-    DriverDeskPanels/DriverPanels/panel9.cpp \
-    DriverDeskPanels/DriverPanels/panelx.cpp \
-    DriverDeskPanels/DriverPanels/panely.cpp \
-    DriverDeskPanels/driverpanel.cpp \
-    DriverDeskPanels/led/ledindicator.cpp \
-    DriverDeskPanels/speedGauge/qcgaugewidget.cpp \
-    DriverDeskPanels/switch/switch.cpp \
+    Force/forcecontrol.cpp \
+    Force/frcconfig.cpp \
     ReadShmDialog.cpp \
     ccu_inputs.cpp \
     ccu_inputs/oa_apu.cpp \
@@ -75,8 +64,6 @@ SOURCES += \
     ccu_table.cpp \
     ccutablehandler.cpp \
     debugmonitorstates.cpp \
-    forcecontrol.cpp \
-    frcconfig.cpp \
     main.cpp \
     mainwindow.cpp \
     messageconfig.cpp \
@@ -86,19 +73,8 @@ SOURCES += \
     utils.cpp
 
 HEADERS += \
-    DriverDeskPanels/DriverPanels/panel12.h \
-    DriverDeskPanels/DriverPanels/panel13.h \
-    DriverDeskPanels/DriverPanels/panel14.h \
-    DriverDeskPanels/DriverPanels/panel16.h \
-    DriverDeskPanels/DriverPanels/panel22.h \
-    DriverDeskPanels/DriverPanels/panel8.h \
-    DriverDeskPanels/DriverPanels/panel9.h \
-    DriverDeskPanels/DriverPanels/panelx.h \
-    DriverDeskPanels/DriverPanels/panely.h \
-    DriverDeskPanels/driverpanel.h \
-    DriverDeskPanels/led/ledindicator.h \
-    DriverDeskPanels/speedGauge/qcgaugewidget.h \
-    DriverDeskPanels/switch/switch.h \
+    Force/forcecontrol.h \
+    Force/frcconfig.h \
     ReadShmDialog.h \
     ccu_inputs.h \
     ccu_inputs/oa_apu.h \
@@ -147,8 +123,6 @@ HEADERS += \
     ccutablehandler.h \
     debugmonitorstates.h \
     emulator_common.h \
-    forcecontrol.h \
-    frcconfig.h \
     mainwindow.h \
     messageconfig.h \
     mvb_ports.h \
@@ -159,16 +133,6 @@ HEADERS += \
     utils.h
 
 FORMS += \
-    DriverDeskPanels/DriverPanels/panel12.ui \
-    DriverDeskPanels/DriverPanels/panel13.ui \
-    DriverDeskPanels/DriverPanels/panel14.ui \
-    DriverDeskPanels/DriverPanels/panel16.ui \
-    DriverDeskPanels/DriverPanels/panel22.ui \
-    DriverDeskPanels/DriverPanels/panel8.ui \
-    DriverDeskPanels/DriverPanels/panel9.ui \
-    DriverDeskPanels/DriverPanels/panelx.ui \
-    DriverDeskPanels/DriverPanels/panely.ui \
-    DriverDeskPanels/driverpanel.ui \
     ReadShmDialog.ui \
     ccu_table.ui \
     mainwindow.ui \

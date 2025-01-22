@@ -316,7 +316,7 @@ void Ska_Hvac::update_hvac3_map(SKA_VEHICLE_NUM ska_x_num){
     m_inputs_map[ska_num][HVAC3].at("Reduce_Mode") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Reduce_Mode;
     m_inputs_map[ska_num][HVAC3].at("Emergency_Mode") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Emergency_Mode;
     m_inputs_map[ska_num][HVAC3].at("Self_Test_Mode") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Self_Test_Mode;
-    m_inputs_map[ska_num][HVAC3].at("Spare") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Spare;
+    m_inputs_map[ska_num][HVAC3].at("bit91") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit91;
     m_inputs_map[ska_num][HVAC3].at("Fire_Mode") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Fire_Mode;
     m_inputs_map[ska_num][HVAC3].at("Inside_Fire_On") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Inside_Fire_On;
     m_inputs_map[ska_num][HVAC3].at("Half_Cooling") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Half_Cooling;
@@ -338,13 +338,13 @@ void Ska_Hvac::update_hvac3_map(SKA_VEHICLE_NUM ska_x_num){
     m_inputs_map[ska_num][HVAC3].at("Emerg_Inv_On") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Emerg_Inv_On;
     m_inputs_map[ska_num][HVAC3].at("Evap_Sel1_On") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Evap_Sel1_On;
     m_inputs_map[ska_num][HVAC3].at("Evap_Sel2_On") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Evap_Sel2_On;
-    m_inputs_map[ska_num][HVAC3].at("bit97") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit97;
-    m_inputs_map[ska_num][HVAC3].at("bit98") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit98;
-    m_inputs_map[ska_num][HVAC3].at("bit99") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit99;
-    m_inputs_map[ska_num][HVAC3].at("bit100") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit100;
-    m_inputs_map[ska_num][HVAC3].at("bit101") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit101;
-    m_inputs_map[ska_num][HVAC3].at("bit102") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit102;
-    m_inputs_map[ska_num][HVAC3].at("bit103") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit103;
+    m_inputs_map[ska_num][HVAC3].at("bit113") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit113;
+    m_inputs_map[ska_num][HVAC3].at("bit114") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit114;
+    m_inputs_map[ska_num][HVAC3].at("bit115") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit115;
+    m_inputs_map[ska_num][HVAC3].at("bit116") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit116;
+    m_inputs_map[ska_num][HVAC3].at("bit117") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit117;
+    m_inputs_map[ska_num][HVAC3].at("bit118") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit118;
+    m_inputs_map[ska_num][HVAC3].at("bit119") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit119;
     m_inputs_map[ska_num][HVAC3].at("Emerg_Shut_Air_Damp_Pos") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Emerg_Shut_Air_Damp_Pos;
     m_inputs_map[ska_num][HVAC3].at("Fresh_Air_Damp_Pos") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Fresh_Air_Damp_Pos;
     m_inputs_map[ska_num][HVAC3].at("Minor_Fault") = m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Minor_Fault;
@@ -729,7 +729,7 @@ void Ska_Hvac::set_struct_hvac3(SKA_VEHICLE_NUM ska_x_num) {
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Reduce_Mode = m_inputs_map[ska_num][HVAC3].at("Reduce_Mode");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Emergency_Mode = m_inputs_map[ska_num][HVAC3].at("Emergency_Mode");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Self_Test_Mode = m_inputs_map[ska_num][HVAC3].at("Self_Test_Mode");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Spare = m_inputs_map[ska_num][HVAC3].at("Spare");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit91 = m_inputs_map[ska_num][HVAC3].at("bit91");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Fire_Mode = m_inputs_map[ska_num][HVAC3].at("Fire_Mode");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Inside_Fire_On = m_inputs_map[ska_num][HVAC3].at("Inside_Fire_On");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Half_Cooling = m_inputs_map[ska_num][HVAC3].at("Half_Cooling");
@@ -751,13 +751,13 @@ void Ska_Hvac::set_struct_hvac3(SKA_VEHICLE_NUM ska_x_num) {
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Emerg_Inv_On = m_inputs_map[ska_num][HVAC3].at("Emerg_Inv_On");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Evap_Sel1_On = m_inputs_map[ska_num][HVAC3].at("Evap_Sel1_On");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Evap_Sel2_On = m_inputs_map[ska_num][HVAC3].at("Evap_Sel2_On");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit97 = m_inputs_map[ska_num][HVAC3].at("bit97");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit98 = m_inputs_map[ska_num][HVAC3].at("bit98");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit99 = m_inputs_map[ska_num][HVAC3].at("bit99");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit100 = m_inputs_map[ska_num][HVAC3].at("bit100");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit101 = m_inputs_map[ska_num][HVAC3].at("bit101");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit102 = m_inputs_map[ska_num][HVAC3].at("bit102");
-    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit103 = m_inputs_map[ska_num][HVAC3].at("bit103");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit113 = m_inputs_map[ska_num][HVAC3].at("bit113");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit114 = m_inputs_map[ska_num][HVAC3].at("bit114");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit115 = m_inputs_map[ska_num][HVAC3].at("bit115");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit116 = m_inputs_map[ska_num][HVAC3].at("bit116");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit117 = m_inputs_map[ska_num][HVAC3].at("bit117");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit118 = m_inputs_map[ska_num][HVAC3].at("bit118");
+    m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.bit119 = m_inputs_map[ska_num][HVAC3].at("bit119");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Emerg_Shut_Air_Damp_Pos = m_inputs_map[ska_num][HVAC3].at("Emerg_Shut_Air_Damp_Pos");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Fresh_Air_Damp_Pos = m_inputs_map[ska_num][HVAC3].at("Fresh_Air_Damp_Pos");
     m_ska_x_hvac[ska_num].ska_vh_riom_ccu_mvb15_hvac3.bits.Minor_Fault = m_inputs_map[ska_num][HVAC3].at("Minor_Fault");
@@ -1174,7 +1174,7 @@ void Ska_Hvac::init_ska_x_hvac3_table(SKA_VEHICLE_NUM vehicle_type)
                                     {"Reduce_Mode", 0},
                                     {"Emergency_Mode", 0},
                                     {"Self_Test_Mode", 0},
-                                    {"Spare", 0},
+                                    {"bit91", 0},
                                     {"Fire_Mode", 0},
                                     {"Inside_Fire_On", 0},
                                     {"Half_Cooling", 0},
@@ -1196,13 +1196,13 @@ void Ska_Hvac::init_ska_x_hvac3_table(SKA_VEHICLE_NUM vehicle_type)
                                     {"Emerg_Inv_On", 0},
                                     {"Evap_Sel1_On", 0},
                                     {"Evap_Sel2_On", 0},
-                                    {"bit97", 0},
-                                    {"bit98", 0},
-                                    {"bit99", 0},
-                                    {"bit100", 0},
-                                    {"bit101", 0},
-                                    {"bit102", 0},
-                                    {"bit103", 0},
+                                    {"bit113", 0},
+                                    {"bit114", 0},
+                                    {"bit115", 0},
+                                    {"bit116", 0},
+                                    {"bit117", 0},
+                                    {"bit118", 0},
+                                    {"bit119", 0},
                                     {"Emerg_Shut_Air_Damp_Pos", 0},
                                     {"Fresh_Air_Damp_Pos", 0},
                                     {"Minor_Fault", 0},

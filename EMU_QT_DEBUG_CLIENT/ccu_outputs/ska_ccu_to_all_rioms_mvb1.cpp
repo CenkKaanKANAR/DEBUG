@@ -4,6 +4,7 @@
 Ska_Ccu_To_All_Rioms_Mvb1::Ska_Ccu_To_All_Rioms_Mvb1(QObject *parent)
     : QObject{parent}
 {
+    memset(m_ska_ccu_to_all_rioms_mvb1.bytes, 0, sizeof(m_ska_ccu_to_all_rioms_mvb1));
     init_table();
 }
 
@@ -122,7 +123,7 @@ void Ska_Ccu_To_All_Rioms_Mvb1::init_table()
 
     };
 
-    QStringList table_name = {"m_ska_ccu_to_all_rioms_mvb1", "value"};
+    QStringList table_name = {"ska_ccu_to_all_rioms_mvb1", "value"};
 
     m_tableWidget = new QTableWidget();
     m_tableWidget->setColumnCount(2);
@@ -139,6 +140,7 @@ void Ska_Ccu_To_All_Rioms_Mvb1::init_table()
         //m_tableWidget->item(row, 1)->setText(QString(pair.second));
         ++row;
     }
+    m_tableWidget->resizeColumnsToContents();
 }
 
 void Ska_Ccu_To_All_Rioms_Mvb1::update_table()
@@ -253,7 +255,7 @@ void Ska_Ccu_To_All_Rioms_Mvb1::update_map()
     m_outputs_map.at("SKA2_Brake_Handle_6")         = m_ska_ccu_to_all_rioms_mvb1.bits.SKA2_Brake_Handle_6;
     m_outputs_map.at("SKA2_Brake_Handle_7")         = m_ska_ccu_to_all_rioms_mvb1.bits.SKA2_Brake_Handle_7;
     m_outputs_map.at("SKA2_Brake_Handle_8")         = m_ska_ccu_to_all_rioms_mvb1.bits.SKA2_Brake_Handle_8;
-    m_outputs_map.at("reserved31")                  = m_ska_ccu_to_all_rioms_mvb1.bits.reserved_31;
+    m_outputs_map.at("reserved_31")                  = m_ska_ccu_to_all_rioms_mvb1.bits.reserved_31;
 
 }
 
@@ -359,6 +361,6 @@ void Ska_Ccu_To_All_Rioms_Mvb1::set_struct()
     m_ska_ccu_to_all_rioms_mvb1.bits.SKA2_Brake_Handle_6        = m_outputs_map.at("SKA2_Brake_Handle_6")      ;
     m_ska_ccu_to_all_rioms_mvb1.bits.SKA2_Brake_Handle_7        = m_outputs_map.at("SKA2_Brake_Handle_7")      ;
     m_ska_ccu_to_all_rioms_mvb1.bits.SKA2_Brake_Handle_8        = m_outputs_map.at("SKA2_Brake_Handle_8")      ;
-    m_ska_ccu_to_all_rioms_mvb1.bits.reserved_31        = m_outputs_map.at("reserved31")               ;
+    m_ska_ccu_to_all_rioms_mvb1.bits.reserved_31        = m_outputs_map.at("reserved_31")               ;
 }
 

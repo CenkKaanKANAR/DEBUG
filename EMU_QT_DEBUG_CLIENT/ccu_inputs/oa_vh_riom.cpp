@@ -168,7 +168,7 @@ void Oa_Vh_Riom::init_inputs_table(OA_VEHICLE_NUM oa_x_num)
         {"ISOLATION_COCKS_DIRECT_BRAKE_BO1", 0},
         {"ISOLATION_COCKS_DIRECT_BRAKE_BO2", 0},
         {"ISOLATION_COCKS_PB_ISOLATED", 0},
-        {"ISOLATION_COCKS_RESERVE", 0},
+        {"AIR_SUSPENSION_STATUS", 0},
         {"EBCU_C_FCTOK", 0},
         {"EBCU_SPEED_10_Km_H", 0},
         {"PRESSURE_GOVERNORS_AIR_SUSPENSION_BO1", 0},
@@ -231,8 +231,8 @@ void Oa_Vh_Riom::init_inputs_table(OA_VEHICLE_NUM oa_x_num)
         {"bit165", 0},
         {"CB_PROTECTION_AXLE_BOX", 0},
         {"bit167", 0},
-        {"TEMPERATURE_PROBE_RTD_1", 0},
-        {"TEMPERATURE_PROBE_RTD_2", 0},
+        {"TEMPERATURE_PROBE_RTD", 0},
+        {"reserved_23", 0},
         {"MEASURING_BATTERY_VOLTAGE", 0},
         {"TRANSDUCER_HV_VOLTAGE_VCB_IN", 0},
         {"TRANSDUCER_HV_CURRENT_VCB_IN", 0},
@@ -566,7 +566,7 @@ void Oa_Vh_Riom::update_inputs_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO1")            = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO1;
     m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO2")            = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO2;
     m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_PB_ISOLATED")                 = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_PB_ISOLATED;
-    m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_RESERVE")                     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_RESERVE;
+    m_inputs_map[oa_num][MVB1].at("AIR_SUSPENSION_STATUS")                     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.AIR_SUSPENSION_STATUS;
     m_inputs_map[oa_num][MVB1].at("EBCU_C_FCTOK")                                = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EBCU_C_FCTOK;
     m_inputs_map[oa_num][MVB1].at("EBCU_SPEED_10_Km_H")                          = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EBCU_SPEED_10_Km_H;
     m_inputs_map[oa_num][MVB1].at("PRESSURE_GOVERNORS_AIR_SUSPENSION_BO1")       = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.PRESSURE_GOVERNORS_AIR_SUSPENSION_BO1;
@@ -634,8 +634,8 @@ void Oa_Vh_Riom::update_inputs_map(OA_VEHICLE_NUM oa_x_num)
     m_inputs_map[oa_num][MVB1].at("MEASURING_BATTERY_VOLTAGE")                   = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.MEASURING_BATTERY_VOLTAGE;
     m_inputs_map[oa_num][MVB1].at("TRANSDUCER_HV_VOLTAGE_VCB_IN")                = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TRANSDUCER_HV_VOLTAGE_VCB_IN;
     m_inputs_map[oa_num][MVB1].at("TRANSDUCER_HV_CURRENT_VCB_IN")                = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TRANSDUCER_HV_CURRENT_VCB_IN;
-    m_inputs_map[oa_num][MVB1].at("TEMPERATURE_PROBE_RTD_1")                     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TEMPERATURE_PROBE_RTD_1;
-    m_inputs_map[oa_num][MVB1].at("TEMPERATURE_PROBE_RTD_2")                     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TEMPERATURE_PROBE_RTD_2;
+    m_inputs_map[oa_num][MVB1].at("TEMPERATURE_PROBE_RTD")                     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TEMPERATURE_PROBE_RTD;
+    m_inputs_map[oa_num][MVB1].at("reserved_23")                     = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_23;
     //m_inputs_map[oa_nu[MVB1]m].at("reserved_29")                                 = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_29;
     //m_inputs_map[oa_nu[MVB1]m].at("reserved_30")                                 = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_30;
     m_inputs_map[oa_num][MVB1].at("reserved_31")                                 = m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_31;
@@ -940,7 +940,7 @@ void Oa_Vh_Riom::set_inputs_struct(OA_VEHICLE_NUM oa_x_num)
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO1                 = m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO1")             ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_DIRECT_BRAKE_BO2                 = m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_DIRECT_BRAKE_BO2")             ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_PB_ISOLATED                      = m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_PB_ISOLATED")                   ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.ISOLATION_COCKS_RESERVE                          = m_inputs_map[oa_num][MVB1].at("ISOLATION_COCKS_RESERVE")                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.AIR_SUSPENSION_STATUS                          = m_inputs_map[oa_num][MVB1].at("AIR_SUSPENSION_STATUS")                       ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EBCU_C_FCTOK                                     = m_inputs_map[oa_num][MVB1].at("EBCU_C_FCTOK")                                 ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.EBCU_SPEED_10_Km_H                               = m_inputs_map[oa_num][MVB1].at("EBCU_SPEED_10_Km_H")                             ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.PRESSURE_GOVERNORS_AIR_SUSPENSION_BO1            = m_inputs_map[oa_num][MVB1].at("PRESSURE_GOVERNORS_AIR_SUSPENSION_BO1")       ;
@@ -1008,8 +1008,8 @@ void Oa_Vh_Riom::set_inputs_struct(OA_VEHICLE_NUM oa_x_num)
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.MEASURING_BATTERY_VOLTAGE                        = m_inputs_map[oa_num][MVB1].at("MEASURING_BATTERY_VOLTAGE")                   ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TRANSDUCER_HV_VOLTAGE_VCB_IN                     = m_inputs_map[oa_num][MVB1].at("TRANSDUCER_HV_VOLTAGE_VCB_IN")                 ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TRANSDUCER_HV_CURRENT_VCB_IN                     = m_inputs_map[oa_num][MVB1].at("TRANSDUCER_HV_CURRENT_VCB_IN")                 ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TEMPERATURE_PROBE_RTD_2                          = m_inputs_map[oa_num][MVB1].at("TEMPERATURE_PROBE_RTD_2")                       ;
-    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TEMPERATURE_PROBE_RTD_1                          = m_inputs_map[oa_num][MVB1].at("TEMPERATURE_PROBE_RTD_1");
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_23                          = m_inputs_map[oa_num][MVB1].at("reserved_23")                       ;
+    m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.TEMPERATURE_PROBE_RTD                          = m_inputs_map[oa_num][MVB1].at("TEMPERATURE_PROBE_RTD");
     //m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_29                                      = m_inputs_map[oa_num].at("reserved_29")                                   ;
     //m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_30                                      = m_inputs_map[oa_num].at("reserved_30")                                   ;
     m_oa_x_vh_riom[oa_num].oa_vh_riom_ccu_mvb1_inputs.bits.reserved_31                                      = m_inputs_map[oa_num][MVB1].at("reserved_31")                                   ;

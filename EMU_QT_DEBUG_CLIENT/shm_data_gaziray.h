@@ -3030,7 +3030,7 @@ struct ska_vh_riom_ccu_mvb15_hvac3 {
             uint8_t Reduce_Mode : 1; //byte11
             uint8_t Emergency_Mode : 1;
             uint8_t Self_Test_Mode : 1;
-            uint8_t Spare : 1;//bit91
+            uint8_t bit91 : 1;//bit91
             uint8_t Fire_Mode : 1;
             uint8_t Inside_Fire_On : 1;
             uint8_t Half_Cooling : 1;
@@ -3052,13 +3052,13 @@ struct ska_vh_riom_ccu_mvb15_hvac3 {
             uint8_t Emerg_Inv_On : 1;
             uint8_t Evap_Sel1_On : 1;
             uint8_t Evap_Sel2_On : 1; //byte14
-            uint8_t bit97 : 1;//bit113
-            uint8_t bit98 : 1;//bit114
-            uint8_t bit99 : 1;//bit115
-            uint8_t bit100 : 1;//bit116
-            uint8_t bit101 : 1;//bit117
-            uint8_t bit102 : 1;//bit118
-            uint8_t bit103 : 1;//bit119
+            uint8_t bit113: 1;//bit113
+            uint8_t bit114: 1;//bit114
+            uint8_t bit115: 1;//bit115
+            uint8_t bit116 : 1;//bit116
+            uint8_t bit117 : 1;//bit117
+            uint8_t bit118 : 1;//bit118
+            uint8_t bit119 : 1;//bit119
             uint8_t Emerg_Shut_Air_Damp_Pos ; //byte15
             uint8_t Fresh_Air_Damp_Pos ; //byte16
             uint8_t Minor_Fault : 1; //byte 17
@@ -3359,7 +3359,7 @@ struct oa_vh_riom_ccu_mvb1_inputs {
             uint8_t ISOLATION_COCKS_DIRECT_BRAKE_BO1 : 1;
             uint8_t ISOLATION_COCKS_DIRECT_BRAKE_BO2 : 1;
             uint8_t ISOLATION_COCKS_PB_ISOLATED : 1; //byte 13
-            uint8_t ISOLATION_COCKS_RESERVE : 1;
+            uint8_t AIR_SUSPENSION_STATUS : 1;
             uint8_t EBCU_C_FCTOK : 1;
             uint8_t EBCU_SPEED_10_Km_H : 1;
             uint8_t PRESSURE_GOVERNORS_AIR_SUSPENSION_BO1 : 1;
@@ -3422,8 +3422,8 @@ struct oa_vh_riom_ccu_mvb1_inputs {
             uint8_t bit165 : 1;
             uint8_t CB_PROTECTION_AXLE_BOX : 1;
             uint8_t bit167 : 1;
-            uint16_t TEMPERATURE_PROBE_RTD_1; //byte 21
-            uint16_t TEMPERATURE_PROBE_RTD_2; //byte 23
+            uint16_t TEMPERATURE_PROBE_RTD; //byte 21
+            uint16_t reserved_23; //byte 23
             uint16_t MEASURING_BATTERY_VOLTAGE; //byte 25
             uint16_t TRANSDUCER_HV_VOLTAGE_VCB_IN; //byte 27
             uint16_t TRANSDUCER_HV_CURRENT_VCB_IN; //byte 29

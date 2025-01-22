@@ -221,7 +221,7 @@ public:
         return m_ccu_to_all_apus_force_ptr;
     }
 
-    Ccu_All_Rioms_Output* get_Ccu_To_All_Rioms()
+    Ccu_All_Rioms_Output* get_Ccu_To_All_Rioms_Force()
     {
         return m_ccu_to_all_rioms_force_ptr;
     }

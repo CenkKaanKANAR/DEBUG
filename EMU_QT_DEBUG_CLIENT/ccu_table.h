@@ -4,13 +4,12 @@
 #include <QWidget>
 #include "ccu_inputs.h"
 #include "ccu_outputs.h"
-#include "forcecontrol.h"
-#include "frcconfig.h"
+#include "Force/forcecontrol.h"
+#include "Force/frcconfig.h"
 #include "messageconfig.h"
 #include <QStackedWidget>
 #include <QMessageBox>
 #include <QTimer>
-#include "DriverDeskPanels/switch/switch.h"
 #include <QTcpServer>
 #include <QUdpSocket>
 #include <QMessageBox>
@@ -111,7 +110,7 @@ private:
     MessageConfig * m_ConfigWidget= nullptr;
     bool sendStatusActivated = false;
     QTimer * m_timer = nullptr;
-    SwitchButton * m_ldr_switch = nullptr;
+
 
     QPushButton *maintenanceIDButton;
     QPushButton *developerIDButton;

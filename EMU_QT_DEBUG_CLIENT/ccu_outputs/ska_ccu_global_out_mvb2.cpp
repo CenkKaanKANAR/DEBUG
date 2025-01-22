@@ -4,6 +4,7 @@
 Ska_Ccu_Global_Out_Mvb2::Ska_Ccu_Global_Out_Mvb2(QObject *parent)
     : QObject{parent}
 {
+
     init_table();
 }
 

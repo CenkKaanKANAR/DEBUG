@@ -22,7 +22,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>DEBUG_CLIENT</string>
+   <string>GAZIRAY_DEBUG_CLIENT</string>
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
